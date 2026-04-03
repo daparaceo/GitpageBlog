@@ -1,7 +1,7 @@
 ---
 title: "블로그 이미지를 Cloudinary로 관리하는 방법"
 description: "GitHub 저장소에 이미지를 올리지 않고 Cloudinary CDN을 이용해 블로그 이미지를 효율적으로 관리하는 방법을 소개합니다."
-publishedAt: 2024-01-25
+publishedAt: 2026-04-01
 category: "tech"
 tags: ["Cloudinary", "이미지", "CDN", "블로그 운영"]
 ---

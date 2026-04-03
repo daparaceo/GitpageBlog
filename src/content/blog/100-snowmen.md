@@ -1,7 +1,7 @@
 ---
 title: "[AR 1.8] 100 Snowmen - 눈사람 100명과 함께 배우는 신나는 덧셈·뺄셈"
 description: "겨울 배경의 수학 그림책 100 Snowmen 리뷰. 핵심 어휘, 인상 깊은 문장, 활용법까지 정리했습니다."
-publishedAt: 2024-03-15
+publishedAt: 2026-04-03
 category: "english-reading"
 tags: ["영어원서", "AR1점대", "그림책", "수학", "초등영어"]
 ---
