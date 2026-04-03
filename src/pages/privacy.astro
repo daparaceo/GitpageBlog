@@ -1,100 +1,112 @@
 ---
-// src/pages/privacy.astro
-// 개인정보처리방침 페이지
-// 구글 애드센스 승인 조건 중 하나입니다.
-// 아래 내용을 실제 운영 정보에 맞게 수정하세요.
-
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const lastUpdated = '2024년 1월 1일';  // ← 마지막 수정일 변경
+const lastUpdated = '2026년 4월 3일';
 ---
 
 <BaseLayout
   title="개인정보처리방침"
   description="블로그의 개인정보처리방침 안내 페이지입니다."
 >
-  <article class="prose prose-gray max-w-none">
-    <h1>개인정보처리방침</h1>
-    <p><strong>최종 수정일:</strong> {lastUpdated}</p>
+  <article class="max-w-none space-y-8">
 
-    <p>
-      본 블로그(이하 "사이트")는 방문자의 개인정보를 중요하게 생각합니다.
-      이 개인정보처리방침은 사이트가 수집하는 정보의 종류, 사용 방법 및
-      보호 방법을 설명합니다.
-    </p>
+    <section>
+      <h1 class="text-2xl font-bold text-gray-900 mb-1">개인정보처리방침</h1>
+      <p class="text-sm text-gray-400">최종 수정일: {lastUpdated}</p>
+      <p class="mt-4 text-gray-600 leading-relaxed">
+        본 블로그(이하 "사이트")는 방문자의 개인정보를 중요하게 생각합니다.
+        이 방침은 사이트가 수집하는 정보의 종류, 사용 방법 및 보호 방법을 설명합니다.
+      </p>
+    </section>
 
-    <h2>1. 수집하는 정보</h2>
-    <p>
-      본 사이트는 다음과 같은 정보를 자동으로 수집할 수 있습니다.
-    </p>
-    <ul>
-      <li>방문 페이지, 체류 시간, 클릭한 링크 등 이용 행태 정보 (Google Analytics 등)</li>
-      <li>IP 주소, 브라우저 유형, 운영체제 등 기기 정보</li>
-      <li>쿠키 및 유사 추적 기술을 통한 정보</li>
-    </ul>
+    <div class="space-y-6">
 
-    <h2>2. 정보 수집 목적</h2>
-    <ul>
-      <li>사이트 이용 통계 분석 및 서비스 개선</li>
-      <li>맞춤형 광고 제공 (Google AdSense, 카카오 애드핏 등)</li>
-    </ul>
+      <div class="p-5 rounded-lg bg-gray-50 border border-gray-100">
+        <h2 class="font-semibold text-gray-800 mb-3">1. 수집하는 정보</h2>
+        <ul class="list-disc list-inside space-y-1 text-sm text-gray-600">
+          <li>방문 페이지, 체류 시간, 클릭한 링크 등 이용 행태 정보 (Google Analytics 등)</li>
+          <li>IP 주소, 브라우저 유형, 운영체제 등 기기 정보</li>
+          <li>쿠키 및 유사 추적 기술을 통한 정보</li>
+        </ul>
+      </div>
 
-    <h2>3. 쿠키 사용</h2>
-    <p>
-      본 사이트는 쿠키를 사용합니다. 쿠키는 방문자의 컴퓨터에 저장되는 작은 텍스트 파일로,
-      사이트 이용을 개선하기 위해 활용됩니다. 브라우저 설정에서 쿠키를 거부하거나 삭제할 수 있으나,
-      일부 기능이 제한될 수 있습니다.
-    </p>
+      <div class="p-5 rounded-lg bg-gray-50 border border-gray-100">
+        <h2 class="font-semibold text-gray-800 mb-3">2. 정보 수집 목적</h2>
+        <ul class="list-disc list-inside space-y-1 text-sm text-gray-600">
+          <li>사이트 이용 통계 분석 및 서비스 개선</li>
+          <li>맞춤형 광고 제공 (Google AdSense, 카카오 애드핏 등)</li>
+        </ul>
+      </div>
 
-    <h2>4. 제3자 광고 서비스</h2>
-    <p>
-      본 사이트는 제3자 광고 서비스를 사용합니다.
-    </p>
-    <ul>
-      <li>
-        <strong>Google AdSense:</strong> Google은 방문자에게 관심 기반 광고를 표시하기 위해
-        쿠키를 사용할 수 있습니다.
-        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
-          Google 개인정보처리방침
-        </a>에서 자세한 내용을 확인하실 수 있습니다.
-        <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer">
-          Google 광고 설정
-        </a>에서 개인 맞춤 광고를 비활성화할 수 있습니다.
-      </li>
-      <li>
-        <strong>카카오 애드핏:</strong> 카카오는 광고 제공을 위해 쿠키 등을 활용할 수 있습니다.
-        <a href="https://www.kakao.com/policy/privacy" target="_blank" rel="noopener noreferrer">
-          카카오 개인정보처리방침
-        </a>에서 확인하실 수 있습니다.
-      </li>
-    </ul>
+      <div class="p-5 rounded-lg bg-gray-50 border border-gray-100">
+        <h2 class="font-semibold text-gray-800 mb-3">3. 쿠키 사용</h2>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          본 사이트는 쿠키를 사용합니다. 쿠키는 방문자의 컴퓨터에 저장되는 작은 텍스트 파일로,
+          사이트 이용을 개선하기 위해 활용됩니다. 브라우저 설정에서 쿠키를 거부하거나 삭제할 수 있으나,
+          일부 기능이 제한될 수 있습니다.
+        </p>
+      </div>
 
-    <h2>5. 제3자 분석 서비스</h2>
-    <p>
-      <!-- Google Analytics 사용 시 아래 내용을 포함하세요 -->
-      본 사이트는 Google Analytics를 사용할 수 있습니다. Google Analytics는 쿠키를 사용하여
-      사이트 트래픽을 분석합니다. 수집된 데이터는 Google의 서버로 전송됩니다.
-    </p>
+      <div class="p-5 rounded-lg bg-gray-50 border border-gray-100">
+        <h2 class="font-semibold text-gray-800 mb-3">4. 제3자 광고 서비스</h2>
+        <div class="space-y-3 text-sm text-gray-600">
+          <div>
+            <p class="font-medium text-gray-700 mb-1">Google AdSense</p>
+            <p class="leading-relaxed">
+              Google은 방문자에게 관심 기반 광고를 표시하기 위해 쿠키를 사용할 수 있습니다.
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="text-brand-600 underline">Google 개인정보처리방침</a>에서 확인하실 수 있으며,
+              <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer" class="text-brand-600 underline">Google 광고 설정</a>에서 맞춤 광고를 비활성화할 수 있습니다.
+            </p>
+          </div>
+          <div>
+            <p class="font-medium text-gray-700 mb-1">카카오 애드핏</p>
+            <p class="leading-relaxed">
+              카카오는 광고 제공을 위해 쿠키 등을 활용할 수 있습니다.
+              <a href="https://www.kakao.com/policy/privacy" target="_blank" rel="noopener noreferrer" class="text-brand-600 underline">카카오 개인정보처리방침</a>에서 확인하실 수 있습니다.
+            </p>
+          </div>
+        </div>
+      </div>
 
-    <h2>6. 외부 링크</h2>
-    <p>
-      본 사이트는 외부 웹사이트로 연결되는 링크를 포함할 수 있습니다.
-      외부 사이트의 개인정보 보호 정책에 대해서는 해당 사이트의 방침을 참고하시기 바랍니다.
-    </p>
+      <div class="p-5 rounded-lg bg-gray-50 border border-gray-100">
+        <h2 class="font-semibold text-gray-800 mb-3">5. 제3자 분석 서비스</h2>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          본 사이트는 Google Analytics를 사용합니다. Google Analytics는 쿠키를 사용하여
+          사이트 트래픽을 분석하며, 수집된 데이터는 Google의 서버로 전송됩니다.
+        </p>
+      </div>
 
-    <h2>7. 개인정보 보호 관련 문의</h2>
-    <p>
-      개인정보 처리에 관한 문의사항이 있으시면 아래로 연락해 주세요.
-      <!-- ← 이메일 주소 변경 -->
-    </p>
-    <ul>
-      <li>이메일: your-email@example.com</li>  <!-- ← 변경 -->
-    </ul>
+      <div class="p-5 rounded-lg bg-gray-50 border border-gray-100">
+        <h2 class="font-semibold text-gray-800 mb-3">6. 외부 링크</h2>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          본 사이트는 외부 웹사이트로 연결되는 링크를 포함할 수 있습니다.
+          외부 사이트의 개인정보 보호 정책에 대해서는 해당 사이트의 방침을 참고하시기 바랍니다.
+        </p>
+      </div>
 
-    <h2>8. 방침 변경</h2>
-    <p>
-      본 개인정보처리방침은 법령 변경 또는 서비스 변경에 따라 업데이트될 수 있습니다.
-      변경 시 본 페이지에 최신 내용을 게시합니다.
-    </p>
+      <div class="p-5 rounded-lg bg-gray-50 border border-gray-100">
+        <h2 class="font-semibold text-gray-800 mb-3">7. 방침 변경</h2>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          본 개인정보처리방침은 법령 변경 또는 서비스 변경에 따라 업데이트될 수 있습니다.
+          변경 시 본 페이지에 최신 내용을 게시합니다.
+        </p>
+      </div>
+
+    </div>
+
+    <section>
+      <h2 class="text-lg font-semibold text-gray-900 mb-3">문의</h2>
+      <p class="text-sm text-gray-600 mb-3">개인정보 처리에 관한 문의사항이 있으시면 아래로 연락해 주세요.</p>
+      <a
+        href="mailto:daparaceo@gmail.com"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 bg-white text-sm text-gray-700 hover:border-brand-400 hover:text-brand-600 transition-colors"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        daparaceo@gmail.com
+      </a>
+    </section>
+
   </article>
 </BaseLayout>
