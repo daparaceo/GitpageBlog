@@ -2,7 +2,14 @@
 // src/layouts/BaseLayout.astro
 // 공통 레이아웃 — 광고 스크립트, SEO 메타태그, 헤더/푸터
 
+import { getCollection } from 'astro:content';
 import { CATEGORIES } from '../content/config';
+
+// 글이 1개 이상 있는 카테고리만 헤더에 노출
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const activeCategories = CATEGORIES.filter(({ slug }) =>
+  allPosts.some((p) => p.data.category === slug)
+);
 
 interface Props {
   title: string;
@@ -108,7 +115,7 @@ const fullTitle = `${title} | ${SITE_NAME}`;
 
       <!-- 카테고리 네비게이션 -->
       <nav class="flex gap-4 pb-2 text-sm overflow-x-auto">
-        {CATEGORIES.map(({ slug, label }) => (
+        {activeCategories.map(({ slug, label }) => (
           <a
             href={`/category/${slug}`}
             class="whitespace-nowrap text-gray-500 hover:text-brand-600 transition-colors pb-1 border-b-2 border-transparent hover:border-brand-400"
