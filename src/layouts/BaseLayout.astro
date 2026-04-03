@@ -144,6 +144,24 @@ const fullTitle = `${title} | ${SITE_NAME}`;
     </div>
   </footer>
 
+  <!-- 드래그 복사 방지 -->
+  <style>
+    body {
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+  </style>
+  <script>
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if ((e.ctrlKey || e.metaKey) && ['c', 'a', 's', 'u'].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+      }
+    });
+  </script>
+
   <!-- TTS: data-word 속성이 있는 요소 클릭 시 음성 재생 -->
   <script>
     document.addEventListener('click', function(e) {
