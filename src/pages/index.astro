@@ -1,101 +1,77 @@
 ---
-// src/pages/index.astro
-// 블로그 글 목록 페이지 (홈)
-// Content Collections API로 마크다운 글을 불러옵니다
-
 import { getCollection } from 'astro:content';
+import { CATEGORIES } from '../content/config';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// 블로그 컬렉션에서 모든 글 가져오기 (draft: true인 글 제외)
-const allPosts = await getCollection('blog', ({ data }) => {
-  return data.draft !== true;
-});
-
-// 날짜 내림차순 정렬 (최신 글 먼저)
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 const sortedPosts = allPosts.sort(
   (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
 );
 
-// 전체 태그 목록 수집 (중복 제거)
-const allTags = [...new Set(sortedPosts.flatMap((p) => p.data.tags ?? []))];
+// 카테고리별 최신 글 3개씩
+const postsByCategory = CATEGORIES.map(({ slug, label }) => ({
+  slug,
+  label,
+  posts: sortedPosts.filter((p) => p.data.category === slug).slice(0, 3),
+})).filter(({ posts }) => posts.length > 0);
 ---
 
 <BaseLayout
   title="홈"
-  description="다양한 주제의 글을 공유하는 개인 블로그입니다."
+  description="생활정보, IT, 재테크 등 다양한 주제의 글을 공유하는 블로그입니다."
 >
-  <!-- ===== 히어로 섹션 ===== -->
-  <section class="mb-10">
-    <h1 class="text-3xl font-bold text-gray-900 mb-2">안녕하세요 👋</h1>
-    <p class="text-gray-600 text-lg">
-      개발, 일상, 정보 등 다양한 주제의 글을 씁니다.
-      <!-- ← 블로그 소개 문구 변경 -->
-    </p>
+  <!-- 최신 글 전체 목록 (카테고리 없을 때도 표시) -->
+  <section class="mb-12">
+    <h2 class="text-lg font-bold text-gray-900 mb-4 pb-2 border-b border-gray-100">최신 글</h2>
+    <ul class="divide-y divide-gray-100">
+      {sortedPosts.slice(0, 5).map((post) => (
+        <li class="py-4 group">
+          <a href={`/blog/${post.slug}`} class="flex items-start justify-between gap-4">
+            <div class="flex-1 min-w-0">
+              {post.data.category && (
+                <span class="text-xs text-brand-600 font-medium mr-2">
+                  {CATEGORIES.find(c => c.slug === post.data.category)?.label}
+                </span>
+              )}
+              <span class="text-base font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">
+                {post.data.title}
+              </span>
+              {post.data.description && (
+                <p class="text-gray-500 text-sm mt-0.5 line-clamp-1">{post.data.description}</p>
+              )}
+            </div>
+            <time datetime={post.data.publishedAt.toISOString()} class="text-xs text-gray-400 whitespace-nowrap mt-1">
+              {post.data.publishedAt.toLocaleDateString('ko-KR', { month: 'short', day: 'numeric' })}
+            </time>
+          </a>
+        </li>
+      ))}
+    </ul>
   </section>
 
-  <!-- ===== 태그 필터 영역 ===== -->
-  {allTags.length > 0 && (
-    <section class="mb-8">
-      <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">태그</h2>
-      <div class="flex flex-wrap gap-2">
-        {allTags.map((tag) => (
-          <a
-            href={`/tags/${tag}`}
-            class="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-full hover:bg-brand-100 hover:text-brand-700 transition-colors"
-          >
-            #{tag}
-          </a>
-        ))}
+  <!-- 카테고리별 섹션 -->
+  {postsByCategory.map(({ slug, label, posts }) => (
+    <section class="mb-10">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-lg font-bold text-gray-900">{label}</h2>
+        <a href={`/category/${slug}`} class="text-xs text-brand-600 hover:underline">더 보기 →</a>
       </div>
-    </section>
-  )}
-
-  <!-- ===== 글 목록 ===== -->
-  <section>
-    <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">최신 글</h2>
-    {sortedPosts.length === 0 ? (
-      <p class="text-gray-500">아직 작성된 글이 없습니다.</p>
-    ) : (
       <ul class="divide-y divide-gray-100">
-        {sortedPosts.map((post) => (
-          <li class="py-6 group">
-            <a href={`/blog/${post.slug}`} class="block">
-              <!-- 태그 -->
-              {post.data.tags && post.data.tags.length > 0 && (
-                <div class="flex gap-2 mb-1">
-                  {post.data.tags.slice(0, 3).map((tag) => (
-                    <span class="text-xs text-brand-600 font-medium">#{tag}</span>
-                  ))}
-                </div>
-              )}
-
-              <!-- 제목 -->
-              <h3 class="text-xl font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mb-1">
-                {post.data.title}
-              </h3>
-
-              <!-- 요약 -->
-              {post.data.description && (
-                <p class="text-gray-600 text-sm line-clamp-2 mb-2">
-                  {post.data.description}
-                </p>
-              )}
-
-              <!-- 날짜 -->
-              <time
-                datetime={post.data.publishedAt.toISOString()}
-                class="text-xs text-gray-400"
-              >
-                {post.data.publishedAt.toLocaleDateString('ko-KR', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
+        {posts.map((post) => (
+          <li class="py-3 group">
+            <a href={`/blog/${post.slug}`} class="flex items-start justify-between gap-4">
+              <div class="flex-1 min-w-0">
+                <span class="text-sm font-medium text-gray-800 group-hover:text-brand-600 transition-colors">
+                  {post.data.title}
+                </span>
+              </div>
+              <time datetime={post.data.publishedAt.toISOString()} class="text-xs text-gray-400 whitespace-nowrap">
+                {post.data.publishedAt.toLocaleDateString('ko-KR', { month: 'short', day: 'numeric' })}
               </time>
             </a>
           </li>
         ))}
       </ul>
-    )}
-  </section>
+    </section>
+  ))}
 </BaseLayout>

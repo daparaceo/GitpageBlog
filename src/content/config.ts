@@ -1,29 +1,35 @@
-// src/content/config.ts
-// Astro Content Collections 스키마 정의
-// 블로그 글의 프론트매터(front matter) 구조를 타입 안전하게 관리합니다
-
 import { defineCollection, z } from 'astro:content';
 
+// 카테고리 목록 (확장 시 여기에 추가)
+// 각 카테고리는 /category/[slug] 페이지로 자동 생성됨
+export const CATEGORIES = [
+  { slug: 'life-info',  label: '생활정보' },
+  { slug: 'tech',       label: 'IT·기술' },
+  { slug: 'finance',    label: '재테크' },
+  { slug: 'travel',     label: '여행' },
+  { slug: 'food',       label: '음식·맛집' },
+] as const;
+
+export type CategorySlug = typeof CATEGORIES[number]['slug'];
+
 const blogCollection = defineCollection({
-  type: 'content',  // 마크다운/MDX 콘텐츠
+  type: 'content',
   schema: z.object({
-    // 글 제목 (필수)
     title: z.string(),
-
-    // 글 요약/설명 (SEO 및 목록 페이지에 표시)
     description: z.string().optional(),
-
-    // 발행일 (필수)
     publishedAt: z.date(),
 
-    // 태그 목록 (선택)
+    // 카테고리 (목록 페이지 분류 기준)
+    category: z.enum([
+      'life-info', 'tech', 'finance', 'travel', 'food'
+    ]).optional(),
+
+    // 태그 (카테고리 내 세부 분류)
     tags: z.array(z.string()).optional().default([]),
 
-    // OG 이미지 URL (선택, Cloudinary URL 권장)
-    // 미설정 시 BaseLayout의 기본 OG 이미지 사용
+    // OG 이미지 (Cloudinary URL 권장)
     ogImage: z.string().optional(),
 
-    // 초안 여부 (true이면 빌드에서 제외)
     draft: z.boolean().optional().default(false),
   }),
 });

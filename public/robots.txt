@@ -6,4 +6,4 @@ User-agent: *
 Allow: /
 
 # sitemap 위치 (yourdomain.com을 실제 도메인으로 변경)
-Sitemap: https://daparaceo.github.io/GitpageBlog/sitemap-index.xml
+Sitemap: https://daparapara.com/sitemap-index.xml
