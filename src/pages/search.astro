@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="검색" description="블로그 글 검색">
+  <div class="max-w-none">
+    <h1 class="text-2xl font-bold text-gray-900 mb-6">검색</h1>
+    <div id="search"></div>
+  </div>
+
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+  <script src="/pagefind/pagefind-ui.js" is:inline></script>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', () => {
+      new PagefindUI({
+        element: '#search',
+        showImages: false,
+        translations: {
+          placeholder: '검색어를 입력하세요',
+          zero_results: '"[QUERY]" 에 대한 검색 결과가 없습니다.',
+          many_results: '"[QUERY]" 검색 결과 [COUNT]개',
+          one_result: '"[QUERY]" 검색 결과 1개',
+          alt_search: '[DIFFERENT_TERM] 으로 검색하시겠습니까?',
+          search_suggestion: '[DIFFERENT_TERM] 으로 검색해보세요',
+          searching: '검색 중...',
+        },
+      });
+    });
+  </script>
+
+  <style is:inline>
+    .pagefind-ui {
+      --pagefind-ui-scale: 1;
+      --pagefind-ui-primary: #0284c7;
+      --pagefind-ui-text: #374151;
+      --pagefind-ui-background: #ffffff;
+      --pagefind-ui-border: #e5e7eb;
+      --pagefind-ui-border-radius: 8px;
+      --pagefind-ui-font: inherit;
+    }
+    .pagefind-ui__search-input {
+      width: 100%;
+    }
+    .pagefind-ui__result-title {
+      font-weight: 600;
+    }
+    .pagefind-ui__result-excerpt {
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+  </style>
+</BaseLayout>
