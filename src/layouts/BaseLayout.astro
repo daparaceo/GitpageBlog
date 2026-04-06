@@ -141,9 +141,43 @@ const fullTitle = `${title} | ${SITE_NAME}`;
         <a href="/privacy" class="hover:text-brand-600 underline">개인정보처리방침</a>
         &nbsp;·&nbsp;
         <a href="/about" class="hover:text-brand-600 underline">소개</a>
+        &nbsp;·&nbsp;
+        <button id="reset-lang" onclick="(function(){document.cookie='googtrans=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';document.cookie='googtrans=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=.'+location.hostname;location.reload();})()" class="hover:text-brand-600 underline cursor-pointer">한국어</button>
       </p>
     </div>
   </footer>
+
+  <!-- Google 번역 (숨김) -->
+  <div id="google_translate_element" style="display:none"></div>
+
+  <!-- Google 번역 초기화 스크립트 -->
+  <style>
+    /* Google 번역 툴바 숨김 */
+    .goog-te-banner-frame, .skiptranslate { display: none !important; }
+    body { top: 0 !important; }
+  </style>
+  <script is:inline src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script is:inline>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'ko',
+        autoDisplay: false,
+      }, 'google_translate_element');
+    }
+
+    // 브라우저 언어 감지 → 한국어가 아니면 자동 번역
+    (function () {
+      var userLang = (navigator.language || navigator.userLanguage || 'ko').split('-')[0];
+      if (userLang === 'ko') return;
+
+      var existingCookie = document.cookie.match(/googtrans=\/ko\/([^;]+)/);
+      if (existingCookie) return; // 이미 번역 쿠키 있으면 재적용 안 함
+
+      document.cookie = 'googtrans=/ko/' + userLang + ';path=/';
+      document.cookie = 'googtrans=/ko/' + userLang + ';path=/;domain=.' + location.hostname;
+      location.reload();
+    })();
+  </script>
 
   <!-- 드래그 복사 방지 -->
   <style>
