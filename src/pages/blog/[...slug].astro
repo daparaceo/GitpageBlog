@@ -9,7 +9,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 // 빌드 시 모든 블로그 글 경로 생성
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => {
-    // draft 글은 배포에서 제외
     return data.draft !== true;
   });
 
@@ -30,6 +29,37 @@ const formattedDate = post.data.publishedAt.toLocaleDateString('ko-KR', {
   month: 'long',
   day: 'numeric',
 });
+
+// ===== 관련 포스트 자동 추천 =====
+// 같은 카테고리 내에서 시리즈 > 저자 > AR레벨 > 태그 기준으로 점수 매겨 상위 3개 추천
+const allPosts = await getCollection('blog', ({ data }) => data.draft !== true);
+const currentData = post.data;
+
+const relatedPosts = allPosts
+  .filter((p) => p.slug !== post.slug && p.data.category === currentData.category)
+  .map((p) => {
+    let score = 0;
+    // 같은 시리즈
+    if (currentData.series && p.data.series && currentData.series === p.data.series) score += 4;
+    // 같은 저자
+    if (currentData.author && p.data.author && currentData.author === p.data.author) score += 3;
+    // AR 레벨 유사도 (±0.5 이내 +2, ±1.5 이내 +1)
+    if (currentData.ar_level !== undefined && p.data.ar_level !== undefined) {
+      const diff = Math.abs(currentData.ar_level - p.data.ar_level);
+      if (diff <= 0.5) score += 2;
+      else if (diff <= 1.5) score += 1;
+    }
+    // 공통 태그
+    if (currentData.tags && p.data.tags) {
+      const sharedTags = currentData.tags.filter((t) => p.data.tags!.includes(t));
+      score += sharedTags.length;
+    }
+    return { post: p, score };
+  })
+  .filter(({ score }) => score > 0)
+  .sort((a, b) => b.score - a.score)
+  .slice(0, 3)
+  .map(({ post }) => post);
 ---
 
 <BaseLayout
@@ -103,8 +133,32 @@ const formattedDate = post.data.publishedAt.toLocaleDateString('ko-KR', {
     </div>
     -->
 
+    <!-- ===== 관련 포스트 추천 ===== -->
+    {relatedPosts.length > 0 && (
+      <section class="mt-12 pt-8 border-t border-gray-100">
+        <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+          <span>📚</span> 이런 글도 추천해요
+        </h3>
+        <div class="flex flex-col gap-3">
+          {relatedPosts.map((related) => (
+            <a
+              href={`/blog/${related.slug}`}
+              class="block bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-300 rounded-lg px-4 py-3 transition-all group"
+            >
+              <span class="text-blue-600 group-hover:underline text-sm font-medium">
+                {related.data.title}
+              </span>
+              {related.data.description && (
+                <p class="text-gray-500 text-xs mt-1 line-clamp-1">{related.data.description}</p>
+              )}
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
     <!-- ===== 글 하단 내비게이션 ===== -->
-    <nav class="mt-12 pt-6 border-t border-gray-100">
+    <nav class="mt-8 pt-6 border-t border-gray-100">
       <a
         href="/"
         class="text-sm text-brand-600 hover:underline"

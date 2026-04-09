@@ -32,6 +32,11 @@ const blogCollection = defineCollection({
     // OG 이미지 (Cloudinary URL 권장)
     ogImage: z.string().optional(),
 
+    // 영어원서 관련 메타데이터 (관련 포스트 자동 추천에 사용)
+    author: z.string().optional(),       // 저자 (예: "Karma Wilson")
+    ar_level: z.number().optional(),     // AR 레벨 (예: 1.8)
+    series: z.string().optional(),       // 시리즈명 (예: "Bear Series")
+
     draft: z.boolean().optional().default(false),
   }),
 });
