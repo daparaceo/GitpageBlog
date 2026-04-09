@@ -7,6 +7,7 @@ tags: [영어원서, 영어학습, 초등영어, AR레벨, Bear Feels Sick, Karm
 author: "Karma Wilson"
 ar_level: 1.8
 series: "Bear Series"
+isbn: "9780689859731"
 ---
 
 <style>
