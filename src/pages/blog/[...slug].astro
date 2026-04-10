@@ -30,18 +30,6 @@ const formattedDate = post.data.publishedAt.toLocaleDateString('ko-KR', {
   day: 'numeric',
 });
 
-// ===== 지도 임베드 URL 계산 =====
-let mapSrc: string | null = null;
-let mapLink: string | null = null;
-if (post.data.lat != null && post.data.lng != null) {
-  const lat = post.data.lat;
-  const lng = post.data.lng;
-  const delta = 0.008;
-  const bbox = `${lng - delta},${lat - delta},${lng + delta},${lat + delta}`;
-  mapSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lng}`;
-  mapLink = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=16/${lat}/${lng}`;
-}
-
 // ===== 관련 포스트 자동 추천 =====
 // 같은 카테고리 내에서 시리즈 > 저자 > AR레벨 > 태그 기준으로 점수 매겨 상위 3개 추천
 const allPosts = await getCollection('blog', ({ data }) => data.draft !== true);
@@ -117,22 +105,40 @@ const relatedPosts = allPosts
       </time>
     </header>
 
-    <!-- ===== 지도 임베드 (lat/lng 프론트매터가 있을 때만 표시) ===== -->
-    {mapSrc && mapLink && (
+    <!-- ===== 지도 임베드 (locations 배열이 있을 때만 표시) ===== -->
+    {post.data.locations && post.data.locations.length > 0 && (
       <div class="mb-8">
-        <iframe
-          src={mapSrc}
-          width="100%"
-          height="320"
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+        <div
+          id="blog-map"
           class="rounded-xl border border-gray-200 w-full"
-          loading="lazy"
-          title={post.data.mapLabel ?? post.data.title}
-        ></iframe>
-        <p class="text-xs text-gray-400 mt-1 text-right">
-          <a href={mapLink} target="_blank" rel="noopener noreferrer" class="hover:underline">
-            OpenStreetMap에서 크게 보기 ↗
-          </a>
-        </p>
+          style="height: 360px; z-index: 0;"
+          data-locations={JSON.stringify(post.data.locations)}
+        ></div>
+        <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <script is:inline>
+          (function () {
+            var el = document.getElementById('blog-map');
+            var locs = JSON.parse(el.getAttribute('data-locations'));
+            var map = L.map('blog-map');
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            }).addTo(map);
+            var points = locs.map(function (loc) {
+              var m = L.marker([loc.lat, loc.lng]).addTo(map);
+              if (loc.label) m.bindPopup(loc.label);
+              return [loc.lat, loc.lng];
+            });
+            if (points.length === 1) {
+              map.setView(points[0], 15);
+              map.eachLayer(function (layer) {
+                if (layer.openPopup) layer.openPopup();
+              });
+            } else {
+              map.fitBounds(points, { padding: [40, 40] });
+            }
+          })();
+        </script>
       </div>
     )}
 

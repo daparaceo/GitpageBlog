@@ -38,10 +38,12 @@ const blogCollection = defineCollection({
     series: z.string().optional(),       // 시리즈명 (예: "Bear Series")
     isbn: z.string().optional(),         // ISBN-13 (예: "9780689859731") — 책 표지 이미지 경로에 사용
 
-    // 지도 임베드 (위도·경도가 있으면 글 내에 지도 자동 표시)
-    lat: z.number().optional(),          // 위도 (예: 37.5665)
-    lng: z.number().optional(),          // 경도 (예: 126.9780)
-    mapLabel: z.string().optional(),     // 지도 핀 라벨 (생략 시 제목 사용)
+    // 지도 임베드 (locations 배열이 있으면 글 내에 지도 자동 표시)
+    locations: z.array(z.object({
+      lat: z.number(),                   // 위도 (예: 37.5665)
+      lng: z.number(),                   // 경도 (예: 126.9780)
+      label: z.string().optional(),      // 핀 라벨 (클릭 시 팝업으로 표시)
+    })).optional(),
 
     draft: z.boolean().optional().default(false),
   }),
