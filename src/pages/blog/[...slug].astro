@@ -54,9 +54,12 @@ const relatedPosts = allPosts
       const sharedTags = currentData.tags.filter((t) => p.data.tags!.includes(t));
       score += sharedTags.length;
     }
-    return { post: p, score };
+    // 날짜 보너스 (동점 시 최신 포스트 우선 — YYYYMMDD / 100000000)
+    const d = new Date(p.data.publishedAt);
+    const dateBonus = (d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate()) / 100000000;
+    return { post: p, score: score + dateBonus };
   })
-  .filter(({ score }) => score > 0)
+  .filter(({ score }) => score > 0.0001)
   .sort((a, b) => b.score - a.score)
   .slice(0, 3)
   .map(({ post }) => post);
