@@ -32,10 +32,11 @@ isbn: "9780060594152"
 .book-table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 0.9em; }
 .book-table td { padding: 6px 10px; border: 1px solid #ddd; }
 .book-table .label { background: #f8f9fa; width: 110px; font-weight: bold; }
+.book-cover { display: block; width: 80%; max-width: 576px; margin: 0 auto 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 </style>
 
 <div class="book-container">
-<p><b>[AR 2.6] Air Is All Around You - 눈에 보이지 않는 공기의 비밀</b></p>
+<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto,f_auto/daparapara/books/covers/9780060594152" alt="Air Is All Around You 표지" />
 <table class="book-table">
   <tr><td class="label">Author</td><td>Franklyn M. Branley</td></tr>
   <tr><td class="label">AR Level</td><td>2.6</td></tr>

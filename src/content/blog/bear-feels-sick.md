@@ -42,10 +42,11 @@ isbn: "9780689859731"
 .book-table td { padding: 6px 10px; border: 1px solid #ddd; }
 .book-table .label { background: #f8f9fa; width: 110px; font-weight: bold; }
 .affiliate-notice { font-size: 0.85em; color: #999; text-align: center; margin-top: 12px; }
+.book-cover { display: block; width: 80%; max-width: 576px; margin: 0 auto 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 </style>
 
 <div class="book-container">
-<p><b>[AR 1.8] Bear Feels Sick - 아픈 곰을 돌봐 주는 친구들 이야기</b></p>
+<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto,f_auto/daparapara/books/covers/9780689859731" alt="Bear Feels Sick 표지" />
 <table class="book-table">
   <tr><td class="label">Author</td><td>Karma Wilson</td></tr>
   <tr><td class="label">AR Level</td><td>1.8</td></tr>
