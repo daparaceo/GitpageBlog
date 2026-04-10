@@ -36,7 +36,7 @@ isbn: "9780060594152"
 </style>
 
 <div class="book-container">
-<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto,f_auto/daparapara/books/covers/9780060594152" alt="Air Is All Around You 표지" />
+<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto,f_auto/daparapara/books/covers/9780060594152.jpg" alt="Air Is All Around You 표지" />
 <table class="book-table">
   <tr><td class="label">Author</td><td>Franklyn M. Branley</td></tr>
   <tr><td class="label">AR Level</td><td>2.6</td></tr>

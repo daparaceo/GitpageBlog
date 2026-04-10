@@ -46,7 +46,7 @@ isbn: "9780689859731"
 </style>
 
 <div class="book-container">
-<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto,f_auto/daparapara/books/covers/9780689859731" alt="Bear Feels Sick 표지" />
+<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto,f_auto/daparapara/books/covers/9780689859731.jpg" alt="Bear Feels Sick 표지" />
 <table class="book-table">
   <tr><td class="label">Author</td><td>Karma Wilson</td></tr>
   <tr><td class="label">AR Level</td><td>1.8</td></tr>
