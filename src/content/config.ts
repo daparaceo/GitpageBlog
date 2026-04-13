@@ -33,6 +33,7 @@ const blogCollection = defineCollection({
     ogImage: z.string().optional(),
 
     // 영어원서 관련 메타데이터 (관련 포스트 자동 추천에 사용)
+    en_title: z.string().optional(),      // 영문 원제 (예: "Bear Feels Sick")
     author: z.string().optional(),       // 저자 (예: "Karma Wilson")
     ar_level: z.number().optional(),     // AR 레벨 (예: 1.8)
     series: z.string().optional(),       // 시리즈명 (예: "Bear Series")

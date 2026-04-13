@@ -4,6 +4,7 @@ description: "나비를 사자로, 안내판을 동물로 착각하는 황당한
 publishedAt: 2026-04-13
 category: "english-reading"
 tags: [영어원서, 영어학습, 초등영어, AR레벨, DumbBunnies, DavPilkey, 유머그림책, 동물원, 넌센스유머, 시리즈]
+en_title: "The Dumb Bunnies Go To The Zoo"
 author: "Dav Pilkey"
 ar_level: 2.7
 series: "Dumb Bunnies"
@@ -128,9 +129,9 @@ isbn: "9780590847438"
 <div class="tip-box">
   <h3>📌 이렇게 활용하세요</h3>
   <ul>
-    <li><b>읽기 전:</b> "Dumb(엉터리, 바보 같은)"이 제목에 있는 이유가 뭔지 예측해 보세요.</li>
+    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li><!-- 내용 고정 -->
+    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li><!-- 내용 고정 -->
     <li><b>말장난 찾기:</b> "Octember", "best week we've had all day", "picking his nose" 등 작가가 숨겨 놓은 넌센스를 찾아보세요.</li>
-    <li><b>읽은 후:</b> 사자와 호랑이의 차이(mane vs. stripes)를 영어로 설명해 보세요.</li>
     <li>반복 표현 "That's my boy!"가 몇 번 등장하는지 세어보세요.</li>
   </ul>
   <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
