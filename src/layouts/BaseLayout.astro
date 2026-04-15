@@ -63,6 +63,7 @@ const fullTitle = `${title} | ${SITE_NAME}`;
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image"       content={ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`} />
 
+  <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <!-- 네이버 서치어드바이저 소유권 확인 -->
@@ -199,18 +200,54 @@ const fullTitle = `${title} | ${SITE_NAME}`;
 
   <!-- TTS: data-word 속성이 있는 요소 클릭 시 음성 재생 -->
   <script>
+    // 페이지 로드 시 모든 data-word 요소를 미리 fetch + Audio 객체 생성
+    const ttsCache = new Map(); // text -> Audio
+
+    function preloadTTS(text, lang) {
+      if (ttsCache.has(text)) return;
+      ttsCache.set(text, null); // pending 표시
+      fetch(`https://api.daparapara.com/tts?text=${encodeURIComponent(text)}&lang=${lang}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.url) {
+            const audio = new Audio(data.url);
+            audio.preload = 'auto';
+            ttsCache.set(text, audio);
+          }
+        })
+        .catch(() => { ttsCache.delete(text); });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('[data-word]').forEach(el => {
+        preloadTTS(el.dataset.word, el.dataset.lang || 'en-US');
+      });
+    });
+
     document.addEventListener('click', function(e) {
       const item = e.target.closest('[data-word]');
       if (!item) return;
 
       const text = item.dataset.word;
       const lang = item.dataset.lang || 'en-US';
+      const cached = ttsCache.get(text);
 
+      if (cached) {
+        cached.currentTime = 0;
+        cached.play();
+        return;
+      }
+
+      // 캐시 미스 시 fallback (preload 중이거나 실패한 경우)
       item.style.opacity = '0.6';
       fetch(`https://api.daparapara.com/tts?text=${encodeURIComponent(text)}&lang=${lang}`)
         .then(res => res.json())
         .then(data => {
-          if (data.url) new Audio(data.url).play();
+          if (data.url) {
+            const audio = new Audio(data.url);
+            ttsCache.set(text, audio);
+            audio.play();
+          }
         })
         .catch(e => console.error('TTS 오류:', e))
         .finally(() => { item.style.opacity = '1'; });
