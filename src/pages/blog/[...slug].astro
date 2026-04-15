@@ -31,12 +31,21 @@ const formattedDate = post.data.publishedAt.toLocaleDateString('ko-KR', {
 });
 
 // ===== 관련 포스트 자동 추천 =====
-// 같은 카테고리 내에서 시리즈 > 저자 > AR레벨 > 태그 기준으로 점수 매겨 상위 3개 추천
+// 1) pinnedRelated slug 목록을 먼저 배치
+// 2) 남은 자리를 같은 카테고리 내 점수 순으로 채움 (최대 3개)
 const allPosts = await getCollection('blog', ({ data }) => data.draft !== true);
 const currentData = post.data;
 
-const relatedPosts = allPosts
-  .filter((p) => p.slug !== post.slug && p.data.category === currentData.category)
+// 고정 포스트 (순서 유지, 현재 글 제외)
+const pinnedSlugs: string[] = (currentData.pinnedRelated ?? []).filter((s) => s !== post.slug);
+const pinnedPosts = pinnedSlugs
+  .map((slug) => allPosts.find((p) => p.slug === slug))
+  .filter(Boolean) as typeof allPosts;
+
+// 자동 추천 (고정 포스트 + 현재 글 제외)
+const excludedSlugs = new Set([post.slug, ...pinnedSlugs]);
+const autoPosts = allPosts
+  .filter((p) => !excludedSlugs.has(p.slug) && p.data.category === currentData.category)
   .map((p) => {
     let score = 0;
     // 같은 시리즈
@@ -61,14 +70,22 @@ const relatedPosts = allPosts
   })
   .filter(({ score }) => score > 0.0001)
   .sort((a, b) => b.score - a.score)
-  .slice(0, 3)
   .map(({ post }) => post);
+
+// 고정 포스트 우선, 나머지 자리를 자동 추천으로 채워 최대 3개
+const relatedPosts = [...pinnedPosts, ...autoPosts].slice(0, 3);
+
+// OG 이미지: english-reading 카테고리는 isbn으로 Cloudinary 표지 이미지 자동 생성
+const ogImage = post.data.ogImage
+  ?? (post.data.category === 'english-reading' && post.data.isbn
+      ? `https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/daparapara/books/covers/${post.slug}.jpg`
+      : undefined);
 ---
 
 <BaseLayout
   title={post.data.title}
   description={post.data.description}
-  ogImage={post.data.ogImage}
+  ogImage={ogImage}
   isArticle={true}
   publishedDate={post.data.publishedAt.toISOString()}
 >
