@@ -2,13 +2,13 @@
 'use strict';
 
 /**
- * sync-posts.js
+ * sync-posts.cjs
  *
  * Claude Code PostToolUse hook 에 의해 자동 실행됩니다.
  * src/content/blog/ 의 마크다운 파일을 스캔하여
- * .claude/CLAUDE.md 의 "기존 생활정보 포스트 목록" 표를 갱신합니다.
+ * .private/life-info-guide.md 의 "기존 포스트 목록" 표를 갱신합니다.
  *
- * 수동 실행: node scripts/sync-posts.js
+ * 수동 실행: node scripts/sync-posts.cjs
  */
 
 const fs = require('fs');
@@ -16,7 +16,7 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const BLOG_DIR = path.join(ROOT, 'src', 'content', 'blog');
-const CLAUDE_MD = path.join(ROOT, '.claude', 'CLAUDE.md');
+const GUIDE_MD = path.join(ROOT, '.private', 'life-info-guide.md');
 
 /** 마크다운 파일에서 프론트매터를 파싱합니다. */
 function parseFrontmatter(content) {
@@ -64,18 +64,18 @@ function buildTable(posts) {
   ].join('\n');
 }
 
-/** CLAUDE.md 의 포스트 목록 표를 갱신합니다. */
-function updateClaudeMd(table) {
-  const content = fs.readFileSync(CLAUDE_MD, 'utf8');
-  const updated = content.replace(
-    /(## 기존 생활정보 포스트 목록\n\n)([\s\S]*?)(\n\n---)/,
-    `$1${table}$3`
-  );
-  if (updated === content) {
-    console.error('[sync-posts] 오류: CLAUDE.md 에서 포스트 목록 섹션을 찾을 수 없습니다.');
+/** life-info-guide.md 의 포스트 목록 표를 갱신합니다. */
+function updateGuideMd(table) {
+  const content = fs.readFileSync(GUIDE_MD, 'utf8');
+  const SECTION = '## 기존 포스트 목록';
+  const idx = content.indexOf(SECTION);
+  if (idx === -1) {
+    console.error('[sync-posts] 오류: life-info-guide.md 에서 포스트 목록 섹션을 찾을 수 없습니다.');
     process.exit(1);
   }
-  fs.writeFileSync(CLAUDE_MD, updated, 'utf8');
+  // 섹션 헤더 이후를 표로 교체
+  const updated = content.slice(0, idx) + SECTION + '\n\n' + table + '\n';
+  fs.writeFileSync(GUIDE_MD, updated, 'utf8');
 }
 
 /** 파일 경로가 블로그 포스트인지 확인합니다. */
@@ -92,8 +92,8 @@ function main(filePath) {
 
   const posts = getPosts();
   const table = buildTable(posts);
-  updateClaudeMd(table);
-  console.log(`[sync-posts] CLAUDE.md 업데이트 완료 — life-info ${posts.length}개`);
+  updateGuideMd(table);
+  console.log(`[sync-posts] life-info-guide.md 업데이트 완료 — life-info ${posts.length}개`);
 }
 
 // hook 에서 실행 시 stdin 으로 tool 정보가 전달됩니다.
