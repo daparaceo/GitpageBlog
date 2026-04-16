@@ -11,7 +11,7 @@ isbn: "9780152380212"
 ---
 
 <div class="book-container" translate="no">
-<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/daparapara/books/covers/9780152380212.jpg" alt="If The Dinosaurs Came Back 표지" />
+<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/daparapara/books/covers/if-the-dinosaurs-came-back_9780152380212.jpg" alt="If The Dinosaurs Came Back 표지" />
 <table class="book-table">
   <tr><td class="label">Title</td><td>If The Dinosaurs Came Back</td></tr>
   <tr><td class="label">Author</td><td>Bernard Most</td></tr>
