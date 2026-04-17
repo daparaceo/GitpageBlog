@@ -31,6 +31,13 @@ jobs:
           node-version: 20
           cache: npm
 
+      - name: Checkout private guide
+        uses: actions/checkout@v4
+        with:
+          repository: daparaceo/daparapara-blog.private
+          token: ${{ secrets.PRIVATE_REPO_TOKEN }}
+          path: .private
+
       - name: Install dependencies
         run: |
           npm ci
