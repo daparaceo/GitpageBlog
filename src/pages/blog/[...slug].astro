@@ -78,7 +78,7 @@ const relatedPosts = [...pinnedPosts, ...autoPosts].slice(0, 3);
 // OG 이미지: english-reading 카테고리는 isbn으로 Cloudinary 표지 이미지 자동 생성
 const ogImage = post.data.ogImage
   ?? (post.data.category === 'english-reading' && post.data.isbn
-      ? `https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/daparapara/books/covers/${post.slug}.jpg`
+      ? `https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/daparapara/books/covers/${post.slug.split('/').pop()}.jpg`
       : undefined);
 ---
 
