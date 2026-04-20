@@ -1,0 +1,340 @@
+---
+// src/pages/isbn-scan.astro
+// 모바일 카메라로 책 바코드(EAN-13)를 스캔해 리뷰 포스트를 찾아주는 페이지
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog', ({ data }) =>
+  !data.draft && data.category === 'english-reading'
+);
+
+// ISBN → 포스트 매핑 (빌드 타임에 생성)
+interface PostMeta {
+  slug: string;
+  title: string;
+  description: string;
+}
+const isbnPostMap: Record<string, PostMeta> = {};
+
+for (const post of posts) {
+  const addEntry = (isbn: string) => {
+    const clean = isbn.replace(/\D/g, '');
+    if (clean.length >= 10 && !isbnPostMap[clean]) {
+      isbnPostMap[clean] = {
+        slug: post.slug,
+        title: post.data.title,
+        description: post.data.description ?? '',
+      };
+    }
+  };
+
+  // 1) frontmatter isbn 필드
+  if (post.data.isbn) addEntry(String(post.data.isbn));
+
+  // 2) 파일명 패턴: some-title_9781234567890
+  const filename = post.slug.split('/').pop() ?? '';
+  const m = filename.match(/_(97[89]\d{10})$/);
+  if (m) addEntry(m[1]);
+}
+---
+
+<BaseLayout title="ISBN 스캔" description="책 바코드를 스캔해서 리뷰를 찾아보세요">
+  <div class="max-w-sm mx-auto">
+
+    <!-- 페이지 헤더 -->
+    <div class="mb-5">
+      <a href="/search" class="text-xs text-brand-600 hover:underline mb-3 inline-block">← 검색으로</a>
+      <h1 class="text-xl font-bold text-gray-900">ISBN 바코드 스캔</h1>
+      <p class="text-sm text-gray-500 mt-1">책 뒷면 바코드를 카메라로 스캔하면 리뷰를 찾아드려요.</p>
+    </div>
+
+    <!-- 카메라 뷰파인더 -->
+    <div
+      id="scanner-wrap"
+      class="relative bg-gray-900 rounded-2xl overflow-hidden mb-4"
+      style="aspect-ratio: 4/3;"
+    >
+      <!-- html5-qrcode 가 여기에 video 삽입 -->
+      <div id="qr-reader" class="absolute inset-0 w-full h-full"></div>
+
+      <!-- 시작 전 오버레이 -->
+      <div id="start-overlay" class="absolute inset-0 flex flex-col items-center justify-center gap-4">
+        <!-- 바코드 아이콘 -->
+        <svg class="w-12 h-12 text-gray-600" viewBox="0 0 48 48" fill="currentColor">
+          <rect x="4"  y="10" width="3"  height="28"/>
+          <rect x="9"  y="10" width="2"  height="28"/>
+          <rect x="13" y="10" width="4"  height="28"/>
+          <rect x="19" y="10" width="2"  height="28"/>
+          <rect x="23" y="10" width="3"  height="28"/>
+          <rect x="28" y="10" width="2"  height="28"/>
+          <rect x="32" y="10" width="4"  height="28"/>
+          <rect x="38" y="10" width="2"  height="28"/>
+          <rect x="42" y="10" width="3"  height="28"/>
+        </svg>
+        <button
+          id="start-btn"
+          class="px-7 py-3 bg-sky-600 text-white text-sm font-semibold rounded-xl hover:bg-sky-700 active:scale-95 transition-all shadow-lg"
+        >
+          카메라 시작
+        </button>
+        <p class="text-xs text-gray-500 text-center px-6">카메라 권한 요청 시 허용을 눌러주세요</p>
+      </div>
+
+      <!-- 스캔 가이드 오버레이 (카메라 활성화 후 표시) -->
+      <div id="scan-guide" class="hidden absolute inset-0 pointer-events-none">
+        <!-- 어두운 마스크 + 스캔 영역 시각화 -->
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="relative w-4/5" style="height:80px">
+            <!-- 스캔 박스 테두리 -->
+            <div class="absolute inset-0 border border-sky-400/60 rounded"></div>
+            <!-- 4 코너 마커 -->
+            <div class="absolute -top-px -left-px w-6 h-6 border-t-2 border-l-2 border-sky-400 rounded-tl-sm"></div>
+            <div class="absolute -top-px -right-px w-6 h-6 border-t-2 border-r-2 border-sky-400 rounded-tr-sm"></div>
+            <div class="absolute -bottom-px -left-px w-6 h-6 border-b-2 border-l-2 border-sky-400 rounded-bl-sm"></div>
+            <div class="absolute -bottom-px -right-px w-6 h-6 border-b-2 border-r-2 border-sky-400 rounded-br-sm"></div>
+            <!-- 스캔 라인 -->
+            <div id="scan-line" class="absolute left-1 right-1 h-px bg-sky-400"></div>
+          </div>
+        </div>
+        <p class="absolute bottom-3 left-0 right-0 text-center text-white/70 text-xs">
+          바코드를 박스 안에 맞춰주세요
+        </p>
+      </div>
+    </div>
+
+    <!-- 상태 메시지 -->
+    <p id="status-msg" class="hidden text-center text-sm text-gray-500 mb-3"></p>
+
+    <!-- 결과 카드 -->
+    <div id="result-card" class="hidden mb-3"></div>
+
+    <!-- 다시 스캔 버튼 -->
+    <button
+      id="rescan-btn"
+      class="hidden w-full py-2.5 text-sm font-medium text-sky-600 border border-sky-200 rounded-xl hover:bg-sky-50 transition-colors mb-5"
+    >
+      다시 스캔하기
+    </button>
+
+    <!-- ISBN 직접 입력 폴백 -->
+    <div class="border-t border-gray-100 pt-4 mt-2">
+      <p class="text-xs text-gray-400 text-center mb-2">바코드 스캔이 안 되면 직접 입력하세요</p>
+      <div class="flex gap-2">
+        <input
+          id="isbn-input"
+          type="text"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          placeholder="ISBN 13자리 숫자"
+          maxlength="14"
+          class="flex-1 px-3 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:border-sky-400 transition-colors bg-white"
+        />
+        <button
+          id="manual-search-btn"
+          class="px-4 py-2.5 bg-gray-100 text-gray-700 text-sm font-medium rounded-xl hover:bg-gray-200 active:scale-95 transition-all"
+        >
+          검색
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- html5-qrcode CDN (Android: BarcodeDetector 네이티브 API 자동 사용, iOS: ZXing 폴백) -->
+  <script is:inline src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+
+  <script is:inline define:vars={{ isbnPostMap }}>
+    const ISBN_MAP = isbnPostMap;
+    let html5QrCode = null;
+    let isScanning   = false;
+
+    // ── 결과 표시 ────────────────────────────────────────────
+    function showResult(rawIsbn) {
+      const isbn = rawIsbn.replace(/\D/g, '');
+      if (!isbn) return;
+
+      const post       = ISBN_MAP[isbn];
+      const statusEl   = document.getElementById('status-msg');
+      const resultEl   = document.getElementById('result-card');
+      const rescanBtn  = document.getElementById('rescan-btn');
+
+      // 진동 피드백
+      if (navigator.vibrate) navigator.vibrate(120);
+
+      statusEl.textContent = 'ISBN: ' + isbn;
+      statusEl.className   = 'text-center text-sm text-gray-400 mb-3';
+      statusEl.classList.remove('hidden');
+
+      if (post) {
+        const coverFile = post.slug.split('/').pop();
+        const coverUrl  =
+          'https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto' +
+          '/daparapara/books/covers/' + coverFile + '.jpg';
+
+        resultEl.innerHTML =
+          '<div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4">' +
+            '<div class="flex gap-3">' +
+              '<img src="' + coverUrl + '" alt="표지" ' +
+                'class="w-14 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" ' +
+                'onerror="this.style.display=\'none\'">' +
+              '<div class="flex-1 min-w-0">' +
+                '<p class="text-xs font-semibold text-emerald-600 mb-1">리뷰 있음</p>' +
+                '<p class="font-semibold text-gray-900 text-sm leading-snug mb-1 line-clamp-2">' +
+                  post.title +
+                '</p>' +
+                (post.description
+                  ? '<p class="text-xs text-gray-500 mb-3 line-clamp-2">' + post.description + '</p>'
+                  : '<div class="mb-3"></div>') +
+                '<a href="/blog/' + post.slug + '" ' +
+                  'class="inline-block px-4 py-1.5 bg-emerald-600 text-white text-xs font-semibold rounded-lg ' +
+                  'hover:bg-emerald-700 active:scale-95 transition-all">' +
+                  '리뷰 보기' +
+                '</a>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
+      } else {
+        resultEl.innerHTML =
+          '<div class="bg-gray-50 border border-gray-200 rounded-2xl p-4">' +
+            '<p class="text-xs font-semibold text-gray-500 mb-1">아직 리뷰가 없어요</p>' +
+            '<p class="text-sm text-gray-600 mb-3">ISBN ' + isbn + ' 도서 리뷰가 준비 중입니다.</p>' +
+            '<div class="flex gap-2">' +
+              '<a href="https://books.google.com/books?vid=ISBN' + isbn + '" target="_blank" rel="noopener" ' +
+                'class="flex-1 text-center px-3 py-2 bg-white border border-gray-200 text-gray-700 text-xs ' +
+                'font-medium rounded-lg hover:bg-gray-50 transition-colors">' +
+                'Google Books' +
+              '</a>' +
+              '<a href="https://search.naver.com/search.naver?where=book&query=' + isbn + '" target="_blank" rel="noopener" ' +
+                'class="flex-1 text-center px-3 py-2 bg-white border border-gray-200 text-gray-700 text-xs ' +
+                'font-medium rounded-lg hover:bg-gray-50 transition-colors">' +
+                '네이버 책' +
+              '</a>' +
+            '</div>' +
+          '</div>';
+      }
+
+      resultEl.classList.remove('hidden');
+      rescanBtn.classList.remove('hidden');
+    }
+
+    // ── 스캐너 시작 ──────────────────────────────────────────
+    async function startScanner() {
+      if (isScanning) return;
+
+      var startOverlay = document.getElementById('start-overlay');
+      var scanGuide    = document.getElementById('scan-guide');
+      var statusEl     = document.getElementById('status-msg');
+
+      startOverlay.classList.add('hidden');
+      statusEl.textContent = '카메라 초기화 중...';
+      statusEl.className   = 'text-center text-sm text-gray-500 mb-3';
+      statusEl.classList.remove('hidden');
+
+      try {
+        html5QrCode = new Html5Qrcode('qr-reader');
+
+        await html5QrCode.start(
+          { facingMode: 'environment' },
+          {
+            fps: 10,
+            qrbox: { width: 260, height: 90 },
+            formatsToSupport: [
+              Html5QrcodeSupportedFormats.EAN_13,
+              Html5QrcodeSupportedFormats.EAN_8,
+            ],
+            // Chrome/Android: 네이티브 BarcodeDetector API 우선 사용 (더 빠름)
+            useBarCodeDetectorIfSupported: true,
+          },
+          function(decodedText) {
+            if (!isScanning) return;
+            isScanning = false;
+            // 스캐너 중지
+            html5QrCode.stop().catch(function() {});
+            scanGuide.classList.add('hidden');
+            statusEl.classList.add('hidden');
+            showResult(decodedText);
+          },
+          function() { /* 스캔 실패 무시 */ }
+        );
+
+        isScanning = true;
+        statusEl.classList.add('hidden');
+        scanGuide.classList.remove('hidden');
+        startScanLineAnimation();
+
+      } catch (err) {
+        startOverlay.classList.remove('hidden');
+        statusEl.textContent = '카메라 접근이 거부되었습니다. 브라우저 권한 설정을 확인해주세요.';
+        statusEl.className   = 'text-center text-sm text-red-500 mb-3';
+        statusEl.classList.remove('hidden');
+        console.error('[isbn-scan] 카메라 오류:', err);
+      }
+    }
+
+    // ── 스캔 라인 애니메이션 ─────────────────────────────────
+    function startScanLineAnimation() {
+      var line = document.getElementById('scan-line');
+      if (!line) return;
+      var direction = 1;
+      var pos = 4;
+      (function animate() {
+        if (!isScanning) return;
+        pos += direction * 2;
+        if (pos >= 74) direction = -1;
+        if (pos <= 4)  direction =  1;
+        line.style.top = pos + 'px';
+        requestAnimationFrame(animate);
+      })();
+    }
+
+    // ── 다시 스캔 ────────────────────────────────────────────
+    function resetScanner() {
+      document.getElementById('result-card').classList.add('hidden');
+      document.getElementById('result-card').innerHTML = '';
+      document.getElementById('rescan-btn').classList.add('hidden');
+      document.getElementById('status-msg').classList.add('hidden');
+      document.getElementById('scan-guide').classList.add('hidden');
+      document.getElementById('start-overlay').classList.remove('hidden');
+      if (html5QrCode) {
+        html5QrCode.stop().catch(function() {});
+        html5QrCode = null;
+      }
+      isScanning = false;
+    }
+
+    // ── 이벤트 바인딩 ────────────────────────────────────────
+    document.getElementById('start-btn').addEventListener('click', startScanner);
+    document.getElementById('rescan-btn').addEventListener('click', resetScanner);
+
+    document.getElementById('manual-search-btn').addEventListener('click', function() {
+      var val = document.getElementById('isbn-input').value.trim();
+      if (val.length >= 10) showResult(val);
+    });
+
+    document.getElementById('isbn-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        var val = e.target.value.trim();
+        if (val.length >= 10) showResult(val);
+      }
+    });
+  </script>
+
+  <style is:inline>
+    /* html5-qrcode 기본 UI 제거 — 커스텀 오버레이만 사용 */
+    #qr-reader                 { border: none !important; padding: 0 !important; background: transparent !important; }
+    #qr-reader video           { width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important; position: absolute !important; inset: 0 !important; }
+    #qr-reader__dashboard      { display: none !important; }
+    #qr-reader__status_span    { display: none !important; }
+    #qr-reader__scan_region    { background: transparent !important; border: none !important; }
+    #qr-reader__scan_region img { display: none !important; }
+
+    /* 텍스트 2줄 줄임 */
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+</BaseLayout>

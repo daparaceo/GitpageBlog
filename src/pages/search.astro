@@ -4,7 +4,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="검색" description="블로그 글 검색">
   <div class="max-w-none">
-    <h1 class="text-2xl font-bold text-gray-900 mb-6">검색</h1>
+    <h1 class="text-2xl font-bold text-gray-900 mb-4">검색</h1>
+
+    <!-- ISBN 바코드 스캔 버튼 (모바일/태블릿) -->
+    <a
+      href="/isbn-scan"
+      class="flex items-center justify-center gap-2 w-full py-3 mb-6 border border-sky-200 bg-sky-50 text-sky-700 text-sm font-medium rounded-xl hover:bg-sky-100 active:scale-[.98] transition-all lg:hidden"
+    >
+      <!-- 바코드 아이콘 -->
+      <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+        <rect x="2"  y="4" width="1.5" height="16"/>
+        <rect x="4.5" y="4" width="1"  height="16"/>
+        <rect x="6.5" y="4" width="2"  height="16"/>
+        <rect x="9.5" y="4" width="1"  height="16"/>
+        <rect x="11.5" y="4" width="1.5" height="16"/>
+        <rect x="14"  y="4" width="1"  height="16"/>
+        <rect x="16"  y="4" width="2"  height="16"/>
+        <rect x="19"  y="4" width="1"  height="16"/>
+        <rect x="21"  y="4" width="1.5" height="16"/>
+      </svg>
+      책 바코드로 리뷰 찾기
+    </a>
+
     <div id="search"></div>
   </div>
 
