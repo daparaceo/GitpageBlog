@@ -75,11 +75,8 @@ const autoPosts = allPosts
 // 고정 포스트 우선, 나머지 자리를 자동 추천으로 채워 최대 3개
 const relatedPosts = [...pinnedPosts, ...autoPosts].slice(0, 3);
 
-// OG 이미지: english-reading 카테고리는 isbn으로 Cloudinary 표지 이미지 자동 생성
-const ogImage = post.data.ogImage
-  ?? (post.data.category === 'english-reading' && post.data.isbn
-      ? `https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/daparapara/books/covers/${post.slug.split('/').pop()}.jpg`
-      : undefined);
+// OG 이미지: frontmatter ogImage 우선, 없으면 BaseLayout 기본 이미지 사용
+const ogImage = post.data.ogImage;
 ---
 
 <BaseLayout

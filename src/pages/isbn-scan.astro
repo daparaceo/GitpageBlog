@@ -14,6 +14,7 @@ interface PostMeta {
   slug: string;
   title: string;
   description: string;
+  ogImage: string;
 }
 const isbnPostMap: Record<string, PostMeta> = {};
 
@@ -25,6 +26,7 @@ for (const post of posts) {
         slug: post.slug,
         title: post.data.title,
         description: post.data.description ?? '',
+        ogImage: post.data.ogImage ?? '',
       };
     }
   };
@@ -167,17 +169,14 @@ for (const post of posts) {
       statusEl.classList.remove('hidden');
 
       if (post) {
-        const coverFile = post.slug.split('/').pop();
-        const coverUrl  =
-          'https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto' +
-          '/daparapara/books/covers/' + coverFile + '.jpg';
+        const coverUrl = post.ogImage || '';
 
         resultEl.innerHTML =
           '<div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4">' +
             '<div class="flex gap-3">' +
-              '<img src="' + coverUrl + '" alt="표지" ' +
+              (coverUrl ? '<img src="' + coverUrl + '" alt="표지" ' +
                 'class="w-14 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" ' +
-                'onerror="this.style.display=\'none\'">' +
+                'onerror="this.style.display=\'none\'">' : '') +
               '<div class="flex-1 min-w-0">' +
                 '<p class="text-xs font-semibold text-emerald-600 mb-1">리뷰 있음</p>' +
                 '<p class="font-semibold text-gray-900 text-sm leading-snug mb-1 line-clamp-2">' +
