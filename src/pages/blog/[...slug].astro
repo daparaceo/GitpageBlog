@@ -119,6 +119,15 @@ const ogImage = post.data.ogImage;
       </time>
     </header>
 
+    <!-- ===== AdFit 광고 (포스트 상단) ===== -->
+    <div class="mb-6">
+      <ins class="kakao_ad_area" style="display:none;"
+        data-ad-unit="DAN-T2zvng3y2R58cLAF"
+        data-ad-width="320"
+        data-ad-height="50"></ins>
+      <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    </div>
+
     <!-- ===== 지도 임베드 (locations 배열이 있을 때만 표시) ===== -->
     {post.data.locations && post.data.locations.length > 0 && (
       <div class="mb-8">
