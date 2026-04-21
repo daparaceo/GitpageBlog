@@ -12,7 +12,7 @@ isbn: "9780817272968"
 ---
 
 <div class="book-container" translate="no">
-<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/daparapara/books/covers/c354d368b58e8b33c9b085f4.jpg" alt="Desert Treasure (cover)" />
+<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/c354d368b58e8b33c9b085f4.jpg" alt="Desert Treasure (cover)" />
 <table class="book-table">
   <tr><td class="label">Title</td><td>Desert Treasure</td></tr>
   <tr><td class="label">Author</td><td>Andrew Clements</td></tr>
