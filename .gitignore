@@ -23,6 +23,7 @@ npm-debug.log*
 
 # AI
 .claude/
+AGENTS.md
 
 # Private
 .private/
