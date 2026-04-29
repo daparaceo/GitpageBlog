@@ -2,7 +2,7 @@
 title: "[AR 2.6] Air Is All Around You - 눈에 보이지 않는 공기의 비밀"
 description: "공기는 보이지 않지만 어디에나 있어요. 컵과 냅킨 하나로 공기의 존재를 직접 실험하고, 우주비행사부터 물고기까지 공기가 어떻게 모든 생명을 살리는지 배우는 논픽션 과학 그림책이에요."
 publishedAt: 2026-04-10
-ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/377c7fa712b731a7733f5732.jpg"
+ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/d6c4105873728dfd627d3ff1.jpg"
 category: "english-reading"
 tags: [영어원서, 영어학습, 초등영어, AR레벨, Air Is All Around You, Franklyn M. Branley, 과학그림책, 논픽션, 자연과학, 공기]
 en_title: "Air Is All Around You"
@@ -13,7 +13,7 @@ isbn: "9780060594152"
 
 
 <div class="book-container" translate="no">
-<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/377c7fa712b731a7733f5732.jpg" alt="Air Is All Around You 표지" />
+<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/d6c4105873728dfd627d3ff1.jpg" alt="Air Is All Around You 표지" />
 <table class="book-table">
   <tr><td class="label">Title</td><td>Air Is All Around You</td></tr>
   <tr><td class="label">Author</td><td>Franklyn M. Branley</td></tr>

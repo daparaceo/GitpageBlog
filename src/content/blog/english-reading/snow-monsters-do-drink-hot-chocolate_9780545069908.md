@@ -9,11 +9,11 @@ author: "Marcia Thornton Jones"
 ar_level: 2.5
 series: "the bailey school kids"
 isbn: "9780545069908"
-ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/1fead0a153b2181f7c04b440.jpg"
+ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/bca8effa1e86e32ffab2cdf8.jpg"
 ---
 
 <div class="book-container" translate="no">
-<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/1fead0a153b2181f7c04b440.jpg" alt="Snow Monsters Do Drink Hot Chocolate (cover)" />
+<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/bca8effa1e86e32ffab2cdf8.jpg" alt="Snow Monsters Do Drink Hot Chocolate (cover)" />
 <table class="book-table">
   <tr><td class="label">Title</td><td>Snow Monsters Do Drink Hot Chocolate</td></tr>
   <tr><td class="label">Author</td><td>Marcia Thornton Jones</td></tr>

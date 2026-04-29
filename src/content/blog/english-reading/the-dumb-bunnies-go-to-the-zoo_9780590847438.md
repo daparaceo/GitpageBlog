@@ -2,7 +2,7 @@
 title: "[AR 2.7] The Dumb Bunnies Go To The Zoo - 엉터리 토끼 가족의 좌충우돌 동물원 대소동"
 description: "나비를 사자로, 안내판을 동물로 착각하는 황당한 토끼 가족의 동물원 소동기. Dav Pilkey 특유의 말장난과 넌센스 유머로 영어 읽기가 즐거워지는 그림책이에요."
 publishedAt: 2026-04-13
-ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/e04e595ce964da09f7c6c4e5.jpg"
+ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/ef499576109740a7d5126bf9.jpg"
 category: "english-reading"
 tags: [영어원서, 영어학습, 초등영어, AR레벨, DumbBunnies, DavPilkey, 유머그림책, 동물원, 넌센스유머, 시리즈]
 en_title: "The Dumb Bunnies Go To The Zoo"
@@ -13,7 +13,7 @@ isbn: "9780590847438"
 ---
 
 <div class="book-container" translate="no">
-<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/e04e595ce964da09f7c6c4e5.jpg" alt="The Dumb Bunnies Go To The Zoo 표지" />
+<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/ef499576109740a7d5126bf9.jpg" alt="The Dumb Bunnies Go To The Zoo 표지" />
 <table class="book-table">
   <tr><td class="label">Title</td><td>The Dumb Bunnies Go To The Zoo</td></tr>
   <tr><td class="label">Author</td><td>Dav Pilkey</td></tr>

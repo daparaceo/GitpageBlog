@@ -9,11 +9,11 @@ author: "Lucille Colandro"
 ar_level: 2.2
 series: "There Was An Old Lady Who"
 isbn: "9780439873802"
-ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/fa508ec81705aa2483dfa241.jpg"
+ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/659c5bc16b6c90aec26d88b5.jpg"
 ---
 
 <div class="book-container" translate="no">
-<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/fa508ec81705aa2483dfa241.jpg" alt="There Was An Old Lady Who Swallowed A Shell! (cover)" />
+<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/659c5bc16b6c90aec26d88b5.jpg" alt="There Was An Old Lady Who Swallowed A Shell! (cover)" />
 <table class="book-table">
   <tr><td class="label">Title</td><td>There Was An Old Lady Who Swallowed A Shell!</td></tr>
   <tr><td class="label">Author</td><td>Lucille Colandro</td></tr>

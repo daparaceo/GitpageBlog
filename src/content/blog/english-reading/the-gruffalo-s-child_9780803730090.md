@@ -9,11 +9,11 @@ author: "Julia Donaldson"
 ar_level: 2.5
 series: "Gruffalo"
 isbn: "9780803730090"
-ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/9a530532719be4274be67941.jpg"
+ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/f9170ebb607bda8ff7075f88.jpg"
 ---
 
 <div class="book-container" translate="no">
-<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/9a530532719be4274be67941.jpg" alt="The Gruffalo's Child (cover)" />
+<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/f9170ebb607bda8ff7075f88.jpg" alt="The Gruffalo's Child (cover)" />
 <table class="book-table">
   <tr><td class="label">Title</td><td>The Gruffalo's Child</td></tr>
   <tr><td class="label">Author</td><td>Julia Donaldson</td></tr>

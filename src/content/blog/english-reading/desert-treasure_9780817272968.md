@@ -2,7 +2,7 @@
 title: "[AR 2.8] Desert Treasure - 사막에서 발견한 진짜 보물"
 description: "아빠와 함께 사막 캠핑을 떠난 마이클이 오래된 오두막에서 낡은 상자를 발견하고, 지도를 따라 보물을 찾아 나서는 모험 이야기."
 publishedAt: 2026-04-20
-ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/c354d368b58e8b33c9b085f4.jpg"
+ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/51d2fb26878b48b3a1e9350f.jpg"
 category: "english-reading"
 tags: [영어원서, 영어학습, 초등영어, AR레벨, Desert Treasure, Andrew Clements, 사막탐험, 보물찾기, 리더스북, 자연과물]
 en_title: "Desert Treasure"
@@ -12,7 +12,7 @@ isbn: "9780817272968"
 ---
 
 <div class="book-container" translate="no">
-<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/c354d368b58e8b33c9b085f4.jpg" alt="Desert Treasure (cover)" />
+<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/51d2fb26878b48b3a1e9350f.jpg" alt="Desert Treasure (cover)" />
 <table class="book-table">
   <tr><td class="label">Title</td><td>Desert Treasure</td></tr>
   <tr><td class="label">Author</td><td>Andrew Clements</td></tr>

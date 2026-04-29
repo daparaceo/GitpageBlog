@@ -2,7 +2,7 @@
 title: "[AR 2.7] Bedtime for Frances - 잠자리에 들기 싫은 오소리 프랜시스의 좌충우돌 침대 탈출기"
 description: "잠이 오지 않는 프랜시스는 호랑이, 거인, 바람, 나방까지 온갖 상상으로 침대에서 탈출을 시도합니다. Russell Hoban의 고전 그림책으로 영어 원서 읽기를 즐겨보세요."
 publishedAt: 2026-04-20
-ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/efbcbd62f594cab383eab7ab.jpg"
+ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/889f4a9cb1cd84ef0fa08276.jpg"
 category: "english-reading"
 tags: [영어원서, 영어학습, 초등영어, AR레벨, Bedtime for Frances, Russell Hoban, 취침거부, 그림책, 동물이야기, 잠자리루틴]
 en_title: "Bedtime for Frances"
@@ -12,7 +12,7 @@ isbn: "9780064434515"
 ---
 
 <div class="book-container" translate="no">
-<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/efbcbd62f594cab383eab7ab.jpg" alt="Bedtime for Frances (cover)" />
+<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/889f4a9cb1cd84ef0fa08276.jpg" alt="Bedtime for Frances (cover)" />
 <table class="book-table">
   <tr><td class="label">Title</td><td>Bedtime for Frances</td></tr>
   <tr><td class="label">Author</td><td>Russell Hoban</td></tr>

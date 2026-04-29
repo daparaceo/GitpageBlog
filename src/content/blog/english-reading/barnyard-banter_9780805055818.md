@@ -2,7 +2,7 @@
 title: "[AR 2.3] Barnyard Banter - 농장 동물 소리로 배우는 유아 영어 그림책"
 description: "농장의 소, 수탉, 돼지, 공작새 등 12가지 동물의 울음소리를 신나는 리듬으로 배우는 그림책. 숨어버린 거위를 찾는 반복 구조가 아이의 호기심을 자극합니다."
 publishedAt: 2026-04-15
-ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/42602909b502d01d430114f7.jpg"
+ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/670cc06497e0d4796b080410.jpg"
 category: "english-reading"
 tags: [영어원서, 영어학습, 초등영어, AR레벨, Barnyard Banter, Denise Fleming, 동물소리, 농장동물, 그림책, 의성어]
 en_title: "Barnyard Banter"
@@ -12,7 +12,7 @@ isbn: "9780805055818"
 ---
 
 <div class="book-container" translate="no">
-<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/42602909b502d01d430114f7.jpg" alt="Barnyard Banter (cover)" />
+<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/670cc06497e0d4796b080410.jpg" alt="Barnyard Banter (cover)" />
 <table class="book-table">
   <tr><td class="label">Title</td><td>Barnyard Banter</td></tr>
   <tr><td class="label">Author</td><td>Denise Fleming</td></tr>

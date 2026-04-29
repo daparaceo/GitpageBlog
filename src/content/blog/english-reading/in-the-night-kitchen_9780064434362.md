@@ -8,11 +8,11 @@ en_title: "In the Night Kitchen"
 author: "Maurice Sendak"
 ar_level: 2.5
 isbn: "9780064434362"
-ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/d74d68dead137f9b3f62de5a.jpg"
+ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/c1fd96501b7d59be248aad0e.jpg"
 ---
 
 <div class="book-container" translate="no">
-<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/d74d68dead137f9b3f62de5a.jpg" alt="In the Night Kitchen (cover)" />
+<img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/c1fd96501b7d59be248aad0e.jpg" alt="In the Night Kitchen (cover)" />
 <table class="book-table">
   <tr><td class="label">Title</td><td>In the Night Kitchen</td></tr>
   <tr><td class="label">Author</td><td>Maurice Sendak</td></tr>
