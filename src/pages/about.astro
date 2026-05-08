@@ -1,21 +1,39 @@
 ---
-// About 페이지 — 애드센스 심사 필수 페이지
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
   title="소개"
-  description="daparapara 블로그를 소개합니다."
+  description="daparapara는 깊이 파고들고, 깊이 배워, 오래 선택받는 가치를 만드는 블로그입니다."
 >
-  <article class="max-w-none space-y-10">
+  <article class="max-w-none space-y-12">
 
     <!-- 인트로 -->
     <section>
-      <h1 class="text-2xl font-bold text-gray-900 mb-3">블로그 소개</h1>
-      <p class="text-gray-600 leading-relaxed">
-        안녕하세요, <strong class="text-gray-900">daparapara</strong> 블로그입니다.<br />
-        일상에서 바로 써먹을 수 있는 <strong class="text-gray-900">생활정보</strong>부터
-        IT·기술, 재테크, 여행, 음식까지 — 누구나 쉽게 이해하고 활용할 수 있는 정보를 공유합니다.
+      <div class="flex items-center gap-3 mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 20" width="28" height="24" aria-hidden="true">
+          <rect x="0"  y="0"   width="6" height="20" rx="3"   fill="#0ea5e9"/>
+          <rect x="9"  y="3.5" width="6" height="13" rx="3"   fill="#0ea5e9"/>
+          <rect x="18" y="6.5" width="5" height="7"  rx="2.5" fill="#0ea5e9"/>
+        </svg>
+        <h1 class="text-2xl font-bold text-gray-900">daparapara</h1>
+      </div>
+      <p class="text-gray-600 leading-relaxed text-base">
+        이 블로그는 아이에게 영어 원서를 읽어주다 시작됐습니다.<br />
+        흐름이 끊기지 않도록, 읽은 책을 기록하면서.
+      </p>
+      <p class="text-gray-600 leading-relaxed text-base mt-4">
+        깊이 파고들어야만 오래가는 것을 만들 수 있다고 믿습니다.<br />
+        그래서 얕게 많이보다 <strong class="text-gray-900">깊이 하나</strong>를 선택합니다.
+      </p>
+    </section>
+
+    <!-- Why -->
+    <section class="border-l-4 border-sky-400 pl-5 py-1">
+      <p class="text-sm text-sky-500 font-semibold tracking-widest mb-2">WHY</p>
+      <p class="text-gray-800 font-medium text-lg leading-relaxed">
+        내가 사랑하는 사람들을 위해.<br />
+        <span class="text-gray-500 font-normal text-base">내가 없는 순간에도, 그들의 삶이 끊기지 않도록.</span>
       </p>
     </section>
 
@@ -24,16 +42,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <h2 class="text-lg font-semibold text-gray-900 mb-4">다루는 주제</h2>
       <div class="grid gap-3">
         {[
-          { icon: '🏠', title: '생활정보', desc: '실생활에 바로 쓸 수 있는 정보와 팁' },
-          { icon: '💻', title: 'IT·기술',  desc: '최신 기술 트렌드와 실용적인 디지털 활용법' },
-          { icon: '💰', title: '재테크',   desc: '절약, 투자, 금융 상품 관련 정보' },
-          { icon: '✈️', title: '여행',     desc: '국내외 여행 정보와 추천 코스' },
-          { icon: '🍽️', title: '음식·맛집', desc: '레시피와 맛집 정보' },
-          { icon: '⛺', title: '캠핑',     desc: '캠핑 장비, 장소, 꿀팁 정보' },
-          { icon: '📚', title: '영어 원서', desc: '원서 리뷰와 영어 학습 콘텐츠' },
-        ].map(({ icon, title, desc }) => (
-          <div class="flex items-start gap-3 p-4 rounded-lg bg-gray-50 border border-gray-100">
-            <span class="text-xl leading-none mt-0.5">{icon}</span>
+          { title: '영어 원서',  desc: '아이와 함께 읽는 원서 리뷰와 영어 학습 콘텐츠' },
+          { title: '생활정보',  desc: '실생활에 바로 쓸 수 있는 정보와 팁' },
+          { title: '캠핑',      desc: '캠핑 장비, 장소, 꿀팁 정보' },
+          { title: '주말 여행', desc: '아이와 함께 떠나는 국내 여행 정보' },
+          { title: 'IT · 기술', desc: '최신 기술 트렌드와 실용적인 디지털 활용법' },
+          { title: '재테크',    desc: '절약, 투자, 금융 상품 관련 정보' },
+        ].map(({ title, desc }) => (
+          <div class="flex items-start gap-4 p-4 rounded-lg bg-gray-50 border border-gray-100">
+            <div class="mt-1 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 10" width="10" height="8" aria-hidden="true">
+                <rect x="0"  y="0"   width="3" height="10" rx="1.5" fill="#0ea5e9"/>
+                <rect x="4.5" y="1.5" width="3" height="7"  rx="1.5" fill="#0ea5e9"/>
+                <rect x="9"  y="3"   width="3" height="4"  rx="1.5" fill="#0ea5e9"/>
+              </svg>
+            </div>
             <div>
               <p class="font-semibold text-gray-800">{title}</p>
               <p class="text-sm text-gray-500 mt-0.5">{desc}</p>
@@ -43,13 +66,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
+    <!-- 철학 -->
+    <section class="bg-sky-50 rounded-xl p-6">
+      <p class="text-xs text-sky-400 font-semibold tracking-widest mb-3">DEEP MINING · DEEP LEARNING · DEEP VALUE</p>
+      <p class="text-gray-700 text-sm leading-relaxed">
+        깊이 파고들고, 깊이 배워, 오래 선택받는 가치를 만듭니다.<br />
+        빠르게 소비되는 정보보다 오랫동안 도움이 되는 글을 지향합니다.
+      </p>
+    </section>
+
     <!-- 연락처 -->
     <section>
       <h2 class="text-lg font-semibold text-gray-900 mb-3">연락처</h2>
       <p class="text-gray-600 text-sm mb-3">글에 대한 문의, 제안, 오류 신고는 아래로 연락 주세요.</p>
       <a
         href="mailto:daparaceo@gmail.com"
-        class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 bg-white text-sm text-gray-700 hover:border-brand-400 hover:text-brand-600 transition-colors"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 bg-white text-sm text-gray-700 hover:border-sky-400 hover:text-sky-600 transition-colors"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
