@@ -46,7 +46,7 @@ for (const post of posts) {
 
     <!-- 페이지 헤더 -->
     <div class="mb-5">
-      <a href="/search" class="text-xs text-brand-600 hover:underline mb-3 inline-block">← 검색으로</a>
+      <a href="/search/" class="text-xs text-brand-600 hover:underline mb-3 inline-block">← 검색으로</a>
       <h1 class="text-xl font-bold text-gray-900">ISBN 바코드 스캔</h1>
       <p class="text-sm text-gray-500 mt-1">책 뒷면 바코드를 카메라로 스캔하면 리뷰를 찾아드려요.</p>
     </div>
@@ -224,7 +224,7 @@ for (const post of posts) {
                 (post.description
                   ? '<p class="text-xs text-gray-500 mb-3 line-clamp-2">' + post.description + '</p>'
                   : '<div class="mb-3"></div>') +
-                '<a href="/blog/' + post.slug + '" ' +
+                '<a href="/blog/' + post.slug + '/" ' +
                   'class="inline-block px-4 py-1.5 bg-emerald-600 text-white text-xs font-semibold rounded-lg ' +
                   'hover:bg-emerald-700 active:scale-95 transition-all">' +
                   '리뷰 보기' +

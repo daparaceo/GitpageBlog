@@ -29,7 +29,7 @@ const sortedTags = Object.entries(tagCount).sort((a, b) => b[1] - a[1]);
       {sortedTags.map(([tag, count]) => (
         <li>
           <a
-            href={`/tags/${tag}`}
+            href={`/tags/${tag}/`}
             class="inline-flex items-center gap-1 px-4 py-2 bg-gray-100 text-gray-700 rounded-full hover:bg-brand-100 hover:text-brand-700 transition-colors text-sm"
           >
             <span>#{tag}</span>

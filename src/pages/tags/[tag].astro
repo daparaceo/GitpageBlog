@@ -33,7 +33,7 @@ const { posts } = Astro.props;
 >
   <!-- 헤더 -->
   <div class="mb-8">
-    <a href="/tags" class="text-sm text-brand-600 hover:underline mb-2 inline-block">
+    <a href="/tags/" class="text-sm text-brand-600 hover:underline mb-2 inline-block">
       ← 전체 태그
     </a>
     <h1 class="text-2xl font-bold text-gray-900">
@@ -45,7 +45,7 @@ const { posts } = Astro.props;
   <ul class="divide-y divide-gray-100">
     {posts.map((post) => (
       <li class="py-5 group">
-        <a href={`/blog/${post.slug}`} class="block">
+        <a href={`/blog/${post.slug}/`} class="block">
           <h2 class="text-lg font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mb-1">
             {post.data.title}
           </h2>

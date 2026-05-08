@@ -41,7 +41,7 @@ const { label, posts } = Astro.props;
     <ul class="divide-y divide-gray-100">
       {posts.map((post) => (
         <li class="py-5 group">
-          <a href={`/blog/${post.slug}`} class="block">
+          <a href={`/blog/${post.slug}/`} class="block">
             {post.data.tags && post.data.tags.length > 0 && (
               <div class="flex gap-2 mb-1">
                 {post.data.tags.slice(0, 3).map((tag) => (

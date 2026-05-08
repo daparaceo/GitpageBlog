@@ -16,8 +16,8 @@ export async function GET() {
   const items = sorted.map((post) => `
     <item>
       <title><![CDATA[${post.data.title}]]></title>
-      <link>${siteUrl}/blog/${post.slug}</link>
-      <guid>${siteUrl}/blog/${post.slug}</guid>
+      <link>${siteUrl}/blog/${post.slug}/</link>
+      <guid>${siteUrl}/blog/${post.slug}/</guid>
       <description><![CDATA[${post.data.description ?? ''}]]></description>
       <pubDate>${post.data.publishedAt.toUTCString()}</pubDate>
     </item>`).join('');
@@ -26,7 +26,7 @@ export async function GET() {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title><![CDATA[${blogName}]]></title>
-    <link>${siteUrl}</link>
+    <link>${siteUrl}/</link>
     <description><![CDATA[${blogDescription}]]></description>
     <language>ko</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
