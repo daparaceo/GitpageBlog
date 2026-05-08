@@ -123,7 +123,7 @@ const ogImage = post.data.ogImage;
         <div class="flex flex-wrap gap-2 mb-3">
           {post.data.tags.map((tag) => (
             <a
-              href={`/tags/${tag}`}
+              href={`/tags/${tag}/`}
               class="text-xs px-2 py-1 bg-brand-50 text-brand-700 rounded-full hover:bg-brand-100 transition-colors"
             >
               #{tag}
@@ -168,35 +168,41 @@ const ogImage = post.data.ogImage;
     <!-- ===== 지도 임베드 (locations 배열이 있을 때만 표시) ===== -->
     {post.data.locations && post.data.locations.length > 0 && (
       <div class="mb-8">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
         <div
           id="blog-map"
-          class="rounded-xl border border-gray-200 w-full"
-          style="height: 360px; z-index: 0;"
+          class="rounded-xl border border-gray-200 w-full overflow-hidden"
+          style="height: 360px;"
           data-locations={JSON.stringify(post.data.locations)}
         ></div>
-        <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
         <script is:inline>
           (function () {
             var el = document.getElementById('blog-map');
             var locs = JSON.parse(el.getAttribute('data-locations'));
-            var map = L.map('blog-map');
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-              attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            }).addTo(map);
-            var points = locs.map(function (loc) {
-              var m = L.marker([loc.lat, loc.lng]).addTo(map);
-              if (loc.label) m.bindPopup(loc.label);
-              return [loc.lat, loc.lng];
-            });
-            if (points.length === 1) {
-              map.setView(points[0], 15);
-              map.eachLayer(function (layer) {
-                if (layer.openPopup) layer.openPopup();
-              });
+
+            var lat = locs.reduce(function (s, l) { return s + l.lat; }, 0) / locs.length;
+            var lng = locs.reduce(function (s, l) { return s + l.lng; }, 0) / locs.length;
+            var zoom = locs.length === 1 ? 15 : 12;
+            var label = locs[0].label || '';
+
+            // 한국 경계 (대략적)
+            var isKorea = lat >= 33 && lat <= 38.6 && lng >= 124.6 && lng <= 131.9;
+            var isKorean = (navigator.language || '').toLowerCase().startsWith('ko');
+
+            var iframe = document.createElement('iframe');
+            iframe.style.cssText = 'width:100%;height:360px;border:0;';
+            iframe.setAttribute('loading', 'lazy');
+            iframe.setAttribute('allowfullscreen', '');
+            iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+
+            if (isKorean && isKorea) {
+              var t = encodeURIComponent(label);
+              iframe.src = 'https://map.naver.com/v5/embed?type=map&lat=' + lat + '&lng=' + lng + '&zoom=' + zoom +
+                (label ? '&title=' + t + '&pinType=place&pinTitle=' + t + '&pinX=' + lng + '&pinY=' + lat : '');
             } else {
-              map.fitBounds(points, { padding: [40, 40] });
+              iframe.src = 'https://maps.google.com/maps?q=' + lat + ',' + lng + '&z=' + zoom + '&output=embed&hl=' + (isKorean ? 'ko' : 'en');
             }
+
+            el.appendChild(iframe);
           })();
         </script>
       </div>
@@ -250,7 +256,7 @@ const ogImage = post.data.ogImage;
         <div class="flex flex-col gap-3">
           {relatedPosts.map((related) => (
             <a
-              href={`/blog/${related.slug}`}
+              href={`/blog/${related.slug}/`}
               class="block bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-300 rounded-lg px-4 py-3 transition-all group"
             >
               <span class="text-blue-600 group-hover:underline text-sm font-medium">
