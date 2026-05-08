@@ -3,30 +3,30 @@
   <!-- Background -->
   <rect width="1200" height="630" fill="#ffffff"/>
   <!-- Left accent -->
-  <rect x="0" y="0" width="6" height="630" fill="#0ea5e9"/>
+  <rect x="0" y="0" width="8" height="630" fill="#0ea5e9"/>
 
-  <!-- Symbol: 3 vertical bars, center-aligned at y=315 -->
-  <!-- Bar 1: height 90 -->
-  <rect x="80"  y="270" width="18" height="90" rx="9" fill="#0ea5e9"/>
-  <!-- Bar 2: height 58 -->
-  <rect x="108" y="286" width="18" height="58" rx="9" fill="#0ea5e9"/>
-  <!-- Bar 3: height 30 -->
-  <rect x="136" y="300" width="18" height="30" rx="9" fill="#0ea5e9"/>
+  <!-- Symbol: 3 vertical bars, center-aligned at y=300 -->
+  <!-- Bar 1: height 120 -->
+  <rect x="80"  y="240" width="26" height="120" rx="13" fill="#0ea5e9"/>
+  <!-- Bar 2: height 78 -->
+  <rect x="116" y="261" width="26" height="78"  rx="13" fill="#0ea5e9"/>
+  <!-- Bar 3: height 42 -->
+  <rect x="152" y="279" width="26" height="42"  rx="13" fill="#0ea5e9"/>
 
   <!-- Wordmark -->
-  <text x="178" y="324"
+  <text x="208" y="328"
     font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
-    font-size="72" font-weight="800" fill="#0f172a" letter-spacing="4"
+    font-size="110" font-weight="900" fill="#0f172a" letter-spacing="2"
   >daparapara</text>
 
   <!-- Tagline -->
-  <text x="180" y="366"
+  <text x="212" y="378"
     font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
-    font-size="18" font-weight="400" fill="#94a3b8" letter-spacing="3"
+    font-size="20" font-weight="400" fill="#94a3b8" letter-spacing="3"
   >DEEP MINING · DEEP LEARNING · DEEP VALUE</text>
 
   <!-- Site URL -->
-  <text x="80" y="575"
+  <text x="82" y="575"
     font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
     font-size="18" fill="#cbd5e1"
   >daparapara.com</text>
