@@ -195,7 +195,10 @@ const ogImage = post.data.ogImage;
             iframe.setAttribute('allowfullscreen', '');
             iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
 
-            if (isKorean && isKorea) {
+            // Naver Maps v5 embed: 모바일에서 m.map.naver.com/appLink.naver로 리다이렉트되며
+            // X-Frame-Options: DENY로 iframe 차단됨 → 모바일은 Google Maps 사용
+            var isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || window.innerWidth < 768;
+            if (!isMobile && isKorean && isKorea) {
               var t = encodeURIComponent(label);
               iframe.src = 'https://map.naver.com/v5/embed?type=map&lat=' + lat + '&lng=' + lng + '&zoom=' + zoom +
                 (label ? '&title=' + t + '&pinType=place&pinTitle=' + t + '&pinX=' + lng + '&pinY=' + lat : '');
