@@ -16,8 +16,8 @@ export async function GET() {
   const items = sorted.map((post) => `
     <item>
       <title><![CDATA[${post.data.title}]]></title>
-      <link>${siteUrl}/blog/${post.slug}/</link>
-      <guid>${siteUrl}/blog/${post.slug}/</guid>
+      <link>${siteUrl}/blog/${post.slug.split('/').pop()}/</link>
+      <guid>${siteUrl}/blog/${post.slug.split('/').pop()}/</guid>
       <description><![CDATA[${post.data.description ?? ''}]]></description>
       <pubDate>${post.data.publishedAt.toUTCString()}</pubDate>
     </item>`).join('');

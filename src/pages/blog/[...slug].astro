@@ -12,27 +12,28 @@ export async function getStaticPaths() {
     return data.draft !== true;
   });
 
-  const directPaths = posts.map((post) => ({
-    params: { slug: post.slug },
-    props: { post, redirectTo: null as string | null },
-  }));
+  // 정식 URL: /blog/{bare-slug}/ (카테고리 미포함)
+  const canonicalPaths = posts.map((post) => {
+    const bareSlug = post.slug.includes('/') ? post.slug.split('/').pop()! : post.slug;
+    return {
+      params: { slug: bareSlug },
+      props: { post, redirectTo: null as string | null },
+    };
+  });
 
-  // 구 URL /blog/{slug}/ → 신 URL /blog/{category}/{slug}/ 리다이렉트 페이지 생성
-  // 카테고리 구조 도입 전 색인된 URL 대응
-  const bareSlugMap = new Map<string, string>();
-  for (const post of posts) {
-    if (!post.slug.includes('/')) continue;
-    const bareSlug = post.slug.split('/').pop()!;
-    if (!bareSlugMap.has(bareSlug)) {
-      bareSlugMap.set(bareSlug, `/blog/${post.slug}/`);
-    }
-  }
-  const redirectPaths = Array.from(bareSlugMap.entries()).map(([bareSlug, target]) => ({
-    params: { slug: bareSlug },
-    props: { post: null as any, redirectTo: target },
-  }));
+  // 리다이렉트: /blog/{category}/{slug}/ → /blog/{bare-slug}/
+  // 카테고리 포함 URL로 색인된 페이지 및 내부 링크 대응
+  const redirectPaths = posts
+    .filter((post) => post.slug.includes('/'))
+    .map((post) => {
+      const bareSlug = post.slug.split('/').pop()!;
+      return {
+        params: { slug: post.slug },
+        props: { post: null as any, redirectTo: `/blog/${bareSlug}/` },
+      };
+    });
 
-  return [...directPaths, ...redirectPaths];
+  return [...canonicalPaths, ...redirectPaths];
 }
 
 const { post, redirectTo } = Astro.props;
@@ -256,7 +257,7 @@ const ogImage = post.data.ogImage;
         <div class="flex flex-col gap-3">
           {relatedPosts.map((related) => (
             <a
-              href={`/blog/${related.slug}/`}
+              href={`/blog/${related.slug.split('/').pop()}/`}
               class="block bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-300 rounded-lg px-4 py-3 transition-all group"
             >
               <span class="text-blue-600 group-hover:underline text-sm font-medium">

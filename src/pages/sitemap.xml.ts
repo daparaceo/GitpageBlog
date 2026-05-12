@@ -36,7 +36,7 @@ export async function GET() {
     .filter(Boolean) as { url: string; priority: string; changefreq: string; lastmod: string }[];
 
   const postEntries = posts.map((post) => ({
-    url: `/blog/${post.slug}/`,
+    url: `/blog/${post.slug.split('/').pop()}/`,
     priority: '0.7',
     changefreq: 'monthly',
     lastmod: post.data.publishedAt.toISOString().split('T')[0],

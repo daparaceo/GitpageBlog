@@ -26,7 +26,7 @@ const postsByCategory = CATEGORIES.map(({ slug, label }) => ({
     <ul class="divide-y divide-gray-100">
       {sortedPosts.slice(0, 5).map((post) => (
         <li class="py-4 group">
-          <a href={`/blog/${post.slug}/`} class="flex items-start justify-between gap-4">
+          <a href={`/blog/${post.slug.split('/').pop()}/`} class="flex items-start justify-between gap-4">
             <div class="flex-1 min-w-0">
               {post.data.category && (
                 <span class="text-xs text-brand-600 font-medium mr-2">
@@ -59,7 +59,7 @@ const postsByCategory = CATEGORIES.map(({ slug, label }) => ({
       <ul class="divide-y divide-gray-100">
         {posts.map((post) => (
           <li class="py-3 group">
-            <a href={`/blog/${post.slug}/`} class="flex items-start justify-between gap-4">
+            <a href={`/blog/${post.slug.split('/').pop()}/`} class="flex items-start justify-between gap-4">
               <div class="flex-1 min-w-0">
                 <span class="text-sm font-medium text-gray-800 group-hover:text-brand-600 transition-colors">
                   {post.data.title}
