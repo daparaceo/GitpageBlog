@@ -3,13 +3,8 @@ import { defineCollection, z } from 'astro:content';
 // 카테고리 목록 (확장 시 여기에 추가)
 // 각 카테고리는 /category/[slug] 페이지로 자동 생성됨
 export const CATEGORIES = [
-  { slug: 'life-info',       label: '생활정보' },
-  { slug: 'tech',            label: 'IT·기술' },
-  { slug: 'finance',         label: '재테크' },
-  { slug: 'travel',          label: '여행' },
-  { slug: 'weekend-trip',    label: '주말여행' },
-  { slug: 'food',            label: '음식·맛집' },
   { slug: 'english-reading', label: '영어원서읽기' },
+  { slug: 'weekend-trip',    label: '주말여행' },
   { slug: 'camping',         label: '캠핑' },
 ] as const;
 

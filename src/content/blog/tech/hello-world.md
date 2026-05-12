@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "블로그를 시작합니다"
 description: "Astro와 GitHub Pages로 만든 개인 블로그의 첫 번째 글입니다."
 publishedAt: 2026-04-01

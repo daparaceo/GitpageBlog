@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Astro 블로그를 GitHub Pages에 자동 배포하는 방법"
 description: "GitHub Actions를 이용해 Astro 프로젝트를 GitHub Pages에 무료로 자동 배포하는 과정을 단계별로 설명합니다."
 publishedAt: 2026-04-01
