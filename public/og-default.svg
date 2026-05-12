@@ -6,47 +6,47 @@
   <rect x="0" y="0" width="8" height="630" fill="#0ea5e9"/>
 
   <!-- Symbol: 3 vertical bars -->
-  <rect x="80"  y="128" width="28" height="130" rx="14" fill="#0ea5e9"/>
-  <rect x="118" y="150" width="28" height="86"  rx="14" fill="#0ea5e9"/>
-  <rect x="156" y="171" width="28" height="46"  rx="14" fill="#0ea5e9"/>
+  <rect x="80"  y="85"  width="28" height="130" rx="14" fill="#0ea5e9"/>
+  <rect x="118" y="107" width="28" height="86"  rx="14" fill="#0ea5e9"/>
+  <rect x="156" y="128" width="28" height="46"  rx="14" fill="#0ea5e9"/>
 
   <!-- Wordmark -->
-  <text x="210" y="242"
+  <text x="210" y="199"
     font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
     font-size="112" font-weight="900" fill="#0f172a" letter-spacing="2"
   >daparapara</text>
 
   <!-- Sky blue box -->
-  <rect x="80" y="318" width="1040" height="246" rx="18" fill="#f0f9ff"/>
+  <rect x="80" y="272" width="1040" height="220" rx="18" fill="#f0f9ff"/>
 
-  <!-- Tagline: DEEP MINING · DEEP LEARNING [symbol] DEEP VALUE -->
-  <text x="112" y="372"
+  <!-- Tagline -->
+  <text x="112" y="322"
     font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
     font-size="18" font-weight="600" fill="#38bdf8" letter-spacing="3"
   >DEEP MINING · DEEP LEARNING</text>
 
   <!-- Mini symbol -->
-  <rect x="500" y="358" width="5" height="17" rx="2.5" fill="#38bdf8"/>
-  <rect x="509" y="362" width="5" height="11" rx="2.5" fill="#38bdf8"/>
-  <rect x="518" y="366" width="4" height="6"  rx="2"   fill="#38bdf8"/>
+  <rect x="500" y="308" width="5" height="17" rx="2.5" fill="#38bdf8"/>
+  <rect x="509" y="312" width="5" height="11" rx="2.5" fill="#38bdf8"/>
+  <rect x="518" y="316" width="4" height="6"  rx="2"   fill="#38bdf8"/>
 
-  <text x="530" y="372"
+  <text x="530" y="322"
     font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
     font-size="18" font-weight="600" fill="#38bdf8" letter-spacing="3"
   >DEEP VALUE</text>
 
   <!-- Philosophy text -->
-  <text x="112" y="428"
+  <text x="112" y="385"
     font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
-    font-size="24" fill="#374151"
+    font-size="26" fill="#374151"
   >깊이 파고들고, 깊이 배워, 오래가는 가치를 만듭니다.</text>
-  <text x="112" y="468"
+  <text x="112" y="432"
     font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
-    font-size="20" fill="#9ca3af"
+    font-size="22" fill="#9ca3af"
   >빠르게 소비되는 정보보다 오랫동안 도움이 되는 글을 지향합니다.</text>
 
   <!-- Site URL -->
-  <text x="82" y="598"
+  <text x="82" y="580"
     font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
     font-size="18" fill="#cbd5e1"
   >daparapara.com</text>
