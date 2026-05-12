@@ -30,7 +30,7 @@ const {
 const SITE_NAME = 'daparapara';           // ← 블로그 이름 (변경 가능)
 const siteUrl   = Astro.site?.href.replace(/\/$/, '') ?? 'https://daparapara.com';
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
-const fullTitle = `${title} | ${SITE_NAME}`;
+const fullTitle = title === SITE_NAME ? SITE_NAME : `${title} | ${SITE_NAME}`;
 ---
 
 <!DOCTYPE html>
@@ -66,6 +66,9 @@ const fullTitle = `${title} | ${SITE_NAME}`;
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="apple-mobile-web-app-title" content="daparapara" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
 
   <!-- 네이버 서치어드바이저 소유권 확인 -->
   <meta name="naver-site-verification" content="6e02e575a21cec8481c63efac68fa4eb15350fba" />
