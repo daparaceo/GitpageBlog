@@ -51,7 +51,7 @@ const optionSymbols = ['①', '②', '③', '④'];
       <div class="text-xs text-gray-400 mb-2">
         <a href="/security/" class="hover:text-sky-600">보안기사</a>
         <span class="mx-1">/</span>
-        <span>{chapterData.subjectLabel}</span>
+        <a href={`/security/${chapterData.subject}/`} class="hover:text-sky-600">{chapterData.subjectLabel}</a>
         <span class="mx-1">/</span>
         <span>{chapterData.chapterLabel}</span>
       </div>
