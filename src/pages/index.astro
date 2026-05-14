@@ -54,7 +54,7 @@ const postsByCategory = CATEGORIES.map(({ slug, label }) => ({
     <section class="mb-10">
       <div class="flex items-center justify-between mb-3">
         <h2 class="text-lg font-bold text-gray-900">{label}</h2>
-        <a href={`/category/${slug}/`} class="text-xs text-brand-600 hover:underline">더 보기 →</a>
+        <a href={`/${slug}/`} class="text-xs text-brand-600 hover:underline">더 보기 →</a>
       </div>
       <ul class="divide-y divide-gray-100">
         {posts.map((post) => (

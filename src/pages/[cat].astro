@@ -2,8 +2,8 @@
 // 카테고리별 글 목록 페이지 (/category/life-info 등)
 
 import { getCollection } from 'astro:content';
-import { CATEGORIES } from '../../content/config';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CATEGORIES } from '../content/config';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('blog', ({ data }) => !data.draft);

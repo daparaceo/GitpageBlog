@@ -30,7 +30,7 @@ export async function GET() {
         .map((p) => p.data.publishedAt)
         .sort((a, b) => b.valueOf() - a.valueOf())[0];
       return {
-        url: `/category/${slug}/`,
+        url: `/${slug}/`,
         priority: '0.8',
         changefreq: 'weekly',
         lastmod: latest.toISOString().split('T')[0],

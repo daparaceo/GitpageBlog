@@ -119,7 +119,7 @@ const fullTitle = title === SITE_NAME ? SITE_NAME : `${title} | ${SITE_NAME}`;
       <nav class="flex gap-4 pb-2 text-sm overflow-x-auto">
         {activeCategories.map(({ slug, label }) => (
           <a
-            href={`/category/${slug}/`}
+            href={`/${slug}/`}
             class="whitespace-nowrap text-gray-500 hover:text-brand-600 transition-colors pb-1 border-b-2 border-transparent hover:border-brand-400"
           >
             {label}
