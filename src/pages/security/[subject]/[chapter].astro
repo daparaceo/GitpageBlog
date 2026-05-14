@@ -70,6 +70,7 @@ const optionSymbols = ['①', '②', '③', '④'];
       prose-table:text-sm prose-th:bg-gray-50 prose-th:font-semibold
       prose-td:align-top prose-pre:bg-gray-900 prose-pre:text-gray-100
       prose-code:text-sky-700 prose-code:bg-sky-50 prose-code:px-1 prose-code:rounded
+      [&_pre_code]:bg-transparent [&_pre_code]:text-gray-100 [&_pre_code]:px-0 [&_pre_code]:rounded-none
       prose-strong:text-gray-800
     ">
       <Fragment set:html={chapterData.content} />
