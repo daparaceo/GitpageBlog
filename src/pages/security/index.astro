@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import fs from 'node:fs';
+import path from 'node:path';
+
+const questionsDir = path.resolve(process.cwd(), '.private/security-study/questions');
+const examSlugs = fs.readdirSync(questionsDir)
+  .filter(f => f.endsWith('.json'))
+  .map(f => f.replace('.json', ''))
+  .sort();
+
+const subjects = [
+  {
+    slug: 'system',
+    label: '시스템보안',
+    desc: '운영체제 보안, 접근통제, 암호학, 악성코드',
+    chapters: [
+      { slug: 'os-security', label: '운영체제 보안' },
+      { slug: 'access-control', label: '접근통제' },
+      { slug: 'cryptography', label: '암호학' },
+      { slug: 'malware', label: '악성코드' },
+    ],
+  },
+  {
+    slug: 'network',
+    label: '네트워크보안',
+    desc: '네트워크 기초, 방화벽·IDS·IPS, VPN',
+    chapters: [
+      { slug: 'network-basics', label: '네트워크 기초' },
+      { slug: 'firewall-ids', label: '방화벽·IDS·IPS' },
+      { slug: 'vpn', label: 'VPN' },
+    ],
+  },
+  {
+    slug: 'application',
+    label: '어플리케이션보안',
+    desc: '웹 보안, DB 보안, 소프트웨어 보안',
+    chapters: [
+      { slug: 'web-security', label: '웹 보안' },
+      { slug: 'db-security', label: 'DB 보안' },
+    ],
+  },
+  {
+    slug: 'general',
+    label: '정보보안일반',
+    desc: '보안 일반 개념, 위험관리, 보안 모델',
+    chapters: [
+      { slug: 'security-concepts', label: '보안 일반 개념' },
+    ],
+  },
+  {
+    slug: 'law',
+    label: '정보보안관리및법규',
+    desc: '정보보호 관련 법규, ISMS, 개인정보보호',
+    chapters: [
+      { slug: 'security-law', label: '정보보호 관련 법규' },
+    ],
+  },
+];
+---
+
+<BaseLayout title="보안기사 학습" description="정보보안기사 필기 준비 — 과목별 개념 정리와 기출문제 풀이">
+  <div class="space-y-10">
+
+    <!-- 헤더 -->
+    <div class="border-b border-gray-200 pb-6">
+      <h1 class="text-2xl font-bold text-gray-900 mb-2">정보보안기사 학습</h1>
+      <p class="text-gray-500 text-sm">5과목 · 각 20문제 · 총 100점 · 60점 이상 합격</p>
+    </div>
+
+    <!-- 과목별 카드 -->
+    <section>
+      <h2 class="text-base font-semibold text-gray-700 mb-4">과목별 개념 학습</h2>
+      <div class="space-y-3">
+        {subjects.map((subject) => (
+          <div class="border border-gray-200 rounded-lg p-4">
+            <div class="flex items-start justify-between mb-2">
+              <div>
+                <span class="font-semibold text-gray-900">{subject.label}</span>
+                <span class="text-xs text-gray-400 ml-2">{subject.desc}</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-2">
+              {subject.chapters.map((ch) => (
+                <a
+                  href={`/security/concept/${subject.slug}/${ch.slug}/`}
+                  class="text-sm px-3 py-1 rounded-full bg-gray-100 text-gray-600 hover:bg-sky-100 hover:text-sky-700 transition-colors"
+                >
+                  {ch.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 회차별 시험 -->
+    <section>
+      <h2 class="text-base font-semibold text-gray-700 mb-4">회차별 기출 시험</h2>
+      {examSlugs.length === 0 ? (
+        <p class="text-gray-400 text-sm">등록된 기출문제가 없습니다.</p>
+      ) : (
+        <div class="space-y-2">
+          {examSlugs.map((slug) => {
+            const [year, session] = slug.split('-');
+            return (
+              <a
+                href={`/security/exam/${slug}/`}
+                class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:border-sky-300 hover:bg-sky-50 transition-colors group"
+              >
+                <div>
+                  <span class="font-medium text-gray-900 group-hover:text-sky-700">
+                    {year}년 {session}회 정보보안기사
+                  </span>
+                  <span class="text-xs text-gray-400 ml-2">100문제</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400 group-hover:text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            );
+          })}
+        </div>
+      )}
+    </section>
+
+  </div>
+</BaseLayout>

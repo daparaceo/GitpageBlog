@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { CHAPTERS } from '../../../../data/security-chapters';
+import fs from 'node:fs';
+import path from 'node:path';
+
+export async function getStaticPaths() {
+  return CHAPTERS.map(ch => ({
+    params: { subject: ch.subject, chapter: ch.chapter },
+    props: { chapterData: ch },
+  }));
+}
+
+const { chapterData } = Astro.props;
+
+// 관련 기출문제 로드 (모든 JSON에서 해당 과목 문제 필터링)
+const questionsDir = path.resolve(process.cwd(), '.private/security-study/questions');
+const allQuestions: any[] = [];
+
+const files = fs.readdirSync(questionsDir).filter(f => f.endsWith('.json'));
+for (const file of files) {
+  const slug = file.replace('.json', '');
+  const raw = fs.readFileSync(path.join(questionsDir, file), 'utf-8');
+  const questions = JSON.parse(raw);
+  questions
+    .filter((q: any) => q.subject === chapterData.subjectLabel)
+    .forEach((q: any) => {
+      allQuestions.push({ ...q, examSlug: slug });
+    });
+}
+
+// 챕터 키워드와 관련된 문제만 필터링 (키워드가 question 필드에 포함된 것)
+const relatedQuestions = allQuestions.filter(q =>
+  chapterData.keywords.some(kw =>
+    q.question?.toLowerCase().includes(kw.toLowerCase()) ||
+    q.explanation?.toLowerCase().includes(kw.toLowerCase())
+  )
+);
+
+const optionSymbols = ['①', '②', '③', '④'];
+---
+
+<BaseLayout
+  title={`${chapterData.chapterLabel} | ${chapterData.subjectLabel} | 보안기사`}
+  description={`정보보안기사 ${chapterData.subjectLabel} - ${chapterData.chapterLabel} 핵심 개념 정리 및 기출문제`}
+>
+  <div class="space-y-10">
+
+    <!-- Breadcrumb -->
+    <div>
+      <div class="text-xs text-gray-400 mb-2">
+        <a href="/security/" class="hover:text-sky-600">보안기사</a>
+        <span class="mx-1">/</span>
+        <span>{chapterData.subjectLabel}</span>
+        <span class="mx-1">/</span>
+        <span>{chapterData.chapterLabel}</span>
+      </div>
+      <h1 class="text-xl font-bold text-gray-900">{chapterData.chapterLabel}</h1>
+      <p class="text-sm text-gray-400 mt-0.5">{chapterData.subjectLabel}</p>
+    </div>
+
+    <!-- 개념 본문 -->
+    <article class="prose prose-sm prose-gray max-w-none
+      prose-headings:font-semibold prose-headings:text-gray-800
+      prose-h2:text-lg prose-h2:mt-6 prose-h2:mb-3
+      prose-h3:text-base prose-h3:mt-5 prose-h3:mb-2
+      prose-h4:text-sm prose-h4:mt-4 prose-h4:mb-1
+      prose-p:text-gray-600 prose-p:leading-relaxed
+      prose-ul:text-gray-600 prose-li:my-0.5
+      prose-table:text-sm prose-th:bg-gray-50 prose-th:font-semibold
+      prose-td:align-top prose-pre:bg-gray-900 prose-pre:text-gray-100
+      prose-code:text-sky-700 prose-code:bg-sky-50 prose-code:px-1 prose-code:rounded
+      prose-strong:text-gray-800
+    ">
+      <Fragment set:html={chapterData.content} />
+    </article>
+
+    <!-- 관련 기출문제 -->
+    {relatedQuestions.length > 0 && (
+      <section>
+        <h2 class="text-base font-semibold text-gray-700 mb-4 flex items-center gap-2">
+          관련 기출문제
+          <span class="text-xs font-normal text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">
+            {relatedQuestions.length}문제
+          </span>
+        </h2>
+        <div class="space-y-4">
+          {relatedQuestions.map((q) => (
+            <div class="quiz-item border border-gray-200 rounded-lg p-4" data-answer={q.answer}>
+              <!-- 문제 -->
+              <div class="flex items-start gap-2 mb-3">
+                <span class="text-xs text-gray-400 shrink-0 mt-0.5">
+                  {q.examSlug.replace('-', '년 ')}회 Q{q.number}
+                </span>
+              </div>
+              <p class="text-sm font-medium text-gray-800 mb-3 leading-relaxed">{q.question}</p>
+
+              <!-- 보기 -->
+              <ol class="space-y-1.5 mb-3 list-none p-0">
+                {q.options.map((opt: string, i: number) => (
+                  <li class="reveal-option text-sm text-gray-600 py-1 px-2 rounded" data-idx={i + 1}>
+                    {opt}
+                  </li>
+                ))}
+              </ol>
+
+              <!-- 정답 확인 버튼 -->
+              <button class="reveal-btn text-xs px-3 py-1.5 bg-sky-600 text-white rounded hover:bg-sky-700 transition-colors">
+                정답 확인
+              </button>
+
+              <!-- 정답 + 해설 (숨김) -->
+              <div class="answer-box hidden mt-3 p-3 bg-gray-50 rounded-lg border border-gray-100">
+                <p class="text-xs font-semibold text-gray-700 mb-1">
+                  정답: {optionSymbols[q.answer - 1]}
+                  {q.options[q.answer - 1]?.replace(/^[①②③④]\s*/, '')}
+                </p>
+                {q.explanation && (
+                  <p class="text-xs text-gray-500 leading-relaxed mt-1">{q.explanation}</p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {relatedQuestions.length === 0 && (
+      <div class="text-sm text-gray-400 border border-dashed border-gray-200 rounded-lg p-6 text-center">
+        이 챕터와 관련된 기출문제를 아직 불러오지 못했습니다.
+      </div>
+    )}
+
+    <!-- 하단 내비게이션 -->
+    <div class="pt-4 border-t border-gray-200">
+      <a href="/security/" class="text-sm text-gray-500 hover:text-sky-600 transition-colors">
+        ← 보안기사 학습 홈으로
+      </a>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .reveal-option.is-answer {
+    background-color: #f0fdf4;
+    border: 1px solid #86efac;
+    color: #15803d;
+    font-weight: 500;
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.reveal-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const item = btn.closest('.quiz-item');
+        const answer = parseInt(item.dataset.answer, 10);
+
+        // 정답 보기 강조
+        item.querySelectorAll('.reveal-option').forEach(function (opt) {
+          if (parseInt(opt.dataset.idx, 10) === answer) {
+            opt.classList.add('is-answer');
+          }
+        });
+
+        // 해설 토글
+        const box = item.querySelector('.answer-box');
+        const isHidden = box.classList.toggle('hidden');
+        btn.textContent = isHidden ? '정답 확인' : '정답 숨기기';
+      });
+    });
+  });
+</script>

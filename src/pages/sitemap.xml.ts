@@ -3,6 +3,9 @@
 
 import { getCollection } from 'astro:content';
 import { CATEGORIES } from '../content/config';
+import { CHAPTERS } from '../data/security-chapters';
+import fs from 'node:fs';
+import path from 'node:path';
 
 export async function GET() {
   const siteUrl = 'https://daparapara.com';
@@ -42,7 +45,27 @@ export async function GET() {
     lastmod: post.data.publishedAt.toISOString().split('T')[0],
   }));
 
-  const allEntries = [...staticPages, ...categoryEntries, ...postEntries];
+  // 보안기사 섹션 항목
+  const questionsDir = path.resolve(process.cwd(), '.private/security-study/questions');
+  const examSlugs = fs.readdirSync(questionsDir)
+    .filter((f: string) => f.endsWith('.json'))
+    .map((f: string) => f.replace('.json', ''));
+
+  const securityEntries = [
+    { url: '/security/', priority: '0.8', changefreq: 'weekly' },
+    ...CHAPTERS.map(ch => ({
+      url: `/security/concept/${ch.subject}/${ch.chapter}/`,
+      priority: '0.7',
+      changefreq: 'monthly',
+    })),
+    ...examSlugs.map((slug: string) => ({
+      url: `/security/exam/${slug}/`,
+      priority: '0.7',
+      changefreq: 'monthly',
+    })),
+  ];
+
+  const allEntries = [...staticPages, ...categoryEntries, ...postEntries, ...securityEntries];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

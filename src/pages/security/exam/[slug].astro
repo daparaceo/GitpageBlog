@@ -1,0 +1,262 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import fs from 'node:fs';
+import path from 'node:path';
+
+export async function getStaticPaths() {
+  const dir = path.resolve(process.cwd(), '.private/security-study/questions');
+  const files = fs.readdirSync(dir).filter(f => f.endsWith('.json'));
+
+  return files.map(file => {
+    const slug = file.replace('.json', '');
+    const raw = fs.readFileSync(path.join(dir, file), 'utf-8');
+    const questions = JSON.parse(raw);
+    const [year, session] = slug.split('-');
+    return {
+      params: { slug },
+      props: { questions, year, session, slug },
+    };
+  });
+}
+
+const { questions, year, session, slug } = Astro.props;
+
+const subjectOrder = ['시스템보안', '네트워크보안', '어플리케이션보안', '정보보안일반', '정보보안관리및법규'];
+
+const optionSymbols = ['①', '②', '③', '④'];
+---
+
+<BaseLayout
+  title={`${year}년 ${session}회 정보보안기사 기출문제`}
+  description={`${year}년 ${session}회 정보보안기사 필기 기출문제 100문제 — 개별 채점 및 전체 채점 지원`}
+>
+  <div class="space-y-8">
+
+    <!-- 헤더 -->
+    <div class="border-b border-gray-200 pb-4">
+      <div class="text-xs text-gray-400 mb-1">
+        <a href="/security/" class="hover:text-sky-600">보안기사</a>
+        <span class="mx-1">/</span>
+        기출문제
+      </div>
+      <h1 class="text-xl font-bold text-gray-900">{year}년 {session}회 정보보안기사</h1>
+      <p class="text-sm text-gray-500 mt-1">총 {questions.length}문제 · 과목별 20문제 · 60점 이상 합격</p>
+    </div>
+
+    <!-- 전체 채점 버튼 (상단) -->
+    <div class="flex items-center gap-4">
+      <button
+        id="submit-all"
+        class="px-5 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors"
+      >
+        전체 채점하기
+      </button>
+      <button
+        id="reset-all"
+        class="px-5 py-2 bg-gray-100 text-gray-600 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors"
+      >
+        초기화
+      </button>
+    </div>
+
+    <!-- 점수 표시 (채점 후 노출) -->
+    <div id="score-section" class="hidden border border-indigo-200 bg-indigo-50 rounded-lg p-4">
+      <p class="text-indigo-700 font-semibold text-lg" id="score-display"></p>
+      <p class="text-indigo-500 text-sm mt-1" id="score-detail"></p>
+    </div>
+
+    <!-- 문제 목록 (과목별 그룹) -->
+    {subjectOrder.map((subject) => {
+      const subjectQuestions = questions.filter((q: any) => q.subject === subject);
+      if (subjectQuestions.length === 0) return null;
+      return (
+        <section>
+          <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4 border-b border-gray-100 pb-2">
+            {subject}
+          </h2>
+          <div class="space-y-6">
+            {subjectQuestions.map((q: any) => (
+              <div
+                class="question-item border border-gray-200 rounded-lg p-5"
+                data-answer={q.answer}
+                data-number={q.number}
+              >
+                <!-- 문제 번호 + 내용 -->
+                <p class="font-medium text-gray-900 mb-4 leading-relaxed">
+                  <span class="text-gray-400 mr-1">{q.number}.</span>
+                  {q.question}
+                </p>
+
+                <!-- 보기 (라디오 버튼) -->
+                <div class="space-y-2 mb-4">
+                  {q.options.map((opt: string, i: number) => (
+                    <label class="option-label flex items-start gap-2 p-2 rounded cursor-pointer hover:bg-gray-50 transition-colors">
+                      <input
+                        type="radio"
+                        name={`q-${q.number}`}
+                        value={i + 1}
+                        class="mt-0.5 accent-sky-600 shrink-0"
+                      />
+                      <span class="text-sm text-gray-700">{opt}</span>
+                    </label>
+                  ))}
+                </div>
+
+                <!-- 개별 채점 버튼 -->
+                <div class="flex items-center gap-2">
+                  <button class="check-btn text-xs px-3 py-1.5 bg-sky-600 text-white rounded hover:bg-sky-700 transition-colors">
+                    정답 확인
+                  </button>
+                </div>
+
+                <!-- 해설 (숨김) -->
+                <div class="explanation-box hidden mt-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                  <p class="text-xs font-semibold text-gray-600 mb-1">
+                    정답: {optionSymbols[q.answer - 1]} {q.options[q.answer - 1]?.replace(/^[①②③④]\s*/, '')}
+                  </p>
+                  {q.explanation && (
+                    <p class="text-xs text-gray-500 leading-relaxed">{q.explanation}</p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      );
+    })}
+
+    <!-- 하단 전체 채점 버튼 -->
+    <div class="flex items-center gap-4 pt-4 border-t border-gray-200">
+      <button
+        id="submit-all-bottom"
+        class="px-5 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors"
+      >
+        전체 채점하기
+      </button>
+      <button
+        id="reset-all-bottom"
+        class="px-5 py-2 bg-gray-100 text-gray-600 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors"
+      >
+        초기화
+      </button>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .option-label.correct {
+    background-color: #f0fdf4;
+    border: 1px solid #86efac;
+    color: #15803d;
+  }
+  .option-label.wrong {
+    background-color: #fef2f2;
+    border: 1px solid #fca5a5;
+    color: #b91c1c;
+  }
+  .option-label.correct span,
+  .option-label.wrong span {
+    font-weight: 500;
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function () {
+    const total = document.querySelectorAll('.question-item').length;
+
+    function gradeQuestion(item) {
+      const answer = parseInt(item.dataset.answer, 10);
+      const selected = item.querySelector('input[type=radio]:checked');
+      const isCorrect = selected && parseInt(selected.value, 10) === answer;
+
+      item.querySelectorAll('.option-label').forEach(function (label, i) {
+        label.classList.remove('correct', 'wrong');
+        const radio = label.querySelector('input[type=radio]');
+        if (!radio) return;
+        const val = parseInt(radio.value, 10);
+        if (val === answer) {
+          label.classList.add('correct');
+        } else if (selected && val === parseInt(selected.value, 10)) {
+          label.classList.add('wrong');
+        }
+      });
+
+      // 해설 노출
+      const box = item.querySelector('.explanation-box');
+      if (box) box.classList.remove('hidden');
+
+      // 채점 버튼 비활성화
+      const btn = item.querySelector('.check-btn');
+      if (btn) {
+        btn.textContent = '확인 완료';
+        btn.disabled = true;
+        btn.classList.add('opacity-50', 'cursor-not-allowed');
+        btn.classList.remove('hover:bg-sky-700');
+      }
+
+      return isCorrect;
+    }
+
+    // 개별 채점
+    document.querySelectorAll('.check-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        gradeQuestion(btn.closest('.question-item'));
+      });
+    });
+
+    // 전체 채점
+    function submitAll() {
+      let score = 0;
+      const subjectScores = {};
+
+      document.querySelectorAll('.question-item').forEach(function (item) {
+        if (gradeQuestion(item)) score++;
+      });
+
+      const scoreSection = document.getElementById('score-section');
+      const scoreDisplay = document.getElementById('score-display');
+      const scoreDetail = document.getElementById('score-detail');
+
+      if (scoreSection && scoreDisplay) {
+        scoreSection.classList.remove('hidden');
+        const pct = Math.round((score / total) * 100);
+        scoreDisplay.textContent = score + ' / ' + total + '점 (' + pct + '%)';
+        if (scoreDetail) {
+          scoreDetail.textContent = pct >= 60 ? '합격 기준 충족 (60점 이상)' : '불합격 (60점 미만)';
+        }
+        scoreSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    document.getElementById('submit-all')?.addEventListener('click', submitAll);
+    document.getElementById('submit-all-bottom')?.addEventListener('click', submitAll);
+
+    // 초기화
+    function resetAll() {
+      document.querySelectorAll('.question-item').forEach(function (item) {
+        item.querySelectorAll('input[type=radio]').forEach(function (r) {
+          r.checked = false;
+        });
+        item.querySelectorAll('.option-label').forEach(function (label) {
+          label.classList.remove('correct', 'wrong');
+        });
+        const box = item.querySelector('.explanation-box');
+        if (box) box.classList.add('hidden');
+        const btn = item.querySelector('.check-btn');
+        if (btn) {
+          btn.textContent = '정답 확인';
+          btn.disabled = false;
+          btn.classList.remove('opacity-50', 'cursor-not-allowed');
+          btn.classList.add('hover:bg-sky-700');
+        }
+      });
+
+      const scoreSection = document.getElementById('score-section');
+      if (scoreSection) scoreSection.classList.add('hidden');
+    }
+
+    document.getElementById('reset-all')?.addEventListener('click', resetAll);
+    document.getElementById('reset-all-bottom')?.addEventListener('click', resetAll);
+  });
+</script>
