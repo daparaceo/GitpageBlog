@@ -73,18 +73,26 @@ const subjects = [
       <h2 class="text-base font-semibold text-gray-700 mb-4">과목별 개념 학습</h2>
       <div class="space-y-3">
         {subjects.map((subject) => (
-          <div class="border border-gray-200 rounded-lg p-4">
-            <div class="flex items-start justify-between mb-2">
+          <div class="border border-gray-200 rounded-lg overflow-hidden">
+            <!-- 과목명 클릭 → 과목 인덱스 페이지 -->
+            <a
+              href={`/security/concept/${subject.slug}/`}
+              class="flex items-center justify-between px-4 py-3 hover:bg-sky-50 transition-colors group"
+            >
               <div>
-                <span class="font-semibold text-gray-900">{subject.label}</span>
+                <span class="font-semibold text-gray-900 group-hover:text-sky-700">{subject.label}</span>
                 <span class="text-xs text-gray-400 ml-2">{subject.desc}</span>
               </div>
-            </div>
-            <div class="flex flex-wrap gap-2 mt-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400 group-hover:text-sky-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+            <!-- 챕터 바로가기 -->
+            <div class="flex flex-wrap gap-2 px-4 py-2 border-t border-gray-100 bg-gray-50">
               {subject.chapters.map((ch) => (
                 <a
                   href={`/security/concept/${subject.slug}/${ch.slug}/`}
-                  class="text-sm px-3 py-1 rounded-full bg-gray-100 text-gray-600 hover:bg-sky-100 hover:text-sky-700 transition-colors"
+                  class="text-xs px-2.5 py-1 rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-sky-100 hover:text-sky-700 hover:border-sky-200 transition-colors"
                 >
                   {ch.label}
                 </a>

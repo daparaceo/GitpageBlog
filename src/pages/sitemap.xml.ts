@@ -51,8 +51,11 @@ export async function GET() {
     .filter((f: string) => f.endsWith('.json'))
     .map((f: string) => f.replace('.json', ''));
 
+  const subjectSlugs = ['system', 'network', 'application', 'general', 'law'];
+
   const securityEntries = [
     { url: '/security/', priority: '0.8', changefreq: 'weekly' },
+    ...subjectSlugs.map(slug => ({ url: `/security/concept/${slug}/`, priority: '0.7', changefreq: 'monthly' })),
     ...CHAPTERS.map(ch => ({
       url: `/security/concept/${ch.subject}/${ch.chapter}/`,
       priority: '0.7',
