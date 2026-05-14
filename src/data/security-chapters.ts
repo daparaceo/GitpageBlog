@@ -20,7 +20,6 @@ export const CHAPTERS: Chapter[] = [
     chapterLabel: '운영체제 보안',
     keywords: ['umask', '파일 권한', 'setuid', 'setgid', '계정', '패스워드', '/etc/passwd', '/etc/shadow', '윈도우', '레지스트리', '감사'],
     content: `
-<h2>운영체제 보안</h2>
 
 <h3>유닉스/리눅스 파일 권한</h3>
 <p>유닉스 파일 권한은 <strong>소유자(Owner) · 그룹(Group) · 기타(Others)</strong> 3단계로 구성되며,
@@ -75,7 +74,6 @@ export const CHAPTERS: Chapter[] = [
     chapterLabel: '접근통제',
     keywords: ['DAC', 'MAC', 'RBAC', 'Bell-LaPadula', 'Biba', 'Clark-Wilson', '접근통제', '최소권한', '직무분리', '참조모니터'],
     content: `
-<h2>접근통제</h2>
 
 <h3>접근통제 3요소</h3>
 <ul>
@@ -148,7 +146,6 @@ export const CHAPTERS: Chapter[] = [
     chapterLabel: '암호학',
     keywords: ['암호', 'DES', 'AES', 'RSA', 'ECC', '해시', 'SHA', 'MD5', '디지털 서명', '공개키', '대칭키', 'PKI', '인증서'],
     content: `
-<h2>암호학</h2>
 
 <h3>암호화 유형</h3>
 <table>
@@ -208,7 +205,6 @@ export const CHAPTERS: Chapter[] = [
     chapterLabel: '악성코드',
     keywords: ['악성코드', '바이러스', '웜', '트로이목마', '랜섬웨어', '루트킷', '스파이웨어', '봇넷', '키로거', '백도어'],
     content: `
-<h2>악성코드</h2>
 
 <h3>악성코드 유형</h3>
 <table>
@@ -255,7 +251,6 @@ export const CHAPTERS: Chapter[] = [
     chapterLabel: '네트워크 기초',
     keywords: ['OSI', 'TCP', 'UDP', 'IP', 'ARP', 'DNS', 'DHCP', '라우터', '스위치', '포트', 'ICMP', 'HTTP', 'HTTPS'],
     content: `
-<h2>네트워크 기초</h2>
 
 <h3>OSI 7계층</h3>
 <table>
@@ -323,7 +318,6 @@ export const CHAPTERS: Chapter[] = [
     chapterLabel: '방화벽·IDS·IPS',
     keywords: ['방화벽', 'IDS', 'IPS', '침입탐지', '패킷 필터링', '상태 검사', '애플리케이션 게이트웨이', '프록시', 'DMZ', '오탐', '미탐'],
     content: `
-<h2>방화벽 · IDS · IPS</h2>
 
 <h3>방화벽 (Firewall)</h3>
 <p>내부 네트워크와 외부 네트워크 사이에서 <strong>트래픽을 허용/차단</strong>하는 보안 장비.</p>
@@ -397,7 +391,6 @@ export const CHAPTERS: Chapter[] = [
     chapterLabel: 'VPN',
     keywords: ['VPN', 'IPSec', 'SSL VPN', 'PPTP', 'L2TP', '터널링', '암호화', 'AH', 'ESP', 'IKE'],
     content: `
-<h2>VPN (Virtual Private Network)</h2>
 
 <p>공중망을 통해 <strong>암호화된 가상 사설 터널</strong>을 구성하는 기술. 기밀성·무결성·인증 제공.</p>
 
@@ -454,7 +447,6 @@ export const CHAPTERS: Chapter[] = [
     chapterLabel: '웹 보안',
     keywords: ['SQL injection', 'XSS', 'CSRF', '세션', '쿠키', '디렉토리 트래버설', 'OWASP', '파일 업로드', 'Command injection', 'XXE'],
     content: `
-<h2>웹 보안</h2>
 
 <h3>OWASP Top 10 주요 취약점</h3>
 
@@ -519,7 +511,6 @@ export const CHAPTERS: Chapter[] = [
     chapterLabel: 'DB 보안',
     keywords: ['데이터베이스', 'DB', '뷰', '역할', '감사', '추론', '집계', '다단계 보안', '암호화', '접근통제'],
     content: `
-<h2>데이터베이스 보안</h2>
 
 <h3>DB 보안 요소</h3>
 <ul>
@@ -577,7 +568,6 @@ export const CHAPTERS: Chapter[] = [
     chapterLabel: '보안 일반 개념',
     keywords: ['CIA', '기밀성', '무결성', '가용성', '위험', '위협', '취약점', '위험관리', '보안정책', '업무연속성', 'BCP', 'DRP'],
     content: `
-<h2>정보보안 일반 개념</h2>
 
 <h3>정보보안 3대 목표 (CIA Triad)</h3>
 <table>
@@ -645,7 +635,6 @@ export const CHAPTERS: Chapter[] = [
     chapterLabel: '정보보호 관련 법규',
     keywords: ['정보통신망법', '개인정보보호법', 'ISMS', 'ISMS-P', '전자서명법', '정보보호산업법', '개인정보', '동의', '파기', '과태료'],
     content: `
-<h2>정보보호 관련 법규</h2>
 
 <h3>주요 법률 체계</h3>
 <table>
