@@ -170,10 +170,30 @@ const optionSymbols = ['①', '②', '③', '④'];
   .option-label.wrong span {
     font-weight: 500;
   }
+
+  /* 모바일 테이블 가로 스크롤 */
+  .table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 1rem;
+    border-radius: 0.375rem;
+  }
+  .table-scroll table {
+    min-width: 480px;
+    margin-bottom: 0;
+  }
 </style>
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', function () {
+    // 개념 본문 테이블 → 가로 스크롤 컨테이너로 래핑
+    document.querySelectorAll('article table').forEach(function (table) {
+      var wrapper = document.createElement('div');
+      wrapper.className = 'table-scroll';
+      table.parentNode.insertBefore(wrapper, table);
+      wrapper.appendChild(table);
+    });
+
     document.querySelectorAll('.reveal-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
         const item = btn.closest('.quiz-item');
