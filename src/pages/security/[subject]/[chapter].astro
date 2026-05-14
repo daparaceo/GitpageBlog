@@ -103,14 +103,20 @@ const optionSymbols = ['①', '②', '③', '④'];
               </div>
               <p class="text-sm font-medium text-gray-800 mb-3 leading-relaxed">{q.question}</p>
 
-              <!-- 보기 -->
-              <ol class="space-y-1.5 mb-3 list-none p-0">
+              <!-- 보기 (라디오 버튼) -->
+              <div class="space-y-1.5 mb-3">
                 {q.options.map((opt: string, i: number) => (
-                  <li class="reveal-option text-sm text-gray-600 py-1 px-2 rounded" data-idx={i + 1}>
-                    {opt}
-                  </li>
+                  <label class="option-label flex items-start gap-2 py-1 px-2 rounded cursor-pointer hover:bg-gray-50 transition-colors">
+                    <input
+                      type="radio"
+                      name={`q-${q.examSlug}-${q.number}`}
+                      value={i + 1}
+                      class="mt-0.5 accent-sky-600 shrink-0"
+                    />
+                    <span class="text-sm text-gray-700">{opt}</span>
+                  </label>
                 ))}
-              </ol>
+              </div>
 
               <!-- 정답 확인 버튼 -->
               <button class="reveal-btn text-xs px-3 py-1.5 bg-sky-600 text-white rounded hover:bg-sky-700 transition-colors">
@@ -150,10 +156,18 @@ const optionSymbols = ['①', '②', '③', '④'];
 </BaseLayout>
 
 <style>
-  .reveal-option.is-answer {
+  .option-label.correct {
     background-color: #f0fdf4;
     border: 1px solid #86efac;
     color: #15803d;
+  }
+  .option-label.wrong {
+    background-color: #fef2f2;
+    border: 1px solid #fca5a5;
+    color: #b91c1c;
+  }
+  .option-label.correct span,
+  .option-label.wrong span {
     font-weight: 500;
   }
 </style>
@@ -164,11 +178,18 @@ const optionSymbols = ['①', '②', '③', '④'];
       btn.addEventListener('click', function () {
         const item = btn.closest('.quiz-item');
         const answer = parseInt(item.dataset.answer, 10);
+        const selected = item.querySelector('input[type=radio]:checked');
 
-        // 정답 보기 강조
-        item.querySelectorAll('.reveal-option').forEach(function (opt) {
-          if (parseInt(opt.dataset.idx, 10) === answer) {
-            opt.classList.add('is-answer');
+        // 정답/오답 강조
+        item.querySelectorAll('.option-label').forEach(function (label) {
+          label.classList.remove('correct', 'wrong');
+          const radio = label.querySelector('input[type=radio]');
+          if (!radio) return;
+          const val = parseInt(radio.value, 10);
+          if (val === answer) {
+            label.classList.add('correct');
+          } else if (selected && val === parseInt(selected.value, 10)) {
+            label.classList.add('wrong');
           }
         });
 
