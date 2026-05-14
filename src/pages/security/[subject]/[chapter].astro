@@ -29,13 +29,21 @@ for (const file of files) {
     });
 }
 
-// 챕터 키워드와 관련된 문제만 필터링 (키워드가 question 필드에 포함된 것)
-const relatedQuestions = allQuestions.filter(q =>
-  chapterData.keywords.some(kw =>
-    q.question?.toLowerCase().includes(kw.toLowerCase()) ||
-    q.explanation?.toLowerCase().includes(kw.toLowerCase())
-  )
-);
+// 챕터 키워드와 관련된 문제만 필터링
+// - question 필드만 매칭 (explanation은 다른 주제 언급이 많아 제외)
+// - 키워드 매칭 수로 점수화 → 높은 순 정렬 → 최대 10문제
+const scored = allQuestions
+  .map(q => {
+    const questionText = (q.question ?? '').toLowerCase();
+    const matchCount = chapterData.keywords.filter(kw =>
+      questionText.includes(kw.toLowerCase())
+    ).length;
+    return { ...q, _score: matchCount };
+  })
+  .filter(q => q._score > 0)
+  .sort((a, b) => b._score - a._score);
+
+const relatedQuestions = scored.slice(0, 10);
 
 const optionSymbols = ['①', '②', '③', '④'];
 ---
