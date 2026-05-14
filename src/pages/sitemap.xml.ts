@@ -55,9 +55,9 @@ export async function GET() {
 
   const securityEntries = [
     { url: '/security/', priority: '0.8', changefreq: 'weekly' },
-    ...subjectSlugs.map(slug => ({ url: `/security/concept/${slug}/`, priority: '0.7', changefreq: 'monthly' })),
+    ...subjectSlugs.map(slug => ({ url: `/security/${slug}/`, priority: '0.7', changefreq: 'monthly' })),
     ...CHAPTERS.map(ch => ({
-      url: `/security/concept/${ch.subject}/${ch.chapter}/`,
+      url: `/security/${ch.subject}/${ch.chapter}/`,
       priority: '0.7',
       changefreq: 'monthly',
     })),

@@ -1,6 +1,6 @@
 ---
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
-import { CHAPTERS } from '../../../../data/security-chapters';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { CHAPTERS } from '../../../data/security-chapters';
 
 export async function getStaticPaths() {
   const subjects = [
@@ -43,7 +43,7 @@ const chapters = CHAPTERS.filter(ch => ch.subject === subject);
       <div class="space-y-2">
         {chapters.map((ch, i) => (
           <a
-            href={`/security/concept/${subject}/${ch.chapter}/`}
+            href={`/security/${subject}/${ch.chapter}/`}
             class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:border-sky-300 hover:bg-sky-50 transition-colors group"
           >
             <div class="flex items-center gap-3">
