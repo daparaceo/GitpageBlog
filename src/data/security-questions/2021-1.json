@@ -1,0 +1,2006 @@
+[
+  {
+    "id": "2021-1-001",
+    "year": 2021,
+    "session": 1,
+    "number": 1,
+    "subject": "시스템보안",
+    "topic": "DLP",
+    "type": "objective",
+    "question": "내부 정보 유출 차단을 위한 보안 제품은 무엇인가?\n\nPC에 에이전트를 설치하며 메일, SNS, 웹사이트 등을 통해 발생할 수 있는 중요 정보 유출을 탐지하여 차단한다.",
+    "options": [
+      "DRM",
+      "DLP",
+      "VDI",
+      "EDMS"
+    ],
+    "answer": 2,
+    "explanation": "DLP(Data Loss Prevention, 데이터 유출 방지)는 PC에 에이전트를 설치하여 이메일, SNS, 웹 등 다양한 경로를 통한 기업 내부 정보 유출을 탐지하고 차단하는 보안 솔루션이다. DRM은 콘텐츠 암호화·접근제어, VDI는 가상 데스크톱, EDMS는 전자문서관리시스템이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "시스템보안", "DLP", "정보유출방지", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-002",
+    "year": 2021,
+    "session": 1,
+    "number": 2,
+    "subject": "시스템보안",
+    "topic": "Windows Users 그룹",
+    "type": "objective",
+    "question": "다음 중 Windows에서 사용하는 일반사용자 그룹인 Users 그룹에 대한 설명 중 적합하지 않은 것은?",
+    "options": [
+      "User는 시스템 크기의 레지스트리 설정, 운영체제 파일 또는 프로그램 파일을 수정할 수 없다.",
+      "User는 워크스테이션을 종료할 수는 있지만 서버는 종료할 수 없다.",
+      "Users가 로컬 그룹을 만들 수는 있지만 자신이 만든 로컬 그룹만 관리할 수 있다.",
+      "Users 그룹의 구성원은 다른 Users 그룹에서 실행할 수 있는 프로그램을 설치할 수 있다."
+    ],
+    "answer": 4,
+    "explanation": "Windows Users 그룹 구성원은 프로그램을 설치할 수 없다. 프로그램 설치는 Administrators 그룹 권한이 필요하다. Users 그룹은 레지스트리·시스템 파일 수정 불가, 워크스테이션 종료 가능(서버 불가), 자신이 만든 로컬 그룹만 관리 가능하다는 설명은 모두 옳다.",
+    "hasImage": false,
+    "tags": ["보안기사", "시스템보안", "Windows", "Users그룹", "접근통제", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-003",
+    "year": 2021,
+    "session": 1,
+    "number": 3,
+    "subject": "시스템보안",
+    "topic": "파일 무결성 점검",
+    "type": "objective",
+    "question": "파일 무결성 점검 도구에 해당하는 것은?",
+    "options": [
+      "John the Ripper",
+      "Tripwire",
+      "Snort",
+      "Nmap"
+    ],
+    "answer": 2,
+    "explanation": "Tripwire는 파일 시스템의 변경 사항을 감지하는 파일 무결성 점검 도구로, 파일의 해시값을 데이터베이스에 저장한 후 변경 여부를 비교한다. John the Ripper는 패스워드 크래킹 도구, Snort는 침입탐지시스템(IDS), Nmap은 포트 스캐너이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "시스템보안", "Tripwire", "파일무결성", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-004",
+    "year": 2021,
+    "session": 1,
+    "number": 4,
+    "subject": "시스템보안",
+    "topic": "접근통제 정책",
+    "type": "objective",
+    "question": "주체가 주도적으로 자신이 소유한 객체(파일 등)에 대한 접근권한(Read, Write, Execution, Append 등)을 다른 주체(사용자)에게 양도하는 등의 행위가 가능한 접근통제 정책은?",
+    "options": [
+      "MAC",
+      "RBAC",
+      "CBAC",
+      "DAC"
+    ],
+    "answer": 4,
+    "explanation": "DAC(Discretionary Access Control, 임의적 접근통제)는 자원 소유자가 자신의 판단에 따라 다른 주체에게 접근권한을 부여하거나 양도할 수 있는 정책이다. MAC(강제적 접근통제)는 관리자가 보안 등급으로 통제하고, RBAC는 역할 기반, CBAC는 컨텍스트 기반 접근통제이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "시스템보안", "DAC", "접근통제", "임의적접근통제", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-005",
+    "year": 2021,
+    "session": 1,
+    "number": 5,
+    "subject": "시스템보안",
+    "topic": "파일 시스템",
+    "type": "objective",
+    "question": "다음 지문이 설명하는 파일 시스템은?\n\n마이크로소프트사가 윈도우 CE 6.0 장치와 데스크톱 운영체제인 윈도우 비스타 및 윈도우 7 그리고 윈도우 서버 2008에 도입하기 위해 만들었다. 자료구조의 오버헤드 문제나 파일 크기/디렉터리 제약 문제에 효과적이다.",
+    "options": [
+      "exFAT(Extended File Allocation Table)",
+      "ext4(extended file system)",
+      "HFS(Hierarchical File System)",
+      "ReFS(Resilient File System)"
+    ],
+    "answer": 1,
+    "explanation": "exFAT(Extended File Allocation Table)은 마이크로소프트가 개발한 파일 시스템으로, FAT32의 한계(4GB 파일 크기 제한)를 극복하고 플래시 메모리 장치에 최적화되었다. Windows CE 6.0, Vista, 7, Server 2008에 도입되었으며 대용량 파일 처리에 효과적이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "시스템보안", "exFAT", "파일시스템", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-006",
+    "year": 2021,
+    "session": 1,
+    "number": 6,
+    "subject": "시스템보안",
+    "topic": "Windows 부팅 순서",
+    "type": "objective",
+    "question": "다음은 윈도우 부팅 순서이다. 올바르게 나열된 것은?\n\n가. MBR - 부팅 매체에 대한 기본적인 파일시스템 정보가 들어 있는 MBR 정보를 읽는다.\n나. POST - 하드웨어 자체가 시스템에 문제가 없는지 기본적인 사항을 체크하는 과정\n다. NTLDR - 하드디스크의 부팅 파티션에 있는 프로그램으로 윈도우가 부팅될 수 있도록 간단한 파일시스템을 실행하며 boot.ini 파일의 내용을 읽는다.\n라. NTDETECT.com - 설치된 하드웨어를 검사한다.\n마. ntoskrnl.exe - HAL.dll을 로드한다.\n바. CMOS - 사용자가 설정한 기본 사항을 읽어 시스템에 적용한다.",
+    "options": [
+      "바-다-라-가-마-나",
+      "나-바-가-다-라-마",
+      "나-바-다-라-가-마",
+      "바-가-마-나-다-라"
+    ],
+    "answer": 2,
+    "explanation": "Windows 부팅 순서는 POST(하드웨어 자가진단) → CMOS(설정 읽기) → MBR(부팅 섹터 읽기) → NTLDR(부팅 로더) → NTDETECT.com(하드웨어 감지) → ntoskrnl.exe(커널 로드) 순이다. 즉 나-바-가-다-라-마 순서가 맞다.",
+    "hasImage": false,
+    "tags": ["보안기사", "시스템보안", "Windows부팅", "NTLDR", "POST", "MBR", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-007",
+    "year": 2021,
+    "session": 1,
+    "number": 7,
+    "subject": "시스템보안",
+    "topic": "umask 설정",
+    "type": "objective",
+    "question": "소유자 외에는 읽기, 쓰기, 실행 등 일체의 접근을 불허하기 위한 umask 설정값으로 알맞은 것은?",
+    "options": [
+      "umask 077",
+      "umask 020",
+      "umask 022",
+      "umask 066"
+    ],
+    "answer": 4,
+    "explanation": "umask 066은 그룹과 기타 사용자의 읽기(4)와 쓰기(2)를 차단하여 파일 생성 시 소유자만 접근 가능한 권한(600)을 부여한다. 참고로 umask 077이 더 엄격하게 그룹·기타의 읽기/쓰기/실행 모두를 차단하지만, 해당 시험의 정답은 066이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "시스템보안", "umask", "파일권한", "Linux", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-008",
+    "year": 2021,
+    "session": 1,
+    "number": 8,
+    "subject": "시스템보안",
+    "topic": "리눅스 로그",
+    "type": "objective",
+    "question": "'last' 명령을 사용하여 정보를 확인할 수 있는 로그파일은?",
+    "options": [
+      "wtmp",
+      "utmp",
+      "pacct",
+      "lastlog"
+    ],
+    "answer": 1,
+    "explanation": "last 명령은 /var/log/wtmp 파일을 읽어 사용자의 로그인·로그아웃 이력, 시스템 재부팅 기록 등을 출력한다. utmp는 현재 로그인 사용자(who 명령), lastlog는 마지막 로그인 정보(lastlog 명령), pacct는 프로세스 어카운팅 로그이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "시스템보안", "last명령", "wtmp", "리눅스로그", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-009",
+    "year": 2021,
+    "session": 1,
+    "number": 9,
+    "subject": "시스템보안",
+    "topic": "/etc/hosts 파일",
+    "type": "objective",
+    "question": "다음 지문에서 설명하는 파일은 무엇인가?\n\n리눅스 /etc 디렉터리 안에 위치하며, IP주소와 호스트 이름을 매핑하는 이 파일에 비인가자 쓰기 권한이 부여된 경우, 공격자는 악의적인 시스템 등록을 통해 정상적인 DNS를 우회하여 악성 사이트로의 접속을 유도하는 파밍 공격 등을 실행할 수 있다.",
+    "options": [
+      "hosts.equiv",
+      "hosts",
+      "inetd.conf",
+      "shadow"
+    ],
+    "answer": 2,
+    "explanation": "/etc/hosts 파일은 IP 주소와 호스트명을 정적으로 매핑하는 파일로, DNS 조회보다 우선 적용된다. 비인가자가 이 파일에 쓰기 권한을 가지면 악의적인 호스트명-IP 매핑을 추가하여 파밍(Pharming) 공격이 가능하다. hosts.equiv는 원격 접근 신뢰 호스트 파일이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "시스템보안", "hosts파일", "파밍", "DNS우회", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-010",
+    "year": 2021,
+    "session": 1,
+    "number": 10,
+    "subject": "시스템보안",
+    "topic": "Web Beacon",
+    "type": "objective",
+    "question": "다음 지문에서 설명하는 것은?\n\n쿠키와 결합되어 이용자가 웹사이트를 이용하거나 이메일을 보내는 등의 행동을 모니터링하기 위해 사용하는 1픽셀×1픽셀 정도 크기의 임베딩된 이미지를 말한다. 이것은 주로 마케팅 목적으로 사용되며 Web bug, pixel tag, e-mail 트래킹이라는 다양한 이름으로 불리며, 해커에 의해 모니터링용 도구로 사용되기도 한다.",
+    "options": [
+      "Session",
+      "Web Beacon",
+      "Super Cookie",
+      "History Stealing"
+    ],
+    "answer": 2,
+    "explanation": "Web Beacon(웹 비컨)은 1×1픽셀의 투명한 이미지로 웹페이지나 이메일에 삽입되어 사용자 행동을 추적한다. Web bug, pixel tag, tracking pixel 등으로도 불리며, 이메일 열람 여부, 방문 페이지 등을 수집한다. 쿠키와 함께 사용되면 광범위한 사용자 프로파일링이 가능하다.",
+    "hasImage": false,
+    "tags": ["보안기사", "시스템보안", "WebBeacon", "픽셀태그", "추적", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-011",
+    "year": 2021,
+    "session": 1,
+    "number": 11,
+    "subject": "시스템보안",
+    "topic": "access log referer",
+    "type": "objective",
+    "question": "access log에는 referer라는 필드가 존재한다. 이 필드가 의미하는 것은?",
+    "options": [
+      "서비스에서 발생하는 이벤트 서버와 글로벌 카달로그 사이의 연결문제를 기록한다.",
+      "사이트를 방문한 사용자가 어떤 경로를 통해 사이트를 방문했는지 알 수 있게 해준다.",
+      "시스템 구성요소가 기록하는 이벤트로 시스템 부팅 시 드라이버가 로드되지 않는 경우와 같이 구성요소의 오류를 기록한다.",
+      "응용프로그램이 기록한 다양한 이벤트가 저장되며, 저장되는 부분은 소프트웨어 개발자에 의해 결정된다."
+    ],
+    "answer": 2,
+    "explanation": "HTTP Referer 헤더는 현재 페이지를 요청할 때 이전에 방문했던 URL 정보를 담는다. 웹 서버 access log의 referer 필드를 통해 방문자가 어떤 경로(검색엔진, 외부 링크 등)로 사이트에 접근했는지 파악할 수 있다.",
+    "hasImage": false,
+    "tags": ["보안기사", "시스템보안", "accesslog", "referer", "웹로그", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-012",
+    "year": 2021,
+    "session": 1,
+    "number": 12,
+    "subject": "시스템보안",
+    "topic": "SUID 파일 검색",
+    "type": "objective",
+    "question": "루트 사용자 소유로 SUID 권한을 부여한 경우, 이러한 파일로 의심되는 파일을 검색하는 명령어로 알맞은 것은?",
+    "options": [
+      "find / -user –perm –1000 -print",
+      "find / -user –perm –2000 -print",
+      "find / -user –perm –3000 -print",
+      "find / -user –perm –4000 -print"
+    ],
+    "answer": 4,
+    "explanation": "SUID(Set User ID) 비트는 8진수로 4000이다. find 명령에서 -perm -4000은 SUID 비트가 설정된 파일을 검색한다. SGID는 2000, Sticky bit는 1000이다. SUID 설정 파일은 실행 시 파일 소유자(root)의 권한으로 실행되므로 보안 취약점이 될 수 있다.",
+    "hasImage": false,
+    "tags": ["보안기사", "시스템보안", "SUID", "find명령", "파일권한", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-013",
+    "year": 2021,
+    "session": 1,
+    "number": 13,
+    "subject": "시스템보안",
+    "topic": "ls -l 결과 해석",
+    "type": "objective",
+    "question": "Unix 명령($ ls -l)의 실행 결과에 대한 설명으로 가장 옳은 것은?\n\n-rwxr--r-- aaa bbb 98 Aug 7 19:16 ccc",
+    "options": [
+      "파일 aaa에 대한 소유자는 bbb이다.",
+      "파일 bbb에 대한 소유자는 aaa이다.",
+      "파일 ccc에 대한 소유자는 aaa이다.",
+      "파일 aaa에 대한 소유자는 ccc이다."
+    ],
+    "answer": 3,
+    "explanation": "ls -l 출력 형식: [권한] [링크수] [소유자] [그룹] [크기] [날짜] [파일명]. 결과 '-rwxr--r-- aaa bbb 98 Aug 7 19:16 ccc'에서 소유자=aaa, 그룹=bbb, 파일명=ccc이다. 따라서 파일 ccc의 소유자는 aaa이다.",
+    "hasImage": true,
+    "imageNote": "ls -l 명령 실행 결과 출력 포함",
+    "tags": ["보안기사", "시스템보안", "ls명령", "파일권한", "Unix", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-014",
+    "year": 2021,
+    "session": 1,
+    "number": 14,
+    "subject": "시스템보안",
+    "topic": "Crontab",
+    "type": "objective",
+    "question": "Crontab을 이용해 정기적으로 매일 오전 1시에 아파치 웹 서버 로그를 백업하고자 한다. 백업 경로는 /backup/logs/이며, 파일 이름은 'log-년월일시분' 형식을 따른다. 정상적으로 작동시키기 위해 Crontab에 등록해야할 값으로 올바른 것은? (파일이름 예시: log-201903210019)",
+    "options": [
+      "* * * 1 0 cp /etc/httpd/logs/access_log /backup/logs/log-'date + \\%Y\\%m\\%d\\%H\\%M'",
+      "0 1 * * * cp /etc/httpd/logs/access_log /backup/logs/log-'date + \\%Y\\%m\\%d\\%H\\%M'",
+      "* * * 0 1 cp /etc/httpd/logs/access_log /backup/logs/log-'date + \\%Y\\%m\\%d\\%H\\%M'",
+      "0 1 * * 0 cp /etc/httpd/logs/access_log /backup/logs/log-'date + \\%Y\\%m\\%d\\%H\\%M'"
+    ],
+    "answer": 2,
+    "explanation": "Crontab 형식은 [분] [시] [일] [월] [요일]이다. '매일 오전 1시'는 분=0, 시=1, 나머지 *이므로 '0 1 * * *'이 정답이다. '0 1 * * 0'은 매주 일요일 오전 1시, '* * * 1 0'은 형식 오류이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "시스템보안", "crontab", "스케줄러", "Linux", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-015",
+    "year": 2021,
+    "session": 1,
+    "number": 15,
+    "subject": "시스템보안",
+    "topic": "TCB",
+    "type": "objective",
+    "question": "하드웨어 및 소프트웨어를 탑재한 시스템 요소를 의미하는 것은?",
+    "options": [
+      "TCB",
+      "EGID",
+      "PCB",
+      "CC"
+    ],
+    "answer": 1,
+    "explanation": "TCB(Trusted Computing Base)는 컴퓨터 시스템에서 보안 정책을 올바르게 실행할 수 있도록 신뢰할 수 있는 하드웨어, 펌웨어, 소프트웨어의 집합이다. 시스템 보안의 기반이 되며 참조 모니터 개념을 구현한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "시스템보안", "TCB", "TrustedComputingBase", "보안커널", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-016",
+    "year": 2021,
+    "session": 1,
+    "number": 16,
+    "subject": "시스템보안",
+    "topic": "CPU 취약점",
+    "type": "objective",
+    "question": "다음 지문에서 설명하고 있는 공격은 무엇인가?\n\n인텔, AMD, ARM의 CPU 제품에서 발견된 보안 취약점 중 하나이다. 인텔 CPU에서 사용하는 비순차 명령 실행 검사 우회 버그를 악용하며 해킹 프로그램이 CPU의 캐시 메모리에 접근하고, 데이터를 유출할 수 있게 되는 취약점이다.",
+    "options": [
+      "스펙터",
+      "캐시 포이즈닝",
+      "멜트다운",
+      "미라이"
+    ],
+    "answer": 3,
+    "explanation": "멜트다운(Meltdown)은 인텔 CPU의 비순차 실행(Out-of-Order Execution) 취약점을 이용해 커널 메모리를 사용자 공간에서 읽을 수 있는 공격이다. 스펙터(Spectre)는 분기 예측을 이용한 유사 취약점으로 더 광범위한 CPU에 영향을 미친다. 미라이는 IoT 봇넷 악성코드이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "시스템보안", "멜트다운", "Meltdown", "CPU취약점", "사이드채널", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-017",
+    "year": 2021,
+    "session": 1,
+    "number": 17,
+    "subject": "시스템보안",
+    "topic": "윈도우 로그",
+    "type": "objective",
+    "question": "윈도우 로그는 무엇인가?\n\n이 로그는 윈도우 운영체제의 구성요소가 기록하는 로그이다. 이 로그는 운영체제가 시작될 때, 장치 드라이버의 로드 여부 등을 이벤트로 남긴 것을 말한다.",
+    "options": [
+      "응용 프로그램 로그",
+      "시스템 로그",
+      "보안 로그",
+      "설정 로그"
+    ],
+    "answer": 2,
+    "explanation": "윈도우 시스템 로그(System Log)는 운영체제 구성요소(드라이버, 서비스 등)가 기록하는 이벤트 로그이다. 부팅 시 드라이버 로드 여부, 시스템 서비스 시작/중지 등이 기록된다. 응용 프로그램 로그는 앱이 기록, 보안 로그는 인증·접근 이벤트를 기록한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "시스템보안", "윈도우로그", "시스템로그", "이벤트뷰어", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-018",
+    "year": 2021,
+    "session": 1,
+    "number": 18,
+    "subject": "시스템보안",
+    "topic": "NetBIOS 포트",
+    "type": "objective",
+    "question": "파일 공유와 관련된 서비스 포트에 대한 내용으로 적절하지 않은 것은?",
+    "options": [
+      "445(TCP/UDP, Direct Host)",
+      "139(TCP, NetBIOS Session)",
+      "137(UDP, NetBIOS Name)",
+      "335(UDP, NetBIOS Datagram)"
+    ],
+    "answer": 4,
+    "explanation": "NetBIOS Datagram 서비스는 포트 138(UDP)을 사용한다. 335번 포트는 NetBIOS와 관련이 없다. NetBIOS 관련 포트: 137(UDP, Name Service), 138(UDP, Datagram Service), 139(TCP, Session Service), 445(TCP/UDP, SMB Direct Host)이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "시스템보안", "NetBIOS", "SMB", "포트번호", "파일공유", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-019",
+    "year": 2021,
+    "session": 1,
+    "number": 19,
+    "subject": "시스템보안",
+    "topic": "/etc/shadow 파일",
+    "type": "objective",
+    "question": "유닉스 시스템에서 계정과 패스워드에 관련된 설명으로 틀린 것은?",
+    "options": [
+      "유닉스 시스템에서 사용자들은 각각 고유의 아이디를 갖고 있으며, 그 아이디에 대한 정보는 /etc/passwd에 저장된다.",
+      "유닉스 시스템에서는 각각의 사용자만이 접근 가능한 파일과 디렉터리가 존재할 수 있다.",
+      "사용자 패스워드는 /etc/passwd 또는 /etc/shadow 파일에서 관리한다.",
+      "/etc/shadow 파일에는 사용자의 패스워드가 AES-256 알고리즘에 의해 암호화되어 저장된다."
+    ],
+    "answer": 4,
+    "explanation": "/etc/shadow 파일에는 패스워드가 AES-256으로 암호화되는 것이 아니라, SHA-512, SHA-256, MD5 등의 단방향 해시 함수로 해시 처리되어 저장된다. AES는 대칭키 암호화 알고리즘으로 패스워드 저장에 사용되지 않는다.",
+    "hasImage": false,
+    "tags": ["보안기사", "시스템보안", "shadow파일", "패스워드해시", "Linux", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-020",
+    "year": 2021,
+    "session": 1,
+    "number": 20,
+    "subject": "시스템보안",
+    "topic": "SetUID 대문자 S",
+    "type": "objective",
+    "question": "접근권한을 확인하였더니 'rwSr- -r- -'이었다. 권한 내의 대문자 S에 대한 설명으로 옳은 것은?",
+    "options": [
+      "SetUID를 실행 권한이 없는 파일에 설정할 경우 대문자 S로 표기된다.",
+      "SetGID를 실행 권한이 없는 파일에 설정할 경우 대문자 S로 표기된다.",
+      "디렉터리에 스티키 비트가 설정되어 대문자 S로 표기하였다.",
+      "SetGID를 설정하여 대문자 S로 표기하였다."
+    ],
+    "answer": 1,
+    "explanation": "파일 권한에서 소유자 실행 권한 자리(3번째)에 대문자 S는 SetUID가 설정되어 있지만 실행(x) 권한이 없는 경우를 나타낸다. 실행 권한이 있으면 소문자 s로 표기된다. SetGID의 경우 그룹 실행 권한 자리(6번째)에 s/S로 표기된다.",
+    "hasImage": false,
+    "tags": ["보안기사", "시스템보안", "SetUID", "파일권한", "특수권한비트", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-021",
+    "year": 2021,
+    "session": 1,
+    "number": 21,
+    "subject": "네트워크보안",
+    "topic": "WEP / Initial Vector",
+    "type": "objective",
+    "question": "다음은 WEP에 대한 설명이다. 빈칸 ㉠에 들어갈 내용으로 적절한 것은?\n\nWEP(Wired Equivalent Privacy)는 무선랜 통신을 위한 암호화 기술 중 가장 기본적인 방법이다. 암호화 알고리즘으로는 RC4를 사용하고, 암호화키 길이는 64비트 또는 128비트이다. 무선 단말에서 무선 AP와 통신을 위해 인증 요청을 보내고, 요청을 받은 무선 AP에서는 중간에 키를 계속 가로챌 경우 우 키 생성 순서를 예측하는 것을 방지하기 위해 랜덤하게 ( ㉠ )를 생성하여 무선 단말기에 보낸다.",
+    "options": [
+      "Encryption Key",
+      "Initial Key",
+      "Initial Vector",
+      "Encryption Vector"
+    ],
+    "answer": 3,
+    "explanation": "WEP는 RC4 스트림 암호와 IV(Initial Vector, 초기벡터)를 결합하여 키스트림을 생성한다. IV는 매 패킷마다 랜덤하게 생성하여 동일한 키로도 다른 암호문을 만들기 위한 목적이나, WEP의 24비트 IV는 너무 짧아 재사용이 발생하여 보안 취약점이 된다.",
+    "hasImage": false,
+    "tags": ["보안기사", "네트워크보안", "WEP", "InitialVector", "무선랜보안", "RC4", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-022",
+    "year": 2021,
+    "session": 1,
+    "number": 22,
+    "subject": "네트워크보안",
+    "topic": "SSID",
+    "type": "objective",
+    "question": "무선랜의 전송 패킷에 덧붙여지는 32bytes 길이의 고유 식별자로서, 무선장치들이 BSS(Basic Service Set)에 접속할 때 패스워드같이 사용되는 코드는 무엇인가?",
+    "options": [
+      "무선 네트워크 아이디(SSID)",
+      "WEP(Wired Equivalent Privacy)",
+      "MAC(Message Authentication Code)",
+      "RFID 태그"
+    ],
+    "answer": 1,
+    "explanation": "SSID(Service Set Identifier)는 무선랜 네트워크를 식별하는 최대 32바이트의 문자열로, 무선 기기가 특정 BSS(Basic Service Set)에 접속할 때 식별자로 사용된다. 숨김(hidden) 설정이 가능하지만, 패킷 분석으로 노출될 수 있어 보안 수단으로는 부족하다.",
+    "hasImage": false,
+    "tags": ["보안기사", "네트워크보안", "SSID", "무선랜", "BSS", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-023",
+    "year": 2021,
+    "session": 1,
+    "number": 23,
+    "subject": "네트워크보안",
+    "topic": "SDN",
+    "type": "objective",
+    "question": "지문에서 설명하고 있는 것은?\n\n이것은 폐쇄적이었던 네트워크 장비들을 열린 구조로 바꾸고 소프트웨어로 제어할 수 있는 기능성을 통해서 네트워크 구조의 새로운 패러다임을 미끌고 있으며 네트워크의 관리적인 측면에서 많은 발전을 이루고 있다. 트래픽의 미세흐름을 조정를 통해 네트워크의 효율성을 높이고, 지금까지 어려웠던 QoS 보장 기술을 확보하며, 손쉬운 장비 관리 등 네트워크의 성능과 관리성을 향상시킬 수 있다.",
+    "options": [
+      "NFV(Network Function Virtualization)",
+      "MDR(Managed Detection & Response)",
+      "EDR(Endpoint Detection & Response)",
+      "SDN(Software Defined Networking)"
+    ],
+    "answer": 4,
+    "explanation": "SDN(Software Defined Networking)은 네트워크의 제어 평면(Control Plane)과 데이터 평면(Data Plane)을 분리하여 소프트웨어로 네트워크를 중앙에서 제어하는 기술이다. 트래픽 흐름 제어, QoS 보장, 유연한 네트워크 관리가 가능하다.",
+    "hasImage": false,
+    "tags": ["보안기사", "네트워크보안", "SDN", "소프트웨어정의네트워킹", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-024",
+    "year": 2021,
+    "session": 1,
+    "number": 24,
+    "subject": "네트워크보안",
+    "topic": "APT",
+    "type": "objective",
+    "question": "다음 중 지능형 지속 위협에 대한 설명으로 옳은 것은?",
+    "options": [
+      "공격의 설계부터 침투까지 매우 빠른 시간 내에 이루어진다.",
+      "다른 형태의 공격들에 비해 대체로 공격자의 비용이 적게 든다.",
+      "시스템관리자는 가능한 모든 공격을 고려해야 되기 때문에 방어가 매우 어렵다.",
+      "하나의 타깃에 대해서 같은 방법으로 지속적으로 뚫을 때까지 공격하는 것이다."
+    ],
+    "answer": 3,
+    "explanation": "APT(Advanced Persistent Threat, 지능형 지속 위협)는 특정 타깃을 오랜 기간에 걸쳐 다양한 방법으로 공격한다. 공격자는 단 한 가지 방법이 성공하면 되지만, 방어자는 모든 가능한 공격 벡터를 차단해야 하므로 방어가 매우 어렵다(비대칭 전쟁). APT는 빠르지 않고 장기간 지속되며 비용도 많이 든다.",
+    "hasImage": false,
+    "tags": ["보안기사", "네트워크보안", "APT", "지능형지속위협", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-025",
+    "year": 2021,
+    "session": 1,
+    "number": 25,
+    "subject": "네트워크보안",
+    "topic": "무차별 모드 / Promiscuous Mode",
+    "type": "objective",
+    "question": "다음 지문의 빈칸 ㉠, ㉡에 들어갈 용어로 올바르게 짝지어진 것은?\n\n무차별 모드로 설정하면 자신의 ( ㉠ ) 주소로 오는 패킷이 아닌 것도 전달받을 수 있다. 이를 방어하기 위한 가장 효과적인 대처 방안은 ( ㉡ )이다.",
+    "options": [
+      "㉠ MAC ㉡ 암호화",
+      "㉠ MAC ㉡ 인증",
+      "㉠ 스위치 ㉡ 인증",
+      "㉠ 스위치 ㉡ 암호화"
+    ],
+    "answer": 1,
+    "explanation": "무차별 모드(Promiscuous Mode)는 NIC가 자신의 MAC 주소가 아닌 패킷도 수신하는 모드로, 스니핑 공격에 활용된다. 스니핑 방어를 위해 가장 효과적인 방법은 통신 내용을 암호화(SSL/TLS 등)하는 것이다. 스위치 사용은 콜리전 도메인을 분리하지만 완전한 방어가 아니다.",
+    "hasImage": false,
+    "tags": ["보안기사", "네트워크보안", "PromiscuousMode", "무차별모드", "스니핑", "암호화", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-026",
+    "year": 2021,
+    "session": 1,
+    "number": 26,
+    "subject": "네트워크보안",
+    "topic": "OSI Transport Layer",
+    "type": "objective",
+    "question": "OSI 7 Layer 중 어느 계층에 대한 설명인가?\n\n데이터를 주고 받을 때 데이터의 유실(Loss)이 없도록 보장해주는 계층이며, 신뢰성을 보장하기 위해 데이터를 주고 받는 End-to-End에서 전달받은 데이터의 오류를 검출하고, 만약 오류가 있다고 판단되면 재전송을 요청한다.",
+    "options": [
+      "Transport Layer",
+      "Network Layer",
+      "Session Layer",
+      "Physical Layer"
+    ],
+    "answer": 1,
+    "explanation": "전송 계층(Transport Layer, OSI 4계층)은 End-to-End 신뢰성 있는 데이터 전송을 담당한다. TCP는 오류 검출 및 재전송, 흐름 제어, 혼잡 제어를 제공한다. 네트워크 계층은 라우팅, 세션 계층은 세션 관리, 물리 계층은 비트 전송을 담당한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "네트워크보안", "OSI7Layer", "전송계층", "TCP", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-027",
+    "year": 2021,
+    "session": 1,
+    "number": 27,
+    "subject": "네트워크보안",
+    "topic": "방화벽 규칙",
+    "type": "objective",
+    "question": "틀린 것은? (문제 복원 오류로 문제 내용이 정확하지 않습니다. 정답은 2번입니다.)\n\n① 출발지 211.1.99.1 / 목적지주소 32.15.1.1인 패킷은 규칙 1에 의해 거부된다.\n② 출발지 211.1.99.1 / 목적지주소 32.15.6.15인 패킷은 규칙 2에 의해 허용된다.\n③ 출발지 211.1.37.15 / 목적지주소 32.15.6.15인 패킷은 규칙 2에 의해 허용된다.\n④ 출발지 211.1.37.15 / 목적지주소 32.15.1.1인 패킷은 규칙 3에 의해 차단된다.",
+    "options": [
+      "출발지 211.1.99.1 / 목적지주소 32.15.1.1인 패킷은 규칙 1에 의해 거부된다.",
+      "출발지 211.1.99.1 / 목적지주소 32.15.6.15인 패킷은 규칙 2에 의해 허용된다.",
+      "출발지 211.1.37.15 / 목적지주소 32.15.6.15인 패킷은 규칙 2에 의해 허용된다.",
+      "출발지 211.1.37.15 / 목적지주소 32.15.1.1인 패킷은 규칙 3에 의해 차단된다."
+    ],
+    "answer": 2,
+    "explanation": "문제 복원 오류로 방화벽 규칙 테이블 이미지가 누락되었다. 정답은 2번(출발지 211.1.99.1 / 목적지 32.15.6.15 패킷이 규칙 2에 의해 허용된다는 설명이 틀림)이다.",
+    "hasImage": true,
+    "imageNote": "방화벽 규칙 테이블 포함 (문제 복원 오류로 이미지 내용 불완전)",
+    "tags": ["보안기사", "네트워크보안", "방화벽", "패킷필터링", "ACL", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-028",
+    "year": 2021,
+    "session": 1,
+    "number": 28,
+    "subject": "네트워크보안",
+    "topic": "TCP 3-Way Handshaking",
+    "type": "objective",
+    "question": "TCP의 3-Way Handshaking을 통한 서버와의 연결 설정 과정에서, 연결에 성공한 클라이언트 측의 연결 상태 천이 다이어그램상의 상태 변화의 순서를 바르게 나열한 것은?",
+    "options": [
+      "CLOSED→SYN_RCVD→ESTABLISHED",
+      "CLOSED→SYN_SENT→ESTABLISHED",
+      "LISTEN→SYN_RCVD→ESTABLISHED",
+      "LISTEN→SYN_SENT→ESTABLISHED"
+    ],
+    "answer": 2,
+    "explanation": "TCP 3-Way Handshaking에서 클라이언트 상태 변화: CLOSED(초기) → SYN_SENT(SYN 패킷 전송 후) → ESTABLISHED(SYN-ACK 수신 후 ACK 전송). 서버는 LISTEN → SYN_RCVD → ESTABLISHED 순으로 변화한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "네트워크보안", "TCP", "3WayHandshaking", "상태천이", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-029",
+    "year": 2021,
+    "session": 1,
+    "number": 29,
+    "subject": "네트워크보안",
+    "topic": "SOAR",
+    "type": "objective",
+    "question": "보안 솔루션은 무엇인가?\n\n다양한 보안 위협에 대한 대응 프로세스를 자동화해 낮은 수준의 보안 이벤트는 사람의 도움 없이 처리하고, 보안사고 발생 시 표준화된 업무 프로세스에 따라 담당자가 쉽게 대응할 수 있는 차세대 솔루션이다.",
+    "options": [
+      "SIEM",
+      "SOAR",
+      "NGFW",
+      "UTM"
+    ],
+    "answer": 2,
+    "explanation": "SOAR(Security Orchestration, Automation and Response)는 보안 운영을 자동화하고 오케스트레이션하는 플랫폼이다. 낮은 수준의 이벤트는 자동으로 처리하고, 고수준 사고 발생 시 표준화된 플레이북으로 대응을 지원한다. SIEM은 로그 수집·분석, NGFW는 차세대 방화벽, UTM은 통합위협관리이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "네트워크보안", "SOAR", "보안자동화", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-030",
+    "year": 2021,
+    "session": 1,
+    "number": 30,
+    "subject": "네트워크보안",
+    "topic": "traceroute",
+    "type": "objective",
+    "question": "다음 지문은 무엇에 대한 설명인가?\n\n패킷이 목적지까지 도달하는 동안 거치는 라우터 IP를 확인하는 도구이다. 이 도구는 udp와 icmp, ip의 ttl 값을 이용한다. 상대방의 IP 주소를 알고 있는 상태에서 상대방에게 인터넷 서비스를 제공하고 있는 회사를 알아내는 데 사용할 수 있다.",
+    "options": [
+      "traceroute",
+      "ping",
+      "netstat",
+      "route"
+    ],
+    "answer": 1,
+    "explanation": "traceroute(Windows: tracert)는 패킷이 목적지까지 이동하는 경로를 추적한다. TTL 값을 1씩 증가시켜 각 홉(라우터)에서 ICMP Time Exceeded 메시지를 수신하여 경로상의 라우터 IP를 확인한다. UDP, ICMP, IP TTL을 활용한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "네트워크보안", "traceroute", "TTL", "경로추적", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-031",
+    "year": 2021,
+    "session": 1,
+    "number": 31,
+    "subject": "네트워크보안",
+    "topic": "NMAP 포트 스캔",
+    "type": "objective",
+    "question": "NMAP 포트 스캔에 대한 설명으로 올바르지 못한 것은?",
+    "options": [
+      "TCP Connect Scan: 대상 포트에 대해 3-Way Handshaking을 정상적으로 통신하는 방식으로 정상적이면 포트가 열려있다고 판단할 수 있다.",
+      "TCP FIN Scan: 대상 포트로 FIN 패킷을 전송하는 방식으로 응답을 받으면 포트가 열려있다고 판단할 수 있다.",
+      "TCP X-MAS Scan: 대상 포트로 FIN, URG, PSH 플래그가 모두 설정된 패킷을 전송하는 방식으로 응답을 받으면 포트가 닫혀있다고 판단할 수 있다.",
+      "TCP Null Scan: 대상 포트로 NULL 패킷을 전송하는 방식으로 응답을 받으면 포트가 닫혀있다고 판단할 수 있다."
+    ],
+    "answer": 2,
+    "explanation": "TCP FIN Scan에서 FIN 패킷에 RST로 응답하면 포트가 '닫혀있음'을 의미하고, 응답이 없으면 포트가 '열려있음'으로 판단한다. '응답을 받으면 포트가 열려있다'는 설명이 틀렸다. Null, FIN, X-MAS 스캔 모두 응답 없음=열림, RST=닫힘으로 판단한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "네트워크보안", "NMAP", "포트스캔", "FINScan", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-032",
+    "year": 2021,
+    "session": 1,
+    "number": 32,
+    "subject": "네트워크보안",
+    "topic": "스푸핑 공격",
+    "type": "objective",
+    "question": "다음 중 스푸핑 공격의 종류가 아닌 것은?",
+    "options": [
+      "ARP",
+      "DNS",
+      "IP",
+      "UDP"
+    ],
+    "answer": 4,
+    "explanation": "스푸핑(Spoofing) 공격은 신뢰할 수 있는 대상을 위장하는 공격으로 ARP 스푸핑, DNS 스푸핑, IP 스푸핑, 이메일 스푸핑 등이 있다. UDP 자체는 프로토콜 유형으로 스푸핑의 종류가 아니다. UDP는 IP 스푸핑에 악용될 수 있는 프로토콜이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "네트워크보안", "스푸핑", "ARP스푸핑", "DNS스푸핑", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-033",
+    "year": 2021,
+    "session": 1,
+    "number": 33,
+    "subject": "네트워크보안",
+    "topic": "HTTP GET Flooding",
+    "type": "objective",
+    "question": "가장 상위의 계층에서 이루어지는 서비스 거부 공격은 무엇인가?",
+    "options": [
+      "ICMP Flooding Attack",
+      "LAND Attack",
+      "HTTP GET Flooding Attack",
+      "Teardrop Attack"
+    ],
+    "answer": 3,
+    "explanation": "HTTP GET Flooding Attack은 OSI 7계층(응용 계층)에서 이루어지는 DoS/DDoS 공격으로 가장 상위 계층 공격이다. ICMP Flooding은 3계층(네트워크), LAND Attack은 3계층, Teardrop Attack은 3계층(IP 단편화)에서 이루어진다.",
+    "hasImage": false,
+    "tags": ["보안기사", "네트워크보안", "HTTPGETFlooding", "DoS", "응용계층공격", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-034",
+    "year": 2021,
+    "session": 1,
+    "number": 34,
+    "subject": "네트워크보안",
+    "topic": "IDS",
+    "type": "objective",
+    "question": "침입탐지시스템(IDS)에 대한 설명으로 가장 옳은 것은 무엇인가?",
+    "options": [
+      "침입 경로를 찾을 수 있도록 탐지대상으로부터 생성되는 로그를 제공한다.",
+      "Host-IDS는 운영체제에 독립적이다.",
+      "오용 침입탐지 기법은 오탐률(False Positive)이 높다.",
+      "'침입분석 및 탐지→ 데이터수집→데이터 가공 및 축약→보고 및 대응'의 단계로 실행된다."
+    ],
+    "answer": 1,
+    "explanation": "IDS는 탐지 대상으로부터 수집한 로그를 분석하여 침입 경로 파악에 활용할 수 있도록 한다. Host-IDS는 운영체제 종속적이며, 오용 탐지(Misuse Detection)는 알려진 공격 패턴을 사용하므로 오탐률이 낮고 미탐률이 높다. IDS 단계는 데이터수집→가공·축약→탐지→보고 순이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "네트워크보안", "IDS", "침입탐지시스템", "오용탐지", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-035",
+    "year": 2021,
+    "session": 1,
+    "number": 35,
+    "subject": "네트워크보안",
+    "topic": "SYN Flooding",
+    "type": "objective",
+    "question": "공격 특징 및 대응방안과 관련성이 가장 높은 것은?\n\n웹서버 OS의 TCP 스택(Stack) 자원을 소모하는 특징을 갖는 웹서버 자원 소모 공격으로 사용될 수 있으며, 그 대응방법으로 Anti-DDoS 장비에서 소스 IP별로 PPS 임계치를 설정하거나 패킷 헤더 검사를 통해 정상적인 옵션 필드값을 갖지 않는 비정상 패킷을 차단할 수 있다.",
+    "options": [
+      "UDP Flooding",
+      "SYN Flooding",
+      "ICMP Flooding",
+      "GET Flooding"
+    ],
+    "answer": 2,
+    "explanation": "SYN Flooding은 TCP 연결 과정에서 SYN 패킷만 대량 전송하여 서버의 TCP 백로그 큐를 고갈시키는 공격이다. 서버는 SYN-ACK를 보낸 후 응답을 기다리는 반열림(Half-Open) 연결 상태가 쌓여 정상 연결 불가 상태가 된다. PPS 제한, SYN Cookie, 방화벽 차단으로 대응한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "네트워크보안", "SYNFlooding", "DDoS", "TCP", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-036",
+    "year": 2021,
+    "session": 1,
+    "number": 36,
+    "subject": "네트워크보안",
+    "topic": "IPSec VPN",
+    "type": "objective",
+    "question": "VPN에 대한 설명으로 올바르지 못한 것은?",
+    "options": [
+      "SSL VPN은 웹브라우저만 있으면 언제 어디서나 사용이 가능하다.",
+      "IPSec VPN은 네트워크 계층에서 안전하게 정보를 전송하는 방법이다.",
+      "IPSec VPN은 운영방식에 따라 트랜스포트 모드만 지원하고 암호화 여부에 따라 ESP, AH 프로토콜을 사용한다.",
+      "기본적으로 SSL VPN과 IPSec VPN은 데이터의 기밀성과 무결성이 동일하며, 단지 데이터의 암호화 구현 방식에 차이가 있다."
+    ],
+    "answer": 3,
+    "explanation": "IPSec VPN은 트랜스포트 모드(Transport Mode)와 터널 모드(Tunnel Mode) 두 가지 운영방식을 지원한다. 트랜스포트 모드는 페이로드만 암호화하고, 터널 모드는 IP 패킷 전체를 암호화한다. AH(인증 헤더)와 ESP(캡슐화 보안 페이로드) 두 프로토콜을 사용한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "네트워크보안", "IPSec", "VPN", "터널모드", "트랜스포트모드", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-037",
+    "year": 2021,
+    "session": 1,
+    "number": 37,
+    "subject": "네트워크보안",
+    "topic": "Proxy",
+    "type": "objective",
+    "question": "다음 지문에서 빈칸 ㉠에 해당하는 것은?\n\n( ㉠ )는 웹서버를 대신하며 HTTP 요청을 충족시키는 네트워크 개체이다. 자체의 저장 디스크를 갖고 있으며 최근 호출된 객체의 사본을 저장 및 보존한다. 브라우저는 사용자의 모든 HTTP 요청미 먼저 ( ㉠ )에 보내지도록 구성할 수 있다. 이렇게 설정되면 객체에 대한 각각의 브라우저 요청들은 가장 먼저 ( ㉠ )에 보내지게 된다.",
+    "options": [
+      "Proxy",
+      "Cookie",
+      "Apache",
+      "ActiveX"
+    ],
+    "answer": 1,
+    "explanation": "Proxy(프록시) 서버는 클라이언트와 서버 사이에서 중계 역할을 하며 캐싱 기능을 제공한다. 모든 HTTP 요청을 먼저 수신하여 캐시된 콘텐츠가 있으면 서버에 재요청 없이 응답한다. 웹 필터링, 로드 밸런싱, 익명화 등에도 활용된다.",
+    "hasImage": false,
+    "tags": ["보안기사", "네트워크보안", "Proxy", "프록시서버", "캐싱", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-038",
+    "year": 2021,
+    "session": 1,
+    "number": 38,
+    "subject": "네트워크보안",
+    "topic": "IDS vs 방화벽",
+    "type": "objective",
+    "question": "침입탐지시스템(IDS)에 대한 설명으로 가장 적절하지 않은 것은?",
+    "options": [
+      "패킷의 유형에 따라 차단하거나 보내주는 간단한 패킷 필터링 기능을 제공한다.",
+      "네트워크상의 패킷을 분석하여 침입을 탐지하거나, 내부 사용자들의 활동을 감시하여 해킹 시도를 탐지한다.",
+      "네트워크 기반, 호스트 기반, 오용 탐지, 비정상 탐지 등이 있다.",
+      "침입 경로를 찾을 수 있도록 탐지대상으로부터 생성되는 로그를 제공한다."
+    ],
+    "answer": 1,
+    "explanation": "패킷 유형에 따라 차단하거나 허용하는 패킷 필터링은 방화벽(Firewall)의 기능이다. IDS(침입탐지시스템)는 탐지(Detection) 기능만 수행하며 차단(Blocking)은 하지 않는다. 차단 기능이 추가된 것은 IPS(침입방지시스템)이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "네트워크보안", "IDS", "방화벽", "패킷필터링", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-039",
+    "year": 2021,
+    "session": 1,
+    "number": 39,
+    "subject": "네트워크보안",
+    "topic": "비대면 업무 VPN",
+    "type": "objective",
+    "question": "비대면 업무 환경에 대한 설명으로 올바르지 않은 것은?",
+    "options": [
+      "기업 업무망에 안전하게 접속하기 위해서는 VPN 또는 암호통신이 필수적이다.",
+      "원격 근무자가 기업 업무망에 VPN을 통해 접속할 경우 다중 인증을 사용하지 않아도 안전하다.",
+      "구축형 영상회의 플랫폼을 이용할 경우 참가자는 기업에서 제공하는 VPN을 이용해서 접속해야 한다.",
+      "비대면 업무에 사용하는 네트워크 환경이 안전하지 않을 경우 통신 내용 또는 데이터가 유출될 수 있다."
+    ],
+    "answer": 2,
+    "explanation": "VPN 접속 시에도 단일 요소 인증만으로는 충분하지 않다. VPN 자격증명이 탈취될 경우 내부 네트워크 전체가 위험에 노출되므로, 원격 근무자의 VPN 접속에는 OTP, 스마트카드 등의 다중 인증(MFA)이 필수적이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "네트워크보안", "VPN", "다중인증", "비대면보안", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-040",
+    "year": 2021,
+    "session": 1,
+    "number": 40,
+    "subject": "네트워크보안",
+    "topic": "traceroute와 ICMP",
+    "type": "objective",
+    "question": "traceroute 프로그램은 icmp protocol을 이용하여 패킷의 전송경로를 보여주는 프로토콜이다. 다음 icmp 메시지 중 traceroute와 연관이 있는 것은?\n\n가. 시간초과(time exceeded)\n나. 메코(echo)\n다. 송신지 억제(source quench)\n라. 타임스탬프(timestamp)",
+    "options": [
+      "가, 나",
+      "나, 다",
+      "다, 라",
+      "가, 라"
+    ],
+    "answer": 1,
+    "explanation": "traceroute는 두 가지 ICMP 메시지를 활용한다. 첫째, TTL이 0이 되면 라우터가 보내는 'Time Exceeded(시간초과)' 메시지로 경로상 라우터를 파악한다. 둘째, 목적지 도달 여부 확인에 'Echo(메코)' 요청/응답을 활용한다. 송신지 억제와 타임스탬프는 traceroute와 무관하다.",
+    "hasImage": false,
+    "tags": ["보안기사", "네트워크보안", "traceroute", "ICMP", "TimeExceeded", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-041",
+    "year": 2021,
+    "session": 1,
+    "number": 41,
+    "subject": "어플리케이션보안",
+    "topic": "워터마킹",
+    "type": "objective",
+    "question": "다음 지문에서 설명하는 DRM 기술은 무엇인가?\n\n디지털 저작권 보호 관리를 위한 정보보호 기술의 하나로서 디지털 이미지, 오디오, 비디오 등 디지털 형식으로 되어 있는 지적재산의 저작권 보호를 위해 자료에 삽입한 비트 패턴을 말한다. 동일한 자료에 삽입되는 비트 패턴은 항상 동일하다.",
+    "options": [
+      "DOI",
+      "핑거프린팅",
+      "안티탬퍼링 기술",
+      "워터마킹"
+    ],
+    "answer": 4,
+    "explanation": "워터마킹(Watermarking)은 디지털 콘텐츠에 저작권 정보를 담은 비트 패턴을 삽입하는 기술이다. 동일한 저작물에는 동일한 워터마크가 삽입된다. 핑거프린팅은 구매자별로 다른 패턴을 삽입하여 불법 유통 경로를 추적하는 기술이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "어플리케이션보안", "워터마킹", "DRM", "디지털저작권", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-042",
+    "year": 2021,
+    "session": 1,
+    "number": 42,
+    "subject": "어플리케이션보안",
+    "topic": "웹셸",
+    "type": "objective",
+    "question": "서버를 점검하던 중 다음과 같은 문장이 포함된 ASP 스크립트가 존재하는 것을 알게 되었다. 의심되는 공격은 무엇인가?\n\n<% eval request(\"cmd\") %>",
+    "options": [
+      "Buffer Overflow",
+      "CSRF",
+      "웹셸(WebShell)",
+      "DoS/DDoS"
+    ],
+    "answer": 3,
+    "explanation": "웹셸(WebShell)은 공격자가 웹 서버에 업로드하는 악성 스크립트로, HTTP 요청을 통해 서버 명령을 원격 실행한다. '<% eval request(\"cmd\") %>'는 ASP 웹셸의 전형적인 패턴으로, 클라이언트가 보낸 'cmd' 파라미터를 서버에서 실행하는 구조이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "어플리케이션보안", "웹셸", "WebShell", "ASP", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-043",
+    "year": 2021,
+    "session": 1,
+    "number": 43,
+    "subject": "어플리케이션보안",
+    "topic": "DNS 리졸버",
+    "type": "objective",
+    "question": "다음 지문에서 설명하고 있는 DNS 구성요소는?\n\n인터넷상에 산재하여 존재하고 있는 네임서버들 가운데에서 특정한 도메인 이름에 대해서 원하는 유형의 리소스 레코드 데이터를 조회하는 기능을 수행하는 역할을 한다.",
+    "options": [
+      "whois 클라이언트",
+      "리소스 레코드 에이전트",
+      "도메인 제어기",
+      "리졸버"
+    ],
+    "answer": 4,
+    "explanation": "리졸버(Resolver)는 DNS 클라이언트로서 네임서버에 도메인 이름 조회 요청을 보내고 응답을 받는 역할을 한다. 클라이언트의 DNS 쿼리를 처리하기 위해 여러 네임서버를 순차적으로 조회(재귀 또는 반복)한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "어플리케이션보안", "DNS", "리졸버", "Resolver", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-044",
+    "year": 2021,
+    "session": 1,
+    "number": 44,
+    "subject": "어플리케이션보안",
+    "topic": "HTTP POST 방식",
+    "type": "objective",
+    "question": "HTTP 요청 방식은 무엇인가?\n\n이 요청 방식은 게시판 등에 파일 업로드를 위해 주로 사용하는 방식으로서 URL에 요청 데이터를 기록하지 않고, HTTP 바디에 데이터를 전송한다. 따라서 민감값을 URL을 통해 직접 전송하지 않기 때문에 다른 사람이 링크를 통해 해당 페이지를 볼 수 없다.",
+    "options": [
+      "GET 방식",
+      "POST 방식",
+      "HEAD 방식",
+      "CONNECT 방식"
+    ],
+    "answer": 2,
+    "explanation": "POST 방식은 데이터를 HTTP 요청 바디(Body)에 담아 전송하므로 URL에 데이터가 노출되지 않는다. 파일 업로드, 로그인, 폼 데이터 제출에 주로 사용된다. GET은 URL 쿼리스트링에 데이터를 포함, HEAD는 헤더만 요청, CONNECT는 터널링에 사용한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "어플리케이션보안", "HTTP", "POST방식", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-045",
+    "year": 2021,
+    "session": 1,
+    "number": 45,
+    "subject": "어플리케이션보안",
+    "topic": "FTP 바운스 공격",
+    "type": "objective",
+    "question": "FTP 공격 유형 중 어떤 공격 유형인지 고르면?\n\nFTP 서버가 데이터를 데이터 포트(20/TCP)로 전송할 때 목적지가 어딘지 검사하지 않는 프로토콜의 구조적 문제점을 이용하는 공격 유형이다. 익명 FTP 서버를 이용해 공격자가 자신을 숨기고 PORT 명령을 조작하여 공격대상의 네트워크 및 포트스캔, Fake Mail 전송, 데이터 전송이 가능하며, 또한 방화벽 내부에 FTP 서버가 있으면 방화벽 패킷 필터링을 무시하고 여러 공격이 가능하다.",
+    "options": [
+      "FTP 무차별 대입 공격",
+      "FTP 바운스 공격",
+      "익명 FTP 공격",
+      "TFTP 공격"
+    ],
+    "answer": 2,
+    "explanation": "FTP 바운스 공격(FTP Bounce Attack)은 FTP 서버의 PORT 명령이 데이터 전송 목적지를 검증하지 않는 취약점을 이용한다. 공격자는 FTP 서버를 중간 경유지(바운스)로 활용하여 목표 시스템을 스캔하거나 공격 출처를 숨긴다.",
+    "hasImage": false,
+    "tags": ["보안기사", "어플리케이션보안", "FTP바운스공격", "FTPBounce", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-046",
+    "year": 2021,
+    "session": 1,
+    "number": 46,
+    "subject": "어플리케이션보안",
+    "topic": "Set-Cookie 헤더",
+    "type": "objective",
+    "question": "다음 빈칸 ㉠에 들어갈 내용으로 알맞은 것은?\n\n웹 세션 동작 메커니즘 중 클라이언트가 세션 토큰을 포함하지 않은 HTTP 요청 메시지를 전송했을 때, 서버는 클라이언트로 응답 메시지를 보내는 경우에 헤더에 ( ㉠ )값을 설정하면 클라이언트에 쿠키를 만들 수 있다.",
+    "options": [
+      "Cookie",
+      "Set-Cookie",
+      "Session",
+      "Keep-alive"
+    ],
+    "answer": 2,
+    "explanation": "서버가 클라이언트에 쿠키를 생성하게 하려면 HTTP 응답 헤더에 'Set-Cookie' 값을 설정한다. 이후 클라이언트는 동일 서버로의 요청에 'Cookie' 헤더에 해당 값을 포함시켜 전송한다. Set-Cookie는 서버→클라이언트, Cookie는 클라이언트→서버 방향이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "어플리케이션보안", "SetCookie", "HTTP헤더", "세션관리", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-047",
+    "year": 2021,
+    "session": 1,
+    "number": 47,
+    "subject": "어플리케이션보안",
+    "topic": "전자서명 기능",
+    "type": "objective",
+    "question": "전자서명(Digital Signature) 메커니즘에서 제공되는 기능과 가장 거리가 먼 것은?",
+    "options": [
+      "메시지 송신자에 대한 인증",
+      "전자서명 메시지에 대한 부인방지",
+      "전자서명 검증 과정을 통한 메시지 무결성",
+      "송수신 메시지에 대한 비밀성"
+    ],
+    "answer": 4,
+    "explanation": "전자서명은 메시지 인증(송신자 확인), 부인방지(서명 사실 부인 불가), 무결성(메시지 변조 여부 확인)을 제공한다. 그러나 비밀성(기밀성)은 전자서명의 기능이 아니다. 비밀성은 암호화(공개키 또는 대칭키)를 통해 제공된다.",
+    "hasImage": false,
+    "tags": ["보안기사", "어플리케이션보안", "전자서명", "비밀성", "부인방지", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-048",
+    "year": 2021,
+    "session": 1,
+    "number": 48,
+    "subject": "어플리케이션보안",
+    "topic": "SET 이중 서명",
+    "type": "objective",
+    "question": "다음 지문에서 설명하는 서명 방식은?\n\nSET에서 도입된 기술로 상점이 카드 사용자의 계좌번호와 같은 지불정보를 모르게 하는 동시에 상점에 대금을 지불하는 은행은 카드 사용자가 상점에서 산 물건을 모르지만 상점이 요구한 결제 대금이 정확한지 확인할 수 있게 한다.",
+    "options": [
+      "이중 서명",
+      "은닉 서명",
+      "비밀 서명",
+      "지불 서명"
+    ],
+    "answer": 1,
+    "explanation": "이중 서명(Dual Signature)은 SET(Secure Electronic Transaction) 프로토콜에서 사용하는 기술이다. 구매 정보(상점용)와 지불 정보(은행용)를 각각 해시하여 연결한 후 서명한다. 상점은 지불 정보를, 은행은 구매 정보를 모르면서도 거래의 유효성을 검증할 수 있다.",
+    "hasImage": false,
+    "tags": ["보안기사", "어플리케이션보안", "이중서명", "DualSignature", "SET", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-049",
+    "year": 2021,
+    "session": 1,
+    "number": 49,
+    "subject": "어플리케이션보안",
+    "topic": "TFTP",
+    "type": "objective",
+    "question": "TFTP에 대한 설명으로 옳지 않은 것은?",
+    "options": [
+      "RRQ와 WRQ 메시지는 클라이언트가 서버에게 전송하는 요청이다.",
+      "DATA 메시지는 클라이언트와 서버가 모두 사용한다.",
+      "ACK 메시지는 클라이언트와 서버가 모두 사용한다.",
+      "TCP 69번 포트를 통해 데이터를 전송한다."
+    ],
+    "answer": 4,
+    "explanation": "TFTP(Trivial File Transfer Protocol)는 TCP가 아닌 UDP 69번 포트를 사용한다. 인증이나 암호화 없이 간단한 파일 전송을 제공하며, 주로 네트워크 장비 부팅(PXE)이나 펌웨어 업데이트에 사용된다.",
+    "hasImage": false,
+    "tags": ["보안기사", "어플리케이션보안", "TFTP", "UDP69", "파일전송", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-050",
+    "year": 2021,
+    "session": 1,
+    "number": 50,
+    "subject": "어플리케이션보안",
+    "topic": "PGP",
+    "type": "objective",
+    "question": "PGP는 전자우편 보안 시스템이다. PGP가 제공하지 않는 기능은?",
+    "options": [
+      "전자서명",
+      "압축",
+      "수신 부인방지",
+      "단편화와 재조립"
+    ],
+    "answer": 3,
+    "explanation": "PGP(Pretty Good Privacy)는 전자서명(인증·부인방지), 압축, 암호화(기밀성), 단편화·재조립, 이메일 호환성(Base64 인코딩) 기능을 제공한다. 그러나 수신 부인방지는 제공하지 않는다. 전자서명은 송신자의 부인방지만 제공하며, 수신 사실을 증명하는 수신 부인방지는 PGP 범위 밖이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "어플리케이션보안", "PGP", "전자우편보안", "부인방지", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-051",
+    "year": 2021,
+    "session": 1,
+    "number": 51,
+    "subject": "어플리케이션보안",
+    "topic": "FTP Passive 모드 포트",
+    "type": "objective",
+    "question": "㉠, ㉡에 들어갈 내용으로 올바르게 짝지어진 것은?\n\nFTP 서버가 Passive mode로 동작할 수 있기 위해서는 보안 정책에서 모든 인터넷으로부터 FTP 서버로 목적지 포트 ( ㉠ )/TCP, 모든 인터넷으로부터 FTP 서버로 목적지 포트 ( ㉡ )이상/TCP 허용하는 규칙이 필요하다.",
+    "options": [
+      "㉠ 21 ㉡ 1024",
+      "㉠ 20 ㉡ 1024",
+      "㉠ 21 ㉡ 2048",
+      "㉠ 20 ㉡ 2048"
+    ],
+    "answer": 1,
+    "explanation": "FTP Passive 모드에서 제어 채널은 21번/TCP를 사용하고, 데이터 채널은 1024번 이상의 임시 포트(Ephemeral Port)를 사용한다. 방화벽 정책에서 21번과 1024 이상의 TCP 포트를 허용해야 Passive FTP가 정상 작동한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "어플리케이션보안", "FTP", "PassiveMode", "포트", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-052",
+    "year": 2021,
+    "session": 1,
+    "number": 52,
+    "subject": "어플리케이션보안",
+    "topic": "이메일 구조 MSA",
+    "type": "objective",
+    "question": "인터넷 메일 구조의 핵심요소에 대한 설명으로 옳지 않은 것은?",
+    "options": [
+      "MUA - 사용자 액터(actor)와 사용자 응용프로그램을 대신하여 동작한다.",
+      "MSA - 원격서버로부터 POP3 또는 IMAP를 사용하여 메시지를 추출한다.",
+      "MDA - 메시지를 MHS에서 MS로 메시지를 전달한다.",
+      "MTA - 메시지가 목적지 MDA에 도달할 때까지 중계 역할을 한다."
+    ],
+    "answer": 2,
+    "explanation": "MSA(Mail Submission Agent)는 MUA로부터 메일을 수신하여 MTA에 전달하는 역할을 한다. POP3 또는 IMAP으로 원격 서버에서 메시지를 가져오는 것은 MUA(Mail User Agent)의 역할이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "어플리케이션보안", "이메일", "MSA", "MUA", "MTA", "MDA", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-053",
+    "year": 2021,
+    "session": 1,
+    "number": 53,
+    "subject": "어플리케이션보안",
+    "topic": "웹 방화벽",
+    "type": "objective",
+    "question": "다음 중 웹(Web) 방화벽이 수행하는 주요 기능이 아닌 것은?",
+    "options": [
+      "파일 업로드 제어 및 검사 기능",
+      "HTTP 공격 패킷 탐지 및 차단",
+      "웹 서버 오류 필터링 및 기밀 정보 유출 차단",
+      "IP 주소와 포트 기반 패킷 탐지 및 차단"
+    ],
+    "answer": 4,
+    "explanation": "IP 주소와 포트 기반의 패킷 탐지 및 차단은 일반 네트워크 방화벽의 기능이다. 웹 방화벽(WAF, Web Application Firewall)은 HTTP/HTTPS 트래픽을 분석하여 SQL Injection, XSS, 파일 업로드 공격 등 웹 애플리케이션 계층 공격을 탐지·차단한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "어플리케이션보안", "WAF", "웹방화벽", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-054",
+    "year": 2021,
+    "session": 1,
+    "number": 54,
+    "subject": "어플리케이션보안",
+    "topic": "디지털 포렌식 원칙",
+    "type": "objective",
+    "question": "다음 지문에서 설명하고 있는 원칙으로 적절한 것은?\n\n증거는 획득, 이송, 분석, 보관, 법정제출이라는 일련의 과정이 명확해야 하고 이런 과정에 대한 추적이 가능해야 한다.",
+    "options": [
+      "재현의 원칙",
+      "무결성의 원칙",
+      "정당성의 원칙",
+      "연계보관성의 원칙"
+    ],
+    "answer": 4,
+    "explanation": "연계 보관성(Chain of Custody)의 원칙은 디지털 증거가 수집부터 법정 제출까지 모든 과정의 취급자·이동 경로·처리 내역을 명확히 문서화하여 증거의 신뢰성을 보장하는 원칙이다. 무결성은 증거의 변형 방지, 재현은 동일 결과 재현 가능성이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "어플리케이션보안", "디지털포렌식", "연계보관성", "ChainOfCustody", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-055",
+    "year": 2021,
+    "session": 1,
+    "number": 55,
+    "subject": "어플리케이션보안",
+    "topic": "CSRF",
+    "type": "objective",
+    "question": "웹 보안 취약점은 무엇인가?\n\n세션 쿠키, SSL 인증서, 윈도우 도메인 인증과 같이 자동으로 입력된 신뢰 정보를 기반으로 한 웹 애플리케이션에서 사용자의 요청을 변조함으로써 해당 사용자의 권한으로 악의적인 공격을 수행한다. 공격 대상은 클라이언트가 아니라 서버이며, 웹 2.0 환경에서 매우 효과적인 공격 기법이다.",
+    "options": [
+      "XSS",
+      "CSRF",
+      "WebShell",
+      "Injection Flaws"
+    ],
+    "answer": 2,
+    "explanation": "CSRF(Cross-Site Request Forgery, 크로스사이트 요청 위조)는 인증된 사용자의 세션 쿠키 등 자동 인증 정보를 이용해 사용자가 의도하지 않은 요청을 서버로 전송하는 공격이다. 공격 대상은 서버이며, XSS와 달리 클라이언트 스크립트 실행이 아닌 요청 위조에 초점이 있다.",
+    "hasImage": false,
+    "tags": ["보안기사", "어플리케이션보안", "CSRF", "크로스사이트요청위조", "웹보안", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-056",
+    "year": 2021,
+    "session": 1,
+    "number": 56,
+    "subject": "어플리케이션보안",
+    "topic": "OTP",
+    "type": "objective",
+    "question": "다음 중 OTP에 대한 설명으로 틀린 것은?",
+    "options": [
+      "OTP는 전송계층에서 동작한다.",
+      "정적인 일반 패스워드와 달리 단방향 암호 기반의 해시를 매번 다르게 계산하여 패스워드로 사용한다.",
+      "OTP 생성 및 인증 방식에는 S/KEY 방식, 시간 동기화 방식 등이 있다.",
+      "온라인 뱅킹, 전자상거래, 온라인 게임 등에 사용된다."
+    ],
+    "answer": 1,
+    "explanation": "OTP(One-Time Password)는 애플리케이션 계층(7계층)에서 동작하는 인증 메커니즘이다. 전송 계층(4계층)에서 동작하지 않는다. OTP는 해시 체인(S/KEY), 시간 동기화(TOTP), 이벤트 동기화(HOTP) 방식으로 매번 다른 패스워드를 생성하여 재전송 공격을 방어한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "어플리케이션보안", "OTP", "일회용패스워드", "TOTP", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-057",
+    "year": 2021,
+    "session": 1,
+    "number": 57,
+    "subject": "어플리케이션보안",
+    "topic": "인증 방법과 인증 도구",
+    "type": "objective",
+    "question": "다음에 제시된 <보기 1>의 사용자 인증방법과 <보기 2>의 사용자 인증도구를 바르게 연결한 것은?\n\n<보기 1>\nㄱ. 지식 기반 인증\nㄴ. 소지 기반 인증\nㄷ. 생체 기반 인증\n\n<보기 2>\nA. OTP 토큰  B. 패스워드  C. 홍채",
+    "options": [
+      "ㄱ-A, ㄴ-B, ㄷ-C",
+      "ㄱ-A, ㄴ-C, ㄷ-B",
+      "ㄱ-B, ㄴ-A, ㄷ-C",
+      "ㄱ-B, ㄴ-C, ㄷ-A"
+    ],
+    "answer": 3,
+    "explanation": "인증 요소별 분류: 지식 기반(Something you know) = 패스워드(B), 소지 기반(Something you have) = OTP 토큰(A), 생체 기반(Something you are) = 홍채(C). 따라서 ㄱ-B, ㄴ-A, ㄷ-C가 올바른 연결이다.",
+    "hasImage": true,
+    "imageNote": "인증방법-인증도구 매핑 표 포함",
+    "tags": ["보안기사", "어플리케이션보안", "인증방법", "지식기반", "소지기반", "생체기반", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-058",
+    "year": 2021,
+    "session": 1,
+    "number": 58,
+    "subject": "어플리케이션보안",
+    "topic": "DNS 하이재킹",
+    "type": "objective",
+    "question": "DNS 공격 유형은 무엇인가?\n\n해커가 DNS 서버를 해킹하거나, 패킷을 조작하며 특정 도메인에 대응하는 IP 주소를 해커가 원하는 IP 주소로 위조하는 기법이다.",
+    "options": [
+      "DNS 터널링",
+      "DNS 스푸핑",
+      "DNS 하이재킹",
+      "NXDOMAIN 공격"
+    ],
+    "answer": 3,
+    "explanation": "DNS 하이재킹(DNS Hijacking)은 DNS 서버 자체를 해킹하거나 DNS 쿼리/응답 패킷을 조작하여 도메인에 매핑된 IP 주소를 공격자가 원하는 주소로 변조하는 공격이다. DNS 스푸핑은 캐시 포이즈닝을 포함하는 넓은 개념, DNS 터널링은 DNS를 C&C 통신에 악용한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "어플리케이션보안", "DNS하이재킹", "DNSHijacking", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-059",
+    "year": 2021,
+    "session": 1,
+    "number": 59,
+    "subject": "어플리케이션보안",
+    "topic": "HTTP HEAD 메소드",
+    "type": "objective",
+    "question": "다음 중 유일하게 HTTP(HyperText Transfer Protocol) 응답(response)에 body data가 없는 메소드는?",
+    "options": [
+      "HEAD",
+      "GET",
+      "TRACE",
+      "POST"
+    ],
+    "answer": 1,
+    "explanation": "HTTP HEAD 메소드는 GET과 동일한 요청을 보내지만 응답 헤더만 반환하고 body data는 포함하지 않는다. 파일 크기·콘텐츠 타입 확인, 리소스 존재 여부 확인 등에 활용된다. GET, POST, TRACE 등은 응답 바디를 포함한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "어플리케이션보안", "HTTP", "HEAD메소드", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-060",
+    "year": 2021,
+    "session": 1,
+    "number": 60,
+    "subject": "어플리케이션보안",
+    "topic": "SET 암호화 절차",
+    "type": "objective",
+    "question": "전자상거래 SET 보안 프로토콜의 송신측 암호화 절차이다. 빈칸 ㉠, ㉡, ㉢, ㉣에 들어갈 용어로 적절한 것은?\n\n가. 송신자는 메시지를 압축하고, 압축된 메시지를 다시 송신자의 ( ㉠ )로 암호화하여 전자서명을 만든다.\n나. 원문 메시지에 전자서명을 첨부한 다음 미를 ( ㉡ )로 암호화한다.\n다. 그 다음 사용된 ( ㉢ )를 다시 수신자의 RSA ( ㉣ )로 암호화한 후 암호문과 함께 전송한다.",
+    "options": [
+      "㉠ 공개키 ㉡ 대칭키 ㉢ 대칭키 ㉣ 개인키",
+      "㉠ 개인키 ㉡ 공개키 ㉢ 대칭키 ㉣ 공개키",
+      "㉠ 공개키 ㉡ 대칭키 ㉢ 공개키 ㉣ 공개키",
+      "㉠ 개인키 ㉡ 대칭키 ㉢ 대칭키 ㉣ 공개키"
+    ],
+    "answer": 4,
+    "explanation": "SET 송신측 암호화 절차: ① 메시지를 송신자의 개인키(㉠)로 서명(전자서명 생성) → ② 원문+서명을 임시 대칭키(㉡)로 암호화 → ③ 해당 대칭키(㉢)를 수신자의 공개키(㉣)로 암호화(전자봉투 생성) → ④ 암호문+전자봉투 전송. 이를 통해 기밀성(대칭키 암호화)과 인증·부인방지(전자서명)를 동시에 제공한다.",
+    "hasImage": true,
+    "imageNote": "SET 송신측 암호화 절차 가/나/다 단계 다이어그램 포함",
+    "tags": ["보안기사", "어플리케이션보안", "SET", "전자상거래", "전자서명", "전자봉투", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-061",
+    "year": 2021,
+    "session": 1,
+    "number": 61,
+    "subject": "정보보안일반",
+    "topic": "BLP 모델",
+    "type": "objective",
+    "question": "다음 지문에서 BLP 모델에 대한 설명으로 옳지 않은 것은?",
+    "options": [
+      "No-write-down 정책은 인가받은 보안등급 이하의 정보를 수정하지 못하게 하는 정책이다.",
+      "BLP 모델에서는 정보를 Top Secret, Secret, Unclassified 등과 같은 보안 등급에 따라 분류하고 있으며 정보의 기밀성 보장에 초점을 두고 있다.",
+      "BLP 모델에서 주체와 객체의 보안등급은 각각 취급등급(clearance), 비밀등급(security label)을 사용한다.",
+      "No-read-up 정책은 낮은 보안등급을 인가받은 주체가 보안등급이 높은 객체에 대한 읽기/쓰기 접근을 허용하지 않음으로 정보의 기밀성을 보장하게 된다."
+    ],
+    "answer": 4,
+    "explanation": "BLP(Bell-LaPadula) 모델의 No-read-up(단순 보안 속성)은 낮은 등급의 주체가 높은 등급 객체를 읽는 것만 금지한다. 쓰기는 No-write-down(★-속성)이 높은 등급 주체가 낮은 등급에 쓰는 것을 금지한다. 즉 No-read-up은 읽기만 제한하며 읽기/쓰기 모두를 제한하지는 않는다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안일반", "BLP모델", "BellLaPadula", "접근통제", "기밀성", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-062",
+    "year": 2021,
+    "session": 1,
+    "number": 62,
+    "subject": "정보보안일반",
+    "topic": "해시함수 충돌방지",
+    "type": "objective",
+    "question": "다음 해시함수 설명 중 잘못된 것은?",
+    "options": [
+      "해시함수는 임의의 유한 길이의 비트 스트링을 고정된 길이의 비트 스트링으로 변환하는 함수이다.",
+      "효율적 전자서명 생성을 위해 전자서명 생성 과정에서 해시함수가 사용된다.",
+      "일방향 특성으로서 해시함수 h에 대해 해시값 y로부터 h(x)=y가 되는 입력값 x를 찾는 것이 계산상 불가능해야 한다.",
+      "강한 충돌방지 특성으로서 해시함수 h에 대해 h(y)=h(x)가 되는 입력값 쌍 y와 x(단, y ≠ x)를 찾는 것이 어렵지 않아야 한다."
+    ],
+    "answer": 4,
+    "explanation": "강한 충돌방지(Strong Collision Resistance)는 h(x)=h(y)를 만족하는 서로 다른 입력값 쌍 x, y를 찾는 것이 계산상 불가능해야 한다는 특성이다. '어렵지 않아야 한다'는 설명은 정반대로 틀렸다. 충돌을 쉽게 찾을 수 있으면 해시함수의 보안성이 없다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안일반", "해시함수", "충돌방지", "일방향성", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-063",
+    "year": 2021,
+    "session": 1,
+    "number": 63,
+    "subject": "정보보안일반",
+    "topic": "RSA 복호화",
+    "type": "objective",
+    "question": "RSA 암호화 방식에서 공개키가 (7,33), 개인키가 (3,33)일 경우, 공개키로 암호화 한 값이 3이라고 할 때 이를 복호화 한 값은 무엇인가?",
+    "options": [
+      "99",
+      "27",
+      "2,187",
+      "343"
+    ],
+    "answer": 2,
+    "explanation": "RSA 복호화: 암호문 C=3, 개인키 d=3, n=33일 때 복호화는 M = C^d mod n = 3^3 mod 33 = 27 mod 33 = 27이다. 공개키 e=7로 암호화하고 개인키 d=3으로 복호화한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안일반", "RSA", "복호화", "공개키암호", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-064",
+    "year": 2021,
+    "session": 1,
+    "number": 64,
+    "subject": "정보보안일반",
+    "topic": "CRL 기본 필드",
+    "type": "objective",
+    "question": "CRL에 포함되어야 하는 기본 필드에 속하지 않는 것은?",
+    "options": [
+      "버전(Version)",
+      "서명 알고리즘(Signature)",
+      "다음 발급일자(Next Update)",
+      "인증서 효력정지 및 폐지 목록 번호(CRL Number)"
+    ],
+    "answer": 4,
+    "explanation": "CRL(Certificate Revocation List)의 기본 필드는 버전(Version), 서명 알고리즘(Signature), 발급자(Issuer), 이번 업데이트(thisUpdate), 다음 업데이트(nextUpdate), 폐지된 인증서 목록(일련번호+폐지일자)이다. CRL Number는 선택적 확장 필드로 기본 필드에 포함되지 않는다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안일반", "CRL", "인증서폐지목록", "PKI", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-065",
+    "year": 2021,
+    "session": 1,
+    "number": 65,
+    "subject": "정보보안일반",
+    "topic": "RADIUS",
+    "type": "objective",
+    "question": "RADIUS 프로토콜의 기본 기능과 가장 거리가 먼 것은?",
+    "options": [
+      "인증",
+      "계정 관리",
+      "권한 부여",
+      "책임추적성"
+    ],
+    "answer": 4,
+    "explanation": "RADIUS(Remote Authentication Dial-In User Service)는 AAA(Authentication 인증, Authorization 권한부여, Accounting 계정관리) 프로토콜이다. 책임추적성(Accountability)은 RADIUS의 기본 기능이 아니며, Accounting(과금/로깅)과 구분된다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안일반", "RADIUS", "AAA", "인증", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-066",
+    "year": 2021,
+    "session": 1,
+    "number": 66,
+    "subject": "정보보안일반",
+    "topic": "한국형 암호 알고리즘",
+    "type": "objective",
+    "question": "한국형 암호 알고리즘은 무엇인가?\n\n국가보안기술연구소에서 2013년 개발한 경량 블록 암호 알고리즘으로 2019년 국제표준으로 제정되었다. 특징으로는 AES 암호알고리즘에 대비하여 경량 암호에 높은 처리량, 낮은 전력소비로 사물인터넷 암호화에 적합한 알고리즘이다.",
+    "options": [
+      "SEED",
+      "ARIA",
+      "HIGHT",
+      "LEA"
+    ],
+    "answer": 4,
+    "explanation": "LEA(Lightweight Encryption Algorithm)는 국가보안기술연구소(NSRI)가 2013년 개발한 경량 블록 암호 알고리즘으로 2019년 ISO/IEC 29192-2 국제표준으로 제정되었다. AES 대비 높은 처리량과 낮은 전력소비로 IoT 환경에 적합하다. SEED와 ARIA도 국산 암호이나 LEA와 다르다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안일반", "LEA", "경량암호", "국산암호알고리즘", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-067",
+    "year": 2021,
+    "session": 1,
+    "number": 67,
+    "subject": "정보보안일반",
+    "topic": "해시함수 저항성",
+    "type": "objective",
+    "question": "해시함수 h의 성질에 관한 설명 중 틀린 것은?",
+    "options": [
+      "역상저항성은 주어진 임의의 출력값 y에 대해 y=h(x)를 만족하는 입력값 x를 찾는 것이 계산적으로 불가능한 성질이다.",
+      "두 번째 역상 저항성은 주어진 입력값 x에 대해 h(x)=h(x')를 만족하는 다른 입력값 x'을 찾는 것이 계산적으로 불가능한 성질이다.",
+      "충돌 저항성은 h(x)=h(x')를 만족하는 두 입력값 x와 x'을 찾는 것이 계산적으로 불가능한 성질이다.",
+      "충돌 저항성은 역상 저항성을 보장한다."
+    ],
+    "answer": 4,
+    "explanation": "충돌 저항성과 역상 저항성의 관계: 역상 저항성이 충돌 저항성을 보장하지 않으며, 충돌 저항성도 역상 저항성을 보장하지 않는다. 세 가지 저항성(역상, 제2역상, 충돌) 중 충돌 저항성이 가장 강한 요건이다. 충돌 저항성이 있어도 역상을 쉽게 찾을 수 있는 경우가 이론적으로 존재한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안일반", "해시함수", "역상저항성", "충돌저항성", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-068",
+    "year": 2021,
+    "session": 1,
+    "number": 68,
+    "subject": "정보보안일반",
+    "topic": "선택 평문 공격",
+    "type": "objective",
+    "question": "암호 알고리즘 공격 방법은 무엇인가?\n\n암호 해독자가 사용된 암호기에 접근할 수 있으며 평문에 해당하는 암호문을 얻을 수 있는 상황에서 키를 추정하며 암호를 해독하는 방법이다.",
+    "options": [
+      "암호문 단독 공격",
+      "기지 평문 공격",
+      "선택 평문 공격",
+      "선택 암호문 공격"
+    ],
+    "answer": 3,
+    "explanation": "선택 평문 공격(CPA, Chosen Plaintext Attack)은 공격자가 암호화 장치에 접근하여 원하는 평문을 선택해 암호화한 결과를 얻을 수 있는 상황에서 수행하는 공격이다. 기지 평문 공격은 이미 알려진 평문-암호문 쌍을 이용하고, 선택 암호문 공격은 복호화 장치에 접근한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안일반", "선택평문공격", "CPA", "암호공격", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-069",
+    "year": 2021,
+    "session": 1,
+    "number": 69,
+    "subject": "정보보안일반",
+    "topic": "Kerberos",
+    "type": "objective",
+    "question": "Kerberos 키 분배 프로토콜의 기반 기술에 해당하는 것은?",
+    "options": [
+      "Needham-Schroeder 프로토콜",
+      "Challenge-Response 프로토콜",
+      "Diffie-Hellman 프로토콜",
+      "RSA 이용 키 분배 프로토콜"
+    ],
+    "answer": 1,
+    "explanation": "Kerberos는 Needham-Schroeder 프로토콜을 기반으로 한 대칭키 기반 인증 시스템이다. TGS(Ticket Granting Server)와 KDC(Key Distribution Center)를 사용하며, 티켓 기반으로 SSO(Single Sign-On) 기능을 제공한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안일반", "Kerberos", "NeedhamSchroeder", "키분배", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-070",
+    "year": 2021,
+    "session": 1,
+    "number": 70,
+    "subject": "정보보안일반",
+    "topic": "MD5",
+    "type": "objective",
+    "question": "다음 지문이 설명하는 해시(Hash) 함수에 해당하는 것은?\n\n- 128비트 출력\n- 512비트 블록단위로 처리\n- 4라운드 64단계로 구성",
+    "options": [
+      "MD4",
+      "MD5",
+      "SHA-1",
+      "SHA-256"
+    ],
+    "answer": 2,
+    "explanation": "MD5(Message Digest 5)는 128비트(16바이트) 해시값을 출력하며, 512비트 블록 단위로 처리하고, 4라운드 64단계로 구성된다. SHA-1은 160비트, SHA-256은 256비트 출력이다. MD5는 충돌 취약점이 발견되어 보안용으로는 사용이 권장되지 않는다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안일반", "MD5", "해시함수", "128비트", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-071",
+    "year": 2021,
+    "session": 1,
+    "number": 71,
+    "subject": "정보보안일반",
+    "topic": "전자서명 조건",
+    "type": "objective",
+    "question": "전자서명이 갖추어야 할 조건이 아닌 것은?",
+    "options": [
+      "개인키를 알고 있는 서명자만 서명을 생성할 수 있다.",
+      "서명자를 누구든지 검증할 수 있다.",
+      "문서의 해시값에 서명하므로 생성된 서명은 다른 문서에 재사용할 수 있다.",
+      "서명자는 자신의 서명 사실을 부인할 수 없다."
+    ],
+    "answer": 3,
+    "explanation": "전자서명의 요건 중 재사용 불가(Not Reusable)는 특정 문서에 대한 서명을 다른 문서에 사용할 수 없어야 함을 의미한다. 서명은 문서의 해시값과 함께 생성되므로 다른 문서에 재사용하면 해시값이 달라져 검증에 실패한다. 재사용 가능하다는 설명은 틀렸다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안일반", "전자서명", "재사용불가", "부인방지", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-072",
+    "year": 2021,
+    "session": 1,
+    "number": 72,
+    "subject": "정보보안일반",
+    "topic": "Diffie-Hellman 키 교환",
+    "type": "objective",
+    "question": "다음 지문이 설명하는 키 교환 방식은?\n\n양자 간에 완성된 키를 교환하지 않고, 서로가 주고받는 특정 정보로 양자가 동일한 키를 계산하며 키를 분배한다.",
+    "options": [
+      "KDC 교환 방식",
+      "RSA 키 교환방식",
+      "Diffie-Hellman 키 교환방식",
+      "사전공유 키 교환방식"
+    ],
+    "answer": 3,
+    "explanation": "Diffie-Hellman 키 교환은 공개된 채널에서 직접 키를 교환하지 않고, 각자 임의의 개인값을 선택하여 공개값을 교환한 뒤 동일한 공유 비밀키를 독립적으로 계산하는 방식이다. 이산 대수 문제의 어려움에 기반하며 도청자는 공유키를 계산할 수 없다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안일반", "DiffieHellman", "키교환", "이산대수", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-073",
+    "year": 2021,
+    "session": 1,
+    "number": 73,
+    "subject": "정보보안일반",
+    "topic": "전자서명 요구사항",
+    "type": "objective",
+    "question": "전자서명의 요구사항으로 가장 적절하지 않은 것은?",
+    "options": [
+      "전자서명을 위조하는 것이 계산적으로 실행 불가능해야 한다.",
+      "전자서명 생성이 비교적 용이해야 한다.",
+      "기억장소에 전자서명의 복사본을 유지하는 것이 실용적이어야 한다.",
+      "위조와 부인을 방지하기 위하여 수신자에 대한 정보를 사용해야 한다."
+    ],
+    "answer": 4,
+    "explanation": "전자서명의 요구사항은 위조 불가, 서명자 인증, 재사용 불가, 변경 불가, 부인 방지이다. '수신자에 대한 정보를 사용해야 한다'는 전자서명의 요구사항이 아니다. 전자서명은 송신자의 개인키로 생성하며 수신자 정보는 사용되지 않는다(수신자 공개키는 암호화에 사용).",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안일반", "전자서명", "요구사항", "위조불가", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-074",
+    "year": 2021,
+    "session": 1,
+    "number": 74,
+    "subject": "정보보안일반",
+    "topic": "CFB 모드",
+    "type": "objective",
+    "question": "블록암호 모드는 무엇인가?\n\n초기값을 암호화한 값과 평문 블록을 XOR하여 암호문 블록을 생성하고, 그 암호문을 입력으로 사용하며 다시 암호화한 값과 평문 블록을 XOR하여 암호문 블록을 생성하는 작업을 반복하는 방식이다. 암호화에서는 특정 평문 블록이 이후의 모든 암호문 블록에 영향을 미치지만, 복호화에서는 특정 암호문 블록 오류의 영향이 국지적이라는 특성을 갖는다.",
+    "options": [
+      "암호 블록체인 모드(Cipher Block Chaining Mode)",
+      "암호 피드백 모드(Cipher Feedback Mode)",
+      "출력 피드백 모드(Output Feedback Mode)",
+      "카운터 모드(Counter Mode)"
+    ],
+    "answer": 2,
+    "explanation": "CFB(Cipher Feedback Mode, 암호 피드백 모드)는 이전 암호문 블록을 암호화한 값과 현재 평문 블록을 XOR하여 암호문을 생성한다. 암호화 시 전파 특성이 있으나 복호화 시 오류 영향은 국지적이다. CBC와 달리 블록 경계와 무관하게 스트림 암호처럼 동작 가능하다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안일반", "CFB", "암호피드백모드", "블록암호", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-075",
+    "year": 2021,
+    "session": 1,
+    "number": 75,
+    "subject": "정보보안일반",
+    "topic": "공개키 암호화",
+    "type": "objective",
+    "question": "공개키 암호화 방식에 대한 설명으로 옳은 것은?",
+    "options": [
+      "고급 데이터 암호화 기법",
+      "DES(Data Encryption Standard)",
+      "부인방지 및 인증 지원",
+      "암호화 속도가 빠름"
+    ],
+    "answer": 3,
+    "explanation": "공개키(비대칭키) 암호화는 개인키로 서명하고 공개키로 검증하는 전자서명을 통해 부인방지와 인증을 지원한다. 대칭키보다 암호화 속도가 느리며, DES는 대칭키 알고리즘이다. 공개키 방식의 대표 알고리즘은 RSA, ECC, Diffie-Hellman 등이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안일반", "공개키암호", "비대칭키", "부인방지", "인증", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-076",
+    "year": 2021,
+    "session": 1,
+    "number": 76,
+    "subject": "정보보안일반",
+    "topic": "해시함수 용도",
+    "type": "objective",
+    "question": "해시함수에 대한 내용으로 옳지 않은 것은?",
+    "options": [
+      "정보의 무결성을 확인하기 위한 목적으로 사용한다.",
+      "해시함수는 일방향성, 충돌 회피, 효율성의 특징이 있다.",
+      "SHA-1 함수는 MD5보다 조금 느리지만 보안성 측면에서 좀 더 안전하다.",
+      "인증에서 증명 용도로 사용될 수 있다."
+    ],
+    "answer": 4,
+    "explanation": "해시함수 단독으로는 인증에서 '증명' 용도로 사용할 수 없다. 해시함수는 일방향 함수로 키(비밀)가 없어 누구든 동일한 해시값을 생성할 수 있으므로 인증자 식별이 불가능하다. 인증에는 키를 결합한 HMAC이나 전자서명이 필요하다. 무결성 확인, 일방향성·충돌회피·효율성 특성, SHA-1의 MD5 대비 안전성은 옳은 설명이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안일반", "해시함수", "HMAC", "인증", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-077",
+    "year": 2021,
+    "session": 1,
+    "number": 77,
+    "subject": "정보보안일반",
+    "topic": "취약점·위협·위험",
+    "type": "objective",
+    "question": "㉠, ㉡, ㉢에 들어갈 내용으로 적절한 것은?\n\n정보시스템에 백신 프로그램을 설치한 후, 최신으로 유지하지 않는다면 해당 시스템은 바이러스에 ( ㉠ )을 가지고 있는 것이다. 여기서 바이러스는 시스템을 공격하는 ( ㉡ )이 되고, 바이러스 공격으로 발생하는 해당 시스템의 피해 가능성을 ( ㉢ )이라고 한다.",
+    "options": [
+      "㉠ 취약점 ㉡ 위협 ㉢ 위험",
+      "㉠ 위험 ㉡ 위협 ㉢ 취약점",
+      "㉠ 위험 ㉡ 취약점 ㉢ 위험",
+      "㉠ 취약점 ㉡ 위험 ㉢ 위협"
+    ],
+    "answer": 1,
+    "explanation": "정보보안 위험 구성요소: 취약점(Vulnerability)은 시스템의 보안 약점(백신 미업데이트), 위협(Threat)은 취약점을 이용하는 잠재적 위협원(바이러스), 위험(Risk)은 위협이 취약점을 이용하여 발생하는 피해 가능성(손실)이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안일반", "취약점", "위협", "위험", "위험관리", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-078",
+    "year": 2021,
+    "session": 1,
+    "number": 78,
+    "subject": "정보보안일반",
+    "topic": "생체인증 FAR·FRR",
+    "type": "objective",
+    "question": "생체인증 기술의 정확성을 나타내는 FRR(False Rejection Rate)과 FAR(False Acceptance Rate)에 대해서 잘못 설명한 것은?",
+    "options": [
+      "시스템에 접근하려 할 때 FRR이 낮으면 사용자 편의성이 증대된다.",
+      "시스템에 접근하려 할 때 FAR이 높으면 사용자 편의성이 증대된다.",
+      "시스템의 생체인증 보안성을 강화하게 되면 FRR이 높아진다.",
+      "시스템의 생체인증 보안성을 강화하게 되면 FAR이 높아진다."
+    ],
+    "answer": 4,
+    "explanation": "생체인증 보안성을 강화(임계값 상향)하면 FAR(타인 수락률)은 낮아지고 FRR(본인 거부율)은 높아진다. FAR이 높아지면 보안성이 낮아지는 것이다. FRR과 FAR은 트레이드오프 관계이며 두 값이 같아지는 지점이 EER(동일 오류율)이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안일반", "생체인증", "FAR", "FRR", "EER", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-079",
+    "year": 2021,
+    "session": 1,
+    "number": 79,
+    "subject": "정보보안일반",
+    "topic": "재전송 공격 방어",
+    "type": "objective",
+    "question": "공격과 이를 방어하는 기술로 알맞게 짝지어진 것은?\n\n메시지 인증 및 무결성을 보장하고자 송신자는 메시지와 함께 그 메시지의 MAC을 수신자에게 보낸다. 이때 공격자가 중간에 메시지와 MAC을 가로채서 보관한다. 그리고 송신자를 가장하여 보관 메시지 및 MAC을 그대로 수신자에게 반복해서 보내면 수신자는 송신자로부터 온 것으로 판단하고, 이를 반복해서 처리하는 공격을 받게 된다.",
+    "options": [
+      "키 추측공격 – 의사난수 알고리즘, 키 길이 확대",
+      "중간자공격 – 대칭암호, 공개키 암호",
+      "재전송공격 – 순서번호, 타임스탬프, 비표",
+      "위조공격 – 일방향 해시함수, 메시지 인증 알고리즘"
+    ],
+    "answer": 3,
+    "explanation": "지문에서 설명하는 공격은 재전송 공격(Replay Attack)이다. 방어 기술로는 순서번호(Sequence Number), 타임스탬프(Timestamp, 유효 시간 제한), 비표(Nonce, 일회용 랜덤값)가 있다. 이 중 하나 이상을 메시지에 포함시켜 재전송된 메시지를 식별·거부한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안일반", "재전송공격", "ReplayAttack", "타임스탬프", "Nonce", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-080",
+    "year": 2021,
+    "session": 1,
+    "number": 80,
+    "subject": "정보보안일반",
+    "topic": "Diffie-Hellman 키 사전 분배",
+    "type": "objective",
+    "question": "다음 지문은 Diffie-Hellman 키 사전 분배에 대한 내용을 설명한 것이다. ㉠~㉣에 들어가야 할 단어로 옳은 것은?\n\nDiffie-Hellman 키 사전 분배 방식은 Diffie-Hellman의 키 교환 방식을 응용한 방식으로 ( ㉠ )를 기반으로 구성된다. 키 분배 센터는 ( ㉡ ) p를 선정하고 Zp위에서 원시근 g를 찾아 공개한다. 가입자는 ( ㉢ )를 선정하며 ( ㉣ )를 계산하여 공개한다.",
+    "options": [
+      "㉠ 이산대수문제 ㉡ 큰 정수 ㉢ 공개키 ㉣ 개인키",
+      "㉠ 이산대수문제 ㉡ 큰 소수 ㉢ 개인키 ㉣ 공개키",
+      "㉠ 소인수분해문제 ㉡ 큰 정수 ㉢ 개인키 ㉣ 공개키",
+      "㉠ 소인수분해문제 ㉡ 큰 소수 ㉢ 공개키 ㉣ 개인키"
+    ],
+    "answer": 2,
+    "explanation": "Diffie-Hellman은 이산 대수 문제(㉠)의 어려움에 기반한다. 키 분배 센터는 큰 소수(㉡) p와 원시근 g를 공개한다. 각 가입자는 비밀 개인키(㉢)를 선택하고, 이를 이용해 계산한 공개키(㉣)를 공개한다. 상대방의 공개키와 자신의 개인키로 공통 세션키를 계산한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안일반", "DiffieHellman", "이산대수", "키분배", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-081",
+    "year": 2021,
+    "session": 1,
+    "number": 81,
+    "subject": "정보보안관리및법규",
+    "topic": "BCP 방법론",
+    "type": "objective",
+    "question": "BCP의 접근 5단계 방법론을 순차적으로 올바르게 나열한 것은?",
+    "options": [
+      "프로젝트의 범위 설정 및 기획 → 복구전략 개발 → 사업영향평가 → 복구계획 수립 → 프로젝트의 수행 테스트 및 유지보수",
+      "프로젝트의 범위 설정 및 기획 → 사업영향평가 → 복구전략 개발 → 복구계획 수립 → 프로젝트의 수행 테스트 및 유지보수",
+      "프로젝트의 범위 설정 및 기획 → 복구계획 수립 → 사업영향평가 → 복구전략 개발 → 프로젝트의 수행 테스트 및 유지보수",
+      "프로젝트의 범위 설정 및 기획 → 복구계획 수립 → 복구전략 개발 → 사업영향평가 → 프로젝트의 수행 테스트 및 유지보수"
+    ],
+    "answer": 2,
+    "explanation": "BCP(Business Continuity Planning) 5단계: ①프로젝트 범위 설정 및 기획 → ②사업영향평가(BIA) → ③복구전략 개발 → ④복구계획 수립 → ⑤테스트 및 유지보수. BIA를 먼저 수행하여 핵심 업무와 RTO/RPO를 파악한 후 복구전략을 수립한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안관리및법규", "BCP", "BIA", "업무연속성", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-082",
+    "year": 2021,
+    "session": 1,
+    "number": 82,
+    "subject": "정보보안관리및법규",
+    "topic": "사이버위기경보",
+    "type": "objective",
+    "question": "'사이버위기경보'의 등급 중 복수 정보통신서비스제공자(ISP)망에 장애 또는 마비가 발생하였을 경우, 발령하는 경보의 단계는 무엇인가?",
+    "options": [
+      "심각 단계",
+      "경계 단계",
+      "주의 단계",
+      "관심 단계"
+    ],
+    "answer": 2,
+    "explanation": "사이버위기경보 등급(낮은 순): 정상 → 관심 → 주의 → 경계 → 심각. 경계 단계는 복수 ISP망의 장애·마비, 다수 기관의 정보통신 시스템 피해 발생 시 발령된다. 심각은 국가 전체 인터넷망 마비 등 대규모 피해 시 발령된다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안관리및법규", "사이버위기경보", "경계단계", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-083",
+    "year": 2021,
+    "session": 1,
+    "number": 83,
+    "subject": "정보보안관리및법규",
+    "topic": "취약점 분석·평가 기관",
+    "type": "objective",
+    "question": "정보통신기반보호법에 따르면 관리기관의 장은 대통령령이 정하는 바에 따라 정기적으로 소관 주요정보통신기반시설의 취약점을 분석·평가하여야 한다. 이때 관리기관의 장은 특정 기관으로 하여금 소관 주요정보통신기반시설의 취약점을 분석·평가하게 할 수 있는데, 그에 속하지 아니 하는 기관은?",
+    "options": [
+      "한국인터넷진흥원",
+      "국가정보원",
+      "대통령령이 정하는 기준을 충족하는 정보공유·분석센터",
+      "정부출연 연구기관 등의 설립·운영 및 육성에 관한법률의 규정에 의한 한국전자통신연구원"
+    ],
+    "answer": 2,
+    "explanation": "정보통신기반보호법상 취약점 분석·평가 의뢰 가능 전문기관은 한국인터넷진흥원, 정보공유·분석센터(ISAC), 한국전자통신연구원(ETRI) 등이다. 국가정보원은 해당 법에서 의뢰 대상 기관으로 명시되지 않는다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안관리및법규", "정보통신기반보호법", "취약점분석평가", "KISA", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-084",
+    "year": 2021,
+    "session": 1,
+    "number": 84,
+    "subject": "정보보안관리및법규",
+    "topic": "정보자산 가치평가",
+    "type": "objective",
+    "question": "A기업은 정보보호관리체계 수립을 위한 일환으로 보호해야 할 정보자산을 식별하고 식별된 정보자산에 대한 가치평가를 하려고 한다. 이때 정보자산의 가치평가에 사용하는 평가항목으로 적절하지 않은 것은?",
+    "options": [
+      "무결성 평가",
+      "가용성 평가",
+      "기밀성 평가",
+      "부인방지 평가"
+    ],
+    "answer": 4,
+    "explanation": "정보자산의 가치평가는 정보보안의 3대 목표인 기밀성(Confidentiality), 무결성(Integrity), 가용성(Availability) — CIA 트라이어드를 기준으로 평가한다. 부인방지(Non-repudiation)는 CIA에 포함되지 않으므로 자산 가치평가 항목으로 적절하지 않다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안관리및법규", "정보자산", "가치평가", "CIA", "ISMS", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-085",
+    "year": 2021,
+    "session": 1,
+    "number": 85,
+    "subject": "정보보안관리및법규",
+    "topic": "정보보호 공시제도",
+    "type": "objective",
+    "question": "「정보보호산업의 진흥에 관한 법률」에 따른 '정보보호 공시제도'에 관한 설명이다. 가장 거리가 먼 것은?",
+    "options": [
+      "정보보호 공시제도는 정보보호에 대한 기업의 투자 현황 및 활동을 공개하여 주주의 알권리를 확보하고, 투자자들에게 투자정보를 제공하기 위한 제도이다.",
+      "정보보호 공시제도는 이용자들에게 정보보호에 대한 기업의 투자 현황과 활동을 공개하여 정보보호에 대한 기업의 투자를 촉진하기 위한 제도이다.",
+      "정보보호 공시제도는 기업의 책임 하에 제공되는 정보이지만 공시내용의 투명성 확보를 위해 정부는 모니터링 점검단을 통해 정기적으로 공시내용에 대한 정확성을 검증한다.",
+      "정보보호 공시제도를 통해 해당 기업의 정보보호 관련 투자현황, 전문인력현황, 인증현황, 정보보호 위반 관련 행정처분 내역 등을 알 수 있다."
+    ],
+    "answer": 4,
+    "explanation": "정보보호 공시 항목에는 정보보호 투자현황, 전문인력 현황, 인증 현황 등이 포함되나, '정보보호 위반 관련 행정처분 내역'은 공시 항목에 해당하지 않는다. 행정처분 내역은 별도의 공개 의무 사항이 아니다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안관리및법규", "정보보호공시제도", "정보보호산업진흥법", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-086",
+    "year": 2021,
+    "session": 1,
+    "number": 86,
+    "subject": "정보보안관리및법규",
+    "topic": "주요정보통신기반시설 지정",
+    "type": "objective",
+    "question": "정보통신기반보호법상 중앙행정기관의 장은 소관분야의 정보통신기반시설 중 전자적 침해행위로부터의 보호가 필요하다고 인정되는 정보통신기반시설을 주요정보통신기반시설로 지정할 수 있는데, 이 경우에 고려할 사항으로 명시되지 않은 것은?",
+    "options": [
+      "당해정보통신기반시설을 관리하는 기관이 수행하는 업무의 국가 사회적 중요성",
+      "침해사고가 발생할 경우 국제적으로 미칠 수 있는 피해의 범위",
+      "다른 정보통신기반시설과의 상호 연계성",
+      "침해사고의 발생가능성 또는 그 복구의 용이성"
+    ],
+    "answer": 2,
+    "explanation": "정보통신기반보호법에서 주요정보통신기반시설 지정 고려 사항은 국가·사회적 중요성, 다른 시설과의 상호 연계성, 침해사고 발생가능성 또는 복구 용이성, 침해사고 발생 시 국민생활·경제에 미치는 피해 규모 등이다. '국제적으로 미칠 수 있는 피해의 범위'는 명시된 고려 사항이 아니다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안관리및법규", "정보통신기반보호법", "주요정보통신기반시설", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-087",
+    "year": 2021,
+    "session": 1,
+    "number": 87,
+    "subject": "정보보안관리및법규",
+    "topic": "정보통신망 불법정보",
+    "type": "objective",
+    "question": "다음은 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」상 정보통신망에 유통되어서는 안 되는 불법정보 관련 조항을 나열한 것이다. 실제 내용과 다른 것은 무엇인가?",
+    "options": [
+      "음란한 부호·문언·음향·화상 또는 영상을 배포·판매·임대하거나 공공연하게 전시하는 내용의 정보",
+      "법령에 따라 금지되는 사행행위에 해당하는 내용의 정보",
+      "사람을 비방할 목적으로 공공연하게 사실이나 거짓의 사실을 드러내어 타인을 모욕하는 내용의 정보",
+      "공포심이나 불안감을 유발하는 부호·문언·음향·화상 또는 영상을 반복적으로 상대방에게 도달하도록 하는 내용의 정보"
+    ],
+    "answer": 3,
+    "explanation": "정보통신망법에서 불법정보 조항은 '사람을 비방할 목적으로 공공연하게 사실이나 거짓의 사실을 드러내어 타인의 명예를 훼손하는 내용'이다. '타인을 모욕하는 내용'은 실제 조항 표현과 다르다. 명예훼손(명예를 훼손)과 모욕죄(모욕)는 법적으로 다른 개념이다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안관리및법규", "정보통신망법", "불법정보", "명예훼손", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-088",
+    "year": 2021,
+    "session": 1,
+    "number": 88,
+    "subject": "정보보안관리및법규",
+    "topic": "개인정보보호 원칙",
+    "type": "objective",
+    "question": "다음 중 「개인정보 보호법」의 개인정보 보호 원칙이 아닌 것은 무엇인가?",
+    "options": [
+      "개인정보를 익명 또는 가명으로 처리하여도 개인정보 수집목적을 달성할 수 있는 경우 익명처리가 가능한 경우에는 익명에 의하여, 익명처리로 목적을 달성할 수 없는 경우에는 가명에 의하여 처리될 수 있도록 하여야 한다.",
+      "개인정보의 처리 목적에 필요한 범위에서 개인정보의 독립성, 객관성 및 공정성이 보장되도록 하여야 한다.",
+      "개인정보의 처리 목적에 필요한 범위에서 적합하게 개인정보를 처리하여야 하며, 그 목적 외의 용도로 활용하여서는 아니 된다.",
+      "개인정보 처리방침 등 개인정보의 처리에 관한 사항을 공개하여야 하며, 열람청구권 등 정보주체의 권리를 보장하여야 한다."
+    ],
+    "answer": 2,
+    "explanation": "개인정보보호법의 개인정보 보호 원칙에 '독립성, 객관성 및 공정성 보장'은 포함되지 않는다. 보호 원칙에는 목적 명확화, 최소 수집, 목적 내 처리, 정확성 보장, 안전한 관리, 처리 방침 공개, 정보주체 권리 보장, 익명·가명 처리 등이 있다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안관리및법규", "개인정보보호법", "개인정보보호원칙", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-089",
+    "year": 2021,
+    "session": 1,
+    "number": 89,
+    "subject": "정보보안관리및법규",
+    "topic": "위험평가 수립·운영",
+    "type": "objective",
+    "question": "조직의 위험평가 수립 및 운영에 대한 사항으로 가장 적절하지 않은 것은?",
+    "options": [
+      "위험관리 계획에 따라 위험평가를 연 1회 이상 정기적으로 또는 필요한 시점에 수행하여야 한다. 매년 위험평가 대상에 변동이 없어도 위험평가는 수행되어야 한다.",
+      "위험관리를 위한 수행인력, 기간, 대상, 방법, 예산 등의 방법 및 절차를 구체화한 위험관리 계획을 수립하여야 하며, 위험평가 참여자는 위험관리를 운영하는 IT 부서 또는 정보보호 부서 인력으로 구성된다.",
+      "위험관리를 위한 위험평가 방법 선정은 베이스라인 접근법, 상세위험 분석법, 복합 접근법, 위협 및 시나리오 기반 등의 다양한 방법론 중에서 해당 조직에 맞는 방법론을 선정하고 유지하여야 한다.",
+      "조직에서 수용 가능한 목표 위험수준을 정하고 그 수준을 초과하는 위험을 식별하여야 한다."
+    ],
+    "answer": 2,
+    "explanation": "위험평가 참여자는 IT 부서·정보보호 부서 인력뿐만 아니라 업무 부서, 경영진 등 다양한 이해관계자가 참여해야 한다. 특정 부서 인력으로만 구성되어야 한다는 제한은 적절하지 않다. 효과적인 위험평가를 위해 조직 전반의 참여가 필요하다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안관리및법규", "위험평가", "ISMS", "위험관리", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-090",
+    "year": 2021,
+    "session": 1,
+    "number": 90,
+    "subject": "정보보안관리및법규",
+    "topic": "디지털 저작권",
+    "type": "objective",
+    "question": "디지털 저작권에 관련된 사항 중 적절하지 않은 것은?",
+    "options": [
+      "본인이 촬영하고 편집한 동영상은 저작물에 따로 등록하지 않아도 저작권이 적용될 수 있다.",
+      "온라인 비대면 수업과 회의 참가자의 사진을 허락없이 촬영하여 업로드한 경우 초상권 침해가 될 수 있다.",
+      "공공 데이터포털에서 공개하고 있는 데이터의 경우 저작권자는 공개한 공공기관이므로 공공데이터는 별도의 저작권자의 이용 허락 없이 활용할 수 있다.",
+      "비영리적 목적으로 사용하도록 승인한 공개 소프트웨어는 개인, 기업 모두 자유롭게 사용할 수 있다."
+    ],
+    "answer": 4,
+    "explanation": "비영리 목적으로 공개된 오픈소스 소프트웨어라도 라이선스 종류에 따라 기업의 사용이 제한될 수 있다. GPL, CC BY-NC 등의 라이선스는 상업적·영리적 이용을 제한하며, 라이선스 조건을 확인하고 준수해야 한다. 개인과 기업 모두 자유롭게 사용할 수 있다는 설명은 틀렸다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안관리및법규", "디지털저작권", "오픈소스라이선스", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-091",
+    "year": 2021,
+    "session": 1,
+    "number": 91,
+    "subject": "정보보안관리및법규",
+    "topic": "개인정보보호책임자 역할",
+    "type": "objective",
+    "question": "개인정보 보호책임자의 책임 및 역할로 가장 적절하지 않은 것은 무엇인가?",
+    "options": [
+      "개인정보 처리와 관련한 불만의 처리 및 피해 구제",
+      "개인정보 유출 및 오용·남용 방지를 위한 내부통제시스템의 구축",
+      "개인정보파일의 현행화 작성",
+      "개인정보 처리 실태 및 관행의 정기적인 조사 및 개선"
+    ],
+    "answer": 3,
+    "explanation": "개인정보보호책임자(CPO)의 역할은 개인정보 처리 방침 수립, 불만 처리·피해 구제, 내부통제 시스템 구축, 처리 실태 조사·개선, 직원 교육 등이다. '개인정보파일의 현행화 작성'은 CPO의 역할이 아니라 실무 담당자의 업무에 해당한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안관리및법규", "개인정보보호책임자", "CPO", "개인정보보호법", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-092",
+    "year": 2021,
+    "session": 1,
+    "number": 92,
+    "subject": "정보보안관리및법규",
+    "topic": "불법촬영물 유통방지",
+    "type": "objective",
+    "question": "「정보통신망법」 제44조의9에 의거하여 일정 규모 이상의 정보통신서비스제공자가 운영 및 관리하는 정보통신망을 통하여 일반에게 공개되어 유통되는 정보의 유통을 방지하기 위한 불법촬영물 등 유통 방지 책임자를 지정하도록 되어 있는 기준에 해당되지 않는 것은 무엇인가?",
+    "options": [
+      "「영유아보육법」 제15조의4제3호에 따른 영상정보",
+      "「아동·청소년의 성보호에 관한 법률」 제2조제5호에 따른 아동·청소년성착취물",
+      "「성폭력범죄의 처벌 등에 관한 특례법」 제14조의2에 따른 편집물·합성물·가공물 또는 복제물",
+      "「성폭력범죄의 처벌 등에 관한 특례법」 제14조에 따른 촬영물 또는 복제물"
+    ],
+    "answer": 1,
+    "explanation": "불법촬영물 유통방지 책임자 지정 기준은 성착취물, 불법 촬영물, 편집·합성물 등 성폭력 관련 법에 규정된 정보가 대상이다. '영유아보육법 제15조의4제3호에 따른 영상정보'는 해당 기준에 해당하지 않는다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안관리및법규", "정보통신망법", "불법촬영물", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-093",
+    "year": 2021,
+    "session": 1,
+    "number": 93,
+    "subject": "정보보안관리및법규",
+    "topic": "접근권한 고지사항",
+    "type": "objective",
+    "question": "「정보통신망법」 제22조의2에 의거하여 해당 서비스를 제공하기 위하여 반드시 필요한 접근권한이 아닌 경우에 고지해야 할 사항이다. 다음 중 가장 적절하지 않은 것은?",
+    "options": [
+      "접근권한이 필요한 이유",
+      "접근권한이 필요한 정보 및 기능의 항목",
+      "접근권한이 필요한 기간",
+      "접근권한 허용에 대하여 동의하지 아니할 수 있다는 사실"
+    ],
+    "answer": 3,
+    "explanation": "정보통신망법 제22조의2에 따른 선택적 접근권한 고지사항은 접근권한이 필요한 이유, 접근권한이 필요한 정보 및 기능 항목, 동의하지 않을 수 있다는 사실이다. '접근권한이 필요한 기간'은 고지 사항에 포함되지 않는다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안관리및법규", "정보통신망법", "접근권한", "모바일앱", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-094",
+    "year": 2021,
+    "session": 1,
+    "number": 94,
+    "subject": "정보보안관리및법규",
+    "topic": "개인정보 영향평가",
+    "type": "objective",
+    "question": "개인정보 영향평가 시 고려할 사항으로 가장 거리가 먼 것은?",
+    "options": [
+      "처리하는 개인정보의 수",
+      "개인정보의 제3자 제공 여부",
+      "정보주체의 권리를 해할 가능성 및 그 위험 정도",
+      "개인정보의 위탁 관리 여부"
+    ],
+    "answer": 4,
+    "explanation": "개인정보 영향평가(PIA) 고려 사항은 처리하는 개인정보의 수, 민감정보 여부, 제3자 제공 여부, 정보주체 권리 침해 가능성·위험 정도 등이다. '개인정보의 위탁 관리 여부'는 영향평가의 주요 고려사항이 아니다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안관리및법규", "개인정보영향평가", "PIA", "개인정보보호법", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-095",
+    "year": 2021,
+    "session": 1,
+    "number": 95,
+    "subject": "정보보안관리및법규",
+    "topic": "개인정보 수집 가능 경우",
+    "type": "objective",
+    "question": "다음 중 개인정보보호법에서 정의하는 개인정보를 수집할 수 있는 경우에 해당되지 않는 것은?",
+    "options": [
+      "정보주체의 동의를 받는 경우",
+      "법률에 특별한 규정이 있거나 법령상 의무를 준수하기 위하여 불가피한 경우",
+      "정보주체와의 계약의 체결 및 이행을 위하여 불가피하게 필요한 경우",
+      "정보주체의 정당한 이익을 달성하기 위하여 필요한 경우로서 명백하게 개인정보처리자의 권리보다 우선하는 경우"
+    ],
+    "answer": 4,
+    "explanation": "개인정보보호법 제15조의 수집·이용 가능 근거는 정보주체 동의, 법령 규정, 공공기관 소관 업무, 계약 체결·이행, 급박한 생명·신체·재산 이익, 개인정보처리자의 정당한 이익(정보주체 이익보다 우선하지 않는 경우)이다. 4번은 '처리자 이익이 아닌 정보주체 이익 우선'으로 조건 설명이 뒤바뀌어 해당되지 않는다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안관리및법규", "개인정보보호법", "개인정보수집", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-096",
+    "year": 2021,
+    "session": 1,
+    "number": 96,
+    "subject": "정보보안관리및법규",
+    "topic": "정보주체의 권리",
+    "type": "objective",
+    "question": "「개인정보 보호법」에 의해 정보주체는 자신의 개인정보처리와 관련하여 권리를 가지는데, 다음 중 정보주체의 권리로 적절하지 않은 것은 무엇인가?",
+    "options": [
+      "개인정보의 처리에 관한 동의 여부, 동의 범위 등을 선택하고 결정할 권리",
+      "개인정보의 처리 정지, 정정 삭제 및 파기를 요구할 권리",
+      "개인정보의 처리에 관한 정보를 제공할 권리",
+      "개인정보의 처리로 인하여 발생한 피해를 신속하고 공정한 절차에 따라 구제받을 권리"
+    ],
+    "answer": 3,
+    "explanation": "개인정보보호법상 정보주체의 권리는 동의 선택권, 열람·정정·삭제·처리 정지 요구권, 피해 구제권 등이다. '개인정보 처리에 관한 정보를 제공할 권리'는 정보주체의 권리가 아닌 개인정보처리자의 의무(고지 의무)에 해당한다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안관리및법규", "개인정보보호법", "정보주체권리", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-097",
+    "year": 2021,
+    "session": 1,
+    "number": 97,
+    "subject": "정보보안관리및법규",
+    "topic": "침해사고 대응 절차",
+    "type": "objective",
+    "question": "침해사고 발생 대응 방법론의 일반적인 수행과정의 순서로 올바른 것은?",
+    "options": [
+      "사고 전 준비 → 초기대응 → 사고탐지 → 대응전략 체계화 → 보고서 작성 → 사고조사",
+      "사고 전 준비 → 사고탐지 → 초기대응 → 대응전략 체계화 → 사고조사 → 보고서 작성",
+      "사고 전 준비 → 사고탐지 → 초기대응 → 사고조사 → 대응전략 체계화 → 보고서 작성",
+      "사고 전 준비 → 사고탐지 → 대응전략 체계화 → 초기대응 → 사고조사 → 보고서 작성"
+    ],
+    "answer": 2,
+    "explanation": "침해사고 대응 6단계: ①사고 전 준비(정책·도구 마련) → ②사고탐지(이상 징후 감지) → ③초기대응(피해 범위 파악·격리) → ④대응전략 체계화(전문 조사·복구 계획) → ⑤사고조사(디지털 포렌식·원인 분석) → ⑥보고서 작성(결과 문서화).",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안관리및법규", "침해사고대응", "CERT", "포렌식", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-098",
+    "year": 2021,
+    "session": 1,
+    "number": 98,
+    "subject": "정보보안관리및법규",
+    "topic": "CISO 업무",
+    "type": "objective",
+    "question": "정보보호 최고책임자가 수행하는 정보보호 업무와 관련 없는 것은?",
+    "options": [
+      "정보보호 관리체계의 수립 및 관리·운영",
+      "개인정보보호 업무",
+      "침해사고의 예방 및 대응",
+      "중요 정보의 암호화 및 보안서버의 적합성 검토"
+    ],
+    "answer": 2,
+    "explanation": "CISO(Chief Information Security Officer, 정보보호 최고책임자)는 정보보호 관리체계 수립·운영, 침해사고 예방·대응, 암호화·보안서버 검토 등을 담당한다. 개인정보보호 업무는 CPO(Chief Privacy Officer, 개인정보보호책임자)의 역할로 CISO의 업무와 구분된다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안관리및법규", "CISO", "CPO", "정보통신망법", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-099",
+    "year": 2021,
+    "session": 1,
+    "number": 99,
+    "subject": "정보보안관리및법규",
+    "topic": "베이스라인 접근법",
+    "type": "objective",
+    "question": "정보보안의 위험 관리 과정에서 조직의 보안 요구사항에 대한 효과적인 식별 및 효율적인 위험의 감소를 실현하기 위해 세부적인 위험 분석 방법들이 존재한다. <보기>에서 설명하는 (가)에 해당하는 위험 분석 방법으로 가장 옳은 것은?\n\n(가)는 모든 시스템에 대하며 표준화된 보안 대책을 제시하며 체크리스트 형태로 보안 대책이 있는지 없는지를 판단하며 적용되어 있지 않은 보안대책을 적용하는 방법으로 수행하는 위험 분석 방법",
+    "options": [
+      "비정형 접근법",
+      "복합 접근법",
+      "상세위험 분석",
+      "베이스라인 접근법"
+    ],
+    "answer": 4,
+    "explanation": "베이스라인 접근법(Baseline Approach)은 모든 시스템에 대해 표준화된 최소 보안 요구사항(베이스라인)을 체크리스트 형태로 제시하고, 미적용 보안 대책을 식별하여 적용하는 방법이다. 빠르고 비용 효율적이지만 개별 시스템의 특수성을 반영하지 못하는 단점이 있다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안관리및법규", "베이스라인접근법", "위험분석", "체크리스트", "2021", "2021-1"]
+  },
+  {
+    "id": "2021-1-100",
+    "year": 2021,
+    "session": 1,
+    "number": 100,
+    "subject": "정보보안관리및법규",
+    "topic": "개인정보 추가 활용",
+    "type": "objective",
+    "question": "개인정보 보호법에 따르면 정보주체의 동의 외에도 당초 수집 목적과 합리적으로 관련된 범위 내에서 개인정보를 추가 활용할 수 있도록 허용하고 있다. 다음 중 그 합리성을 판단하는 기준과 거리가 먼 것은?",
+    "options": [
+      "당초 개인정보를 수집한 목적과 관련성이 있는지 여부",
+      "정보주체의 이익을 부당하게 침해하는지 여부",
+      "개인정보의 추가적인 이용 또는 제공에 대한 예측 가능성이 있는지 여부",
+      "개인정보처리자의 정당한 이익을 달성하기 위해 필요한 경우로 명백히 정보주체 권리보다 우선하는 경우인지 여부"
+    ],
+    "answer": 4,
+    "explanation": "개인정보 추가 이용·제공의 합리성 판단 기준(개인정보보호법 제15조 제3항)은 ①당초 수집 목적과의 관련성, ②수집 경위·처리 관행 예측 가능성, ③정보주체 이익 침해 여부, ④암호화 등 안전성 확보 조치 여부이다. '처리자의 이익이 정보주체 권리보다 우선하는지'는 판단 기준이 아니다.",
+    "hasImage": false,
+    "tags": ["보안기사", "정보보안관리및법규", "개인정보보호법", "개인정보추가활용", "2021", "2021-1"]
+  }
+]

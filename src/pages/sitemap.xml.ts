@@ -46,7 +46,7 @@ export async function GET() {
   }));
 
   // 보안기사 섹션 항목
-  const questionsDir = path.resolve(process.cwd(), '.private/security-study/questions');
+  const questionsDir = path.resolve(process.cwd(), 'src/data/security-questions');
   const examSlugs = fs.readdirSync(questionsDir)
     .filter((f: string) => f.endsWith('.json'))
     .map((f: string) => f.replace('.json', ''));

@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 export async function getStaticPaths() {
-  const dir = path.resolve(process.cwd(), '.private/security-study/questions');
+  const dir = path.resolve(process.cwd(), 'src/data/security-questions');
   const files = fs.readdirSync(dir).filter(f => f.endsWith('.json'));
 
   return files.map(file => {

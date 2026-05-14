@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 const { chapterData } = Astro.props;
 
 // 관련 기출문제 로드 (모든 JSON에서 해당 과목 문제 필터링)
-const questionsDir = path.resolve(process.cwd(), '.private/security-study/questions');
+const questionsDir = path.resolve(process.cwd(), 'src/data/security-questions');
 const allQuestions: any[] = [];
 
 const files = fs.readdirSync(questionsDir).filter(f => f.endsWith('.json'));

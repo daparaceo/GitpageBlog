@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const questionsDir = path.resolve(process.cwd(), '.private/security-study/questions');
+const questionsDir = path.resolve(process.cwd(), 'src/data/security-questions');
 const examSlugs = fs.readdirSync(questionsDir)
   .filter(f => f.endsWith('.json'))
   .map(f => f.replace('.json', ''))
