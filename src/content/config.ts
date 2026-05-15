@@ -4,11 +4,6 @@ import { defineCollection, z } from 'astro:content';
 // 각 카테고리는 /category/[slug] 페이지로 자동 생성됨
 export const CATEGORIES = [
   { slug: 'english-reading', label: '영어원서읽기', desc: '아이와 함께 읽는 원서 리뷰와 영어 학습 콘텐츠' },
-  { slug: 'weekend-trip',    label: '주말여행',     desc: '아이와 함께 떠나는 국내 여행 정보' },
-  { slug: 'camping',         label: '캠핑',         desc: '캠핑 장비, 장소, 꿀팁 정보' },
-  { slug: 'life-info',       label: '생활정보',     desc: '실생활에 바로 쓸 수 있는 정보와 팁' },
-  { slug: 'tech',            label: 'IT · 기술',    desc: '최신 기술 트렌드와 실용적인 디지털 활용법' },
-  { slug: 'finance',         label: '재테크',       desc: '절약, 투자, 금융 상품 관련 정보' },
 ] as const;
 
 export type CategorySlug = typeof CATEGORIES[number]['slug'];

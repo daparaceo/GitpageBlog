@@ -1,56 +1,28 @@
 ---
 // src/pages/blog/[...slug].astro
 // 블로그 글 상세 페이지
-// getStaticPaths()로 빌드 시 모든 글의 경로를 미리 생성합니다 (정적 생성)
+// getStaticPaths()로 빌드 시 정식 글 URL만 생성합니다.
 
 import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-// 빌드 시 모든 블로그 글 경로 생성
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => {
     return data.draft !== true;
   });
 
-  // 정식 URL: /blog/{bare-slug}/ (카테고리 미포함)
   const canonicalPaths = posts.map((post) => {
     const bareSlug = post.slug.includes('/') ? post.slug.split('/').pop()! : post.slug;
     return {
       params: { slug: bareSlug },
-      props: { post, redirectTo: null as string | null },
+      props: { post },
     };
   });
 
-  // 리다이렉트: /blog/{category}/{slug}/ → /blog/{bare-slug}/
-  // 카테고리 포함 URL로 색인된 페이지 및 내부 링크 대응
-  const redirectPaths = posts
-    .filter((post) => post.slug.includes('/'))
-    .map((post) => {
-      const bareSlug = post.slug.split('/').pop()!;
-      return {
-        params: { slug: post.slug },
-        props: { post: null as any, redirectTo: `/blog/${bareSlug}/` },
-      };
-    });
-
-  return [...canonicalPaths, ...redirectPaths];
+  return canonicalPaths;
 }
 
-const { post, redirectTo } = Astro.props;
-
-// 구 URL 리다이렉트 페이지
-if (redirectTo) {
-  return new Response(
-    `<!DOCTYPE html><html><head>` +
-    `<meta charset="utf-8">` +
-    `<meta http-equiv="refresh" content="0;url=${redirectTo}">` +
-    `<link rel="canonical" href="${redirectTo}">` +
-    `</head><body><p>Redirecting... <a href="${redirectTo}">${redirectTo}</a></p></body></html>`,
-    { headers: { 'Content-Type': 'text/html; charset=utf-8' } }
-  );
-}
-
-// 마크다운 본문 렌더링
+const { post } = Astro.props;
 const { Content } = await post.render();
 
 // 날짜 포맷
