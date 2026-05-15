@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CHAPTERS } from '../../data/security-chapters';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -9,54 +10,19 @@ const examSlugs = fs.readdirSync(questionsDir)
   .map(f => f.replace('.json', ''))
   .sort();
 
-const subjects = [
-  {
-    slug: 'system',
-    label: '시스템보안',
-    desc: '운영체제 보안, 접근통제, 암호학, 악성코드',
-    chapters: [
-      { slug: 'os-security', label: '운영체제 보안' },
-      { slug: 'access-control', label: '접근통제' },
-      { slug: 'cryptography', label: '암호학' },
-      { slug: 'malware', label: '악성코드' },
-    ],
-  },
-  {
-    slug: 'network',
-    label: '네트워크보안',
-    desc: '네트워크 기초, 방화벽·IDS·IPS, VPN',
-    chapters: [
-      { slug: 'network-basics', label: '네트워크 기초' },
-      { slug: 'firewall-ids', label: '방화벽·IDS·IPS' },
-      { slug: 'vpn', label: 'VPN' },
-    ],
-  },
-  {
-    slug: 'application',
-    label: '어플리케이션보안',
-    desc: '웹 보안, DB 보안, 소프트웨어 보안',
-    chapters: [
-      { slug: 'web-security', label: '웹 보안' },
-      { slug: 'db-security', label: 'DB 보안' },
-    ],
-  },
-  {
-    slug: 'general',
-    label: '정보보안일반',
-    desc: '보안 일반 개념, 위험관리, 보안 모델',
-    chapters: [
-      { slug: 'security-concepts', label: '보안 일반 개념' },
-    ],
-  },
-  {
-    slug: 'law',
-    label: '정보보안관리및법규',
-    desc: '정보보호 관련 법규, ISMS, 개인정보보호',
-    chapters: [
-      { slug: 'security-law', label: '정보보호 관련 법규' },
-    ],
-  },
-];
+// CHAPTERS 데이터에서 과목별로 그룹화 (순서 유지)
+const subjectOrder = ['system', 'network', 'application', 'general', 'law'];
+const subjects = subjectOrder.map(slug => {
+  const chs = CHAPTERS.filter(ch => ch.subject === slug);
+  if (chs.length === 0) return null;
+  const first = chs[0];
+  return {
+    slug,
+    label: first.subjectLabel,
+    desc: chs.map(ch => ch.chapterLabel).join(', '),
+    chapters: chs.map(ch => ({ slug: ch.chapter, label: ch.chapterLabel })),
+  };
+}).filter(Boolean);
 ---
 
 <BaseLayout title="보안기사 학습" description="정보보안기사 필기 준비 — 과목별 개념 정리와 기출문제 풀이">
