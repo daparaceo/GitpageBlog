@@ -879,7 +879,7 @@ ALL: ALL</code></pre>
     subjectLabel: '네트워크보안',
     chapter: 'network-basics',
     chapterLabel: '네트워크 기초',
-    keywords: ['OSI', 'TCP', 'UDP', 'IP', 'ARP', 'DNS', 'DHCP', '라우터', '스위치', '포트', 'ICMP', 'HTTP', 'HTTPS', 'SYN', 'handshake', 'NAT', 'IPv6', '스니핑', 'ARP Spoofing'],
+    keywords: ['OSI', 'TCP/IP', '3-way handshake', '4-way handshake', 'ARP', 'DHCP', 'DNS', 'NAT', 'CIDR', 'IPv4', 'IPv6', 'TTL', 'MTU', 'TCP', 'UDP', '포트'],
     content: `
 
 <h3>OSI 7계층</h3>
@@ -896,7 +896,7 @@ ALL: ALL</code></pre>
   </tbody>
 </table>
 
-<h4>TCP/IP 4계층 (DoD 모델)</h4>
+<h3>TCP/IP 4계층 (DoD 모델)</h3>
 <table>
   <thead><tr><th>TCP/IP 계층</th><th>대응 OSI 계층</th><th>프로토콜</th></tr></thead>
   <tbody>
@@ -907,31 +907,31 @@ ALL: ALL</code></pre>
   </tbody>
 </table>
 
-<h3>TCP vs UDP</h3>
+<h3>TCP vs UDP 비교</h3>
 <table>
   <thead><tr><th>구분</th><th>TCP</th><th>UDP</th></tr></thead>
   <tbody>
-    <tr><td>연결</td><td>연결 지향 (3-way handshake)</td><td>비연결(Connectionless)</td></tr>
-    <tr><td>신뢰성</td><td>높음 (순서 보장, 재전송, 흐름제어, 혼잡제어)</td><td>없음</td></tr>
+    <tr><td>연결 방식</td><td>연결 지향 (3-way handshake)</td><td>비연결(Connectionless)</td></tr>
+    <tr><td>신뢰성</td><td>높음 (순서 보장, 재전송, 흐름·혼잡 제어)</td><td>없음</td></tr>
     <tr><td>속도</td><td>상대적으로 느림</td><td>빠름</td></tr>
-    <tr><td>헤더 크기</td><td>20~60byte</td><td>8byte</td></tr>
+    <tr><td>헤더 크기</td><td>20~60 byte</td><td>8 byte</td></tr>
     <tr><td>주요 용도</td><td>HTTP(S), FTP, SMTP, SSH, Telnet</td><td>DNS, DHCP, VoIP, 스트리밍, SNMP</td></tr>
   </tbody>
 </table>
 
 <h3>TCP 연결 관리</h3>
 <h4>3-way Handshake (연결 수립)</h4>
-<pre><code>클라이언트 → [SYN, seq=x]          → 서버
-클라이언트 ← [SYN+ACK, seq=y, ack=x+1] ← 서버
-클라이언트 → [ACK, ack=y+1]        → 서버</code></pre>
+<pre><code>클라이언트 --[SYN, seq=x]-----------> 서버
+클라이언트 &lt;--[SYN+ACK, seq=y, ack=x+1]- 서버
+클라이언트 --[ACK, ack=y+1]----------> 서버</code></pre>
 
 <h4>4-way Handshake (연결 종료)</h4>
-<pre><code>클라이언트 → [FIN] → 서버
-클라이언트 ← [ACK] ← 서버
-클라이언트 ← [FIN] ← 서버
-클라이언트 → [ACK] → 서버   (TIME_WAIT 상태 진입)</code></pre>
+<pre><code>클라이언트 --[FIN]---> 서버
+클라이언트 &lt;--[ACK]-- 서버
+클라이언트 &lt;--[FIN]-- 서버
+클라이언트 --[ACK]---> 서버  (TIME_WAIT 상태 진입)</code></pre>
 
-<h4>TCP 플래그</h4>
+<h4>TCP 주요 플래그</h4>
 <table>
   <thead><tr><th>플래그</th><th>의미</th></tr></thead>
   <tbody>
@@ -944,7 +944,7 @@ ALL: ALL</code></pre>
   </tbody>
 </table>
 
-<h3>주요 프로토콜과 포트</h3>
+<h3>주요 포트 번호</h3>
 <table>
   <thead><tr><th>프로토콜</th><th>포트</th><th>전송층</th><th>용도</th></tr></thead>
   <tbody>
@@ -954,237 +954,476 @@ ALL: ALL</code></pre>
     <tr><td>Telnet</td><td>23</td><td>TCP</td><td>원격 접속 (평문, 보안 취약)</td></tr>
     <tr><td>SMTP</td><td>25</td><td>TCP</td><td>메일 송신</td></tr>
     <tr><td>DNS</td><td>53</td><td>UDP/TCP</td><td>도메인 이름 해석</td></tr>
-    <tr><td>DHCP (서버→클라)</td><td>67</td><td>UDP</td><td>IP 자동 할당</td></tr>
-    <tr><td>DHCP (클라→서버)</td><td>68</td><td>UDP</td><td>IP 자동 할당</td></tr>
+    <tr><td>DHCP</td><td>67/68</td><td>UDP</td><td>IP 자동 할당 (서버/클라이언트)</td></tr>
     <tr><td>TFTP</td><td>69</td><td>UDP</td><td>단순 파일 전송</td></tr>
     <tr><td>HTTP</td><td>80</td><td>TCP</td><td>웹</td></tr>
     <tr><td>POP3</td><td>110</td><td>TCP</td><td>메일 수신 (서버 삭제)</td></tr>
-    <tr><td>IMAP</td><td>143</td><td>TCP</td><td>메일 수신 (서버 유지, 동기화)</td></tr>
+    <tr><td>IMAP</td><td>143</td><td>TCP</td><td>메일 수신 (서버 유지·동기화)</td></tr>
+    <tr><td>SNMP</td><td>161/162</td><td>UDP</td><td>네트워크 장비 관리/트랩</td></tr>
+    <tr><td>LDAP</td><td>389</td><td>TCP/UDP</td><td>디렉토리 서비스</td></tr>
     <tr><td>HTTPS</td><td>443</td><td>TCP</td><td>보안 웹(TLS)</td></tr>
     <tr><td>SMTPS</td><td>465/587</td><td>TCP</td><td>보안 메일 송신</td></tr>
-    <tr><td>SNMP</td><td>161</td><td>UDP</td><td>네트워크 장비 관리</td></tr>
-    <tr><td>LDAP</td><td>389</td><td>TCP/UDP</td><td>디렉토리 서비스</td></tr>
-    <tr><td>LDAPS</td><td>636</td><td>TCP</td><td>보안 LDAP(TLS)</td></tr>
     <tr><td>SMB</td><td>445</td><td>TCP</td><td>파일 공유 (Windows)</td></tr>
+    <tr><td>LDAPS</td><td>636</td><td>TCP</td><td>보안 LDAP(TLS)</td></tr>
     <tr><td>RDP</td><td>3389</td><td>TCP</td><td>원격 데스크톱</td></tr>
   </tbody>
 </table>
 
-<h3>주요 프로토콜 동작</h3>
+<h3>주요 프로토콜 동작 원리</h3>
 
 <h4>ARP (Address Resolution Protocol)</h4>
-<p>IP 주소 → MAC 주소 변환. 3계층 프로토콜이지만 2계층 주소 해석에 사용. ARP 캐시(ARP 테이블)에 결과 저장.</p>
+<p>IP 주소 → MAC 주소 변환. 브로드캐스트 요청 후 유니캐스트 응답. 결과는 ARP 캐시에 저장.</p>
 <ul>
-  <li><strong>RARP</strong>: MAC → IP 변환. DHCP 이전 사용.</li>
+  <li><strong>RARP</strong>: MAC → IP 역변환. DHCP 이전 사용.</li>
   <li><strong>Proxy ARP</strong>: 라우터가 다른 서브넷 대신 ARP 응답.</li>
-  <li><strong>Gratuitous ARP</strong>: 자신의 IP-MAC을 네트워크에 알림 (중복 탐지·캐시 갱신).</li>
+  <li><strong>Gratuitous ARP</strong>: 자신의 IP-MAC을 브로드캐스트로 알림 (중복 IP 탐지·캐시 갱신).</li>
 </ul>
 
-<h4>ICMP (Internet Control Message Protocol)</h4>
-<p>IP 네트워크 오류 메시지·제어 메시지 전달. 라우터가 TTL 초과, 목적지 도달 불가 등 알림.</p>
-<ul>
-  <li>Type 0: Echo Reply (ping 응답)</li>
-  <li>Type 3: Destination Unreachable</li>
-  <li>Type 8: Echo Request (ping 요청)</li>
-  <li>Type 11: TTL Exceeded</li>
-  <li>악용: Ping of Death, Smurf 공격, ICMP Tunneling</li>
-</ul>
+<h4>DHCP 동작 순서 (DORA)</h4>
+<p>IP 주소·서브넷 마스크·게이트웨이·DNS 서버를 자동 할당.</p>
+<ol>
+  <li><strong>Discover</strong>: 클라이언트가 브로드캐스트로 DHCP 서버 탐색</li>
+  <li><strong>Offer</strong>: DHCP 서버가 사용 가능한 IP 주소 제안</li>
+  <li><strong>Request</strong>: 클라이언트가 특정 서버의 제안 수락 요청</li>
+  <li><strong>ACK</strong>: DHCP 서버가 임대 확정 및 정보 전달</li>
+</ol>
 
-<h4>DNS (Domain Name System)</h4>
-<ul>
-  <li>도메인 → IP 변환. 계층 구조: 루트 → TLD → 2차 도메인 → 호스트.</li>
-  <li>레코드 유형: A(IPv4), AAAA(IPv6), MX(메일), CNAME(별칭), NS(네임서버), PTR(역방향), SOA(권한 시작)</li>
-  <li><strong>DNS Spoofing(캐시 포이즈닝)</strong>: 위조된 DNS 응답으로 캐시 오염 → 사용자를 악성 사이트로 유도.</li>
-  <li><strong>DNSSEC</strong>: DNS 응답 디지털 서명으로 위변조 방지.</li>
-</ul>
-
-<h4>DHCP (Dynamic Host Configuration Protocol)</h4>
-<p>IP 주소·서브넷 마스크·게이트웨이·DNS 자동 할당. 과정: <strong>DORA</strong> (Discover → Offer → Request → ACK)</p>
-<ul>
-  <li><strong>DHCP Starvation</strong>: 가짜 요청으로 IP 풀 고갈 → DoS.</li>
-  <li><strong>DHCP Spoofing</strong>: 가짜 DHCP 서버로 악성 게이트웨이 할당 → MITM.</li>
-</ul>
-
-<h3>IP 주소 체계</h3>
-<h4>IPv4 사설 주소 (RFC 1918)</h4>
+<h4>DNS 동작 원리</h4>
+<p>도메인 이름 → IP 주소 변환. 계층 구조: 루트(.) → TLD(.com) → 2차 도메인(example) → 호스트(www).</p>
 <table>
-  <thead><tr><th>클래스</th><th>사설 IP 대역</th><th>호스트 수</th></tr></thead>
+  <thead><tr><th>레코드 유형</th><th>용도</th></tr></thead>
   <tbody>
-    <tr><td>A</td><td>10.0.0.0 ~ 10.255.255.255 (/8)</td><td>약 1,677만</td></tr>
-    <tr><td>B</td><td>172.16.0.0 ~ 172.31.255.255 (/12)</td><td>약 104만</td></tr>
-    <tr><td>C</td><td>192.168.0.0 ~ 192.168.255.255 (/16)</td><td>약 65,536</td></tr>
+    <tr><td>A</td><td>도메인 → IPv4 주소</td></tr>
+    <tr><td>AAAA</td><td>도메인 → IPv6 주소</td></tr>
+    <tr><td>MX</td><td>메일 서버 지정</td></tr>
+    <tr><td>CNAME</td><td>별칭 도메인 → 정식 도메인</td></tr>
+    <tr><td>NS</td><td>권한 네임서버</td></tr>
+    <tr><td>PTR</td><td>IP → 도메인 역방향</td></tr>
+    <tr><td>TXT</td><td>임의 텍스트 (SPF, DKIM 등)</td></tr>
+    <tr><td>SOA</td><td>권한 시작 정보</td></tr>
   </tbody>
 </table>
 
-<h4>특수 주소</h4>
-<ul>
-  <li><code>127.0.0.1</code>: 루프백 (자기 자신)</li>
-  <li><code>0.0.0.0</code>: 모든 주소 또는 미지정</li>
-  <li><code>255.255.255.255</code>: 제한된 브로드캐스트</li>
-  <li><code>169.254.0.0/16</code>: APIPA (DHCP 실패 시 자동 할당)</li>
-</ul>
+<h3>NAT (Network Address Translation)</h3>
+<table>
+  <thead><tr><th>유형</th><th>설명</th><th>용도</th></tr></thead>
+  <tbody>
+    <tr><td>Static NAT</td><td>사설 IP 1:1 공인 IP 매핑 (고정)</td><td>서버 공개</td></tr>
+    <tr><td>Dynamic NAT</td><td>사설 IP → 공인 IP 풀에서 동적 할당</td><td>소규모 기업</td></tr>
+    <tr><td>PAT (NAPT, IP Masquerading)</td><td>여러 사설 IP → 공인 IP 1개 + 포트로 구분</td><td>가정·소호 환경</td></tr>
+  </tbody>
+</table>
 
-<h4>IPv6 특징</h4>
-<ul>
-  <li>128bit 주소 (16진수 8그룹, 콜론 구분). 2^128개 주소.</li>
-  <li>IPSec 기본 내장 (IPv4는 선택적)</li>
-  <li>헤더 단순화 (체크섬 제거, 가변 헤더 확장)</li>
-  <li>멀티캐스트, 애니캐스트 지원. 브로드캐스트 없음.</li>
-  <li><code>::1</code>: 루프백. <code>fe80::/10</code>: 링크-로컬.</li>
-</ul>
-
-<h3>네트워크 공격</h3>
-<h4>스니핑(Sniffing)</h4>
-<p>네트워크 패킷을 가로채 내용 도청. Promiscuous Mode로 NIC 설정. 허브 환경에서 쉬움. 스위치 환경: ARP Spoofing + 스니핑 조합.</p>
-
-<h4>ARP Spoofing</h4>
-<p>위조된 ARP Reply로 피해자의 ARP 캐시 오염 → 트래픽을 공격자 경유. MITM 기반. IP Forwarding 설정 시 투명하게 가로채기.</p>
-
-<h4>IP Spoofing</h4>
-<p>출발지 IP를 위조한 패킷 전송. Smurf 공격, SYN Flooding 등에 활용. 단방향 공격(응답 불가).</p>
-
-<h4>세션 하이재킹</h4>
-<p>TCP 세션의 시퀀스 번호를 예측·탈취해 연결 가로채기. ARP Spoofing으로 패킷 확보 후 시퀀스 번호 파악.</p>
+<h3>IPv4 vs IPv6 비교</h3>
+<table>
+  <thead><tr><th>항목</th><th>IPv4</th><th>IPv6</th></tr></thead>
+  <tbody>
+    <tr><td>주소 길이</td><td>32bit (약 43억 개)</td><td>128bit (사실상 무제한)</td></tr>
+    <tr><td>표기</td><td>10진수 점 표기 (192.168.0.1)</td><td>16진수 콜론 표기 (2001:db8::1)</td></tr>
+    <tr><td>헤더</td><td>가변 (20~60 byte)</td><td>고정 40 byte + 확장 헤더</td></tr>
+    <tr><td>IPSec</td><td>선택적</td><td>기본 내장</td></tr>
+    <tr><td>브로드캐스트</td><td>있음</td><td>없음 (멀티캐스트·애니캐스트 사용)</td></tr>
+    <tr><td>자동 설정</td><td>DHCP 필요</td><td>SLAAC (상태 비저장 자동 설정)</td></tr>
+    <tr><td>체크섬</td><td>헤더에 포함</td><td>제거 (상위 계층 담당)</td></tr>
+    <tr><td>루프백</td><td>127.0.0.1</td><td>::1</td></tr>
+  </tbody>
+</table>
     `,
   },
 
   {
     subject: 'network',
     subjectLabel: '네트워크보안',
-    chapter: 'firewall-ids',
-    chapterLabel: '방화벽·IDS·IPS',
-    keywords: ['방화벽', 'IDS', 'IPS', '침입탐지', '패킷 필터링', '상태 검사', '애플리케이션 게이트웨이', '프록시', 'DMZ', '오탐', '미탐', 'UTM', 'NGFW', 'WAF', 'NAC', '허니팟'],
+    chapter: 'protocol-security',
+    chapterLabel: '프로토콜 취약점',
+    keywords: ['ARP Spoofing', 'ARP 스푸핑', 'ICMP', 'DNS 스푸핑', 'DNS Cache Poisoning', 'DHCP Starvation', 'BGP', 'OSPF', 'IP Spoofing', '세션 하이재킹', 'TCP Sequence', 'MITM', 'Smurf'],
     content: `
 
-<h3>방화벽 (Firewall)</h3>
-<p>내부 네트워크와 외부 네트워크 사이에서 정의된 규칙에 따라 <strong>트래픽을 허용/차단</strong>하는 보안 장비. 기본 원칙: <strong>화이트리스트(허용 목록)</strong> 기반 (미정의 트래픽은 거부).</p>
+<h3>ARP 취약점</h3>
+<p>ARP는 인증 메커니즘이 없어 위조 응답을 그대로 수용한다. 이를 악용하면 네트워크 트래픽을 가로챌 수 있다.</p>
 
-<h4>방화벽 유형 비교</h4>
+<h4>ARP Spoofing (ARP Poisoning)</h4>
+<p>공격자가 위조된 ARP Reply를 브로드캐스트하여 피해자의 ARP 캐시를 오염시킨다. 결과적으로 피해자의 트래픽이 공격자를 경유하게 된다 (MITM).</p>
+<pre><code>공격자: "192.168.1.1의 MAC은 AA:BB:CC:DD:EE:FF (공격자 MAC)" 라고 ARP Reply 전송
+피해자: ARP 캐시 갱신 → 게이트웨이 트래픽이 공격자로 전달</code></pre>
+<h4>ARP Spoofing 대응</h4>
+<ul>
+  <li><strong>DAI (Dynamic ARP Inspection)</strong>: 스위치에서 DHCP Snooping 바인딩 테이블과 비교하여 위조 ARP 차단</li>
+  <li><strong>Static ARP</strong>: 중요 호스트 ARP 항목을 정적으로 고정</li>
+  <li><strong>ARPWatch</strong>: ARP 캐시 변경 감지 및 경보</li>
+  <li><strong>암호화</strong>: MITM 성공 시에도 내용 보호 (TLS/HTTPS)</li>
+</ul>
+
+<h3>ICMP 취약점</h3>
 <table>
-  <thead><tr><th>유형</th><th>동작 계층</th><th>검사 항목</th><th>장점</th><th>단점</th></tr></thead>
+  <thead><tr><th>공격</th><th>원리</th><th>대응</th></tr></thead>
+  <tbody>
+    <tr><td>ICMP Redirect</td><td>공격자가 위조된 ICMP Redirect로 라우팅 경로 변경 → 트래픽 우회</td><td>ICMP Redirect 수신 비활성화</td></tr>
+    <tr><td>Smurf 공격</td><td>출발지 IP를 피해자로 위조한 ICMP Echo Request를 브로드캐스트 주소로 전송 → 네트워크 내 모든 호스트가 피해자에게 Echo Reply 전송 → 증폭 DDoS</td><td>Directed Broadcast 차단, IP Spoofing 방지</td></tr>
+    <tr><td>Ping of Death</td><td>65,535 byte 초과 분할 ICMP 패킷 전송 → 재조합 시 버퍼 오버플로우</td><td>패치, 크기 제한</td></tr>
+    <tr><td>ICMP Tunneling</td><td>ICMP 패이로드에 데이터 은닉 → 방화벽 우회</td><td>ICMP 페이로드 검사, DPI</td></tr>
+  </tbody>
+</table>
+
+<h3>DNS 취약점</h3>
+
+<h4>DNS Spoofing (Cache Poisoning)</h4>
+<p>DNS 서버의 캐시에 위조된 레코드를 주입하여 사용자를 악성 사이트로 유도.</p>
+<ul>
+  <li><strong>Kaminsky Attack (2008)</strong>: UDP 포트와 Transaction ID를 무차별 대입하여 권한 DNS 서버 캐시 오염. DNS의 구조적 취약점을 이용.</li>
+  <li><strong>대응</strong>: DNSSEC (응답에 디지털 서명), 포트 랜덤화, Transaction ID 랜덤화, DNS over HTTPS (DoH), DNS over TLS (DoT)</li>
+</ul>
+
+<h4>DNS Amplification (증폭 공격)</h4>
+<p>출발지 IP를 피해자로 위조한 DNS 요청을 오픈 리졸버에 전송. 응답이 피해자에게 집중 (증폭 배율 최대 70배). DRDoS 기법.</p>
+<ul>
+  <li>대응: 오픈 리졸버 차단, 응답 속도 제한 (RRL), BCP38 (Ingress Filtering)</li>
+</ul>
+
+<h3>DHCP 취약점</h3>
+<table>
+  <thead><tr><th>공격</th><th>원리</th><th>대응</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>DHCP Starvation</strong></td>
+      <td>위조된 MAC 주소로 다수의 DHCP 요청 → IP 풀 고갈 → 신규 단말 IP 할당 불가 (DoS)</td>
+      <td>DHCP Snooping, 포트당 MAC 수 제한 (Port Security)</td>
+    </tr>
+    <tr>
+      <td><strong>DHCP Spoofing</strong></td>
+      <td>Starvation 후 가짜 DHCP 서버 구동 → 악성 게이트웨이·DNS 할당 → MITM</td>
+      <td>DHCP Snooping (Trusted/Untrusted 포트 설정)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>IP Spoofing</h3>
+<p>출발지 IP 주소를 위조한 패킷 전송. TCP는 3-way handshake로 제한되지만 UDP/ICMP는 자유롭게 위조 가능. Smurf·DRDoS·SYN Flood 등에 활용.</p>
+<ul>
+  <li><strong>Ingress Filtering (BCP38)</strong>: ISP 경계 라우터에서 내부 IP 범위가 아닌 출발지 IP 차단</li>
+  <li><strong>uRPF (Unicast Reverse Path Forwarding)</strong>: 패킷 수신 인터페이스가 라우팅 테이블상 해당 출발지 IP의 최적 경로와 일치하지 않으면 차단</li>
+</ul>
+
+<h3>세션 하이재킹 (Session Hijacking)</h3>
+<p>합법적으로 수립된 TCP 세션을 탈취하는 공격. TCP 시퀀스 번호 예측이 핵심.</p>
+<ol>
+  <li>ARP Spoofing 등으로 피해자 패킷 확보</li>
+  <li>TCP 시퀀스 번호(SEQ)와 확인 번호(ACK) 파악</li>
+  <li>피해자보다 먼저 올바른 시퀀스 번호의 패킷 전송</li>
+  <li>서버가 공격자를 합법적 클라이언트로 인식</li>
+</ol>
+<p><strong>대응</strong>: 암호화(TLS), 시퀀스 번호 랜덤화, 세션 토큰, IP+포트 고정 검증</p>
+
+<h3>라우팅 프로토콜 취약점</h3>
+<table>
+  <thead><tr><th>프로토콜</th><th>취약점</th><th>대응</th></tr></thead>
+  <tbody>
+    <tr><td>BGP</td><td>Route Hijacking: 위조된 BGP 공고로 트래픽 우회. 2008년 파키스탄 텔레콤 YouTube 차단 사건.</td><td>RPKI (Route Origin Validation), BGPsec</td></tr>
+    <tr><td>OSPF</td><td>위조된 LSA (Link State Advertisement)로 라우팅 테이블 오염</td><td>OSPF 인증 (MD5/SHA), 패시브 인터페이스</td></tr>
+    <tr><td>RIP</td><td>위조된 RIP 응답으로 라우팅 루프 유발</td><td>RIPv2 인증, 스플릿 호라이즌</td></tr>
+  </tbody>
+</table>
+    `,
+  },
+
+  {
+    subject: 'network',
+    subjectLabel: '네트워크보안',
+    chapter: 'network-attack-dos',
+    chapterLabel: 'DoS·DDoS 공격',
+    keywords: ['DoS', 'DDoS', 'SYN Flooding', 'ICMP Flooding', 'UDP Flooding', 'Ping of Death', 'Teardrop', 'Land Attack', 'Smurf', 'HTTP Flood', 'Slowloris', 'Amplification', 'Botnet', 'C&C', '반사 공격', 'DRDoS'],
+    content: `
+
+<h3>DoS vs DDoS</h3>
+<table>
+  <thead><tr><th>구분</th><th>DoS (Denial of Service)</th><th>DDoS (Distributed DoS)</th></tr></thead>
+  <tbody>
+    <tr><td>공격 주체</td><td>단일 시스템</td><td>다수의 분산된 시스템 (봇넷)</td></tr>
+    <tr><td>공격 규모</td><td>소규모</td><td>대규모 (수백 Gbps 이상)</td></tr>
+    <tr><td>추적 난이도</td><td>상대적으로 쉬움</td><td>어려움</td></tr>
+    <tr><td>방어 난이도</td><td>상대적으로 쉬움</td><td>어려움</td></tr>
+  </tbody>
+</table>
+
+<h3>볼류메트릭 공격 (Volumetric Attack)</h3>
+<p>대역폭을 포화시켜 정상 트래픽 차단. 단위: bps, pps.</p>
+<table>
+  <thead><tr><th>공격</th><th>원리</th><th>특징</th></tr></thead>
+  <tbody>
+    <tr><td><strong>SYN Flood</strong></td><td>다수의 위조된 SYN 전송 → 서버가 SYN_RCVD 상태 큐 소진</td><td>TCP 3-way handshake 미완료, 서버 자원 고갈</td></tr>
+    <tr><td><strong>UDP Flood</strong></td><td>대량 UDP 패킷으로 대역폭 포화</td><td>비연결형이라 위조 용이</td></tr>
+    <tr><td><strong>ICMP Flood</strong></td><td>대량 Ping으로 대역폭 포화</td><td>단순하지만 방화벽으로 차단 쉬움</td></tr>
+    <tr><td><strong>Amplification/Reflection</strong></td><td>위조 출발지 IP로 오픈 서버(DNS, NTP, SSDP)에 요청 → 피해자에게 증폭된 응답 전달</td><td>DNS는 최대 70배, NTP monlist는 최대 556배 증폭</td></tr>
+  </tbody>
+</table>
+
+<h3>프로토콜 공격</h3>
+<table>
+  <thead><tr><th>공격</th><th>원리</th><th>대응</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Ping of Death</strong></td><td>65,535 byte 초과 ICMP 패킷을 분할 전송 → 재조합 시 버퍼 오버플로우</td><td>OS 패치, 크기 초과 패킷 차단</td></tr>
+    <tr><td><strong>Teardrop</strong></td><td>IP 조각의 offset 값을 조작하여 중첩·누락된 분할 패킷 전송 → 재조합 시 시스템 크래시</td><td>OS 패치</td></tr>
+    <tr><td><strong>Land Attack</strong></td><td>출발지 IP/포트 = 목적지 IP/포트로 SYN 전송 → 무한 루프</td><td>동일 출발지·목적지 패킷 차단</td></tr>
+    <tr><td><strong>Smurf</strong></td><td>출발지를 피해자 IP로 위조 후 브로드캐스트 ICMP 전송 → 모든 호스트가 피해자에게 응답</td><td>Directed Broadcast 차단, BCP38</td></tr>
+  </tbody>
+</table>
+
+<h3>애플리케이션 레이어 공격</h3>
+<table>
+  <thead><tr><th>공격</th><th>원리</th><th>특징</th></tr></thead>
+  <tbody>
+    <tr><td><strong>HTTP Flood</strong></td><td>정상처럼 보이는 대량 HTTP GET/POST 요청으로 웹 서버 과부하</td><td>대역폭 소량, 탐지 어려움</td></tr>
+    <tr><td><strong>Slowloris</strong></td><td>HTTP 헤더를 천천히 전송하여 연결을 오래 유지 → 최대 연결 수 소진</td><td>저대역폭으로 서버 마비 가능</td></tr>
+    <tr><td><strong>RUDY (R-U-Dead-Yet)</strong></td><td>POST 요청 본문을 극도로 느리게 전송 → 서버 연결 유지</td><td>Slowloris의 POST 버전</td></tr>
+    <tr><td><strong>ReDoS</strong></td><td>복잡한 정규표현식 취약점을 이용한 CPU 소진</td><td>애플리케이션 레이어</td></tr>
+  </tbody>
+</table>
+
+<h3>DRDoS (Distributed Reflection DoS, 반사 서비스 거부)</h3>
+<p>출발지 IP를 피해자로 위조하여 다수의 정상 서버(반사 서버)에 요청 전송 → 정상 서버들이 피해자에게 응답을 집중 전송.</p>
+<ul>
+  <li><strong>Amplification Factor</strong>: 요청 대비 응답 크기 비율. DNS(70배), NTP(556배), SSDP(30배), Chargen(358배)</li>
+  <li><strong>특징</strong>: 공격자 IP 추적 불가, 정상 서버를 악용하므로 차단 어려움</li>
+  <li><strong>대응</strong>: BCP38, 오픈 리졸버 차단, 응답 속도 제한</li>
+</ul>
+
+<h3>봇넷·C&C 구조</h3>
+<table>
+  <thead><tr><th>구분</th><th>중앙집중식 (Centralized)</th><th>P2P (분산)</th></tr></thead>
+  <tbody>
+    <tr><td>C&C 서버</td><td>단일 IRC/HTTP 서버</td><td>없음 (봇들이 직접 통신)</td></tr>
+    <tr><td>제어</td><td>빠르고 단순</td><td>복잡</td></tr>
+    <tr><td>탄력성</td><td>낮음 (C&C 차단 시 봇넷 무력화)</td><td>높음 (일부 봇 제거해도 유지)</td></tr>
+    <tr><td>탐지</td><td>쉬움</td><td>어려움</td></tr>
+  </tbody>
+</table>
+
+<h3>DDoS 대응 방법</h3>
+<table>
+  <thead><tr><th>방법</th><th>설명</th></tr></thead>
+  <tbody>
+    <tr><td><strong>SYN Cookie</strong></td><td>SYN_RCVD 상태 없이 쿠키로 연결 추적. SYN Flood 대응.</td></tr>
+    <tr><td><strong>BCP38 (Ingress Filtering)</strong></td><td>ISP 경계에서 위조 출발지 IP 차단. IP Spoofing 기반 공격 억제.</td></tr>
+    <tr><td><strong>블랙홀 라우팅</strong></td><td>공격 트래픽을 null0 인터페이스로 라우팅. 빠르지만 정상 트래픽도 차단.</td></tr>
+    <tr><td><strong>CDN / Anycast</strong></td><td>트래픽을 분산 노드로 분배. 공격 트래픽을 흡수.</td></tr>
+    <tr><td><strong>스크러빙 센터</strong></td><td>공격 트래픽을 스크러빙 센터로 우회 → 정상 트래픽만 원본 서버로 전달.</td></tr>
+    <tr><td><strong>Rate Limiting</strong></td><td>출발지 IP별 요청 속도 제한.</td></tr>
+  </tbody>
+</table>
+    `,
+  },
+
+  {
+    subject: 'network',
+    subjectLabel: '네트워크보안',
+    chapter: 'scanning-sniffing',
+    chapterLabel: '스캐닝·스니핑',
+    keywords: ['포트 스캔', 'Nmap', 'SYN 스캔', 'TCP Connect 스캔', 'UDP 스캔', 'FIN 스캔', 'NULL 스캔', 'XMAS 스캔', 'OS fingerprinting', '스니핑', '패킷 캡처', 'Wireshark', 'promiscuous mode', 'tcpdump', '네트워크 토폴로지'],
+    content: `
+
+<h3>포트 스캐닝 유형 비교</h3>
+<table>
+  <thead><tr><th>스캔 유형</th><th>전송 패킷</th><th>열린 포트 응답</th><th>닫힌 포트 응답</th><th>특징</th><th>탐지 여부</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>TCP Connect</strong></td>
+      <td>SYN</td>
+      <td>SYN+ACK → ACK (3-way 완료)</td>
+      <td>RST+ACK</td>
+      <td>완전한 연결. root 불필요.</td>
+      <td>쉬움 (로그 남음)</td>
+    </tr>
+    <tr>
+      <td><strong>SYN (Half-open)</strong></td>
+      <td>SYN</td>
+      <td>SYN+ACK → RST (연결 미완료)</td>
+      <td>RST+ACK</td>
+      <td>스텔스 스캔. root 필요. 가장 일반적.</td>
+      <td>중간 (일부 로그)</td>
+    </tr>
+    <tr>
+      <td><strong>UDP</strong></td>
+      <td>UDP</td>
+      <td>응답 없음</td>
+      <td>ICMP Port Unreachable</td>
+      <td>느림. UDP 서비스 탐지.</td>
+      <td>어려움</td>
+    </tr>
+    <tr>
+      <td><strong>FIN</strong></td>
+      <td>FIN</td>
+      <td>응답 없음</td>
+      <td>RST</td>
+      <td>Unix 계열만 동작. Windows는 닫힌 포트에도 RST.</td>
+      <td>어려움</td>
+    </tr>
+    <tr>
+      <td><strong>NULL</strong></td>
+      <td>플래그 없음</td>
+      <td>응답 없음</td>
+      <td>RST</td>
+      <td>RFC 793 기반. Unix 계열 전용.</td>
+      <td>어려움</td>
+    </tr>
+    <tr>
+      <td><strong>XMAS</strong></td>
+      <td>FIN+PSH+URG</td>
+      <td>응답 없음</td>
+      <td>RST</td>
+      <td>크리스마스 트리처럼 플래그 점등. Unix 계열 전용.</td>
+      <td>어려움</td>
+    </tr>
+    <tr>
+      <td><strong>Idle (Zombie)</strong></td>
+      <td>제3자 IP 위조 SYN</td>
+      <td>좀비 IP:SYN+ACK → 좀비 RST</td>
+      <td>좀비 IP:RST → IPID 변화 없음</td>
+      <td>완전 익명. IPID 변화량으로 결과 추론.</td>
+      <td>매우 어려움</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>OS Fingerprinting</h3>
+<table>
+  <thead><tr><th>구분</th><th>Active Fingerprinting</th><th>Passive Fingerprinting</th></tr></thead>
+  <tbody>
+    <tr><td>방법</td><td>특수 패킷 전송 후 응답 분석 (TTL, Window Size, TCP 옵션 등)</td><td>정상 트래픽 분석 (네트워크 캡처)</td></tr>
+    <tr><td>탐지</td><td>탐지 가능 (비정상 패킷)</td><td>탐지 어려움</td></tr>
+    <tr><td>도구</td><td>Nmap (-O 옵션)</td><td>p0f</td></tr>
+    <tr><td>분석 요소</td><td>TTL 기본값, TCP 윈도우 크기, DF 비트, IPID 패턴</td><td>동일</td></tr>
+  </tbody>
+</table>
+<p>OS별 TTL 기본값: Windows = 128, Linux = 64, Cisco IOS = 255</p>
+
+<h3>스니핑 (Sniffing)</h3>
+<p>네트워크 인터페이스를 <strong>Promiscuous Mode</strong>로 설정하여 자신에게 향하지 않은 패킷도 수신·분석하는 기법. 도청, 자격증명 탈취, 트래픽 분석에 활용.</p>
+
+<h4>허브 vs 스위치 환경</h4>
+<table>
+  <thead><tr><th>환경</th><th>특징</th><th>스니핑 용이성</th></tr></thead>
+  <tbody>
+    <tr><td>허브(Hub)</td><td>모든 포트에 브로드캐스트. 동일 세그먼트 모든 트래픽 수신 가능.</td><td>쉬움</td></tr>
+    <tr><td>스위치(Switch)</td><td>MAC 테이블 기반 유니캐스트 전달. 대상 포트에만 전송.</td><td>어려움 (우회 기법 필요)</td></tr>
+  </tbody>
+</table>
+
+<h4>스위치 환경 스니핑 우회 기법</h4>
+<ul>
+  <li><strong>ARP Spoofing</strong>: ARP 캐시를 오염시켜 트래픽을 공격자 경유. 가장 일반적.</li>
+  <li><strong>MAC Flooding</strong>: 대량의 위조 MAC 주소로 스위치 CAM 테이블을 채워 허브처럼 동작하도록 강제 (Fail-open 모드).</li>
+  <li><strong>Port Mirroring (SPAN)</strong>: 스위치 관리자가 트래픽 복사를 설정하는 합법적 방법. 공격자가 스위치 접근 시 악용 가능.</li>
+</ul>
+
+<h4>스니핑 대응</h4>
+<ul>
+  <li><strong>암호화</strong>: HTTPS, SSH, TLS 등으로 평문 전송 방지 (스니핑해도 내용 확인 불가)</li>
+  <li><strong>스위치 사용</strong>: 허브 대신 스위치 사용으로 기본적 스니핑 방지</li>
+  <li><strong>포트 보안 (Port Security)</strong>: 스위치 포트당 허용 MAC 주소 수 제한 → MAC Flooding 방지</li>
+  <li><strong>DAI</strong>: ARP Spoofing 방지</li>
+  <li><strong>IDS</strong>: 스니핑 도구 시그니처 탐지</li>
+</ul>
+    `,
+  },
+
+  {
+    subject: 'network',
+    subjectLabel: '네트워크보안',
+    chapter: 'firewall',
+    chapterLabel: '방화벽',
+    keywords: ['방화벽', 'Firewall', '패킷 필터링', '상태 기반 검사', 'Stateful Inspection', '애플리케이션 게이트웨이', '서킷 게이트웨이', 'NGFW', 'WAF', 'DMZ', '스크리닝 라우터', '베스천 호스트', '듀얼홈드 게이트웨이', '트리플홈드'],
+    content: `
+
+<h3>방화벽 유형 비교</h3>
+<table>
+  <thead><tr><th>유형</th><th>동작 계층</th><th>특징</th><th>장점</th><th>단점</th></tr></thead>
   <tbody>
     <tr>
       <td><strong>패킷 필터링</strong><br>(1세대)</td>
       <td>3~4계층</td>
-      <td>IP, 포트, 프로토콜</td>
-      <td>빠름, 저렴</td>
-      <td>상태 추적 불가, 분할 패킷 우회</td>
+      <td>IP 주소, 포트, 프로토콜 기반 ACL</td>
+      <td>빠름, 저렴, 구현 단순</td>
+      <td>상태 추적 불가, 분할 패킷·IP Spoofing 취약</td>
     </tr>
     <tr>
-      <td><strong>상태 검사</strong><br>(Stateful Inspection, 2세대)</td>
+      <td><strong>상태 기반 검사</strong><br>(Stateful Inspection, 2세대)</td>
       <td>3~4계층</td>
-      <td>IP, 포트 + 연결 상태 테이블</td>
-      <td>동적 패킷 분석</td>
-      <td>응용 계층 내용 미검사</td>
+      <td>연결 상태 테이블(State Table) 유지하여 맥락 기반 판단</td>
+      <td>동적 패킷 분석, 세션 추적</td>
+      <td>응용 계층 내용 미검사, 상태 테이블 메모리 소모</td>
     </tr>
     <tr>
       <td><strong>애플리케이션 게이트웨이</strong><br>(프록시 방화벽, 3세대)</td>
       <td>7계층</td>
-      <td>응용 계층 내용</td>
-      <td>내용 기반 필터링, IP 은닉</td>
-      <td>속도 느림, 모든 프로토콜 지원 어려움</td>
+      <td>각 프로토콜별 프록시가 내용까지 검사. 내부 IP 은닉.</td>
+      <td>내용 기반 필터링, 강력한 로깅</td>
+      <td>속도 느림, 모든 프로토콜 지원 불가, 단일 장애점</td>
+    </tr>
+    <tr>
+      <td><strong>서킷 게이트웨이</strong><br>(Circuit-level Gateway)</td>
+      <td>5계층 (세션)</td>
+      <td>SOCKS 기반. TCP 연결 릴레이. 내용 미검사.</td>
+      <td>애플리케이션 게이트웨이보다 빠름</td>
+      <td>내용 검사 불가</td>
     </tr>
     <tr>
       <td><strong>NGFW</strong><br>(차세대 방화벽)</td>
       <td>7계층</td>
-      <td>DPI, 앱 인식, SSL 검사, IPS</td>
-      <td>복합 위협 대응</td>
-      <td>고가, 복잡</td>
+      <td>DPI, 앱 인식, SSL/TLS 검사, IPS, 사용자 ID 기반 정책</td>
+      <td>복합 위협 통합 대응</td>
+      <td>고가, 복잡, 처리 성능 소모</td>
     </tr>
   </tbody>
 </table>
 
-<h4>방화벽 구성 유형</h4>
-<ul>
-  <li><strong>스크리닝 라우터</strong>: 라우터에 패킷 필터링 ACL 적용. 단순.</li>
-  <li><strong>배스천 호스트(Bastion Host)</strong>: 외부 접근 허용되는 강화된 서버. 프록시 역할.</li>
-  <li><strong>듀얼홈 게이트웨이</strong>: NIC 2개. IP Forwarding 비활성화. 직접 트래픽 차단.</li>
-  <li><strong>스크린드 서브넷(DMZ)</strong>: 외부 방화벽 + DMZ + 내부 방화벽. 가장 안전.</li>
-</ul>
+<h3>방화벽 아키텍처</h3>
+
+<h4>스크리닝 라우터 (Screening Router)</h4>
+<p>라우터에 패킷 필터링 ACL을 적용한 가장 단순한 구조. 단일 장애점. 저가.</p>
+<pre><code>인터넷 -- [스크리닝 라우터(ACL)] -- 내부망</code></pre>
+
+<h4>베스천 호스트 (Bastion Host)</h4>
+<p>외부에서 접근 허용되는 강화된 호스트. 스크리닝 라우터 뒤에 배치. 프록시 서비스 운영. 침해 시 내부망 위협.</p>
+
+<h4>듀얼홈드 게이트웨이 (Dual-homed Gateway)</h4>
+<p>NIC 2개 (외부·내부 망 각각 연결). IP Forwarding 비활성화 → 직접 라우팅 불가. 모든 트래픽이 게이트웨이를 통과해야 함.</p>
+
+<h4>스크리닝 서브넷 (Screened Subnet, DMZ 구조)</h4>
+<p>외부 방화벽 + DMZ 구간 + 내부 방화벽의 3단 구조. 가장 안전한 구성.</p>
+<pre><code>인터넷 -- [외부 방화벽] -- [DMZ: 웹서버, 메일서버, DNS] -- [내부 방화벽] -- 내부망</code></pre>
 
 <h3>DMZ (비무장지대)</h3>
-<p>외부 인터넷과 내부망 사이의 중간 영역. 외부에서 접근 필요한 서버(웹·메일·DNS·FTP)를 배치해 내부망 직접 노출 방지.</p>
-<pre><code>인터넷 ← 외부방화벽 → [DMZ: 웹서버, 메일서버] ← 내부방화벽 → 내부망</code></pre>
-
-<h3>IDS (침입탐지시스템)</h3>
-<p>네트워크/호스트의 이벤트를 분석해 <strong>침입 탐지 후 경보</strong> 발송. 차단 기능 없음 (수동적).</p>
-
-<h4>탐지 방식</h4>
-<table>
-  <thead><tr><th>방식</th><th>원리</th><th>장점</th><th>단점</th></tr></thead>
-  <tbody>
-    <tr>
-      <td><strong>시그니처(오용) 탐지</strong><br>Misuse Detection</td>
-      <td>알려진 공격 패턴 DB와 비교</td>
-      <td>정탐률 높음, 오탐 낮음</td>
-      <td>알려진 공격만 탐지. 신종·변종 취약.</td>
-    </tr>
-    <tr>
-      <td><strong>이상(행위) 탐지</strong><br>Anomaly Detection</td>
-      <td>정상 프로파일 기준 이상 행위 탐지</td>
-      <td>신종 공격 탐지 가능</td>
-      <td>오탐률 높음. 프로파일 구축 필요.</td>
-    </tr>
-    <tr>
-      <td><strong>상태 기반 탐지</strong></td>
-      <td>프로토콜 상태 머신 위반 탐지</td>
-      <td>프로토콜 이상 탐지</td>
-      <td>복잡</td>
-    </tr>
-  </tbody>
-</table>
-
-<h4>배치 유형</h4>
-<table>
-  <thead><tr><th>구분</th><th>NIDS (네트워크 기반)</th><th>HIDS (호스트 기반)</th></tr></thead>
-  <tbody>
-    <tr><td>위치</td><td>네트워크 구간 (TAP/SPAN 포트)</td><td>개별 호스트에 에이전트</td></tr>
-    <tr><td>탐지</td><td>네트워크 트래픽 분석</td><td>로그, 시스템 콜, 파일 무결성</td></tr>
-    <tr><td>암호화 트래픽</td><td>탐지 어려움</td><td>복호화 후 분석 가능</td></tr>
-    <tr><td>장점</td><td>단일 지점에서 전체 모니터링</td><td>내부 공격·내부자 위협 탐지</td></tr>
-  </tbody>
-</table>
-
-<h4>탐지 판정 유형 (혼동 행렬)</h4>
-<table>
-  <thead><tr><th></th><th>실제 공격 (Positive)</th><th>정상 (Negative)</th></tr></thead>
-  <tbody>
-    <tr><td><strong>공격으로 탐지</strong></td><td>정탐 (TP, True Positive)</td><td>오탐 (FP, False Positive) — 경보 과다</td></tr>
-    <tr><td><strong>정상으로 탐지</strong></td><td>미탐 (FN, False Negative) — 보안 위험</td><td>정상 탐지 (TN, True Negative)</td></tr>
-  </tbody>
-</table>
+<p>외부 인터넷과 내부망 사이의 중간 영역. 외부 접근이 필요한 서버(웹·메일·DNS·FTP)를 배치하여 내부망 직접 노출 방지.</p>
 <ul>
-  <li><strong>임계값 낮추면</strong>: 탐지율(민감도) 상승, 오탐률 상승</li>
-  <li><strong>임계값 높이면</strong>: 탐지율 하강, 오탐률 하강 (미탐 증가)</li>
+  <li>DMZ 서버가 침해되더라도 내부 방화벽이 내부망 보호</li>
+  <li>내부망 서버는 외부에서 직접 접근 불가</li>
+  <li>외부 방화벽: 인터넷 → DMZ 트래픽 제어</li>
+  <li>내부 방화벽: DMZ → 내부망 트래픽 제어 (더 엄격)</li>
 </ul>
 
-<h3>IPS (침입방지시스템)</h3>
-<p>IDS 기능 + <strong>실시간 자동 차단</strong>. 인라인(Inline) 방식으로 배치 (트래픽 경로에 직접 위치). 오탐 시 정상 트래픽도 차단되는 위험.</p>
-
-<h3>IDS vs IPS vs 방화벽</h3>
-<table>
-  <thead><tr><th>구분</th><th>방화벽</th><th>IDS</th><th>IPS</th></tr></thead>
-  <tbody>
-    <tr><td>목적</td><td>접근 통제</td><td>침입 탐지·경보</td><td>침입 탐지·차단</td></tr>
-    <tr><td>배치</td><td>인라인</td><td>Out-of-band (미러링)</td><td>인라인</td></tr>
-    <tr><td>트래픽 차단</td><td>O (정책 기반)</td><td>X</td><td>O (자동)</td></tr>
-    <tr><td>오탐 영향</td><td>낮음</td><td>경보만</td><td>정상 트래픽 차단</td></tr>
-  </tbody>
-</table>
-
-<h3>기타 네트워크 보안 장비</h3>
+<h3>NGFW (차세대 방화벽)</h3>
 <ul>
-  <li><strong>WAF (Web Application Firewall)</strong>: HTTP/HTTPS 트래픽 분석. SQL Injection·XSS·CSRF 등 웹 공격 방어. OSI 7계층.</li>
-  <li><strong>UTM (Unified Threat Management)</strong>: 방화벽 + IPS + 안티바이러스 + VPN + 콘텐츠 필터 통합. 중소기업에 적합.</li>
-  <li><strong>NAC (Network Access Control)</strong>: 단말 보안 상태 검사 후 네트워크 접근 허용/격리. 802.1X 기반.</li>
-  <li><strong>DDoS 방어 장비</strong>: 트래픽 분석·스크러빙. 블랙홀 라우팅, CDN 활용.</li>
+  <li><strong>DPI (Deep Packet Inspection)</strong>: 패킷 내용까지 검사. 애플리케이션 식별.</li>
+  <li><strong>애플리케이션 인식</strong>: 포트에 관계없이 실제 애플리케이션 식별 (예: P2P, 소셜 미디어)</li>
+  <li><strong>사용자 ID 기반 정책</strong>: IP가 아닌 사용자 계정 기반 접근 제어. AD/LDAP 연동.</li>
+  <li><strong>SSL/TLS 검사</strong>: 암호화 트래픽 복호화 후 검사 (SSL Inspection)</li>
 </ul>
 
-<h3>허니팟 (Honeypot)</h3>
-<p>공격자를 유인하는 <strong>함정 시스템</strong>. 공격 기법 수집·분석 목적. 실제 서비스 없음.</p>
+<h3>WAF (Web Application Firewall)</h3>
+<p>HTTP/HTTPS 트래픽을 7계층에서 분석하여 웹 공격을 차단.</p>
 <ul>
-  <li><strong>허니넷(Honeynet)</strong>: 여러 허니팟을 네트워크로 구성.</li>
-  <li>주의: 공격자가 허니팟을 이용해 제3자 공격 시 법적 문제.</li>
+  <li>SQL Injection, XSS, CSRF, 파일 업로드, 디렉터리 트래버설 차단</li>
+  <li>OWASP Top 10 기반 룰셋</li>
+  <li>배치 방식: Reverse Proxy, Transparent Proxy, 스니핑</li>
+  <li>일반 방화벽과 다른 점: HTTP 헤더·쿼리·본문까지 검사</li>
+</ul>
+
+<h3>방화벽 정책 원칙</h3>
+<ul>
+  <li><strong>Default Deny (화이트리스트)</strong>: 명시적으로 허용된 트래픽만 통과. 미정의 트래픽 차단. 권장 원칙.</li>
+  <li><strong>Default Allow (블랙리스트)</strong>: 명시적으로 차단된 트래픽만 거부. 관리 편의성 높지만 보안 취약.</li>
+  <li><strong>최소 권한 원칙</strong>: 업무에 필요한 최소한의 포트·프로토콜만 허용.</li>
+  <li><strong>규칙 순서</strong>: 방화벽 정책은 위에서 아래로 순차 적용. 더 구체적인 규칙을 먼저 배치.</li>
 </ul>
     `,
   },
@@ -1192,162 +1431,565 @@ ALL: ALL</code></pre>
   {
     subject: 'network',
     subjectLabel: '네트워크보안',
-    chapter: 'vpn',
-    chapterLabel: 'VPN',
-    keywords: ['VPN', 'IPSec', 'SSL VPN', 'PPTP', 'L2TP', '터널링', '암호화', 'AH', 'ESP', 'IKE', 'TLS', 'SSL', 'POODLE', 'BEAST', 'SA'],
+    chapter: 'ids-ips',
+    chapterLabel: 'IDS·IPS·UTM',
+    keywords: ['IDS', 'IPS', 'UTM', '침입탐지', '침입차단', '오탐', '미탐', 'False Positive', 'False Negative', 'NIDS', 'HIDS', '시그니처', '이상탐지', '행위기반', 'Snort', '허니팟', 'NAC'],
     content: `
 
-<p>공중망(인터넷)을 통해 <strong>암호화된 가상 사설 터널</strong>을 구성하는 기술. 기밀성·무결성·인증·부인방지 제공.</p>
+<h3>IDS vs IPS 비교</h3>
+<table>
+  <thead><tr><th>구분</th><th>IDS (침입탐지시스템)</th><th>IPS (침입방지시스템)</th></tr></thead>
+  <tbody>
+    <tr><td>목적</td><td>탐지 및 경보</td><td>탐지 및 실시간 차단</td></tr>
+    <tr><td>배치 방식</td><td>Out-of-band (미러링·TAP)</td><td>Inline (트래픽 경로에 직접 위치)</td></tr>
+    <tr><td>트래픽 차단</td><td>불가 (경보만)</td><td>가능 (자동 차단)</td></tr>
+    <tr><td>오탐(FP) 영향</td><td>불필요한 경보</td><td>정상 트래픽 차단 (서비스 장애)</td></tr>
+    <tr><td>지연(Latency)</td><td>없음</td><td>검사로 인한 약간의 지연</td></tr>
+    <tr><td>장애 시</td><td>탐지 불가 (네트워크 영향 없음)</td><td>네트워크 차단 위험 (Fail-open/Fail-close 설정 필요)</td></tr>
+  </tbody>
+</table>
+
+<h3>NIDS vs HIDS 비교</h3>
+<table>
+  <thead><tr><th>구분</th><th>NIDS (네트워크 기반)</th><th>HIDS (호스트 기반)</th></tr></thead>
+  <tbody>
+    <tr><td>위치</td><td>네트워크 구간 (TAP/SPAN 포트)</td><td>개별 호스트에 에이전트 설치</td></tr>
+    <tr><td>탐지 대상</td><td>네트워크 트래픽</td><td>로그, 시스템 콜, 파일 무결성, 레지스트리</td></tr>
+    <tr><td>암호화 트래픽</td><td>탐지 어려움</td><td>복호화 후 분석 가능</td></tr>
+    <tr><td>내부자 위협</td><td>탐지 어려움</td><td>탐지 가능</td></tr>
+    <tr><td>성능 영향</td><td>호스트에 영향 없음</td><td>호스트 자원 소모</td></tr>
+    <tr><td>관리</td><td>단일 지점에서 전체 모니터링</td><td>각 호스트 개별 관리</td></tr>
+    <tr><td>예시</td><td>Snort, Suricata</td><td>OSSEC, Tripwire, Windows Defender</td></tr>
+  </tbody>
+</table>
+
+<h3>탐지 방식 비교</h3>
+<table>
+  <thead><tr><th>방식</th><th>원리</th><th>장점</th><th>단점</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>시그니처(오용) 탐지</strong><br>Signature/Misuse Detection</td>
+      <td>알려진 공격 패턴 DB와 비교</td>
+      <td>정탐률 높음, 오탐률 낮음, 설명 가능</td>
+      <td>신종·변종·제로데이 공격 탐지 불가, DB 업데이트 필요</td>
+    </tr>
+    <tr>
+      <td><strong>이상(anomaly) 탐지</strong><br>Anomaly Detection</td>
+      <td>정상 행위 프로파일 기준, 통계적 이상 탐지</td>
+      <td>신종 공격 탐지 가능</td>
+      <td>오탐률 높음, 프로파일 구축 어려움, 점진적 변화 탐지 불가</td>
+    </tr>
+    <tr>
+      <td><strong>행위 기반 탐지</strong><br>Behavior-based Detection</td>
+      <td>시스템 콜·API 호출 패턴 분석</td>
+      <td>변형 악성코드 탐지</td>
+      <td>복잡, 높은 오탐 가능성</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>탐지 판정: 오탐(FP) vs 미탐(FN)</h3>
+<table>
+  <thead><tr><th></th><th>실제 공격 (Positive)</th><th>정상 (Negative)</th></tr></thead>
+  <tbody>
+    <tr><td><strong>공격으로 탐지</strong></td><td>정탐 TP (True Positive)</td><td>오탐 FP (False Positive) — 불필요한 경보</td></tr>
+    <tr><td><strong>정상으로 탐지</strong></td><td>미탐 FN (False Negative) — 보안 위협</td><td>정상 탐지 TN (True Negative)</td></tr>
+  </tbody>
+</table>
+<ul>
+  <li><strong>오탐(False Positive)</strong>: 정상 트래픽을 공격으로 오인. 임계값 낮출수록 증가. 운영 부담 증가.</li>
+  <li><strong>미탐(False Negative)</strong>: 실제 공격을 정상으로 오인. 임계값 높일수록 증가. 보안 위협.</li>
+  <li><strong>ROC 곡선</strong>: 탐지율(민감도)과 오탐률의 트레이드오프 관계를 표현. AUC가 높을수록 좋은 탐지기.</li>
+</ul>
+
+<h3>UTM (Unified Threat Management)</h3>
+<p>방화벽 + IPS + 안티바이러스 + VPN + 콘텐츠 필터 + 스팸 필터를 단일 어플라이언스에 통합. 중소기업에 적합. 단일 장애점 주의.</p>
+
+<h3>NAC (Network Access Control)</h3>
+<p>네트워크 접속 전 단말의 보안 상태를 검사하여 정책 준수 단말만 접근 허용.</p>
+<ul>
+  <li><strong>802.1X</strong>: IEEE 표준 포트 기반 NAC. EAP 프로토콜로 인증. Supplicant(단말) + Authenticator(스위치) + Authentication Server(RADIUS).</li>
+  <li><strong>에이전트 방식</strong>: 단말에 소프트웨어 에이전트 설치. 상세 검사 가능.</li>
+  <li><strong>에이전트리스 방식</strong>: 에이전트 없이 네트워크 스캔. 배포 용이, 검사 제한.</li>
+  <li>검사 항목: OS 패치 수준, 백신 설치·최신화, 개인 방화벽 활성화</li>
+</ul>
+
+<h3>허니팟 (Honeypot)</h3>
+<p>공격자를 유인하기 위한 함정 시스템. 실제 서비스 없음. 공격 기법 수집·분석·지연 목적.</p>
+<table>
+  <thead><tr><th>구분</th><th>Low Interaction</th><th>High Interaction</th></tr></thead>
+  <tbody>
+    <tr><td>구현</td><td>가상 서비스 에뮬레이션</td><td>실제 OS·서비스 운영</td></tr>
+    <tr><td>정보 수집</td><td>제한적</td><td>풍부 (실제 공격 행위 관찰)</td></tr>
+    <tr><td>위험도</td><td>낮음</td><td>높음 (침해 시 피벗 포인트)</td></tr>
+    <tr><td>예시</td><td>Honeyd</td><td>실제 서버에 가짜 데이터 배치</td></tr>
+  </tbody>
+</table>
+<ul>
+  <li><strong>허니넷(Honeynet)</strong>: 여러 허니팟을 네트워크로 구성. 더 현실적인 환경.</li>
+  <li><strong>법적 주의</strong>: 공격자가 허니팟을 경유하여 제3자를 공격 시 법적 책임 문제 가능.</li>
+</ul>
+    `,
+  },
+
+  {
+    subject: 'network',
+    subjectLabel: '네트워크보안',
+    chapter: 'ipsec-vpn',
+    chapterLabel: 'IPSec·VPN',
+    keywords: ['IPSec', 'VPN', 'AH', 'ESP', 'IKE', 'ISAKMP', 'SA', '터널 모드', '전송 모드', 'L2TP', 'PPTP', 'SSL VPN', 'GRE', '완전 순방향 비밀성', 'PFS'],
+    content: `
 
 <h3>VPN 유형 비교</h3>
 <table>
-  <thead><tr><th>유형</th><th>동작 계층</th><th>특징</th><th>주요 용도</th></tr></thead>
+  <thead><tr><th>유형</th><th>동작 계층</th><th>인증</th><th>암호화</th><th>용도</th></tr></thead>
   <tbody>
     <tr>
       <td><strong>IPSec VPN</strong></td>
       <td>3계층 (네트워크)</td>
-      <td>강력한 보안. 별도 클라이언트 필요. 전송·터널 두 모드.</td>
-      <td>LAN-to-LAN (사이트 간)</td>
+      <td>인증서, PSK</td>
+      <td>AES, 3DES</td>
+      <td>사이트 간 (LAN-to-LAN)</td>
     </tr>
     <tr>
-      <td><strong>SSL/TLS VPN</strong></td>
+      <td><strong>SSL VPN</strong></td>
       <td>4~7계층 (전송~응용)</td>
-      <td>브라우저 또는 경량 클라이언트. 방화벽 친화적(443포트). 세밀한 접근 제어.</td>
-      <td>원격 접근 (개별 사용자)</td>
+      <td>인증서, ID/PW, MFA</td>
+      <td>TLS</td>
+      <td>원격 접근 (클라이언트리스 가능)</td>
+    </tr>
+    <tr>
+      <td><strong>L2TP/IPSec</strong></td>
+      <td>2계층 (L2TP) + 3계층 (IPSec)</td>
+      <td>PPP + IPSec</td>
+      <td>IPSec ESP</td>
+      <td>원격 접근 (Windows 기본 지원)</td>
     </tr>
     <tr>
       <td><strong>PPTP</strong></td>
       <td>2계층</td>
-      <td>MS 개발(1999). GRE 터널 + PPP. 암호화 취약(MS-CHAPv2). 사용 금지 권고.</td>
-      <td>레거시 환경</td>
+      <td>MS-CHAPv2 (취약)</td>
+      <td>MPPE (취약)</td>
+      <td>레거시 환경 (사용 금지 권고)</td>
     </tr>
     <tr>
-      <td><strong>L2TP</strong></td>
-      <td>2계층</td>
-      <td>PPTP(MS) + L2F(Cisco) 결합. 단독으로 암호화 없음 → <strong>L2TP/IPSec</strong>으로 사용.</td>
-      <td>원격 접근</td>
-    </tr>
-    <tr>
-      <td><strong>OpenVPN</strong></td>
-      <td>응용 계층</td>
-      <td>오픈소스. TLS 기반. 방화벽 우회 용이. 유연성 높음.</td>
-      <td>개인·기업 원격 접근</td>
-    </tr>
-    <tr>
-      <td><strong>WireGuard</strong></td>
-      <td>3~4계층</td>
-      <td>최신 경량 프로토콜. ChaCha20 암호화. 코드 단순.</td>
-      <td>고성능 VPN</td>
+      <td><strong>GRE</strong></td>
+      <td>3계층</td>
+      <td>없음</td>
+      <td>없음 (IPSec과 조합)</td>
+      <td>멀티캐스트·라우팅 프로토콜 터널링</td>
     </tr>
   </tbody>
 </table>
 
 <h3>IPSec 구성 요소</h3>
 
-<h4>프로토콜</h4>
+<h4>AH vs ESP 비교</h4>
 <table>
-  <thead><tr><th>프로토콜</th><th>프로토콜 번호</th><th>인증</th><th>무결성</th><th>암호화</th><th>특징</th></tr></thead>
+  <thead><tr><th>항목</th><th>AH (Authentication Header)</th><th>ESP (Encapsulating Security Payload)</th></tr></thead>
+  <tbody>
+    <tr><td>프로토콜 번호</td><td>51</td><td>50</td></tr>
+    <tr><td>인증</td><td>O (IP 헤더 포함 전체)</td><td>O (IP 헤더 제외)</td></tr>
+    <tr><td>암호화</td><td>X</td><td>O</td></tr>
+    <tr><td>무결성</td><td>O</td><td>O</td></tr>
+    <tr><td>재전송 방지</td><td>O</td><td>O</td></tr>
+    <tr><td>NAT 통과</td><td>불가 (IP 헤더 변경 시 인증 실패)</td><td>가능 (NAT-T: UDP 4500 캡슐화)</td></tr>
+    <tr><td>기밀성</td><td>X</td><td>O</td></tr>
+  </tbody>
+</table>
+
+<h4>IPSec 동작 모드</h4>
+<table>
+  <thead><tr><th>구분</th><th>전송 모드 (Transport Mode)</th><th>터널 모드 (Tunnel Mode)</th></tr></thead>
+  <tbody>
+    <tr><td>보호 범위</td><td>원본 IP 페이로드만 보호</td><td>원본 IP 패킷 전체 보호 (새 IP 헤더 추가)</td></tr>
+    <tr><td>헤더</td><td>원본 IP 헤더 유지</td><td>새 외부 IP 헤더 추가</td></tr>
+    <tr><td>주요 용도</td><td>호스트 간 통신</td><td>게이트웨이 간 VPN</td></tr>
+    <tr><td>오버헤드</td><td>적음</td><td>큼 (헤더 추가)</td></tr>
+  </tbody>
+</table>
+
+<h3>IKE (Internet Key Exchange) 협상</h3>
+<p>IPSec 터널 수립 전 키 교환 및 SA 협상 프로토콜. ISAKMP 프레임워크 기반. UDP 500 포트.</p>
+
+<h4>IKEv1 2단계 협상</h4>
+<ul>
+  <li><strong>Phase 1 (ISAKMP SA)</strong>: 안전한 채널 수립을 위한 협상. Main Mode (6개 메시지, 안전) 또는 Aggressive Mode (3개 메시지, 빠르지만 취약). 결과: ISAKMP SA (양방향)</li>
+  <li><strong>Phase 2 (IPSec SA)</strong>: Phase 1 채널 위에서 실제 데이터 보호용 SA 협상. Quick Mode. 결과: IPSec SA (단방향 2개 — 인바운드/아웃바운드)</li>
+</ul>
+
+<h4>IKEv2 개선사항</h4>
+<ul>
+  <li>4개 메시지로 터널 수립 (IKEv1보다 빠름)</li>
+  <li>EAP 기반 인증 지원</li>
+  <li>MOBIKE: IP 변경 시 세션 유지 (모바일 환경)</li>
+  <li>DoS 방지: 쿠키 메커니즘</li>
+</ul>
+
+<h3>SA (Security Association)</h3>
+<p>IPSec 통신의 단방향 보안 관계. 암호화 알고리즘·키·SPI(Security Parameter Index)·수명 등 포함.</p>
+<ul>
+  <li><strong>SAD (SA Database)</strong>: 현재 활성화된 SA 목록</li>
+  <li><strong>SPD (Security Policy Database)</strong>: 트래픽에 어떤 SA를 적용할지 정책 정의</li>
+  <li>양방향 통신에 SA 2개 필요 (인바운드 + 아웃바운드)</li>
+</ul>
+
+<h3>PFS (Perfect Forward Secrecy, 완전 순방향 비밀성)</h3>
+<p>세션마다 새로운 임시 DH 키 생성. 장기 개인키가 유출되어도 과거 세션 복호화 불가. IPSec Phase 2에서 PFS 활성화 시 매 SA 재협상마다 새 DH 교환.</p>
+
+<h3>SSL VPN 유형</h3>
+<table>
+  <thead><tr><th>유형</th><th>설명</th><th>특징</th></tr></thead>
+  <tbody>
+    <tr><td><strong>클라이언트리스</strong></td><td>웹 브라우저만으로 접근. 포털 방식.</td><td>별도 소프트웨어 불필요. 웹 기반 앱만 지원.</td></tr>
+    <tr><td><strong>씬 클라이언트</strong></td><td>브라우저 플러그인 또는 Java 앱렛.</td><td>TCP 기반 앱 지원 확장.</td></tr>
+    <tr><td><strong>터널 모드</strong></td><td>전용 클라이언트 소프트웨어 설치.</td><td>전체 네트워크 접근. IPSec VPN과 유사한 경험.</td></tr>
+  </tbody>
+</table>
+    `,
+  },
+
+  {
+    subject: 'network',
+    subjectLabel: '네트워크보안',
+    chapter: 'tls-ssl',
+    chapterLabel: 'TLS·SSL',
+    keywords: ['TLS', 'SSL', 'HTTPS', 'handshake', 'Certificate', 'Cipher Suite', 'PFS', '완전 순방향 비밀성', 'BEAST', 'POODLE', 'Heartbleed', 'DROWN', 'FREAK', 'HSTS', 'OCSP Stapling', 'CT'],
+    content: `
+
+<h3>SSL/TLS 버전 역사 및 보안 현황</h3>
+<table>
+  <thead><tr><th>버전</th><th>출시</th><th>상태</th><th>주요 취약점</th></tr></thead>
+  <tbody>
+    <tr><td>SSL 2.0</td><td>1995</td><td>사용 금지 (RFC 6176)</td><td>DROWN, 다수의 구조적 취약점</td></tr>
+    <tr><td>SSL 3.0</td><td>1996</td><td>사용 금지 (RFC 7568)</td><td>POODLE</td></tr>
+    <tr><td>TLS 1.0</td><td>1999</td><td>사용 금지 (RFC 8996, 2021)</td><td>BEAST, POODLE (SSL 폴백)</td></tr>
+    <tr><td>TLS 1.1</td><td>2006</td><td>사용 금지 (RFC 8996, 2021)</td><td>BEAST 일부 완화, 여전히 취약</td></tr>
+    <tr><td>TLS 1.2</td><td>2008</td><td>권장 (설정에 따라 안전)</td><td>RC4, 약한 암호 스위트 사용 시 취약</td></tr>
+    <tr><td>TLS 1.3</td><td>2018</td><td>권장 (최신)</td><td>알려진 주요 취약점 없음</td></tr>
+  </tbody>
+</table>
+
+<h3>TLS 1.2 Handshake 흐름</h3>
+<pre><code>클라이언트                              서버
+    |                                    |
+    |--- ClientHello ------------------->|  (지원 암호 스위트, 난수, 세션 ID)
+    |&lt;-- ServerHello --------------------|  (선택된 암호 스위트, 난수)
+    |&lt;-- Certificate --------------------|  (서버 인증서)
+    |&lt;-- ServerKeyExchange (선택적) ------|  (DHE/ECDHE 파라미터)
+    |&lt;-- ServerHelloDone ----------------|
+    |--- ClientKeyExchange ------------->|  (Pre-master secret 또는 DH 공개키)
+    |--- ChangeCipherSpec -------------->|
+    |--- Finished (암호화됨) ----------->|
+    |&lt;-- ChangeCipherSpec ---------------|
+    |&lt;-- Finished (암호화됨) ------------|
+    |                                    |
+    |===== 암호화된 통신 시작 ============|</code></pre>
+
+<h3>TLS 1.3 개선사항</h3>
+<ul>
+  <li><strong>1-RTT Handshake</strong>: TLS 1.2의 2-RTT에서 1-RTT로 단축</li>
+  <li><strong>0-RTT</strong>: 세션 재개 시 0-RTT (Early Data). 재전송 공격 위험 있음.</li>
+  <li><strong>취약 알고리즘 제거</strong>: RC4, DES, 3DES, MD5, SHA-1, RSA 키 교환, 정적 DH 제거</li>
+  <li><strong>PFS 필수</strong>: DHE 또는 ECDHE만 허용 (정적 RSA 키 교환 제거)</li>
+  <li><strong>암호화된 핸드셰이크</strong>: Certificate 등 핸드셰이크 메시지 암호화</li>
+</ul>
+
+<h3>Cipher Suite 표기법</h3>
+<pre><code>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+ |    |      |        |    |   |   |
+ |    |      |        |    |   |   +-- MAC 알고리즘 (SHA384)
+ |    |      |        |    |   +------ 암호화 모드 (GCM)
+ |    |      |        |    +---------- 키 길이 (256bit)
+ |    |      |        +--------------- 대칭키 알고리즘 (AES)
+ |    |      +------------------------ 인증 알고리즘 (RSA 서명)
+ |    +------------------------------ 키 교환 알고리즘 (ECDHE)
+ +----------------------------------- 프로토콜 (TLS)</code></pre>
+
+<h3>PFS (Perfect Forward Secrecy)</h3>
+<p>세션마다 임시 DH 키 쌍(Ephemeral Key)을 생성하여 키 교환. 장기 개인키 유출로도 과거 세션 복호화 불가.</p>
+<ul>
+  <li><strong>DHE</strong>: Ephemeral Diffie-Hellman (고정 파라미터, 느림)</li>
+  <li><strong>ECDHE</strong>: Elliptic Curve DHE (타원곡선 기반, 더 빠르고 강력)</li>
+  <li>TLS 1.3에서는 ECDHE/DHE만 허용 (PFS 필수)</li>
+</ul>
+
+<h3>주요 TLS 공격</h3>
+<table>
+  <thead><tr><th>공격</th><th>취약점</th><th>원인</th><th>대응</th></tr></thead>
   <tbody>
     <tr>
-      <td><strong>AH</strong><br>(Authentication Header)</td>
-      <td>51</td>
-      <td>O</td>
-      <td>O</td>
-      <td>X</td>
-      <td>IP 헤더 포함 서명. NAT 통과 불가(IP 헤더 변경). 무결성·인증만.</td>
+      <td><strong>BEAST</strong></td>
+      <td>TLS 1.0 이하</td>
+      <td>CBC 모드의 예측 가능한 IV → 선택 평문 공격</td>
+      <td>TLS 1.1+ 사용, RC4(금지됨)</td>
     </tr>
     <tr>
-      <td><strong>ESP</strong><br>(Encapsulating Security Payload)</td>
-      <td>50</td>
-      <td>O</td>
-      <td>O</td>
-      <td>O</td>
-      <td>페이로드 암호화 + 선택적 인증. NAT 통과 가능. 실무에서 주로 사용.</td>
+      <td><strong>POODLE</strong></td>
+      <td>SSL 3.0</td>
+      <td>CBC 패딩 오라클. TLS→SSL 3.0 다운그레이드 강제.</td>
+      <td>SSL 3.0 비활성화, TLS_FALLBACK_SCSV</td>
+    </tr>
+    <tr>
+      <td><strong>DROWN</strong></td>
+      <td>SSL 2.0 활성화 서버</td>
+      <td>SSL 2.0 Export 암호화로 TLS 세션키 복호화</td>
+      <td>SSL 2.0 완전 비활성화</td>
+    </tr>
+    <tr>
+      <td><strong>Heartbleed</strong></td>
+      <td>OpenSSL 1.0.1~1.0.1f</td>
+      <td>HeartBeat 확장 메모리 경계 검사 누락 → 64KB 메모리 노출</td>
+      <td>OpenSSL 패치 (1.0.1g+), 키 재발급</td>
+    </tr>
+    <tr>
+      <td><strong>FREAK</strong></td>
+      <td>Export 암호화 지원 서버</td>
+      <td>512bit RSA Export 키로 다운그레이드 강제 → 인수분해 가능</td>
+      <td>Export 암호 스위트 비활성화</td>
+    </tr>
+    <tr>
+      <td><strong>LOGJAM</strong></td>
+      <td>512bit DH 파라미터</td>
+      <td>Export DHE로 다운그레이드 강제 → 이산 로그 계산</td>
+      <td>2048bit+ DH, ECDHE 사용</td>
     </tr>
   </tbody>
 </table>
 
-<h4>IKE (Internet Key Exchange)</h4>
-<p>SA(Security Association) 협상 및 키 교환 프로토콜. UDP 500번 포트. NAT 통과 시 UDP 4500.</p>
+<h3>TLS 보안 강화 기술</h3>
 <ul>
-  <li><strong>IKEv1</strong>: Phase 1 (ISAKMP SA) + Phase 2 (IPSec SA). 복잡.</li>
-  <li><strong>IKEv2</strong>: 단순화, 더 빠름, 모바일 지원(MOBIKE), EAP 지원.</li>
+  <li><strong>HSTS (HTTP Strict Transport Security)</strong>: 브라우저에 특정 도메인은 항상 HTTPS로만 접속하도록 강제. SSL Stripping 방어. <code>Strict-Transport-Security: max-age=31536000; includeSubDomains</code></li>
+  <li><strong>CT (Certificate Transparency)</strong>: 모든 인증서를 공개 로그 서버에 기록. 불법 발급 인증서 탐지.</li>
+  <li><strong>OCSP Stapling</strong>: 서버가 OCSP 응답을 미리 가져와 클라이언트에 전달. 인증서 폐기 확인 성능 향상. OCSP 서버 프라이버시 보호.</li>
+  <li><strong>Certificate Pinning</strong>: 특정 인증서 또는 공개키만 신뢰. MITM 방어. 유연성 감소.</li>
 </ul>
+    `,
+  },
 
-<h4>SA (Security Association)</h4>
-<ul>
-  <li>보안 연결의 파라미터 집합: 암호화 알고리즘, 해시 알고리즘, 키, 수명(Lifetime)</li>
-  <li><strong>단방향</strong>: 양방향 통신 = 2개의 SA 필요</li>
-  <li>SPI (Security Parameter Index): SA를 식별하는 32bit 값</li>
-  <li>SAD (SA Database): 활성 SA 목록 저장</li>
-  <li>SPD (Security Policy Database): 어떤 트래픽에 IPSec 적용할지 정책 저장</li>
-</ul>
+  {
+    subject: 'network',
+    subjectLabel: '네트워크보안',
+    chapter: 'wireless-security',
+    chapterLabel: '무선 네트워크 보안',
+    keywords: ['WEP', 'WPA', 'WPA2', 'WPA3', '802.11', 'EAP', 'RADIUS', '무선랜', 'AP', 'SSID', '이블트윈', '워드라이빙', '디어센티케이션', 'WPS', 'KRACK', 'PMKID'],
+    content: `
 
-<h3>IPSec 동작 모드</h3>
+<h3>무선 보안 표준 비교</h3>
 <table>
-  <thead><tr><th>모드</th><th>헤더 처리</th><th>보호 범위</th><th>용도</th><th>오버헤드</th></tr></thead>
+  <thead><tr><th>표준</th><th>제정</th><th>암호화</th><th>인증</th><th>키 관리</th><th>주요 취약점</th></tr></thead>
   <tbody>
     <tr>
-      <td><strong>전송 모드(Transport)</strong></td>
-      <td>원본 IP 헤더 유지</td>
-      <td>페이로드만 보호 (IP 헤더 노출)</td>
-      <td>Host-to-Host 종단 간</td>
-      <td>낮음</td>
+      <td><strong>WEP</strong></td>
+      <td>1997</td>
+      <td>RC4 (40/104bit)</td>
+      <td>Open/Shared Key</td>
+      <td>정적 키</td>
+      <td>IV 재사용, FMS 공격, 24bit IV (약 5000패킷 후 재사용)</td>
     </tr>
     <tr>
-      <td><strong>터널 모드(Tunnel)</strong></td>
-      <td>원본 패킷 전체 캡슐화 + 새 IP 헤더</td>
-      <td>원본 IP 헤더 포함 전체 보호</td>
-      <td>Gateway-to-Gateway (LAN-to-LAN)</td>
-      <td>높음</td>
+      <td><strong>WPA</strong></td>
+      <td>2003</td>
+      <td>TKIP (RC4 기반)</td>
+      <td>PSK / 802.1X</td>
+      <td>동적 키 (TKIP)</td>
+      <td>TKIP 취약점, RC4 근본 취약점</td>
+    </tr>
+    <tr>
+      <td><strong>WPA2</strong></td>
+      <td>2004</td>
+      <td>CCMP (AES-128)</td>
+      <td>PSK / 802.1X</td>
+      <td>4-way Handshake (PTK 생성)</td>
+      <td>KRACK, PMKID 공격, PSK 무차별 대입</td>
+    </tr>
+    <tr>
+      <td><strong>WPA3</strong></td>
+      <td>2018</td>
+      <td>GCMP-256 (개인)/CCMP-128(개인)</td>
+      <td>SAE / 802.1X</td>
+      <td>SAE (Dragonfly), 192bit 기업모드</td>
+      <td>Dragonblood (초기 구현 취약점, 패치됨)</td>
     </tr>
   </tbody>
 </table>
 
-<h3>TLS/SSL</h3>
+<h3>WEP 취약점</h3>
+<ul>
+  <li><strong>IV (Initialization Vector) 재사용</strong>: 24bit IV는 약 5,000~16,000,000개 패킷 후 반드시 재사용. 동일 IV + 동일 키 → RC4 키스트림 노출.</li>
+  <li><strong>FMS 공격 (Fluhrer-Mantin-Shamir)</strong>: 특정 취약 IV를 수집하여 RC4 키 복구. AirSnort, Aircrack-ng 도구로 실용적 공격 가능.</li>
+  <li><strong>결론</strong>: WEP는 완전히 깨진 프로토콜. 즉시 사용 중단 필요.</li>
+</ul>
 
-<h4>버전별 상태</h4>
+<h3>WPA2 취약점</h3>
+<ul>
+  <li><strong>KRACK (Key Reinstallation Attack, 2017)</strong>: 4-way Handshake의 3번째 메시지 재전송을 유발하여 nonce 재사용. CCMP 키스트림 재사용 → 복호화 가능. WPA2의 구현 취약점 (프로토콜 자체는 안전).</li>
+  <li><strong>PMKID 공격 (2018)</strong>: AP가 클라이언트에 보내는 PMKID 값을 캡처하여 오프라인 PSK 무차별 대입. 핸드셰이크 완료 없이 공격 가능.</li>
+  <li><strong>PSK 무차별 대입</strong>: 4-way Handshake 캡처 후 오프라인으로 패스워드 추측.</li>
+</ul>
+
+<h3>WPA3 개선사항</h3>
+<ul>
+  <li><strong>SAE (Simultaneous Authentication of Equals, Dragonfly)</strong>: PSK 대신 상호 인증 기반 키 합의. 오프라인 사전 공격 불가. PFS 지원.</li>
+  <li><strong>OWE (Opportunistic Wireless Encryption)</strong>: 개방형 네트워크에서도 암호화. 인증 없이 기밀성 제공.</li>
+  <li><strong>192bit 보안 모드</strong>: 기업 환경용. GCMP-256 암호화. CNSA 스위트 기반.</li>
+  <li><strong>PMF (Protected Management Frames)</strong>: 관리 프레임 암호화. Deauthentication 공격 방어.</li>
+</ul>
+
+<h3>무선 랜 공격 유형</h3>
 <table>
-  <thead><tr><th>버전</th><th>상태</th><th>주요 취약점</th></tr></thead>
+  <thead><tr><th>공격</th><th>원리</th><th>대응</th></tr></thead>
   <tbody>
-    <tr><td>SSL 2.0</td><td>사용 금지</td><td>DROWN</td></tr>
-    <tr><td>SSL 3.0</td><td>사용 금지</td><td>POODLE</td></tr>
-    <tr><td>TLS 1.0</td><td>사용 금지 권고</td><td>BEAST, POODLE</td></tr>
-    <tr><td>TLS 1.1</td><td>사용 금지 권고</td><td>BEAST</td></tr>
-    <tr><td>TLS 1.2</td><td>현재 사용</td><td>SWEET32 (약한 암호 스위트)</td></tr>
-    <tr><td>TLS 1.3</td><td>권장 표준</td><td>-</td></tr>
+    <tr>
+      <td><strong>Evil Twin (이블트윈)</strong></td>
+      <td>합법적 AP와 동일한 SSID로 가짜 AP 구동 → 피해자 연결 유도 → MITM</td>
+      <td>기업망 802.1X, 인증서 검증, VPN</td>
+    </tr>
+    <tr>
+      <td><strong>Wardriving (워드라이빙)</strong></td>
+      <td>차량으로 이동하며 무선 AP를 스캔하고 취약 네트워크 탐색</td>
+      <td>WPA3, 강력한 암호화</td>
+    </tr>
+    <tr>
+      <td><strong>Deauthentication 공격</strong></td>
+      <td>위조된 Deauthentication 프레임으로 클라이언트 강제 연결 해제 → Evil Twin 유도 또는 DoS</td>
+      <td>WPA3 PMF (Protected Management Frames)</td>
+    </tr>
+    <tr>
+      <td><strong>WPS 취약점</strong></td>
+      <td>WPS PIN의 반쪽 검증 방식으로 약 11,000번의 시도로 PIN 유출 → PSK 획득</td>
+      <td>WPS 비활성화</td>
+    </tr>
   </tbody>
 </table>
 
-<h4>TLS Handshake (TLS 1.2)</h4>
-<pre><code>1. ClientHello: 지원 암호 스위트, 랜덤값
-2. ServerHello: 선택 암호 스위트, 랜덤값, 인증서
-3. 클라이언트: 인증서 검증, Pre-Master Secret 생성·전송
-4. 양측: Master Secret 도출 → 세션키 생성
-5. Finished: 핸드셰이크 완료
-6. 대칭키 암호화 통신 시작</code></pre>
-
-<h4>TLS 1.3 개선사항</h4>
+<h3>기업망 무선 인증: 802.1X + EAP + RADIUS</h3>
+<p>WPA2/WPA3 Enterprise 모드. PSK 대신 개인 계정으로 인증. 구성요소:</p>
 <ul>
-  <li>1-RTT Handshake (1.2는 2-RTT)</li>
-  <li>0-RTT 재개 (Session Resumption)</li>
-  <li>취약 암호 스위트 제거: RC4, DES, 3DES, MD5, SHA-1 제거</li>
-  <li>순방향 비밀성(PFS) 필수: DHE/ECDHE만 허용</li>
-  <li>정적 RSA 키 교환 제거</li>
+  <li><strong>Supplicant</strong>: 인증을 요청하는 클라이언트 단말</li>
+  <li><strong>Authenticator</strong>: 인증을 중계하는 AP (EAP over LAN)</li>
+  <li><strong>Authentication Server</strong>: 인증을 처리하는 RADIUS 서버</li>
 </ul>
 
-<h4>순방향 비밀성 (PFS, Perfect Forward Secrecy)</h4>
-<p>세션키 유출 시 과거 통신 복호화 불가. 세션마다 임시 DH 키 생성(DHE/ECDHE). 장기 개인키 유출로도 과거 세션 복호화 불가.</p>
+<h3>EAP 유형 비교</h3>
+<table>
+  <thead><tr><th>유형</th><th>서버 인증</th><th>클라이언트 인증</th><th>보안</th><th>특징</th></tr></thead>
+  <tbody>
+    <tr><td><strong>EAP-TLS</strong></td><td>서버 인증서</td><td>클라이언트 인증서</td><td>매우 강력</td><td>상호 인증. 인증서 관리 부담.</td></tr>
+    <tr><td><strong>EAP-TTLS</strong></td><td>서버 인증서</td><td>ID/PW (TLS 터널 내)</td><td>강력</td><td>클라이언트 인증서 불필요.</td></tr>
+    <tr><td><strong>PEAP</strong></td><td>서버 인증서</td><td>MS-CHAPv2 (TLS 터널 내)</td><td>강력</td><td>Microsoft 환경에 일반적. TLS 터널 보호.</td></tr>
+    <tr><td><strong>EAP-FAST</strong></td><td>PAC (Protected Access Credential)</td><td>PAC</td><td>중간</td><td>인증서 없이 PAC 사용. Cisco 개발.</td></tr>
+  </tbody>
+</table>
+    `,
+  },
 
-<h4>주요 TLS 공격</h4>
+  {
+    subject: 'network',
+    subjectLabel: '네트워크보안',
+    chapter: 'email-security',
+    chapterLabel: '이메일 보안',
+    keywords: ['SPF', 'DKIM', 'DMARC', 'SMTP', 'POP3', 'IMAP', 'S/MIME', 'PGP', '피싱', '스팸', 'MX 레코드', 'STARTTLS', '헤더 위조', 'TXT 레코드'],
+    content: `
+
+<h3>이메일 프로토콜</h3>
+<table>
+  <thead><tr><th>프로토콜</th><th>포트</th><th>역할</th><th>보안 버전</th></tr></thead>
+  <tbody>
+    <tr><td>SMTP</td><td>25</td><td>메일 서버 간 전송 (MTA to MTA)</td><td>SMTPS (465), STARTTLS (587)</td></tr>
+    <tr><td>SMTP Submission</td><td>587</td><td>클라이언트 → 서버 제출 (STARTTLS)</td><td>기본 STARTTLS</td></tr>
+    <tr><td>POP3</td><td>110</td><td>메일 수신 후 서버에서 삭제</td><td>POP3S (995)</td></tr>
+    <tr><td>IMAP</td><td>143</td><td>메일 수신, 서버 유지·동기화</td><td>IMAPS (993)</td></tr>
+    <tr><td>SMTPS</td><td>465</td><td>처음부터 TLS로 연결 (Implicit TLS)</td><td>—</td></tr>
+  </tbody>
+</table>
+
+<h3>이메일 발신자 인증 기술</h3>
+
+<h4>SPF (Sender Policy Framework)</h4>
+<p>도메인 소유자가 허가된 발신 메일 서버 IP 목록을 DNS TXT 레코드에 등록. 수신 MTA가 발신 IP와 대조하여 위조 탐지.</p>
+<pre><code>TXT "v=spf1 ip4:203.0.113.0/24 include:_spf.google.com ~all"
+                |              |                               |
+           허가된 IP 대역   서드파티 포함              SoftFail (스팸 처리)</code></pre>
 <ul>
-  <li><strong>BEAST</strong>: TLS 1.0 CBC 모드 IV 예측 공격. → TLS 1.1+ 또는 RC4(현재 금지) 사용.</li>
-  <li><strong>POODLE</strong>: SSL 3.0 CBC 패딩 오라클. SSL 3.0 → TLS 다운그레이드 강제. → SSL 3.0 비활성화.</li>
-  <li><strong>DROWN</strong>: SSL 2.0 활성화 서버를 이용한 TLS 세션 복호화.</li>
-  <li><strong>Heartbleed</strong>: OpenSSL HeartBeat 확장 버퍼 오버리드. 메모리 64KB 노출.</li>
-  <li><strong>FREAK</strong>: 수출용 약한 RSA 키(512bit) 강제 다운그레이드.</li>
-  <li><strong>LOGJAM</strong>: Diffie-Hellman 512bit로 다운그레이드.</li>
+  <li><code>+all</code>: Pass (모두 허용 — 비권장)</li>
+  <li><code>~all</code>: SoftFail (비허가 IP는 스팸 처리)</li>
+  <li><code>-all</code>: Fail (비허가 IP는 거부)</li>
+  <li>한계: 전달(Forwarding) 시 원본 IP 변경으로 검증 실패</li>
 </ul>
+
+<h4>DKIM (DomainKeys Identified Mail)</h4>
+<p>발신 서버가 개인키로 메일 헤더·본문에 디지털 서명. 수신자가 DNS에서 공개키를 조회하여 서명 검증. 메일 무결성·발신자 인증.</p>
+<pre><code>DKIM-Signature: v=1; a=rsa-sha256; d=example.com; s=selector1;
+                h=from:to:subject:date; bh=BASE64_BODY_HASH; b=BASE64_SIGNATURE</code></pre>
+<ul>
+  <li>전달(Forwarding) 시에도 서명 유지 (SPF 단점 보완)</li>
+  <li>단, 본문 수정 시 서명 무효화</li>
+</ul>
+
+<h4>DMARC (Domain-based Message Authentication, Reporting and Conformance)</h4>
+<p>SPF·DKIM 검증 결과에 따른 처리 정책 정의 + 보고서 수신.</p>
+<pre><code>TXT "_dmarc.example.com" "v=DMARC1; p=quarantine; rua=mailto:dmarc@example.com; pct=100"</code></pre>
+<table>
+  <thead><tr><th>정책 (p=)</th><th>설명</th></tr></thead>
+  <tbody>
+    <tr><td><strong>none</strong></td><td>모니터링만. 메일 처리에 영향 없음. 초기 배포 시 사용.</td></tr>
+    <tr><td><strong>quarantine</strong></td><td>SPF/DKIM 실패 메일을 스팸 폴더로 격리.</td></tr>
+    <tr><td><strong>reject</strong></td><td>SPF/DKIM 실패 메일을 완전 거부.</td></tr>
+  </tbody>
+</table>
+
+<h3>이메일 암호화: S/MIME vs PGP</h3>
+<table>
+  <thead><tr><th>항목</th><th>S/MIME</th><th>PGP (Pretty Good Privacy)</th></tr></thead>
+  <tbody>
+    <tr><td>신뢰 모델</td><td>PKI (CA 기반 계층 신뢰)</td><td>Web of Trust (사용자 간 상호 서명)</td></tr>
+    <tr><td>인증서</td><td>X.509 인증서 (CA 발급)</td><td>PGP 키 쌍 (자체 생성)</td></tr>
+    <tr><td>표준</td><td>RFC 5751 (MIME 기반)</td><td>RFC 4880 (OpenPGP)</td></tr>
+    <tr><td>기업 환경</td><td>적합 (PKI 인프라 활용)</td><td>개인·오픈소스 환경</td></tr>
+    <tr><td>구현</td><td>Outlook, Thunderbird 기본 지원</td><td>GPG (GNU Privacy Guard)</td></tr>
+    <tr><td>제공 보안</td><td>기밀성, 무결성, 인증, 부인방지</td><td>기밀성, 무결성, 인증, 부인방지</td></tr>
+  </tbody>
+</table>
+
+<h3>이메일 공격 유형</h3>
+<table>
+  <thead><tr><th>공격</th><th>설명</th></tr></thead>
+  <tbody>
+    <tr><td><strong>피싱 (Phishing)</strong></td><td>불특정 다수 대상. 위조된 발신자로 악성 링크·첨부파일 전송.</td></tr>
+    <tr><td><strong>스피어피싱 (Spear Phishing)</strong></td><td>특정 개인·조직 타깃. 개인화된 내용으로 신뢰도 높임.</td></tr>
+    <tr><td><strong>웨일링 (Whaling)</strong></td><td>CEO·임원 등 고위직 타깃 스피어피싱.</td></tr>
+    <tr><td><strong>스팸 (Spam)</strong></td><td>대량 발송 광고·악성 메일.</td></tr>
+    <tr><td><strong>헤더 위조</strong></td><td>From 주소를 위조하여 신뢰할 수 있는 발신자로 가장. SPF·DKIM·DMARC로 대응.</td></tr>
+    <tr><td><strong>이메일 봄베이딩</strong></td><td>대량 메일로 받은 편지함 마비 → 중요 알림 놓치게 유도.</td></tr>
+  </tbody>
+</table>
+
+<h3>STARTTLS vs SMTPS</h3>
+<table>
+  <thead><tr><th>구분</th><th>STARTTLS</th><th>SMTPS (Implicit TLS)</th></tr></thead>
+  <tbody>
+    <tr><td>포트</td><td>25 (MTA간) / 587 (클라이언트 제출)</td><td>465</td></tr>
+    <tr><td>동작</td><td>평문으로 시작 후 STARTTLS 명령으로 TLS 업그레이드 (Opportunistic TLS)</td><td>연결 즉시 TLS 시작</td></tr>
+    <tr><td>다운그레이드 위험</td><td>있음 (MITM이 STARTTLS 차단 가능)</td><td>없음</td></tr>
+    <tr><td>권장</td><td>587 포트에서 STARTTLS 강제 권장</td><td>보안 측면에서 더 안전</td></tr>
+  </tbody>
+</table>
+
+<h3>메일 수신 시 SPF-DKIM-DMARC 검증 흐름</h3>
+<pre><code>메일 수신 MTA
+    |
+    +-- [1] SPF 검증: 발신 IP가 DNS TXT(SPF) 레코드에 있는가?
+    |
+    +-- [2] DKIM 검증: DKIM-Signature 헤더의 서명이 DNS 공개키로 검증되는가?
+    |
+    +-- [3] DMARC 정책 적용:
+            - SPF 또는 DKIM 중 하나라도 통과 + 도메인 정렬(Alignment) 확인
+            - p=none: 통과
+            - p=quarantine: 스팸 폴더 격리
+            - p=reject: 메일 거부
+    |
+    +-- [4] DMARC 보고서 발송: rua(집계), ruf(포렌식) 주소로 보고서 전송</code></pre>
     `,
   },
 
