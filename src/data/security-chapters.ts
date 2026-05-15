@@ -16,155 +16,220 @@ export const CHAPTERS: Chapter[] = [
   {
     subject: 'system',
     subjectLabel: '시스템보안',
-    chapter: 'os-security',
-    chapterLabel: '운영체제 보안',
-    keywords: ['umask', '파일 권한', 'setuid', 'setgid', '계정', '패스워드', '/etc/passwd', '/etc/shadow', '윈도우', '레지스트리', '감사', 'SAM', 'NTFS', '프로세스'],
+    chapter: 'linux-security',
+    chapterLabel: '유닉스·리눅스 보안',
+    keywords: ['umask', '파일 권한', 'setuid', 'setgid', 'sticky bit', '/etc/passwd', '/etc/shadow', '계정', '패스워드', 'RUID', 'EUID', 'TCP Wrapper', 'sudoers', '로그'],
     content: `
-
-<h3>유닉스/리눅스 파일 권한</h3>
-<p>유닉스 파일 권한은 <strong>소유자(Owner) · 그룹(Group) · 기타(Others)</strong> 3단계로 구성되며, 각각 읽기(r=4) · 쓰기(w=2) · 실행(x=1) 권한을 가집니다.</p>
-<pre><code>-rwxr-xr--  1 root root 1234 ...
- ↑↑↑ ↑↑↑ ↑↑↑
- 소유자  그룹  기타
-
-chmod 754 file  →  rwxr-xr--
-chmod u+s file  →  SetUID 설정</code></pre>
-
-<h4>권한 숫자 빠른 계산</h4>
-<table>
-  <thead><tr><th>숫자</th><th>2진수</th><th>권한</th></tr></thead>
-  <tbody>
-    <tr><td>7</td><td>111</td><td>rwx</td></tr>
-    <tr><td>6</td><td>110</td><td>rw-</td></tr>
-    <tr><td>5</td><td>101</td><td>r-x</td></tr>
-    <tr><td>4</td><td>100</td><td>r--</td></tr>
-    <tr><td>0</td><td>000</td><td>---</td></tr>
-  </tbody>
-</table>
+<h3>파일 권한 (rwx)</h3>
+<p>리눅스 파일 권한은 소유자(User)/그룹(Group)/기타(Other) 3계층, 각각 읽기(r=4)/쓰기(w=2)/실행(x=1) 3비트로 표현합니다.</p>
+<pre><code>ls -l 출력 예시:
+-rwxr-xr-- 1 alice staff 1024 May 1 12:00 script.sh
+ ↑↑↑↑ ↑↑↑ ↑↑↑
+ │소유자 │그룹 │기타
+ rwx=7  r-x=5  r--=4  →  옥탈: 754</code></pre>
 
 <h3>umask</h3>
-<p>umask는 파일/디렉토리 생성 시 기본 권한에서 <strong>제거할 권한을 지정하는 마스크</strong>입니다. 비트 AND NOT 연산으로 계산합니다.</p>
-<ul>
-  <li>파일 기본 권한: <code>666</code> (실행 권한 없음)</li>
-  <li>디렉토리 기본 권한: <code>777</code></li>
-  <li>실제 권한 = 기본권한 AND (NOT umask)</li>
-</ul>
+<p>umask는 파일/디렉토리 생성 시 기본 권한에서 제거할 비트를 지정합니다.<br>
+파일 기본권한 666, 디렉토리 기본권한 777에서 umask 값을 뺍니다.</p>
 <table>
-  <thead><tr><th>umask</th><th>파일 결과</th><th>디렉토리 결과</th><th>용도</th></tr></thead>
+  <thead><tr><th>umask</th><th>파일 생성 권한</th><th>디렉토리 생성 권한</th><th>설명</th></tr></thead>
   <tbody>
-    <tr><td>022</td><td>644 (rw-r--r--)</td><td>755 (rwxr-xr-x)</td><td>일반적인 기본값</td></tr>
-    <tr><td>027</td><td>640 (rw-r-----)</td><td>750 (rwxr-x---)</td><td>그룹 외부 완전 차단</td></tr>
+    <tr><td>022</td><td>644 (rw-r--r--)</td><td>755 (rwxr-xr-x)</td><td>일반적 기본값</td></tr>
+    <tr><td>027</td><td>640 (rw-r-----)</td><td>750 (rwxr-x---)</td><td>그룹까지만 읽기</td></tr>
     <tr><td>077</td><td>600 (rw-------)</td><td>700 (rwx------)</td><td>소유자만 접근</td></tr>
-    <tr><td>002</td><td>664 (rw-rw-r--)</td><td>775 (rwxrwxr-x)</td><td>그룹 협업 환경</td></tr>
   </tbody>
 </table>
 
 <h3>특수 권한</h3>
 <table>
-  <thead><tr><th>이름</th><th>옥탈</th><th>파일에 설정</th><th>디렉토리에 설정</th><th>표시</th></tr></thead>
+  <thead><tr><th>이름</th><th>옥탈</th><th>파일 효과</th><th>디렉토리 효과</th><th>ls -l 표시</th></tr></thead>
   <tbody>
-    <tr><td><strong>SetUID</strong></td><td>4000</td><td>실행 시 파일 소유자 권한으로 동작</td><td>효과 없음</td><td>소유자 x → <code>s</code> (없으면 <code>S</code>)</td></tr>
-    <tr><td><strong>SetGID</strong></td><td>2000</td><td>실행 시 파일 그룹 권한으로 동작</td><td>하위 파일이 디렉토리 그룹 상속</td><td>그룹 x → <code>s</code></td></tr>
-    <tr><td><strong>Sticky Bit</strong></td><td>1000</td><td>효과 없음</td><td>파일 소유자·root만 삭제 가능</td><td>기타 x → <code>t</code> (<code>/tmp</code>)</td></tr>
+    <tr><td>SetUID (SUID)</td><td>4000</td><td>실행 시 파일 소유자 권한으로 실행</td><td>효과 없음</td><td>소유자 x 자리 → <code>s</code> (없으면 <code>S</code>)</td></tr>
+    <tr><td>SetGID (SGID)</td><td>2000</td><td>실행 시 파일 그룹 권한으로 실행</td><td>하위 파일이 디렉토리 그룹 상속</td><td>그룹 x 자리 → <code>s</code></td></tr>
+    <tr><td>Sticky Bit</td><td>1000</td><td>효과 없음(과거 메모리 고정)</td><td>자신의 파일만 삭제 가능 (예: /tmp)</td><td>기타 x 자리 → <code>t</code></td></tr>
   </tbody>
 </table>
-<p><strong>SetUID 보안 위험</strong>: root 소유 SetUID 파일은 일반 사용자가 root 권한 실행 가능 → 권한 상승 취약점. <code>find / -perm -4000</code>으로 점검.</p>
+<h4>SetUID 보안 위험 및 점검</h4>
+<pre><code># SetUID 파일 전체 검색
+find / -perm -4000 -type f 2&gt;/dev/null
 
-<h3>패스워드 파일</h3>
-<h4>/etc/passwd (모든 사용자 읽기 가능)</h4>
+# 불필요한 SUID 제거
+chmod u-s /경로/파일</code></pre>
+
+<h3>/etc/passwd 필드 (7개)</h3>
 <pre><code>root:x:0:0:root:/root:/bin/bash
-계정명:패스워드:UID:GID:설명:홈디렉토리:로그인셸</code></pre>
-<ul>
-  <li>패스워드 필드가 <code>x</code>이면 실제 해시는 <code>/etc/shadow</code>에 저장</li>
-  <li>UID 0 = root 권한. UID 1~999 = 시스템 계정. UID 1000+ = 일반 사용자</li>
-</ul>
+ ①   ② ③ ④  ⑤   ⑥      ⑦
+① 사용자명  ② 패스워드(x=shadow로 이동)  ③ UID
+④ GID  ⑤ 코멘트(GECOS)  ⑥ 홈디렉토리  ⑦ 기본 셸</code></pre>
 
-<h4>/etc/shadow (root만 접근)</h4>
-<pre><code>root:$6$salt$hash:18000:0:99999:7:::
-계정명:해시:마지막변경:최소:최대:경고:유예:만료:예약</code></pre>
-<ul>
-  <li><code>$1$</code>=MD5, <code>$5$</code>=SHA-256, <code>$6$</code>=SHA-512 (현재 권장)</li>
-  <li>비활성 계정은 패스워드 필드에 <code>!</code> 또는 <code>*</code></li>
-</ul>
-
-<h4>패스워드 보안 설정 (/etc/login.defs)</h4>
-<ul>
-  <li><code>PASS_MAX_DAYS</code>: 패스워드 최대 사용 기간 (권장 90일)</li>
-  <li><code>PASS_MIN_DAYS</code>: 패스워드 최소 사용 기간</li>
-  <li><code>PASS_MIN_LEN</code>: 최소 길이</li>
-  <li><code>PASS_WARN_AGE</code>: 만료 경고 일수</li>
-</ul>
-
-<h3>유닉스 프로세스 권한</h3>
-<ul>
-  <li><strong>RUID (Real UID)</strong>: 실제 사용자 ID (로그인 계정)</li>
-  <li><strong>EUID (Effective UID)</strong>: 실제 권한 결정에 사용. SetUID 파일 실행 시 파일 소유자 UID로 변경.</li>
-  <li><strong>SUID (Saved UID)</strong>: 권한 복원용 저장 UID</li>
-</ul>
-
-<h3>주요 보안 관련 파일</h3>
+<h3>/etc/shadow 필드 및 해시 prefix</h3>
+<pre><code>alice:$6$salt$hash:19000:0:99999:7:::
+  ①      ②           ③   ④   ⑤  ⑥
+① 사용자명  ② 해시(prefix+salt+해시값)  ③ 최근 변경일(epoch 기준 일수)
+④ 최소변경기간  ⑤ 최대변경기간  ⑥ 만료 경고일수</code></pre>
 <table>
-  <thead><tr><th>파일</th><th>역할</th></tr></thead>
+  <thead><tr><th>Prefix</th><th>알고리즘</th><th>권장</th></tr></thead>
   <tbody>
-    <tr><td><code>/etc/passwd</code></td><td>계정 정보 (공개)</td></tr>
-    <tr><td><code>/etc/shadow</code></td><td>패스워드 해시 (비공개)</td></tr>
-    <tr><td><code>/etc/group</code></td><td>그룹 정보</td></tr>
-    <tr><td><code>/etc/sudoers</code></td><td>sudo 권한 설정</td></tr>
-    <tr><td><code>/var/log/auth.log</code></td><td>인증 로그 (Debian 계열)</td></tr>
-    <tr><td><code>/var/log/secure</code></td><td>인증 로그 (RedHat 계열)</td></tr>
-    <tr><td><code>/etc/hosts.allow</code></td><td>TCP Wrapper 허용 목록</td></tr>
-    <tr><td><code>/etc/hosts.deny</code></td><td>TCP Wrapper 거부 목록</td></tr>
+    <tr><td>$1$</td><td>MD5</td><td>취약 — 사용 금지</td></tr>
+    <tr><td>$5$</td><td>SHA-256</td><td>허용</td></tr>
+    <tr><td>$6$</td><td>SHA-512</td><td>권장</td></tr>
+    <tr><td>$2b$</td><td>bcrypt</td><td>권장</td></tr>
   </tbody>
 </table>
 
-<h3>윈도우 보안</h3>
-<h4>SAM (Security Account Manager)</h4>
-<p>윈도우 로컬 계정·패스워드 해시 저장소 (<code>C:\Windows\System32\config\SAM</code>). 실행 중에는 잠겨 있으며, SYSTEM 권한 없이 직접 접근 불가. 해시 형식: <strong>NTLM (NT Hash)</strong>.</p>
-
-<h4>레지스트리 하이브</h4>
+<h3>/etc/login.defs 주요 설정</h3>
 <table>
-  <thead><tr><th>하이브</th><th>약어</th><th>내용</th></tr></thead>
+  <thead><tr><th>설정 키</th><th>설명</th></tr></thead>
   <tbody>
-    <tr><td>HKEY_LOCAL_MACHINE</td><td>HKLM</td><td>시스템 전체 설정, 하드웨어, 소프트웨어</td></tr>
+    <tr><td>PASS_MAX_DAYS</td><td>패스워드 최대 유효 기간 (일)</td></tr>
+    <tr><td>PASS_MIN_DAYS</td><td>패스워드 최소 변경 금지 기간 (일)</td></tr>
+    <tr><td>PASS_MIN_LEN</td><td>패스워드 최소 길이</td></tr>
+    <tr><td>PASS_WARN_AGE</td><td>만료 전 경고 일수</td></tr>
+    <tr><td>UID_MIN / UID_MAX</td><td>일반 사용자 UID 범위</td></tr>
+  </tbody>
+</table>
+
+<h3>RUID / EUID / SUID 개념</h3>
+<table>
+  <thead><tr><th>식별자</th><th>의미</th><th>역할</th></tr></thead>
+  <tbody>
+    <tr><td>RUID (Real UID)</td><td>실제 사용자 ID</td><td>프로세스를 시작한 사용자</td></tr>
+    <tr><td>EUID (Effective UID)</td><td>유효 사용자 ID</td><td>권한 검사에 실제 사용되는 ID (SetUID 시 소유자 UID로 전환)</td></tr>
+    <tr><td>SUID (Saved UID)</td><td>저장된 사용자 ID</td><td>EUID 변경 전 값 저장 (나중에 복원 가능)</td></tr>
+  </tbody>
+</table>
+
+<h3>주요 보안 파일</h3>
+<table>
+  <thead><tr><th>파일/디렉토리</th><th>역할</th></tr></thead>
+  <tbody>
+    <tr><td>/etc/passwd</td><td>사용자 계정 정보 (공개)</td></tr>
+    <tr><td>/etc/shadow</td><td>패스워드 해시 (root만 접근)</td></tr>
+    <tr><td>/etc/group</td><td>그룹 정보</td></tr>
+    <tr><td>/etc/sudoers</td><td>sudo 권한 설정 (visudo로 편집)</td></tr>
+    <tr><td>/etc/hosts.allow</td><td>TCP Wrapper 허용 규칙</td></tr>
+    <tr><td>/etc/hosts.deny</td><td>TCP Wrapper 거부 규칙</td></tr>
+    <tr><td>/var/log/auth.log</td><td>인증 관련 로그 (Debian계열)</td></tr>
+    <tr><td>/var/log/secure</td><td>인증 관련 로그 (RedHat계열)</td></tr>
+    <tr><td>/var/log/wtmp</td><td>로그인 이력 (last 명령으로 조회)</td></tr>
+    <tr><td>/var/log/btmp</td><td>로그인 실패 이력 (lastb 명령)</td></tr>
+  </tbody>
+</table>
+
+<h3>TCP Wrapper</h3>
+<p>inetd/xinetd 기반 서비스에 대한 호스트 기반 접근통제. <strong>/etc/hosts.allow가 /etc/hosts.deny보다 먼저 확인</strong>되며, 허용 규칙이 있으면 즉시 허용합니다.</p>
+<pre><code># /etc/hosts.allow (허용 우선)
+sshd: 192.168.1.0/24
+
+# /etc/hosts.deny (나머지 차단)
+ALL: ALL</code></pre>
+    `,
+  },
+  {
+    subject: 'system',
+    subjectLabel: '시스템보안',
+    chapter: 'windows-security',
+    chapterLabel: '윈도우 보안',
+    keywords: ['SAM', '레지스트리', 'NTFS', 'DACL', 'SACL', '이벤트 로그', 'UAC', '계정 잠금', 'BitLocker', 'NTLM'],
+    content: `
+<h3>SAM 데이터베이스</h3>
+<p>SAM(Security Account Manager)은 로컬 계정의 인증 정보를 저장하는 윈도우 데이터베이스입니다.</p>
+<table>
+  <thead><tr><th>항목</th><th>내용</th></tr></thead>
+  <tbody>
+    <tr><td>위치</td><td>%SystemRoot%\System32\config\SAM (레지스트리 HKLM\SAM)</td></tr>
+    <tr><td>저장 형식</td><td>NTLM 해시 (MD4(패스워드))</td></tr>
+    <tr><td>접근 제한</td><td>실행 중 OS는 잠금, SYSTEM 계정만 접근 가능</td></tr>
+    <tr><td>공격 기법</td><td>Pass the Hash, SAM 덤프(fgdump, mimikatz)</td></tr>
+  </tbody>
+</table>
+
+<h3>레지스트리 하이브</h3>
+<table>
+  <thead><tr><th>하이브</th><th>약어</th><th>역할</th></tr></thead>
+  <tbody>
+    <tr><td>HKEY_LOCAL_MACHINE</td><td>HKLM</td><td>시스템 전체 하드웨어·소프트웨어·보안 설정</td></tr>
     <tr><td>HKEY_CURRENT_USER</td><td>HKCU</td><td>현재 로그인 사용자 설정</td></tr>
     <tr><td>HKEY_USERS</td><td>HKU</td><td>모든 사용자 프로파일</td></tr>
-    <tr><td>HKEY_CLASSES_ROOT</td><td>HKCR</td><td>파일 연결·COM 개체</td></tr>
+    <tr><td>HKEY_CLASSES_ROOT</td><td>HKCR</td><td>파일 확장자 연결·COM 객체 등록</td></tr>
     <tr><td>HKEY_CURRENT_CONFIG</td><td>HKCC</td><td>현재 하드웨어 프로파일</td></tr>
   </tbody>
 </table>
 
-<h4>NTFS 권한</h4>
+<h4>주요 보안 관련 레지스트리 키</h4>
+<table>
+  <thead><tr><th>레지스트리 키</th><th>설명</th></tr></thead>
+  <tbody>
+    <tr><td>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run</td><td>시스템 부팅 시 자동 실행 프로그램</td></tr>
+    <tr><td>HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run</td><td>사용자 로그온 시 자동 실행</td></tr>
+    <tr><td>HKLM\SAM\SAM</td><td>계정 해시 저장 (SYSTEM 전용)</td></tr>
+    <tr><td>HKLM\SYSTEM\CurrentControlSet\Services</td><td>서비스 설정 (악성코드 지속성 확보)</td></tr>
+  </tbody>
+</table>
+
+<h3>NTFS 권한 (DACL / SACL)</h3>
+<table>
+  <thead><tr><th>구분</th><th>DACL (Discretionary ACL)</th><th>SACL (System ACL)</th></tr></thead>
+  <tbody>
+    <tr><td>목적</td><td>접근 허용/거부 제어</td><td>감사(Audit) 로그 기록 제어</td></tr>
+    <tr><td>설정 주체</td><td>객체 소유자</td><td>관리자(SeSecurityPrivilege 필요)</td></tr>
+    <tr><td>ACE 구성</td><td>Allow ACE / Deny ACE</td><td>Audit ACE (성공/실패 기록)</td></tr>
+  </tbody>
+</table>
+<p><strong>ACE 평가 순서:</strong> Deny ACE가 Allow ACE보다 항상 우선 적용됩니다.</p>
+
+<h3>주요 보안 이벤트 ID</h3>
+<table>
+  <thead><tr><th>이벤트 ID</th><th>설명</th></tr></thead>
+  <tbody>
+    <tr><td>4624</td><td>로그온 성공</td></tr>
+    <tr><td>4625</td><td>로그온 실패</td></tr>
+    <tr><td>4648</td><td>명시적 자격 증명으로 로그온 시도 (runas 등)</td></tr>
+    <tr><td>4720</td><td>사용자 계정 생성</td></tr>
+    <tr><td>4722</td><td>사용자 계정 활성화</td></tr>
+    <tr><td>4728</td><td>보안 그룹에 멤버 추가</td></tr>
+    <tr><td>4732</td><td>로컬 보안 그룹에 멤버 추가</td></tr>
+    <tr><td>4740</td><td>계정 잠금</td></tr>
+    <tr><td>4776</td><td>NTLM 자격 증명 검증 시도</td></tr>
+    <tr><td>7045</td><td>새 서비스 설치 (악성코드 지속성)</td></tr>
+  </tbody>
+</table>
+
+<h3>계정 정책</h3>
 <ul>
-  <li><strong>DACL (Discretionary ACL)</strong>: 자원 접근 제어 (허용/거부 ACE 목록)</li>
-  <li><strong>SACL (System ACL)</strong>: 감사 목적 (어떤 접근을 로그에 기록할지)</li>
-  <li>거부(Deny) ACE는 허용(Allow) ACE보다 우선 적용</li>
-  <li>상속: 부모 폴더 권한이 자식에게 전파 (명시 차단 가능)</li>
+  <li><strong>잠금 임계값</strong>: 로그온 실패 N회 후 계정 잠금 (권장: 5회 이하)</li>
+  <li><strong>잠금 기간</strong>: 자동 해제까지의 대기 시간 (권장: 30분 이상)</li>
+  <li><strong>패스워드 복잡성</strong>: 대문자/소문자/숫자/특수문자 조합, 최소 8자 이상</li>
+  <li><strong>패스워드 이력</strong>: 이전 N개 패스워드 재사용 금지</li>
 </ul>
 
-<h4>윈도우 감사 정책</h4>
+<h3>UAC (User Account Control)</h3>
+<p>관리자 계정으로 로그인해도 일반 권한으로 작업하고, 관리자 권한이 필요한 작업 시 사용자 동의를 요청하는 기능입니다.</p>
 <ul>
-  <li>로그온 이벤트, 계정 관리, 개체 액세스, 정책 변경, 권한 사용, 프로세스 추적, 시스템 이벤트</li>
-  <li>이벤트 뷰어: <code>eventvwr.msc</code></li>
-  <li>보안 로그 이벤트 ID 예시: 4624(로그온 성공), 4625(로그온 실패), 4648(명시적 자격증명 로그온)</li>
+  <li>목적: 악성코드의 무단 권한 상승 방지</li>
+  <li>동작: 관리자 권한 필요 시 동의(Consent) 또는 자격증명(Credential) 프롬프트 표시</li>
+  <li>레지스트리: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System</li>
 </ul>
 
-<h4>윈도우 계정 정책</h4>
-<ul>
-  <li><strong>계정 잠금 임계값</strong>: 실패 횟수 초과 시 계정 잠금 (일반적으로 5회)</li>
-  <li><strong>Administrator 계정</strong>: 이름 변경 또는 비활성화 권장</li>
-  <li><strong>Guest 계정</strong>: 기본 비활성화 유지 권장</li>
-</ul>
+<h3>Windows 보안 도구</h3>
+<table>
+  <thead><tr><th>도구</th><th>실행 명령</th><th>역할</th></tr></thead>
+  <tbody>
+    <tr><td>레지스트리 편집기</td><td>regedit</td><td>레지스트리 조회·수정</td></tr>
+    <tr><td>이벤트 뷰어</td><td>eventvwr.msc</td><td>보안/시스템/응용 프로그램 로그 조회</td></tr>
+    <tr><td>로컬 보안 정책</td><td>secpol.msc</td><td>계정 정책, 감사 정책, 사용자 권한 설정</td></tr>
+    <tr><td>BitLocker</td><td>제어판 &gt; BitLocker</td><td>드라이브 전체 암호화 (TPM 활용)</td></tr>
+  </tbody>
+</table>
     `,
   },
-
   {
     subject: 'system',
     subjectLabel: '시스템보안',
     chapter: 'access-control',
     chapterLabel: '접근통제',
-    keywords: ['DAC', 'MAC', 'RBAC', 'Bell-LaPadula', 'Biba', 'Clark-Wilson', '접근통제', '최소권한', '직무분리', '참조모니터', '인증', '인가', '식별', 'Brewer-Nash', 'ABAC'],
+    keywords: ['DAC', 'MAC', 'RBAC', 'ABAC', '식별', '인증', '인가', 'MFA', '지식기반', '소지기반', '특성기반', 'SSO', '최소권한', '직무분리'],
     content: `
-
 <h3>접근통제 3단계</h3>
 <table>
   <thead><tr><th>단계</th><th>설명</th><th>예시</th></tr></thead>
@@ -175,15 +240,18 @@ chmod u+s file  →  SetUID 설정</code></pre>
   </tbody>
 </table>
 
-<h4>인증 요소 (Authentication Factor)</h4>
-<ul>
-  <li><strong>지식 기반 (Something you know)</strong>: 패스워드, PIN, 보안 질문</li>
-  <li><strong>소지 기반 (Something you have)</strong>: OTP 토큰, 스마트카드, 인증서</li>
-  <li><strong>특성 기반 (Something you are)</strong>: 지문, 홍채, 얼굴, 정맥</li>
-  <li><strong>MFA (다단계 인증)</strong>: 2가지 이상 요소 조합</li>
-</ul>
+<h3>인증 요소 (Authentication Factor)</h3>
+<table>
+  <thead><tr><th>유형</th><th>설명</th><th>예시</th></tr></thead>
+  <tbody>
+    <tr><td>지식 기반 (Something you know)</td><td>알고 있는 것</td><td>패스워드, PIN, 보안 질문</td></tr>
+    <tr><td>소지 기반 (Something you have)</td><td>가지고 있는 것</td><td>OTP 토큰, 스마트카드, 인증서</td></tr>
+    <tr><td>특성 기반 (Something you are)</td><td>자신의 특성</td><td>지문, 홍채, 얼굴, 정맥</td></tr>
+    <tr><td>MFA (다단계 인증)</td><td>2가지 이상 요소 조합</td><td>패스워드 + OTP</td></tr>
+  </tbody>
+</table>
 
-<h3>접근통제 정책 유형</h3>
+<h3>접근통제 정책 유형 비교</h3>
 <table>
   <thead><tr><th>구분</th><th>권한 결정 주체</th><th>기반</th><th>특징</th><th>예시</th></tr></thead>
   <tbody>
@@ -218,222 +286,394 @@ chmod u+s file  →  SetUID 설정</code></pre>
   </tbody>
 </table>
 
-<h3>보안 모델</h3>
+<h3>접근 제어 행렬 (Access Control Matrix)</h3>
+<p>주체(Subject)와 객체(Object)의 권한 관계를 행렬로 표현. 행: 주체, 열: 객체, 셀: 권한.</p>
+<ul>
+  <li><strong>ACL (Access Control List)</strong>: 열(객체) 기준으로 접근 가능한 주체 목록</li>
+  <li><strong>Capability List</strong>: 행(주체) 기준으로 접근 가능한 객체 목록</li>
+</ul>
 
-<h4>Bell-LaPadula 모델 (기밀성)</h4>
+<h3>접근통제 원칙</h3>
+<ul>
+  <li><strong>최소권한(Least Privilege)</strong>: 업무 수행에 필요한 최소한의 권한만 부여</li>
+  <li><strong>직무분리(Separation of Duties)</strong>: 한 사람이 중요 프로세스 전체를 통제 불가. 내부 사기 방지</li>
+  <li><strong>알 필요성(Need-to-Know)</strong>: 업무 수행에 반드시 필요한 정보만 접근 허용</li>
+  <li><strong>기본 거부(Default Deny)</strong>: 명시적으로 허용되지 않은 것은 모두 거부</li>
+</ul>
+
+<h3>SSO 및 연동 프로토콜 비교</h3>
+<table>
+  <thead><tr><th>프로토콜</th><th>목적</th><th>특징</th></tr></thead>
+  <tbody>
+    <tr><td>Kerberos</td><td>인증</td><td>티켓 기반. KDC(AS+TGS). 대칭키. 시간 동기화 필수(5분)</td></tr>
+    <tr><td>SAML</td><td>인증+인가</td><td>XML 기반. IdP ↔ SP. 엔터프라이즈 SSO</td></tr>
+    <tr><td>OAuth 2.0</td><td>인가(Authorization)</td><td>액세스 토큰 발급. API 위임 접근</td></tr>
+    <tr><td>OpenID Connect</td><td>인증</td><td>OAuth 2.0 기반 + ID 토큰(JWT)</td></tr>
+  </tbody>
+</table>
+    `,
+  },
+  {
+    subject: 'system',
+    subjectLabel: '시스템보안',
+    chapter: 'security-model',
+    chapterLabel: '보안 모델',
+    keywords: ['Bell-LaPadula', 'Biba', 'Clark-Wilson', 'Chinese Wall', 'Brewer-Nash', '참조모니터', 'TCB', '보안커널', '격자모델', 'ss속성', '스타속성'],
+    content: `
+<h3>Bell-LaPadula 모델 (기밀성)</h3>
 <p>군사 기밀 보호 목적. MAC 기반. <strong>"Read Down, Write Up"만 허용.</strong></p>
-<ul>
-  <li><strong>ss-속성 (단순 보안 속성, No Read Up)</strong>: 자신보다 높은 등급의 객체 읽기 금지</li>
-  <li><strong>*-속성 (스타 속성, No Write Down)</strong>: 자신보다 낮은 등급의 객체 쓰기 금지 → 정보 유출 방지</li>
-  <li><strong>ds-속성 (임의 보안 속성)</strong>: DAC 방식으로 접근통제 행렬 유지</li>
-  <li>단점: 무결성 보장 안 됨 (낮은 등급 사용자가 높은 등급에 쓸 수 있음)</li>
-</ul>
+<table>
+  <thead><tr><th>속성</th><th>규칙</th><th>의미</th></tr></thead>
+  <tbody>
+    <tr><td>ss-속성 (단순 보안 속성)</td><td>No Read Up</td><td>자신보다 높은 등급 객체 읽기 금지</td></tr>
+    <tr><td>*-속성 (스타 속성)</td><td>No Write Down</td><td>자신보다 낮은 등급 객체 쓰기 금지 (정보 유출 방지)</td></tr>
+    <tr><td>ds-속성 (임의 보안 속성)</td><td>DAC 규칙 적용</td><td>접근통제 행렬로 추가 제한</td></tr>
+  </tbody>
+</table>
+<p>단점: 무결성 보장 안 됨 (낮은 등급 사용자가 높은 등급에 쓸 수 있음)</p>
 
-<h4>Biba 모델 (무결성)</h4>
-<p>Bell-LaPadula와 반대. <strong>"Read Up, Write Down"만 허용.</strong></p>
-<ul>
-  <li><strong>단순 무결성 속성 (No Read Down)</strong>: 낮은 등급 객체 읽기 금지 (오염 방지)</li>
-  <li><strong>*-무결성 속성 (No Write Up)</strong>: 높은 등급 객체 쓰기 금지</li>
-  <li>단점: 기밀성 보장 안 됨</li>
-</ul>
+<h3>Biba 모델 (무결성)</h3>
+<p>Bell-LaPadula와 반대 방향. <strong>"Read Up, Write Down"만 허용.</strong></p>
+<table>
+  <thead><tr><th>속성</th><th>규칙</th><th>의미</th></tr></thead>
+  <tbody>
+    <tr><td>단순 무결성 속성</td><td>No Read Down</td><td>낮은 등급 객체 읽기 금지 (오염 방지)</td></tr>
+    <tr><td>*-무결성 속성</td><td>No Write Up</td><td>높은 등급 객체 쓰기 금지</td></tr>
+  </tbody>
+</table>
+<p>단점: 기밀성 보장 안 됨</p>
 
-<h4>Bell-LaPadula vs Biba 비교</h4>
+<h3>Bell-LaPadula vs Biba 비교</h3>
 <table>
   <thead><tr><th>구분</th><th>Bell-LaPadula</th><th>Biba</th></tr></thead>
   <tbody>
-    <tr><td>목적</td><td>기밀성(Confidentiality)</td><td>무결성(Integrity)</td></tr>
+    <tr><td>보호 목표</td><td>기밀성(Confidentiality)</td><td>무결성(Integrity)</td></tr>
     <tr><td>읽기 규칙</td><td>No Read Up (상위 읽기 금지)</td><td>No Read Down (하위 읽기 금지)</td></tr>
     <tr><td>쓰기 규칙</td><td>No Write Down (하위 쓰기 금지)</td><td>No Write Up (상위 쓰기 금지)</td></tr>
-    <tr><td>허용</td><td>Read Down, Write Up</td><td>Read Up, Write Down</td></tr>
+    <tr><td>허용 방향</td><td>Read Down, Write Up</td><td>Read Up, Write Down</td></tr>
+    <tr><td>적용 환경</td><td>군사·정부</td><td>상업적 무결성</td></tr>
   </tbody>
 </table>
 
-<h4>Clark-Wilson 모델 (상업적 무결성)</h4>
-<p>상업 환경의 무결성 보장. 3가지 무결성 목표: 인가된 사용자의 부정 조작 방지, 직무 분리, 트랜잭션 로깅.</p>
+<h3>Clark-Wilson 모델 (상업적 무결성)</h3>
+<p>상업 환경 무결성 보장. 3가지 목표: 인가된 사용자의 부정 조작 방지 / 직무 분리 / 트랜잭션 로깅.</p>
+<table>
+  <thead><tr><th>구성 요소</th><th>의미</th></tr></thead>
+  <tbody>
+    <tr><td>CDI (Constrained Data Item)</td><td>무결성 통제가 적용되는 데이터</td></tr>
+    <tr><td>UDI (Unconstrained Data Item)</td><td>통제 없는 입력 데이터 (외부 입력)</td></tr>
+    <tr><td>TP (Transformation Procedure)</td><td>CDI를 변환하는 유일한 프로그램</td></tr>
+    <tr><td>IVP (Integrity Verification Procedure)</td><td>CDI 무결성 검증 절차</td></tr>
+  </tbody>
+</table>
+
+<h3>Chinese Wall 모델 (Brewer-Nash)</h3>
+<p>이해충돌(Conflict of Interest) 방지. 컨설팅·금융 환경.</p>
 <ul>
-  <li><strong>CDI (Constrained Data Item)</strong>: 무결성 통제가 적용되는 데이터</li>
-  <li><strong>UDI (Unconstrained Data Item)</strong>: 통제 없는 입력 데이터</li>
-  <li><strong>TP (Transformation Procedure)</strong>: CDI를 변환하는 유일한 방법</li>
-  <li><strong>IVP (Integrity Verification Procedure)</strong>: CDI 무결성 검증 절차</li>
+  <li>한 번 A사 정보 접근 시 경쟁사 B사 정보 접근 자동 차단</li>
+  <li>시간이 지남에 따라 접근 가능 객체가 동적으로 변함 (DAC+MAC 혼합 특성)</li>
 </ul>
 
-<h4>Chinese Wall 모델 (Brewer-Nash)</h4>
-<p>이해충돌(Conflict of Interest) 방지. 컨설팅·금융 환경. 한 번 A사 정보 접근 시 경쟁사 B사 정보 접근 자동 차단.</p>
-
-<h4>기타 모델</h4>
-<ul>
-  <li><strong>Harrison-Ruzzo-Ullman (HRU)</strong>: 접근 행렬 기반. 권한 변경 연산 정의.</li>
-  <li><strong>Take-Grant 모델</strong>: 권한 전달(Grant) 및 가져오기(Take) 연산으로 권한 흐름 분석.</li>
-  <li><strong>격자 모델(Lattice)</strong>: 보안 레벨 간 편순서 관계 정의. Bell-LaPadula의 수학적 기반.</li>
-</ul>
+<h3>기타 보안 모델</h3>
+<table>
+  <thead><tr><th>모델</th><th>특징</th></tr></thead>
+  <tbody>
+    <tr><td>HRU (Harrison-Ruzzo-Ullman)</td><td>접근 행렬 기반. 권한 변경 연산 정의. 안전성 결정 불가(비결정적)</td></tr>
+    <tr><td>Take-Grant</td><td>권한 전달(Grant)·가져오기(Take) 연산으로 권한 흐름 분석</td></tr>
+    <tr><td>격자 모델(Lattice)</td><td>보안 레벨 간 편순서 관계. Bell-LaPadula의 수학적 기반</td></tr>
+  </tbody>
+</table>
 
 <h3>참조 모니터 (Reference Monitor)</h3>
-<p>모든 접근 요청을 중재하는 추상적 개념. 요건 3가지:</p>
+<p>모든 접근 요청을 중재하는 추상적 개념. 3가지 필수 요건:</p>
 <ul>
   <li><strong>격리성(Isolation)</strong>: 변조·우회 불가하게 격리</li>
   <li><strong>완전성(Completeness)</strong>: 모든 접근 요청 반드시 통과</li>
   <li><strong>검증가능성(Verifiability)</strong>: 정확성 검증·테스트 가능</li>
 </ul>
 <p>구현체: <strong>보안 커널(Security Kernel)</strong>. TCB(Trusted Computing Base)의 핵심 구성 요소.</p>
-
-<h3>접근통제 원칙</h3>
-<ul>
-  <li><strong>최소권한(Least Privilege)</strong>: 업무 수행에 필요한 최소한의 권한만 부여. 권한 남용·오용 피해 최소화.</li>
-  <li><strong>직무분리(Separation of Duties)</strong>: 한 사람이 중요 프로세스 전체를 통제 불가. 내부 사기 방지. 예: 발주·승인·지급 분리.</li>
-  <li><strong>알 필요성(Need-to-Know)</strong>: 업무 수행에 반드시 필요한 정보만 접근 허용. MAC 환경에서 적용.</li>
-  <li><strong>기본 거부(Default Deny)</strong>: 명시적으로 허용되지 않은 것은 모두 거부.</li>
-  <li><strong>계정 관리</strong>: 퇴직자 즉시 계정 삭제, 장기 미사용 계정 비활성화.</li>
-</ul>
-
-<h3>SSO (Single Sign-On)</h3>
-<p>한 번 인증으로 여러 시스템 접근. 편의성 ↑, 단일 장애점(SPoF) 위험 존재.</p>
-<ul>
-  <li><strong>Kerberos</strong>: 티켓 기반 인증. KDC(AS + TGS) 중앙 관리. 대칭키 사용. 시간 동기화 필수(5분 이내).</li>
-  <li><strong>SAML</strong>: XML 기반 인증·인가 정보 교환. IdP ↔ SP.</li>
-  <li><strong>OAuth 2.0</strong>: 인가(Authorization) 프레임워크. 액세스 토큰 발급.</li>
-  <li><strong>OpenID Connect</strong>: OAuth 2.0 + 인증(Authentication). ID 토큰 추가.</li>
-</ul>
+<p><strong>TCB</strong>: 시스템 보안 정책을 강제하는 하드웨어·소프트웨어·펌웨어의 집합. 보안 커널 + 보안 관련 프로세스.</p>
     `,
   },
 
   {
     subject: 'system',
     subjectLabel: '시스템보안',
-    chapter: 'cryptography',
-    chapterLabel: '암호학',
-    keywords: ['암호', 'DES', 'AES', 'RSA', 'ECC', '해시', 'SHA', 'MD5', '디지털 서명', '공개키', '대칭키', 'PKI', '인증서', 'SEED', 'ARIA', 'CBC', 'ECB', 'CTR', 'GCM', 'HMAC', 'Diffie-Hellman'],
+    chapter: 'symmetric-crypto',
+    chapterLabel: '대칭키 암호화',
+    keywords: ['DES', 'AES', 'ARIA', 'SEED', 'LEA', '3DES', 'ECB', 'CBC', 'CTR', 'GCM', 'RC4', 'AEAD', '블록암호', '스트림암호'],
     content: `
-
-<h3>암호화 유형 비교</h3>
+<h3>암호화 유형 간단 비교</h3>
 <table>
-  <thead><tr><th>구분</th><th>대칭키 암호화</th><th>비대칭키 암호화</th><th>해시 함수</th></tr></thead>
+  <thead><tr><th>구분</th><th>대칭키</th><th>비대칭키</th><th>해시</th></tr></thead>
   <tbody>
-    <tr><td>키</td><td>암·복호화 동일 키</td><td>공개키(암호화) / 개인키(복호화)</td><td>키 없음 (단방향)</td></tr>
-    <tr><td>속도</td><td>빠름</td><td>매우 느림 (1000배+)</td><td>매우 빠름</td></tr>
-    <tr><td>키 관리</td><td>n(n-1)/2개 필요</td><td>2n개 필요</td><td>해당 없음</td></tr>
+    <tr><td>키</td><td>암·복호화 동일 키</td><td>공개키/개인키 쌍</td><td>키 없음 (단방향)</td></tr>
+    <tr><td>속도</td><td>빠름</td><td>매우 느림</td><td>매우 빠름</td></tr>
+    <tr><td>키 수(n명)</td><td>n(n-1)/2</td><td>2n</td><td>해당 없음</td></tr>
     <tr><td>주요 용도</td><td>대용량 데이터 암호화</td><td>키 교환, 디지털 서명</td><td>무결성 검증, 패스워드</td></tr>
-    <tr><td>대표 알고리즘</td><td>AES, ARIA, SEED, DES</td><td>RSA, ECC, DH, ElGamal</td><td>SHA-256, SHA-3, MD5</td></tr>
   </tbody>
 </table>
 
-<h3>대칭키 알고리즘</h3>
-<h4>블록 암호</h4>
+<h3>블록 암호 vs 스트림 암호</h3>
+<table>
+  <thead><tr><th>구분</th><th>블록 암호</th><th>스트림 암호</th></tr></thead>
+  <tbody>
+    <tr><td>처리 단위</td><td>고정 크기 블록 (64/128bit)</td><td>1비트 또는 1바이트씩</td></tr>
+    <tr><td>패딩</td><td>필요 (블록 크기 맞춤)</td><td>불필요</td></tr>
+    <tr><td>속도</td><td>상대적으로 느림</td><td>빠름</td></tr>
+    <tr><td>대표</td><td>DES, AES, ARIA, SEED</td><td>RC4, A5/1, ChaCha20</td></tr>
+  </tbody>
+</table>
+
+<h3>주요 블록 암호 알고리즘</h3>
 <table>
   <thead><tr><th>알고리즘</th><th>키 길이</th><th>블록 크기</th><th>특징</th></tr></thead>
   <tbody>
-    <tr><td><strong>DES</strong></td><td>56bit (실효)</td><td>64bit</td><td>1977년 미국 표준. 현재 안전하지 않음. 전사적 공격 가능.</td></tr>
-    <tr><td><strong>2DES</strong></td><td>112bit</td><td>64bit</td><td>중간자 공격(Meet-in-the-Middle)으로 실제 보안강도 56bit. 사용 안 함.</td></tr>
-    <tr><td><strong>3DES</strong></td><td>168bit (실효 112bit)</td><td>64bit</td><td>EDE 방식: 암호화-복호화-암호화. 느림. 레거시 호환.</td></tr>
-    <tr><td><strong>AES</strong></td><td>128/192/256bit</td><td>128bit</td><td>2001년 미국 표준(FIPS 197). Rijndael 알고리즘. 현재 가장 널리 사용.</td></tr>
-    <tr><td><strong>ARIA</strong></td><td>128/192/256bit</td><td>128bit</td><td>국내 표준 (KS X 1213). 국정원 개발. AES와 유사 구조.</td></tr>
-    <tr><td><strong>SEED</strong></td><td>128bit (SEED-128), 256bit (SEED-256)</td><td>128bit</td><td>국내 표준 (KS X 1005). KISA 개발. 전자금융 등 사용.</td></tr>
+    <tr><td><strong>DES</strong></td><td>56bit</td><td>64bit</td><td>1977년 미국 표준. 현재 안전하지 않음. 전사적 공격 가능.</td></tr>
+    <tr><td><strong>3DES</strong></td><td>168bit (실효 112bit)</td><td>64bit</td><td>EDE 방식. 느림. 레거시 호환.</td></tr>
+    <tr><td><strong>AES</strong></td><td>128/192/256bit</td><td>128bit</td><td>2001년 미국 표준(FIPS 197). Rijndael. 현재 가장 널리 사용.</td></tr>
+    <tr><td><strong>ARIA</strong></td><td>128/192/256bit</td><td>128bit</td><td>국내 표준(KS X 1213). 국정원 개발.</td></tr>
+    <tr><td><strong>SEED</strong></td><td>128/256bit</td><td>128bit</td><td>국내 표준(KS X 1005). KISA 개발. 전자금융.</td></tr>
     <tr><td><strong>LEA</strong></td><td>128/192/256bit</td><td>128bit</td><td>경량 암호화. IoT 환경. 국내 표준.</td></tr>
-    <tr><td><strong>Blowfish/Twofish</strong></td><td>32~448bit / 128~256bit</td><td>64bit / 128bit</td><td>AES 경선 후보. Twofish는 결선 진출.</td></tr>
   </tbody>
 </table>
-
-<h4>스트림 암호</h4>
-<ul>
-  <li>1비트 또는 1바이트씩 연속 암호화. 실시간 통신에 적합.</li>
-  <li><strong>RC4</strong>: SSL/WEP에 사용. 현재 취약 (BEAST, RC4 편향). 사용 금지.</li>
-  <li><strong>A5/1, A5/2</strong>: GSM 통신용. 취약점 발견.</li>
-</ul>
 
 <h3>블록 암호 운용 모드</h3>
 <table>
   <thead><tr><th>모드</th><th>패딩</th><th>병렬처리</th><th>특징</th><th>용도</th></tr></thead>
   <tbody>
-    <tr><td><strong>ECB</strong></td><td>필요</td><td>가능</td><td>블록 독립 암호화. 같은 평문 → 같은 암호문. 패턴 노출. 사용 금지.</td><td>사용 금지</td></tr>
-    <tr><td><strong>CBC</strong></td><td>필요</td><td>복호화만</td><td>이전 암호문 블록과 XOR. IV(초기화벡터) 필요. 오류 전파.</td><td>파일 암호화</td></tr>
+    <tr><td><strong>ECB</strong></td><td>필요</td><td>가능</td><td>블록 독립 암호화. 같은 평문→같은 암호문. 패턴 노출. 사용 금지.</td><td>사용 금지</td></tr>
+    <tr><td><strong>CBC</strong></td><td>필요</td><td>복호화만</td><td>이전 암호문 블록과 XOR. IV 필요. 오류 전파.</td><td>파일 암호화</td></tr>
     <tr><td><strong>CFB</strong></td><td>불필요</td><td>복호화만</td><td>스트림 암호처럼 동작. IV 필요.</td><td>스트림 데이터</td></tr>
     <tr><td><strong>OFB</strong></td><td>불필요</td><td>불가</td><td>키 스트림 사전 생성. 오류 비전파.</td><td>위성통신</td></tr>
-    <tr><td><strong>CTR</strong></td><td>불필요</td><td>가능</td><td>카운터 값 암호화 → XOR. 완전 병렬 처리.</td><td>고성능 암호화</td></tr>
-    <tr><td><strong>GCM</strong></td><td>불필요</td><td>가능</td><td>CTR + GHASH 인증. AEAD. 인증 태그 생성.</td><td>TLS 1.3, 네트워크</td></tr>
+    <tr><td><strong>CTR</strong></td><td>불필요</td><td>가능</td><td>카운터 값 암호화 후 XOR. 완전 병렬.</td><td>고성능</td></tr>
+    <tr><td><strong>GCM</strong></td><td>불필요</td><td>가능</td><td>CTR + GHASH 인증. AEAD. 인증 태그 생성.</td><td>TLS 1.3</td></tr>
   </tbody>
 </table>
-<p><strong>AEAD (Authenticated Encryption with Associated Data)</strong>: 암호화와 인증을 동시 제공. GCM, CCM, ChaCha20-Poly1305.</p>
 
-<h3>비대칭키 알고리즘</h3>
+<h3>AEAD 및 스트림 암호</h3>
+<p><strong>AEAD (Authenticated Encryption with Associated Data)</strong>: 암호화 + 인증을 동시 제공. GCM, CCM, ChaCha20-Poly1305.</p>
+<p><strong>RC4</strong>: SSL/WEP에 사용됐으나 편향성 취약점 발견. 현재 사용 금지.</p>
+    `,
+  },
+  {
+    subject: 'system',
+    subjectLabel: '시스템보안',
+    chapter: 'asymmetric-crypto',
+    chapterLabel: '비대칭키 암호화',
+    keywords: ['RSA', 'ECC', 'Diffie-Hellman', 'ElGamal', 'DSA', '소인수분해', '이산로그', '타원곡선', '하이브리드', '공개키', '개인키'],
+    content: `
+<h3>비대칭키 기본 원리</h3>
+<ul>
+  <li><strong>암호화</strong>: 수신자의 공개키로 암호화 → 수신자의 개인키로 복호화</li>
+  <li><strong>디지털 서명</strong>: 송신자의 개인키로 서명 → 수신자가 공개키로 검증</li>
+</ul>
+
+<h3>주요 비대칭키 알고리즘</h3>
 <table>
-  <thead><tr><th>알고리즘</th><th>기반 수학 문제</th><th>키 길이</th><th>용도</th></tr></thead>
+  <thead><tr><th>알고리즘</th><th>수학적 기반</th><th>권장 키 길이</th><th>용도</th></tr></thead>
   <tbody>
-    <tr><td><strong>RSA</strong></td><td>소인수분해의 어려움</td><td>2048bit 이상 권장</td><td>암호화, 디지털 서명</td></tr>
-    <tr><td><strong>ECC</strong></td><td>타원곡선 이산로그 문제</td><td>256bit (RSA 3072bit 동등)</td><td>모바일/IoT (짧은 키)</td></tr>
-    <tr><td><strong>Diffie-Hellman</strong></td><td>이산로그 문제</td><td>2048bit 이상</td><td>키 교환 전용 (암호화·서명 불가)</td></tr>
-    <tr><td><strong>ElGamal</strong></td><td>이산로그 문제</td><td>1024bit 이상</td><td>암호화, 서명 (DSA 기반)</td></tr>
+    <tr><td><strong>RSA</strong></td><td>소인수분해의 어려움</td><td>2048bit 이상</td><td>암호화, 디지털 서명</td></tr>
+    <tr><td><strong>ECC</strong></td><td>타원곡선 이산로그 문제</td><td>256bit</td><td>모바일/IoT (짧은 키로 동등 보안)</td></tr>
+    <tr><td><strong>Diffie-Hellman (DH)</strong></td><td>이산로그 문제</td><td>2048bit 이상</td><td>키 교환 전용 (암호화·서명 불가)</td></tr>
+    <tr><td><strong>ElGamal</strong></td><td>이산로그 문제</td><td>1024bit 이상</td><td>암호화, 서명</td></tr>
     <tr><td><strong>DSA</strong></td><td>이산로그 문제</td><td>1024~3072bit</td><td>디지털 서명 전용</td></tr>
   </tbody>
 </table>
 
-<h4>Diffie-Hellman 키 교환</h4>
-<p>공개 채널에서 비밀키를 안전하게 교환. <strong>인증 기능 없음</strong> → 중간자 공격(MITM) 취약. 인증 추가: DHE (임시 DH) + 인증서.</p>
+<h3>RSA 원리</h3>
+<p>두 큰 소수 p, q의 곱 n=p×q에서, n만 알고서 p, q를 소인수분해하기 어렵다는 수학적 난제를 기반으로 합니다.</p>
+<ul>
+  <li>키 길이: 현재 2048bit 이상 권장 (1024bit 이하 취약)</li>
+  <li>RSA 2048bit ≈ ECC 224bit ≈ AES 112bit (동등 보안강도)</li>
+</ul>
 
-<h3>해시 함수</h3>
+<h3>ECC 특징</h3>
+<p>타원곡선 위의 점 덧셈 연산을 기반으로 하는 암호화. RSA보다 짧은 키로 동등한 보안강도를 제공합니다.</p>
+<table>
+  <thead><tr><th>ECC 키 길이</th><th>동등 RSA 키 길이</th></tr></thead>
+  <tbody>
+    <tr><td>256bit</td><td>3072bit</td></tr>
+    <tr><td>384bit</td><td>7680bit</td></tr>
+    <tr><td>521bit</td><td>15360bit</td></tr>
+  </tbody>
+</table>
+
+<h3>Diffie-Hellman 키 교환</h3>
+<p>공개 채널에서 안전하게 공유 비밀키 생성. <strong>인증 기능 없음</strong> → 중간자 공격(MITM) 취약.</p>
+<ul>
+  <li><strong>DHE (임시 DH)</strong>: 매 세션마다 임시 키 생성 → PFS(Perfect Forward Secrecy) 제공</li>
+  <li><strong>ECDHE</strong>: ECC 기반 DHE. TLS 1.3의 기본 키 교환 방식</li>
+</ul>
+
+<h3>하이브리드 암호화</h3>
+<p>대칭키(빠른 속도)와 비대칭키(안전한 키 교환)를 결합하는 방식. HTTPS/TLS에서 사용.</p>
+<pre><code>1. 세션 키(대칭키) 생성
+2. 세션 키를 수신자의 공개키로 암호화 → 전송
+3. 실제 데이터는 세션 키(대칭키)로 암호화 → 전송
+4. 수신자: 개인키로 세션 키 복호화 → 세션 키로 데이터 복호화</code></pre>
+
+<h3>키 관리 비교</h3>
+<table>
+  <thead><tr><th>구분</th><th>n명 간 필요 키 수</th></tr></thead>
+  <tbody>
+    <tr><td>대칭키 (1:1 비밀키)</td><td>n(n-1)/2</td></tr>
+    <tr><td>비대칭키 (공개키+개인키 쌍)</td><td>2n</td></tr>
+  </tbody>
+</table>
+    `,
+  },
+  {
+    subject: 'system',
+    subjectLabel: '시스템보안',
+    chapter: 'hash-mac',
+    chapterLabel: '해시·메시지 인증',
+    keywords: ['MD5', 'SHA-1', 'SHA-256', 'SHA-3', 'HMAC', 'HAS-160', '충돌', '역상', '솔트', '레인보우테이블', 'bcrypt', 'PBKDF2'],
+    content: `
+<h3>해시 함수 4가지 특성</h3>
+<table>
+  <thead><tr><th>특성</th><th>설명</th></tr></thead>
+  <tbody>
+    <tr><td><strong>일방향성(One-way)</strong></td><td>해시값으로 원문 복원 불가 (역산 불가)</td></tr>
+    <tr><td><strong>역상 저항성(Preimage resistance)</strong></td><td>주어진 해시값 h에 대해 H(m)=h인 m 찾기 어려움</td></tr>
+    <tr><td><strong>제2역상 저항성(Second preimage resistance)</strong></td><td>주어진 m1에 대해 H(m1)=H(m2)인 m2 찾기 어려움</td></tr>
+    <tr><td><strong>충돌 저항성(Collision resistance)</strong></td><td>H(m1)=H(m2)인 임의의 m1≠m2 쌍 찾기 어려움</td></tr>
+  </tbody>
+</table>
+
+<h3>주요 해시 알고리즘</h3>
 <table>
   <thead><tr><th>알고리즘</th><th>출력 길이</th><th>상태</th></tr></thead>
   <tbody>
     <tr><td><strong>MD5</strong></td><td>128bit</td><td>충돌 공격 가능. 무결성 검증 부적합. 사용 지양.</td></tr>
     <tr><td><strong>SHA-1</strong></td><td>160bit</td><td>2017년 충돌 공격 성공(SHAttered). 사용 금지 권고.</td></tr>
-    <tr><td><strong>SHA-224/256</strong></td><td>224/256bit</td><td>SHA-2 계열. 현재 표준.</td></tr>
+    <tr><td><strong>SHA-224/256</strong></td><td>224/256bit</td><td>SHA-2 계열. 현재 표준. 가장 널리 사용.</td></tr>
     <tr><td><strong>SHA-384/512</strong></td><td>384/512bit</td><td>SHA-2 계열. 고보안 환경.</td></tr>
-    <tr><td><strong>SHA-3</strong></td><td>224~512bit</td><td>Keccak 알고리즘. SHA-2와 다른 구조.</td></tr>
-    <tr><td><strong>HAS-160</strong></td><td>160bit</td><td>국내 표준 해시.</td></tr>
+    <tr><td><strong>SHA-3</strong></td><td>224~512bit</td><td>Keccak 알고리즘. SHA-2와 완전히 다른 구조.</td></tr>
+    <tr><td><strong>HAS-160</strong></td><td>160bit</td><td>국내 표준 해시 (KCDSA 서명에 사용).</td></tr>
   </tbody>
 </table>
 
-<h4>해시 함수 특성 (4가지)</h4>
+<h3>충돌 공격</h3>
 <ul>
-  <li><strong>일방향성(One-way)</strong>: 해시값으로 원문 복원 불가</li>
-  <li><strong>역상 저항성(Preimage resistance)</strong>: 주어진 해시값 h에 대해 H(m)=h인 m을 찾기 어려움</li>
-  <li><strong>제2역상 저항성(Second preimage resistance)</strong>: 주어진 m1에 대해 H(m1)=H(m2)인 m2 찾기 어려움</li>
-  <li><strong>충돌 저항성(Collision resistance)</strong>: H(m1)=H(m2)인 임의의 m1≠m2 쌍 찾기 어려움</li>
+  <li><strong>MD5 충돌</strong>: 2004년 Wang 등이 이론 증명. 실용적 충돌 생성 가능.</li>
+  <li><strong>SHA-1 충돌(SHAttered)</strong>: 2017년 Google 연구팀. 같은 SHA-1 해시값을 가진 두 PDF 파일 생성.</li>
+  <li>충돌 저항성이 깨지면 디지털 서명 위조 가능 → 폐기</li>
 </ul>
 
-<h4>HMAC (Hash-based Message Authentication Code)</h4>
-<p>비밀키 + 해시 함수 조합. 무결성 + 인증 동시 제공. <code>HMAC(K, m) = H((K⊕opad) ‖ H((K⊕ipad) ‖ m))</code></p>
+<h3>HMAC (Hash-based Message Authentication Code)</h3>
+<p>비밀키 + 해시 함수 조합. <strong>무결성 + 인증</strong> 동시 제공. 기밀성은 제공하지 않음.</p>
+<pre><code>HMAC(K, m) = H((K⊕opad) || H((K⊕ipad) || m))</code></pre>
+<ul>
+  <li>용도: API 요청 인증, TLS MAC, JWT HS256</li>
+  <li>MAC만으로는 부인방지 불가 (키 공유 때문)</li>
+</ul>
 
-<h3>디지털 서명</h3>
-<p>서명자의 <strong>개인키로 서명</strong> → 검증자는 <strong>공개키로 검증</strong>.</p>
+<h3>해시 공격 기법</h3>
 <table>
-  <thead><tr><th>제공 기능</th><th>제공하지 않는 기능</th></tr></thead>
+  <thead><tr><th>공격</th><th>방법</th><th>대응</th></tr></thead>
+  <tbody>
+    <tr><td>무차별 대입(Brute-force)</td><td>모든 가능한 입력 시도</td><td>긴 패스워드, 느린 해시 함수</td></tr>
+    <tr><td>사전 공격(Dictionary)</td><td>자주 쓰이는 단어 목록 사용</td><td>복잡한 패스워드 정책</td></tr>
+    <tr><td>Rainbow Table</td><td>사전계산된 해시 역조회 테이블</td><td>솔트(Salt) 사용</td></tr>
+  </tbody>
+</table>
+
+<h3>솔트(Salt)와 패스워드 저장</h3>
+<p><strong>솔트</strong>: 패스워드에 랜덤 값을 추가해 해시. 같은 패스워드도 다른 해시값 → Rainbow Table 무력화.</p>
+<table>
+  <thead><tr><th>방식</th><th>특징</th><th>권장 여부</th></tr></thead>
+  <tbody>
+    <tr><td>MD5(password)</td><td>빠름, Rainbow Table 취약</td><td>금지</td></tr>
+    <tr><td>SHA-256(salt+password)</td><td>빠름 — 무차별 대입 취약</td><td>비권장</td></tr>
+    <tr><td><strong>bcrypt</strong></td><td>작업 계수(cost factor)로 속도 조절</td><td>권장</td></tr>
+    <tr><td><strong>PBKDF2</strong></td><td>반복 해시 + 솔트. NIST 권장.</td><td>권장</td></tr>
+    <tr><td><strong>Argon2</strong></td><td>메모리 집약적. 2015년 Password Hashing Competition 우승.</td><td>권장</td></tr>
+  </tbody>
+</table>
+    `,
+  },
+  {
+    subject: 'system',
+    subjectLabel: '시스템보안',
+    chapter: 'pki-signature',
+    chapterLabel: 'PKI·디지털 서명',
+    keywords: ['CA', 'RA', 'VA', 'PKI', 'X.509', 'CRL', 'OCSP', '디지털서명', '인증서', '공인인증서', '전자서명법', 'KISA'],
+    content: `
+<h3>디지털 서명 과정</h3>
+<pre><code>서명(송신자):
+  1. 메시지를 해시 함수로 요약 → 메시지 다이제스트(MD)
+  2. MD를 송신자의 개인키로 암호화 → 디지털 서명
+
+검증(수신자):
+  1. 수신된 서명을 송신자의 공개키로 복호화 → MD'
+  2. 수신된 메시지를 동일 해시 함수로 요약 → MD
+  3. MD == MD' 이면 서명 유효</code></pre>
+
+<h3>디지털 서명 제공 기능</h3>
+<table>
+  <thead><tr><th>제공하는 보안 기능</th><th>제공하지 않는 기능</th></tr></thead>
   <tbody>
     <tr>
-      <td>무결성, 인증, 부인방지</td>
-      <td>기밀성 (기밀성이 필요하면 별도 암호화 필요)</td>
+      <td>무결성(Integrity), 인증(Authentication), 부인방지(Non-repudiation)</td>
+      <td>기밀성(Confidentiality) — 별도 암호화 필요</td>
     </tr>
   </tbody>
 </table>
 
-<h4>서명 과정</h4>
-<pre><code>서명: 메시지 해시 → 개인키로 암호화(서명)
-검증: 수신 서명을 공개키로 복호화 → 메시지 해시와 비교</code></pre>
+<h3>PKI 구성요소</h3>
+<table>
+  <thead><tr><th>구성 요소</th><th>역할</th></tr></thead>
+  <tbody>
+    <tr><td><strong>CA (인증기관)</strong></td><td>인증서 발급·갱신·폐기. 신뢰의 근원.</td></tr>
+    <tr><td><strong>RA (등록기관)</strong></td><td>사용자 신원 확인 후 CA에 인증서 발급 요청. CA와 사용자 사이 중개.</td></tr>
+    <tr><td><strong>VA (검증기관)</strong></td><td>인증서 유효성 실시간 검증 (OCSP 응답 제공).</td></tr>
+    <tr><td><strong>저장소(Repository)</strong></td><td>인증서·CRL 공개 저장. LDAP 디렉토리 방식.</td></tr>
+  </tbody>
+</table>
 
-<h3>PKI (공개키 기반 구조)</h3>
-<h4>구성 요소</h4>
-<ul>
-  <li><strong>CA (인증기관, Certificate Authority)</strong>: 인증서 발급·갱신·폐기. 신뢰의 근원.</li>
-  <li><strong>RA (등록기관, Registration Authority)</strong>: 사용자 신원 확인 후 CA에 인증서 발급 요청. CA와 사용자 사이 중개.</li>
-  <li><strong>VA (검증기관, Validation Authority)</strong>: 인증서 유효성 실시간 검증 (OCSP 응답).</li>
-  <li><strong>저장소(Repository)</strong>: 인증서·CRL 공개 저장.</li>
-</ul>
+<h3>X.509 인증서 주요 필드</h3>
+<table>
+  <thead><tr><th>필드</th><th>설명</th></tr></thead>
+  <tbody>
+    <tr><td>버전(Version)</td><td>인증서 형식 버전 (v3 사용)</td></tr>
+    <tr><td>일련번호(Serial Number)</td><td>CA 내 고유 번호</td></tr>
+    <tr><td>서명 알고리즘</td><td>CA가 서명에 사용한 알고리즘</td></tr>
+    <tr><td>발급자(Issuer)</td><td>인증서를 발급한 CA 정보</td></tr>
+    <tr><td>유효기간(Validity)</td><td>NotBefore ~ NotAfter</td></tr>
+    <tr><td>주체(Subject)</td><td>인증서 소유자 정보</td></tr>
+    <tr><td>공개키 정보</td><td>소유자의 공개키 + 알고리즘</td></tr>
+    <tr><td>확장(Extensions)</td><td>SAN, Key Usage, CRL 배포점 등</td></tr>
+    <tr><td>CA 서명</td><td>CA 개인키로 서명한 값</td></tr>
+  </tbody>
+</table>
 
-<h4>X.509 인증서 구조</h4>
-<ul>
-  <li>버전, 일련번호, 서명 알고리즘, 발급자(Issuer), 유효기간, 주체(Subject), 공개키, 확장 필드, CA 서명</li>
-</ul>
+<h3>CRL vs OCSP 비교</h3>
+<table>
+  <thead><tr><th>구분</th><th>CRL</th><th>OCSP</th></tr></thead>
+  <tbody>
+    <tr><td>방식</td><td>폐기 인증서 목록 다운로드</td><td>실시간 상태 조회</td></tr>
+    <tr><td>최신성</td><td>주기적 갱신 (다소 지연)</td><td>실시간</td></tr>
+    <tr><td>크기</td><td>목록이 커질 수 있음</td><td>단건 응답</td></tr>
+    <tr><td>프라이버시</td><td>CA에 조회 안함</td><td>CA가 조회 내역 파악 가능</td></tr>
+    <tr><td>포트</td><td>HTTP 80</td><td>HTTP 80/443</td></tr>
+  </tbody>
+</table>
+<p><strong>OCSP Stapling</strong>: 서버가 OCSP 응답을 미리 캐시해 TLS 핸드셰이크 시 클라이언트에 제공 → 성능 향상, 프라이버시 보호.</p>
 
-<h4>인증서 폐기</h4>
-<ul>
-  <li><strong>CRL (인증서 폐기 목록)</strong>: 폐기된 인증서 목록. 주기적 갱신. 크기가 커질 수 있음.</li>
-  <li><strong>OCSP (Online Certificate Status Protocol)</strong>: 실시간 폐기 여부 확인. CRL보다 최신 상태. 포트 80/443.</li>
-  <li><strong>OCSP Stapling</strong>: 서버가 OCSP 응답을 미리 캐시해 클라이언트에 제공 → 성능 향상.</li>
-</ul>
+<h3>인증서 검증 체인</h3>
+<pre><code>Root CA (자체 서명, 브라우저/OS 내장)
+  ↓ 서명
+중간 CA (Intermediate CA)
+  ↓ 서명
+사용자(서버) 인증서</code></pre>
+<p>신뢰 체인(Chain of Trust): Root CA를 신뢰하면 중간 CA와 최종 인증서도 신뢰.</p>
 
-<h4>국내 PKI 체계</h4>
+<h3>국내 PKI 체계</h3>
 <ul>
   <li>최상위 인증기관: <strong>KISA (한국인터넷진흥원)</strong></li>
-  <li>공인인증기관: 금융결제원, KOSCOM, 한국정보인증, 이니텍, 한국전자인증</li>
-  <li>2020년: 공인인증서 독점 폐지 → 사설 인증서와 동등 지위</li>
+  <li>공인인증기관 5개: 금융결제원, KOSCOM, 한국정보인증, 이니텍, 한국전자인증</li>
+  <li><strong>2020년 전자서명법 개정</strong>: 공인인증서(구 공인인증기관) 독점 지위 폐지. 사설 인증서와 동등 지위.</li>
 </ul>
     `,
   },
@@ -442,8 +682,8 @@ chmod u+s file  →  SetUID 설정</code></pre>
     subject: 'system',
     subjectLabel: '시스템보안',
     chapter: 'malware',
-    chapterLabel: '악성코드',
-    keywords: ['악성코드', '바이러스', '웜', '트로이목마', '랜섬웨어', '루트킷', '스파이웨어', '봇넷', '키로거', '백도어', 'APT', '드라이브 바이', '워터링홀', '스피어피싱', '바이러스'],
+    chapterLabel: '악성코드·APT',
+    keywords: ['바이러스', '웜', '트로이목마', '랜섬웨어', '루트킷', '스파이웨어', '봇넷', '키로거', '백도어', 'APT', '드라이브바이다운로드', '워터링홀', '스피어피싱', '공급망'],
     content: `
 
 <h3>악성코드 유형 분류</h3>
@@ -511,14 +751,125 @@ chmod u+s file  →  SetUID 설정</code></pre>
   <li><strong>필리싱(Vishing/Smishing)</strong>: 전화/SMS를 이용한 피싱.</li>
 </ul>
 
-<h3>랜섬웨어 대응</h3>
+<h3>랜섬웨어 특징 및 대응</h3>
 <ul>
-  <li>정기 오프라인 백업 (3-2-1 규칙: 3개 복사본, 2개 미디어, 1개 오프사이트)</li>
+  <li>파일 암호화 후 복구 대가로 암호화폐 요구. WannaCry(2017, EternalBlue 취약점 악용), NotPetya, LockBit.</li>
+  <li><strong>3-2-1 백업 규칙</strong>: 3개 복사본 / 2개 다른 미디어 / 1개 오프사이트</li>
   <li>OS·소프트웨어 최신 패치 유지</li>
-  <li>이메일 첨부파일·링크 주의</li>
   <li>네트워크 분리(Segmentation): 감염 확산 방지</li>
   <li>EDR(Endpoint Detection and Response) 도입</li>
 </ul>
+
+<h3>악성코드 탐지 기법</h3>
+<table>
+  <thead><tr><th>기법</th><th>원리</th><th>장점</th><th>단점</th></tr></thead>
+  <tbody>
+    <tr><td><strong>시그니처 기반</strong></td><td>알려진 패턴 DB와 비교</td><td>정확도 높음, 빠름</td><td>신종·변종 탐지 불가</td></tr>
+    <tr><td><strong>행위 기반(휴리스틱)</strong></td><td>의심 행동 패턴 탐지</td><td>신종 탐지 가능</td><td>오탐률 높음</td></tr>
+    <tr><td><strong>무결성 검사</strong></td><td>파일 해시값 비교</td><td>변조 정확히 탐지</td><td>초기 해시 DB 필요</td></tr>
+    <tr><td><strong>샌드박스</strong></td><td>격리 환경 실행 관찰</td><td>행위 직접 확인</td><td>느림, 우회 가능</td></tr>
+    <tr><td><strong>평판 기반</strong></td><td>클라우드 집단 지성</td><td>빠른 신종 대응</td><td>인터넷 연결 필요</td></tr>
+  </tbody>
+</table>
+    `,
+  },
+  {
+    subject: 'system',
+    subjectLabel: '시스템보안',
+    chapter: 'system-attack',
+    chapterLabel: '시스템 공격 기법',
+    keywords: ['버퍼오버플로', '포맷스트링', '레이스컨디션', 'TOCTOU', '권한상승', '루트킷', '패스워드크래킹', 'Pass the Hash', 'NOP sled', '스택'],
+    content: `
+<h3>버퍼 오버플로 (Buffer Overflow)</h3>
+<p>입력 데이터가 버퍼 크기를 초과해 인접 메모리를 덮어쓰는 공격. 스택의 리턴 주소를 공격자 코드로 덮어씁니다.</p>
+<table>
+  <thead><tr><th>구분</th><th>스택 기반</th><th>힙 기반</th></tr></thead>
+  <tbody>
+    <tr><td>대상</td><td>스택 상의 지역변수</td><td>동적 할당 메모리</td></tr>
+    <tr><td>목표</td><td>리턴 주소 덮어쓰기</td><td>함수 포인터, vtable 덮어쓰기</td></tr>
+    <tr><td>난이도</td><td>비교적 쉬움</td><td>어려움</td></tr>
+  </tbody>
+</table>
+
+<h4>NOP Sled</h4>
+<p>NOP(No Operation) 명령어(0x90)를 연속 배치해 셸코드 앞에 슬라이드 영역 생성. 정확한 리턴 주소 몰라도 NOP 영역 어딘가에 점프하면 셸코드 실행 가능.</p>
+
+<h4>버퍼 오버플로 대응 기법</h4>
+<table>
+  <thead><tr><th>대응 기법</th><th>설명</th></tr></thead>
+  <tbody>
+    <tr><td><strong>ASLR</strong> (Address Space Layout Randomization)</td><td>스택·힙·라이브러리 주소 무작위화 → 리턴 주소 예측 방해</td></tr>
+    <tr><td><strong>DEP/NX</strong> (Data Execution Prevention)</td><td>스택·힙에서 코드 실행 금지</td></tr>
+    <tr><td><strong>스택 카나리(Stack Canary)</strong></td><td>리턴 주소 앞에 카나리 값 배치. 리턴 전 카나리 변조 여부 확인.</td></tr>
+    <tr><td><strong>SafeSEH</strong></td><td>SEH(구조적 예외 처리) 핸들러 포인터 검증 (Windows)</td></tr>
+  </tbody>
+</table>
+
+<h3>포맷 스트링 공격 (Format String Attack)</h3>
+<p>printf() 등 포맷 함수에 사용자 입력을 직접 포맷 문자열로 전달할 때 발생.</p>
+<pre><code>취약 코드: printf(user_input);       // 위험
+안전 코드: printf("%s", user_input); // 안전
+
+%x : 스택 메모리 내용 출력 (정보 유출)
+%n : 현재까지 출력한 바이트 수를 메모리에 쓰기 (임의 쓰기 가능)</code></pre>
+
+<h3>레이스 컨디션 / TOCTOU</h3>
+<p><strong>레이스 컨디션(Race Condition)</strong>: 두 프로세스가 공유 자원에 동시 접근해 결과가 실행 순서에 따라 달라지는 취약점.</p>
+<p><strong>TOCTOU (Time-of-Check-to-Time-of-Use)</strong>: 권한 확인 시점(TOC)과 실제 사용 시점(TOU) 사이에 공격자가 파일 등 자원을 교체하는 공격.</p>
+<pre><code>1. 프로그램이 /tmp/safe_file 권한 확인 (TOC)
+2. 공격자가 /tmp/safe_file을 /etc/passwd로 심볼릭 링크 교체
+3. 프로그램이 /tmp/safe_file에 쓰기 (TOU) → /etc/passwd 수정됨</code></pre>
+
+<h3>권한 상승 기법</h3>
+<ul>
+  <li><strong>SetUID 악용</strong>: SUID 설정된 프로그램의 취약점을 이용해 root 권한 획득</li>
+  <li><strong>커널 취약점 공격</strong>: dirty COW, ptrace 등 커널 버그 악용</li>
+  <li><strong>sudo 설정 오류</strong>: sudoers 잘못된 설정으로 권한 상승</li>
+  <li><strong>PATH 변조</strong>: 환경변수 PATH에 악성 디렉토리 삽입</li>
+</ul>
+
+<h3>루트킷 (Rootkit)</h3>
+<p>시스템에 지속적으로 은닉하며 관리자 수준 접근을 유지하는 악성 소프트웨어.</p>
+<table>
+  <thead><tr><th>유형</th><th>동작 방식</th></tr></thead>
+  <tbody>
+    <tr><td>커널 레벨 루트킷</td><td>커널 모듈로 로드. 시스템 콜 테이블 후킹. 탐지 극히 어려움.</td></tr>
+    <tr><td>사용자 레벨 루트킷</td><td>ls, ps 등 시스템 명령어 교체. 상대적으로 탐지 쉬움.</td></tr>
+    <tr><td>부트킷</td><td>MBR/UEFI 감염. OS 로드 전 실행.</td></tr>
+    <tr><td>하이퍼바이저 루트킷</td><td>가상화 레이어 활용. OS 아래에서 동작.</td></tr>
+  </tbody>
+</table>
+
+<h3>패스워드 크래킹</h3>
+<table>
+  <thead><tr><th>기법</th><th>설명</th><th>대응</th></tr></thead>
+  <tbody>
+    <tr><td>무차별 대입(Brute-force)</td><td>모든 가능한 조합 시도</td><td>계정 잠금, 긴 패스워드</td></tr>
+    <tr><td>사전 공격(Dictionary)</td><td>자주 쓰이는 단어 목록</td><td>복잡한 패스워드 정책</td></tr>
+    <tr><td>Rainbow Table</td><td>사전계산된 해시 역조회</td><td>솔트(Salt) 사용</td></tr>
+    <tr><td>하이브리드 공격</td><td>사전 단어 + 숫자·특수문자 조합</td><td>복잡한 패스워드</td></tr>
+  </tbody>
+</table>
+
+<h3>Pass the Hash (PtH)</h3>
+<p>Windows NTLM 인증에서 실제 패스워드 없이 <strong>NTLM 해시값만으로 인증</strong>하는 공격.</p>
+<ul>
+  <li>공격 도구: mimikatz, impacket</li>
+  <li>대응: Kerberos 인증 사용, Protected Users 그룹 활용, 관리자 계정 최소화, Credential Guard</li>
+</ul>
+
+<h3>대응 방안 종합</h3>
+<table>
+  <thead><tr><th>공격 유형</th><th>주요 대응</th></tr></thead>
+  <tbody>
+    <tr><td>버퍼 오버플로</td><td>ASLR, DEP, 스택 카나리, 안전한 함수 사용(strncpy, snprintf)</td></tr>
+    <tr><td>포맷 스트링</td><td>포맷 문자열에 사용자 입력 직접 사용 금지</td></tr>
+    <tr><td>TOCTOU</td><td>파일 디스크립터 사용(open 후 fd로만 처리), 임시파일 안전한 생성(mkstemp)</td></tr>
+    <tr><td>권한 상승</td><td>최소권한 원칙, 불필요한 SUID 파일 제거, 정기 패치</td></tr>
+    <tr><td>루트킷</td><td>무결성 검사 도구(Tripwire), 신뢰 부트(Secure Boot), EDR</td></tr>
+    <tr><td>Pass the Hash</td><td>Kerberos 강제, Credential Guard, 관리자 계정 분리</td></tr>
+  </tbody>
+</table>
     `,
   },
 
