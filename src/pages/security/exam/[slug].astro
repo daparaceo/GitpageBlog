@@ -170,7 +170,7 @@ const optionSymbols = ['①', '②', '③', '④'];
       const selected = item.querySelector('input[type=radio]:checked');
       const isCorrect = selected && parseInt(selected.value, 10) === answer;
 
-      item.querySelectorAll('.option-label').forEach(function (label, i) {
+      item.querySelectorAll('.option-label').forEach(function (label) {
         label.classList.remove('correct', 'wrong');
         const radio = label.querySelector('input[type=radio]');
         if (!radio) return;
@@ -182,26 +182,34 @@ const optionSymbols = ['①', '②', '③', '④'];
         }
       });
 
-      // 해설 노출
       const box = item.querySelector('.explanation-box');
       if (box) box.classList.remove('hidden');
-
-      // 채점 버튼 비활성화
-      const btn = item.querySelector('.check-btn');
-      if (btn) {
-        btn.textContent = '확인 완료';
-        btn.disabled = true;
-        btn.classList.add('opacity-50', 'cursor-not-allowed');
-        btn.classList.remove('hover:bg-sky-700');
-      }
 
       return isCorrect;
     }
 
-    // 개별 채점
+    function clearQuestion(item) {
+      item.querySelectorAll('.option-label').forEach(function (label) {
+        label.classList.remove('correct', 'wrong');
+      });
+      const box = item.querySelector('.explanation-box');
+      if (box) box.classList.add('hidden');
+    }
+
+    // 개별 채점 — 토글 방식
     document.querySelectorAll('.check-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        gradeQuestion(btn.closest('.question-item'));
+        const item = btn.closest('.question-item');
+        const box = item.querySelector('.explanation-box');
+        const isHidden = box.classList.contains('hidden');
+
+        if (isHidden) {
+          gradeQuestion(item);
+          btn.textContent = '정답 숨기기';
+        } else {
+          clearQuestion(item);
+          btn.textContent = '정답 확인';
+        }
       });
     });
 
