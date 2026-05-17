@@ -197,26 +197,32 @@ const optionSymbols = ['①', '②', '③', '④'];
     document.querySelectorAll('.reveal-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
         const item = btn.closest('.quiz-item');
-        const answer = parseInt(item.dataset.answer, 10);
-        const selected = item.querySelector('input[type=radio]:checked');
-
-        // 정답/오답 강조
-        item.querySelectorAll('.option-label').forEach(function (label) {
-          label.classList.remove('correct', 'wrong');
-          const radio = label.querySelector('input[type=radio]');
-          if (!radio) return;
-          const val = parseInt(radio.value, 10);
-          if (val === answer) {
-            label.classList.add('correct');
-          } else if (selected && val === parseInt(selected.value, 10)) {
-            label.classList.add('wrong');
-          }
-        });
-
-        // 해설 토글
         const box = item.querySelector('.answer-box');
         const isHidden = box.classList.toggle('hidden');
-        btn.textContent = isHidden ? '정답 확인' : '정답 숨기기';
+
+        if (isHidden) {
+          // 숨길 때: 하이라이트 초기화
+          item.querySelectorAll('.option-label').forEach(function (label) {
+            label.classList.remove('correct', 'wrong');
+          });
+          btn.textContent = '정답 확인';
+        } else {
+          // 보일 때: 정답/오답 강조
+          const answer = parseInt(item.dataset.answer, 10);
+          const selected = item.querySelector('input[type=radio]:checked');
+          item.querySelectorAll('.option-label').forEach(function (label) {
+            label.classList.remove('correct', 'wrong');
+            const radio = label.querySelector('input[type=radio]');
+            if (!radio) return;
+            const val = parseInt(radio.value, 10);
+            if (val === answer) {
+              label.classList.add('correct');
+            } else if (selected && val === parseInt(selected.value, 10)) {
+              label.classList.add('wrong');
+            }
+          });
+          btn.textContent = '정답 숨기기';
+        }
       });
     });
   });
