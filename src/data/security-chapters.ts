@@ -2867,168 +2867,844 @@ KDC = AS(Authentication Service) + TGS(Ticket Granting Service)</code></pre>
     subject: 'general',
     subjectLabel: '정보보안일반',
     chapter: 'security-concepts',
-    chapterLabel: '보안 일반 개념',
-    keywords: ['CIA', '기밀성', '무결성', '가용성', '위험', '위협', '취약점', '위험관리', '보안정책', '업무연속성', 'BCP', 'DRP', 'DoS', 'DDoS', 'SYN Flooding', 'RTO', 'RPO', '사회공학'],
+    chapterLabel: '정보보안 개요',
+    keywords: ['기밀성', '무결성', '가용성', 'CIA', '인증', '부인방지', '책임추적성', '보안 정책', '위협', '취약점', '위험', '자산', '보호대책', 'ISMS'],
     content: `
-
 <h3>정보보안 3대 목표 (CIA Triad)</h3>
 <table>
-  <thead><tr><th>목표</th><th>설명</th><th>보장 수단</th><th>주요 위협</th></tr></thead>
+  <thead><tr><th>목표</th><th>정의</th><th>위협 예시</th><th>보호수단</th></tr></thead>
   <tbody>
     <tr>
       <td><strong>기밀성</strong><br>(Confidentiality)</td>
-      <td>인가된 사용자만 정보 접근</td>
-      <td>암호화, 접근통제, VPN</td>
-      <td>도청, 스니핑, 사회공학</td>
+      <td>인가된 사용자만 정보에 접근 가능</td>
+      <td>도청, 스니핑, 사회공학, 내부자 유출</td>
+      <td>암호화, 접근통제, VPN, DRM</td>
     </tr>
     <tr>
       <td><strong>무결성</strong><br>(Integrity)</td>
-      <td>정보의 정확성·완전성 유지</td>
-      <td>해시, 디지털 서명, 체크섬</td>
-      <td>데이터 변조, MITM, 악성코드</td>
+      <td>정보의 정확성·완전성을 유지하고 무단 변경 방지</td>
+      <td>데이터 변조, MITM, 악성코드, SQL 인젝션</td>
+      <td>해시(MD5/SHA), 디지털 서명, 체크섬, 버전 관리</td>
     </tr>
     <tr>
       <td><strong>가용성</strong><br>(Availability)</td>
-      <td>인가된 사용자가 필요 시 접근 가능</td>
-      <td>이중화, 백업, DDoS 방어</td>
-      <td>DoS/DDoS, 랜섬웨어, 자연재해</td>
+      <td>인가된 사용자가 필요 시 정보·서비스에 접근 가능</td>
+      <td>DoS/DDoS, 랜섬웨어, 하드웨어 장애, 자연재해</td>
+      <td>이중화, 백업, DDoS 방어, UPS, BCP/DRP</td>
     </tr>
   </tbody>
 </table>
 
-<h4>추가 보안 속성</h4>
+<h3>확장 보안 목표</h3>
 <table>
-  <thead><tr><th>속성</th><th>설명</th></tr></thead>
+  <thead><tr><th>목표</th><th>정의</th><th>구현 수단</th></tr></thead>
   <tbody>
-    <tr><td><strong>인증성(Authenticity)</strong></td><td>주체의 신원이 주장한 것과 일치함을 보장</td></tr>
-    <tr><td><strong>부인방지(Non-repudiation)</strong></td><td>행위 후 부인 불가. 디지털 서명으로 구현.</td></tr>
-    <tr><td><strong>책임추적성(Accountability)</strong></td><td>행위자를 특정하고 추적 가능. 감사 로그.</td></tr>
+    <tr><td><strong>인증(Authentication)</strong></td><td>주체의 신원이 주장한 것과 일치함을 확인</td><td>패스워드, MFA, 인증서, 생체인식</td></tr>
+    <tr><td><strong>부인방지(Non-repudiation)</strong></td><td>행위 후 부인 불가 — 송수신 사실 증명</td><td>디지털 서명, 타임스탬프, 감사 로그</td></tr>
+    <tr><td><strong>책임추적성(Accountability)</strong></td><td>행위자를 특정하고 행위를 추적 가능</td><td>감사 로그, 사용자 ID 식별, SIEM</td></tr>
+    <tr><td><strong>접근통제(Access Control)</strong></td><td>인가된 주체만 자원에 접근</td><td>DAC, MAC, RBAC, ACL</td></tr>
   </tbody>
 </table>
 
-<h3>위험 관리</h3>
-
-<h4>핵심 개념</h4>
-<ul>
-  <li><strong>자산(Asset)</strong>: 조직이 보호해야 할 가치 있는 것 (데이터, 시스템, 인력, 평판)</li>
-  <li><strong>위협(Threat)</strong>: 자산에 해를 끼칠 수 있는 잠재적 원인 (해커, 내부자, 자연재해)</li>
-  <li><strong>취약점(Vulnerability)</strong>: 위협이 악용할 수 있는 약점 (미패치, 잘못된 설정, 보안 인식 부족)</li>
-  <li><strong>위험(Risk)</strong>: 위협이 취약점을 악용해 자산에 피해를 줄 가능성</li>
-  <li><strong>위험 = 자산 가치 × 위협 발생 가능성 × 취약점 심각도</strong></li>
-</ul>
-
-<h4>위험 처리 방법 (4가지)</h4>
+<h3>정보보안 기본 용어</h3>
 <table>
-  <thead><tr><th>방법</th><th>설명</th><th>예시</th></tr></thead>
+  <thead><tr><th>용어</th><th>정의</th><th>예시</th></tr></thead>
   <tbody>
-    <tr><td><strong>위험 감소(Mitigation/Reduction)</strong></td><td>보안 통제 적용으로 위험 수준 낮춤</td><td>방화벽 설치, 패치 적용, 교육</td></tr>
-    <tr><td><strong>위험 수용(Acceptance)</strong></td><td>비용 대비 수용 가능한 수준으로 판단. 잔류 위험 허용.</td><td>경미한 취약점 방치</td></tr>
-    <tr><td><strong>위험 전가(Transfer)</strong></td><td>위험을 제3자에게 이전</td><td>사이버보험, 아웃소싱</td></tr>
-    <tr><td><strong>위험 회피(Avoidance)</strong></td><td>위험 원인 활동 자체를 중단</td><td>위험한 서비스 제공 중단</td></tr>
+    <tr><td><strong>자산(Asset)</strong></td><td>조직이 보호해야 할 가치 있는 것</td><td>고객 DB, 서버, 소스코드, 평판</td></tr>
+    <tr><td><strong>위협(Threat)</strong></td><td>자산에 해를 끼칠 수 있는 잠재적 원인</td><td>해커, 내부자, 자연재해, 악성코드</td></tr>
+    <tr><td><strong>취약점(Vulnerability)</strong></td><td>위협이 악용할 수 있는 약점</td><td>미패치 소프트웨어, 취약한 패스워드, 잘못된 설정</td></tr>
+    <tr><td><strong>위험(Risk)</strong></td><td>위협이 취약점을 악용해 자산에 피해를 줄 가능성과 영향</td><td>해커가 미패치 서버 해킹 → 고객 정보 유출</td></tr>
+    <tr><td><strong>보호대책(Safeguard/Control)</strong></td><td>위험을 줄이기 위해 적용하는 수단</td><td>방화벽, 암호화, 보안 교육, 패치 관리</td></tr>
   </tbody>
 </table>
 
-<h4>위험 평가 방법</h4>
+<h4>위험 공식</h4>
+<p><strong>위험 = 자산가치 × 위협 × 취약점</strong></p>
+<p>보호대책 적용 후 남은 위험을 <strong>잔여위험(Residual Risk)</strong>이라 하며, 경영진이 수용 여부를 결정한다.</p>
+
+<h3>보안 정책 3계층</h3>
+<table>
+  <thead><tr><th>계층</th><th>설명</th><th>예시</th></tr></thead>
+  <tbody>
+    <tr><td><strong>정책(Policy)</strong></td><td>최상위 — 보안 목표·원칙·방향 선언. 경영진 승인.</td><td>"모든 데이터는 암호화한다"</td></tr>
+    <tr><td><strong>표준(Standard)</strong></td><td>정책을 구체화한 기준·명세. 의무 사항.</td><td>"AES-256 이상 사용"</td></tr>
+    <tr><td><strong>절차(Procedure)</strong></td><td>실무 수행 단계별 지침. 표준의 구현 방법.</td><td>"암호화 키 생성·배포·폐기 절차서"</td></tr>
+  </tbody>
+</table>
+
+<h3>ISMS 개요</h3>
+<p><strong>ISMS(Information Security Management System)</strong>: 정보보호 관리체계. 조직의 정보보호 활동을 체계적으로 관리하기 위한 프레임워크.</p>
 <ul>
-  <li><strong>정량적 분석</strong>: 위험을 금전적 수치로 표현.
-    <ul>
-      <li>ALE (연간 기대 손실) = SLE × ARO</li>
-      <li>SLE (단일 발생 기대 손실) = 자산 가치 × 노출 계수</li>
-      <li>ARO (연간 발생 횟수)</li>
-    </ul>
-  </li>
-  <li><strong>정성적 분석</strong>: 위험을 등급(상·중·하)으로 표현. 전문가 판단. 빠르지만 주관적.</li>
+  <li><strong>PDCA 사이클</strong>: Plan(계획) → Do(실행) → Check(점검) → Act(개선) → 반복</li>
+  <li>국내: ISMS-P (개인정보보호 포함), 한국인터넷진흥원(KISA) 인증</li>
+  <li>국제: ISO/IEC 27001</li>
+</ul>
+    `,
+  },
+  {
+    subject: 'general',
+    subjectLabel: '정보보안일반',
+    chapter: 'risk-management',
+    chapterLabel: '위험관리 개념',
+    keywords: ['위험관리', '위험분석', '위험평가', '위험식별', '자산식별', '위협분석', '취약점분석', '정량적', '정성적', 'ALE', 'SLE', 'ARO', 'EF', 'AV', 'ROI'],
+    content: `
+<h3>위험관리 프로세스</h3>
+<p>위험관리는 조직의 정보자산을 보호하기 위해 위험을 식별·분석·평가·처리하는 반복적 과정이다.</p>
+<ol>
+  <li><strong>위험식별</strong>: 자산 목록화, 위협 목록화, 취약점 목록화</li>
+  <li><strong>위험분석</strong>: 위험의 크기·가능성 산정 (정량적 또는 정성적)</li>
+  <li><strong>위험평가</strong>: 허용 가능한 위험 수준(위험 허용 기준)과 비교</li>
+  <li><strong>위험처리</strong>: 감소·수용·회피·전가 중 전략 선택</li>
+  <li><strong>모니터링</strong>: 처리 결과 확인, 잔여위험 감시, 주기적 재평가</li>
+</ol>
+
+<h3>정량적 위험분석 공식</h3>
+<table>
+  <thead><tr><th>용어</th><th>정의</th><th>공식</th></tr></thead>
+  <tbody>
+    <tr><td><strong>AV (Asset Value)</strong></td><td>자산가치 — 해당 자산의 금전적 가치</td><td>직접 산정</td></tr>
+    <tr><td><strong>EF (Exposure Factor)</strong></td><td>노출계수 — 위협 발생 시 자산 손실 비율 (0~1)</td><td>직접 산정</td></tr>
+    <tr><td><strong>SLE (Single Loss Expectancy)</strong></td><td>단일 사고 발생 시 기대 손실액</td><td>SLE = AV &times; EF</td></tr>
+    <tr><td><strong>ARO (Annualized Rate of Occurrence)</strong></td><td>연간 위협 발생 빈도</td><td>직접 산정</td></tr>
+    <tr><td><strong>ALE (Annualized Loss Expectancy)</strong></td><td>연간 기대 손실액</td><td>ALE = SLE &times; ARO</td></tr>
+    <tr><td><strong>ROI (대책 투자 대비 효과)</strong></td><td>보안대책 도입 타당성 지표</td><td>ROI = (ALE 절감액 - 대책 비용) / 대책 비용</td></tr>
+  </tbody>
+</table>
+<p><strong>예시</strong>: 자산가치 1억원, 노출계수 0.3 → SLE = 3천만원. 연 2회 발생 → ALE = 6천만원. 대책 비용 2천만원이면 ROI = (6천만 - 2천만) / 2천만 = 200%</p>
+
+<h3>정성적 위험분석 기법</h3>
+<table>
+  <thead><tr><th>기법</th><th>방법</th><th>장점</th><th>단점</th></tr></thead>
+  <tbody>
+    <tr><td><strong>델파이법</strong></td><td>전문가 익명 설문 → 수렴 반복</td><td>전문가 합의 도출, 주관 편향 감소</td><td>시간 소요, 전문가 의존</td></tr>
+    <tr><td><strong>시나리오법</strong></td><td>미래 위협 시나리오 작성 후 영향 분석</td><td>직관적, 의사소통 용이</td><td>시나리오 편향 가능</td></tr>
+    <tr><td><strong>순위결정법</strong></td><td>위험 항목을 상대적 순위로 정렬</td><td>간단·신속</td><td>정밀도 낮음</td></tr>
+  </tbody>
+</table>
+
+<h3>정량적 vs 정성적 비교</h3>
+<table>
+  <thead><tr><th>구분</th><th>정량적</th><th>정성적</th></tr></thead>
+  <tbody>
+    <tr><td>결과 형태</td><td>금전적 수치 (원, 달러)</td><td>등급 (상/중/하, 1~5)</td></tr>
+    <tr><td>정밀도</td><td>높음</td><td>낮음</td></tr>
+    <tr><td>비용·시간</td><td>많이 소요</td><td>적게 소요</td></tr>
+    <tr><td>주관성</td><td>낮음 (데이터 기반)</td><td>높음 (전문가 판단)</td></tr>
+    <tr><td>적용 상황</td><td>데이터 충분, 정밀 분석 필요 시</td><td>초기 평가, 데이터 부족 시</td></tr>
+    <tr><td>대표 방법</td><td>ALE 계산, 보험 수리적 방법</td><td>델파이법, 시나리오법</td></tr>
+  </tbody>
+</table>
+    `,
+  },
+  {
+    subject: 'general',
+    subjectLabel: '정보보안일반',
+    chapter: 'risk-analysis',
+    chapterLabel: '위험분석 방법론',
+    keywords: ['베이스라인 접근법', '상세 위험분석', '복합 접근법', '위험분석 방법론', 'CRAMM', 'OCTAVE', 'FMEA', 'FTA', '위협 모델링', 'STRIDE', 'DREAD', 'PASTA', 'Attack Tree'],
+    content: `
+<h3>위험분석 접근법 비교</h3>
+<table>
+  <thead><tr><th>접근법</th><th>방법</th><th>장점</th><th>단점</th><th>적용 시점</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>베이스라인 접근법</strong></td>
+      <td>표준 보안 체크리스트·기준선 적용</td>
+      <td>빠르고 저비용, 일관성</td>
+      <td>조직 특수성 반영 안 됨</td>
+      <td>소규모 조직, 초기 도입</td>
+    </tr>
+    <tr>
+      <td><strong>비정형 접근법</strong></td>
+      <td>전문가 경험과 직관에 의존</td>
+      <td>유연, 신속</td>
+      <td>전문가 의존도 高, 비일관적</td>
+      <td>긴급 상황, 소규모</td>
+    </tr>
+    <tr>
+      <td><strong>상세 위험분석</strong></td>
+      <td>자산·위협·취약점 전수 분석, 정량화</td>
+      <td>정밀, 조직 맞춤</td>
+      <td>시간·비용 多</td>
+      <td>중요 시스템, 규제 요구 시</td>
+    </tr>
+    <tr>
+      <td><strong>복합 접근법</strong></td>
+      <td>베이스라인 + 상세 분석 병행</td>
+      <td>효율성과 정밀성 균형</td>
+      <td>설계 복잡</td>
+      <td>대규모 조직 일반적 채택</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>주요 위험분석 방법론</h3>
+
+<h4>CRAMM (CCTA Risk Analysis and Management Method)</h4>
+<ul>
+  <li>영국 정부 표준 방법론</li>
+  <li>자산 식별 및 가치평가 → 위협·취약점 분석 → 대책 선택의 3단계</li>
+  <li>정량화된 위험 수준 산출</li>
 </ul>
 
-<h3>보안 통제 분류</h3>
-<h4>목적별 분류</h4>
+<h4>OCTAVE (Operationally Critical Threat, Asset, and Vulnerability Evaluation)</h4>
+<ul>
+  <li>카네기멜론 대학(SEI) 개발</li>
+  <li>조직 중심 자체 위험평가 — 외부 전문가 없이 내부 팀이 수행</li>
+  <li>3단계: 조직적 관점 정립 → 기술적 관점 정립 → 전략·계획 수립</li>
+</ul>
+
+<h3>위협 모델링</h3>
+
+<h4>STRIDE</h4>
+<table>
+  <thead><tr><th>위협</th><th>전체 명칭</th><th>설명</th><th>위반 속성</th></tr></thead>
+  <tbody>
+    <tr><td><strong>S</strong></td><td>Spoofing</td><td>신원 위장</td><td>인증</td></tr>
+    <tr><td><strong>T</strong></td><td>Tampering</td><td>데이터 변조</td><td>무결성</td></tr>
+    <tr><td><strong>R</strong></td><td>Repudiation</td><td>행위 부인</td><td>부인방지</td></tr>
+    <tr><td><strong>I</strong></td><td>Information Disclosure</td><td>정보 노출</td><td>기밀성</td></tr>
+    <tr><td><strong>D</strong></td><td>Denial of Service</td><td>서비스 거부</td><td>가용성</td></tr>
+    <tr><td><strong>E</strong></td><td>Elevation of Privilege</td><td>권한 상승</td><td>인가</td></tr>
+  </tbody>
+</table>
+
+<h4>DREAD (위험도 점수화)</h4>
+<table>
+  <thead><tr><th>항목</th><th>의미</th><th>점수 (0~10)</th></tr></thead>
+  <tbody>
+    <tr><td><strong>D</strong>amage</td><td>피해 심각도</td><td>높을수록 위험</td></tr>
+    <tr><td><strong>R</strong>eproducibility</td><td>재현 용이성</td><td>쉬울수록 위험</td></tr>
+    <tr><td><strong>E</strong>xploitability</td><td>익스플로잇 난이도</td><td>쉬울수록 위험</td></tr>
+    <tr><td><strong>A</strong>ffected Users</td><td>영향받는 사용자 수</td><td>많을수록 위험</td></tr>
+    <tr><td><strong>D</strong>iscoverability</td><td>취약점 발견 용이성</td><td>쉬울수록 위험</td></tr>
+  </tbody>
+</table>
+
+<h4>Attack Tree</h4>
+<ul>
+  <li>루트 노드: 공격 목표 (예: "서버 장악")</li>
+  <li>하위 노드: 목표 달성을 위한 공격 경로 분기</li>
+  <li>AND/OR 노드로 구성 — 트리 구조로 시각화</li>
+  <li>Bruce Schneier 제안</li>
+</ul>
+
+<h3>FMEA / FTA</h3>
+<table>
+  <thead><tr><th>구분</th><th>FMEA</th><th>FTA</th></tr></thead>
+  <tbody>
+    <tr><td>전체 명칭</td><td>Failure Mode and Effect Analysis</td><td>Fault Tree Analysis</td></tr>
+    <tr><td>방향</td><td>하향식 (Bottom-up): 부품 고장 → 시스템 영향</td><td>상향식 (Top-down): 장애 결과 → 원인 역추적</td></tr>
+    <tr><td>목적</td><td>고장 모드별 영향 사전 분석</td><td>특정 장애의 원인 트리 구조 분석</td></tr>
+    <tr><td>결과물</td><td>고장 모드 목록 + RPN (위험우선순위)</td><td>논리 게이트 기반 결함 트리</td></tr>
+  </tbody>
+</table>
+    `,
+  },
+  {
+    subject: 'general',
+    subjectLabel: '정보보안일반',
+    chapter: 'risk-treatment',
+    chapterLabel: '위험처리 전략',
+    keywords: ['위험수용', '위험회피', '위험전가', '위험감소', '위험처리', '잔여위험', '보안통제', '예방통제', '탐지통제', '교정통제', '억제통제', '복구통제', '관리적 통제', '기술적 통제', '물리적 통제'],
+    content: `
+<h3>4가지 위험처리 전략</h3>
+<table>
+  <thead><tr><th>전략</th><th>정의</th><th>예시</th><th>적용 기준</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>위험감소</strong><br>(Risk Reduction)</td>
+      <td>보안 통제를 적용해 위험 수준을 낮춤</td>
+      <td>방화벽 설치, 패치 적용, 보안 교육</td>
+      <td>대책 비용 &lt; ALE 절감액인 경우</td>
+    </tr>
+    <tr>
+      <td><strong>위험수용</strong><br>(Risk Acceptance)</td>
+      <td>위험이 허용 수준 이하라 판단하여 수용. 잔여위험 인정.</td>
+      <td>경미한 취약점 방치, 경영진 문서화 승인</td>
+      <td>대책 비용이 손실보다 클 때</td>
+    </tr>
+    <tr>
+      <td><strong>위험회피</strong><br>(Risk Avoidance)</td>
+      <td>위험 원인이 되는 활동 자체를 중단·변경</td>
+      <td>위험한 서비스 제공 중단, 사업 철수</td>
+      <td>위험이 너무 크고 통제 불가 시</td>
+    </tr>
+    <tr>
+      <td><strong>위험전가</strong><br>(Risk Transfer)</td>
+      <td>위험의 재정적 책임을 제3자에게 이전</td>
+      <td>사이버보험 가입, 보안 업무 아웃소싱</td>
+      <td>위험 발생 시 손실을 외부가 부담</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>잔여위험(Residual Risk)</h4>
+<p>보안 통제를 적용한 후에도 남아 있는 위험. 완전한 위험 제거는 불가능하므로 경영진이 잔여위험 수용 여부를 공식 승인해야 한다.</p>
+
+<h3>보안통제 분류</h3>
+
+<h4>기능별 분류 (목적 기준)</h4>
 <table>
   <thead><tr><th>유형</th><th>목적</th><th>예시</th></tr></thead>
   <tbody>
     <tr><td><strong>예방(Preventive)</strong></td><td>공격 발생 전 차단</td><td>방화벽, 암호화, 접근통제, 보안 교육</td></tr>
-    <tr><td><strong>탐지(Detective)</strong></td><td>공격 발생 중·후 발견</td><td>IDS, 감사 로그, CCTV, 모니터링</td></tr>
-    <tr><td><strong>교정(Corrective)</strong></td><td>공격 후 피해 수정</td><td>백업 복구, 패치 적용, 격리</td></tr>
-    <tr><td><strong>억제(Deterrent)</strong></td><td>잠재적 공격자 억제</td><td>경고 문구, 처벌 정책, 법적 대응</td></tr>
-    <tr><td><strong>복구(Recovery)</strong></td><td>운영 복원</td><td>재해복구계획, BCP, 이중화</td></tr>
-    <tr><td><strong>보상(Compensating)</strong></td><td>주 통제 대체</td><td>모니터링 강화(패치 불가 시)</td></tr>
+    <tr><td><strong>탐지(Detective)</strong></td><td>공격 발생 중·후 발견</td><td>IDS, 감사 로그, CCTV, SIEM</td></tr>
+    <tr><td><strong>교정(Corrective)</strong></td><td>공격 후 피해 수정·복구</td><td>백업 복구, 패치 적용, 시스템 격리</td></tr>
+    <tr><td><strong>억제(Deterrent)</strong></td><td>잠재적 공격자의 행동 억제</td><td>경고 문구, 법적 처벌 공지, 보안 카메라 표지</td></tr>
+    <tr><td><strong>복구(Recovery)</strong></td><td>서비스·운영 복원</td><td>BCP, DRP, 이중화, 재해복구 사이트</td></tr>
+    <tr><td><strong>보상(Compensating)</strong></td><td>주 통제 적용 불가 시 대체</td><td>패치 불가 시스템에 모니터링 강화</td></tr>
   </tbody>
 </table>
 
-<h4>구현 방식별 분류</h4>
-<ul>
-  <li><strong>관리적 통제</strong>: 정책, 절차, 교육, 감사 (Administrative)</li>
-  <li><strong>기술적 통제</strong>: 암호화, 방화벽, IDS, 접근통제 (Technical/Logical)</li>
-  <li><strong>물리적 통제</strong>: 자물쇠, CCTV, 경비원, 출입통제 (Physical)</li>
-</ul>
-
-<h3>DoS / DDoS 공격</h3>
-
-<h4>주요 DoS 공격 유형</h4>
+<h4>성격별 분류 (구현 방식 기준)</h4>
 <table>
-  <thead><tr><th>공격</th><th>계층</th><th>원리</th></tr></thead>
+  <thead><tr><th>유형</th><th>정의</th><th>예시</th></tr></thead>
   <tbody>
-    <tr><td><strong>SYN Flooding</strong></td><td>4계층</td><td>대량의 SYN 패킷 전송. 서버 TCP 연결 큐 고갈. IP Spoofing으로 ACK 없음.</td></tr>
-    <tr><td><strong>ICMP Flooding (Ping Flood)</strong></td><td>3계층</td><td>대량 ICMP Echo 요청. 대역폭 소모.</td></tr>
-    <tr><td><strong>Smurf</strong></td><td>3계층</td><td>피해자 IP를 출발지로 위조 → 브로드캐스트 ICMP → 모든 호스트 응답 → 피해자에게 집중.</td></tr>
-    <tr><td><strong>UDP Flooding</strong></td><td>4계층</td><td>대량 UDP 패킷. 서버가 모든 포트를 ICMP Unreachable로 응답. 대역폭 소모.</td></tr>
-    <tr><td><strong>HTTP Flooding</strong></td><td>7계층</td><td>정상 HTTP GET/POST 대량 전송. 서버 자원 소모. 탐지 어려움.</td></tr>
-    <tr><td><strong>Slowloris</strong></td><td>7계층</td><td>HTTP 연결을 최대한 오래 유지. 요청 헤더를 매우 천천히 전송. 연결 수 고갈.</td></tr>
-    <tr><td><strong>Ping of Death</strong></td><td>3계층</td><td>IP 최대 크기(65535B) 초과 ICMP 패킷. 재조립 시 버퍼 오버플로. (현재 패치됨)</td></tr>
-    <tr><td><strong>Teardrop</strong></td><td>3계층</td><td>IP 분할 패킷의 오프셋 조작. 재조립 오류. (현재 패치됨)</td></tr>
-    <tr><td><strong>Land Attack</strong></td><td>4계층</td><td>출발지 IP/포트 = 목적지 IP/포트 설정. 무한 루프. (현재 패치됨)</td></tr>
+    <tr><td><strong>관리적(Administrative)</strong></td><td>정책·절차·교육 등 사람과 프로세스 중심</td><td>보안 정책, 위험관리 절차, 보안 교육, 인사 보안</td></tr>
+    <tr><td><strong>기술적(Technical/Logical)</strong></td><td>기술 시스템으로 구현</td><td>방화벽, 암호화, IDS/IPS, 인증 시스템, ACL</td></tr>
+    <tr><td><strong>물리적(Physical/Operational)</strong></td><td>물리적 환경을 이용한 보호</td><td>잠금장치, CCTV, 출입통제, 맨트랩, 경비원</td></tr>
   </tbody>
 </table>
 
-<h4>DDoS 대응</h4>
-<ul>
-  <li><strong>블랙홀 라우팅(Null Route)</strong>: 공격 트래픽 목적지를 null 인터페이스로 라우팅. 피해자도 서비스 불가.</li>
-  <li><strong>스크러빙 센터(Scrubbing Center)</strong>: 트래픽을 스크러빙 센터로 우회 → 공격 트래픽 제거 → 정상 트래픽만 전달.</li>
-  <li><strong>CDN(Content Delivery Network)</strong>: 분산 서버로 트래픽 분산. 대용량 DDoS 흡수.</li>
-  <li><strong>트래픽 필터링</strong>: ACL, uRPF(역경로 포워딩), Rate Limiting.</li>
-  <li><strong>ISP 협력</strong>: 업스트림에서 공격 트래픽 차단.</li>
-</ul>
-
-<h3>BCP / DRP</h3>
+<h4>통제 선택 기준</h4>
+<p>보안 통제 도입의 타당성 판단 공식:</p>
+<p><strong>대책 비용 &lt; ALE 절감액</strong> → 도입 타당</p>
+<p>비용-효과 분석(Cost-Benefit Analysis)을 통해 가장 경제적인 대책을 선택해야 한다.</p>
+    `,
+  },
+  {
+    subject: 'general',
+    subjectLabel: '정보보안일반',
+    chapter: 'bcp-drp',
+    chapterLabel: 'BCP·DRP',
+    keywords: ['BCP', 'DRP', '업무연속성계획', '재해복구계획', 'RTO', 'RPO', 'MTD', 'BIA', '업무영향분석', '핫사이트', '웜사이트', '콜드사이트', '미러사이트', 'MTTR', 'MTBF', '가용성'],
+    content: `
+<h3>BCP vs DRP 비교</h3>
 <table>
   <thead><tr><th>구분</th><th>BCP (업무연속성계획)</th><th>DRP (재해복구계획)</th></tr></thead>
   <tbody>
-    <tr><td>범위</td><td>전사적 업무 연속성 (IT 포함)</td><td>IT 시스템 복구에 집중</td></tr>
-    <tr><td>목표</td><td>핵심 업무 최소한의 수준으로 유지</td><td>IT 인프라 신속 복구</td></tr>
-    <tr><td>관계</td><td>BCP가 상위 개념</td><td>BCP의 일부</td></tr>
+    <tr><td>목적</td><td>재해 발생 시에도 핵심 업무 지속</td><td>IT 시스템·인프라 신속 복구</td></tr>
+    <tr><td>범위</td><td>전사적 업무 연속성 (IT + 비IT 포함)</td><td>IT 시스템 복구에 집중</td></tr>
+    <tr><td>주체</td><td>경영진·전사 부서</td><td>IT 부서</td></tr>
+    <tr><td>포함 내용</td><td>비상 연락체계, 대체 업무 수행, 커뮤니케이션 계획</td><td>시스템 복구 절차, 복구 우선순위, 복구 사이트</td></tr>
+    <tr><td>관계</td><td>상위 개념 — BCP 내에 DRP 포함</td><td>BCP의 일부</td></tr>
   </tbody>
 </table>
 
-<h4>복구 목표</h4>
-<ul>
-  <li><strong>RTO (Recovery Time Objective)</strong>: 목표 복구 시간. 재해 발생부터 서비스 재개까지 허용 최대 시간. 짧을수록 비용 증가.</li>
-  <li><strong>RPO (Recovery Point Objective)</strong>: 목표 복구 시점. 복구 시 허용 가능한 데이터 손실 범위. RPO=0이면 무손실.</li>
-  <li><strong>MTTR (Mean Time To Repair)</strong>: 평균 수리 시간.</li>
-  <li><strong>MTBF (Mean Time Between Failures)</strong>: 평균 고장 간격 (가용성 지표).</li>
-</ul>
-
-<h4>재해 복구 사이트</h4>
+<h3>핵심 지표</h3>
 <table>
-  <thead><tr><th>유형</th><th>준비 수준</th><th>복구 시간</th><th>비용</th></tr></thead>
+  <thead><tr><th>지표</th><th>정의</th><th>특징</th></tr></thead>
   <tbody>
-    <tr><td><strong>핫 사이트(Hot Site)</strong></td><td>실시간 데이터 동기화. 즉시 전환 가능.</td><td>수 시간 이내</td><td>매우 높음</td></tr>
-    <tr><td><strong>웜 사이트(Warm Site)</strong></td><td>하드웨어 준비. 데이터 주기적 백업. 설정 필요.</td><td>수 일</td><td>중간</td></tr>
-    <tr><td><strong>콜드 사이트(Cold Site)</strong></td><td>공간·전력만 준비. 하드웨어·데이터 없음.</td><td>수 주</td><td>낮음</td></tr>
+    <tr><td><strong>RTO</strong><br>(Recovery Time Objective)</td><td>복구 목표 시간 — 재해 발생부터 서비스 재개까지 허용 최대 시간</td><td>짧을수록 비용 증가</td></tr>
+    <tr><td><strong>RPO</strong><br>(Recovery Point Objective)</td><td>복구 목표 시점 — 복구 시 허용 가능한 데이터 손실 범위</td><td>RPO=0이면 무손실 (실시간 동기화 필요)</td></tr>
+    <tr><td><strong>MTD</strong><br>(Maximum Tolerable Downtime)</td><td>최대 허용 중단 시간 — 이 시간 초과 시 비즈니스 치명적 손상</td><td>RTO &lt; MTD 이어야 함</td></tr>
+    <tr><td><strong>MTTR</strong><br>(Mean Time To Repair)</td><td>평균 수리 시간</td><td>낮을수록 복구 빠름</td></tr>
+    <tr><td><strong>MTBF</strong><br>(Mean Time Between Failures)</td><td>평균 고장 간격</td><td>높을수록 신뢰성 높음</td></tr>
+    <tr><td><strong>가용성</strong></td><td>시스템이 정상 동작하는 비율</td><td>가용성 = MTBF / (MTBF + MTTR)</td></tr>
   </tbody>
 </table>
 
-<h3>사회공학 (Social Engineering)</h3>
-<p>기술적 취약점이 아닌 <strong>사람의 심리를 이용한 공격</strong>. 가장 효과적이고 방어 어려움.</p>
+<h3>BIA (업무영향분석)</h3>
+<p><strong>BIA(Business Impact Analysis)</strong>: BCP/DRP 수립의 핵심 단계. 재해 발생 시 각 업무 기능의 영향을 분석한다.</p>
 <ul>
-  <li><strong>피싱(Phishing)</strong>: 신뢰할 수 있는 기관으로 위장한 이메일/웹사이트로 정보 탈취.</li>
-  <li><strong>스피어 피싱(Spear Phishing)</strong>: 특정 대상 맞춤형. 성공률 높음.</li>
-  <li><strong>보이스 피싱(Vishing)</strong>: 전화로 개인정보 탈취.</li>
-  <li><strong>스미싱(Smishing)</strong>: SMS를 이용한 피싱.</li>
-  <li><strong>사칭(Pretexting)</strong>: 가짜 신분·상황을 만들어 신뢰 획득. 예: IT 직원 사칭 패스워드 요구.</li>
-  <li><strong>베이팅(Baiting)</strong>: 호기심 자극 (악성 USB 방치 등).</li>
-  <li><strong>꼬리 물기(Tailgating)</strong>: 인가된 사람 뒤에서 물리적 접근 제한 구역 무단 진입.</li>
-  <li><strong>큐 프로 쿼(Quid Pro Quo)</strong>: 무언가를 줄 테니 정보를 달라는 교환 방식.</li>
+  <li>핵심 업무 프로세스 식별 및 우선순위 결정</li>
+  <li>각 업무별 RTO·RPO 설정</li>
+  <li>재해 유형별 영향 분석 (재정적·운영적·평판적)</li>
+  <li>결과물: 핵심 업무 목록, 복구 우선순위, RTO/RPO 요구사항</li>
 </ul>
-<p><strong>대응</strong>: 보안 인식 교육, 정책 수립, 이중 확인 절차, 물리 보안 강화.</p>
+
+<h3>복구 사이트 유형</h3>
+<table>
+  <thead><tr><th>유형</th><th>준비도</th><th>비용</th><th>RTO</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>미러 사이트</strong></td>
+      <td>실시간 동기화. Active-Active 운영. 즉시 전환.</td>
+      <td>최고</td>
+      <td>즉시 (0~수 분)</td>
+    </tr>
+    <tr>
+      <td><strong>핫 사이트(Hot Site)</strong></td>
+      <td>실시간 또는 준실시간 데이터 동기화. 장비 가동 중. 즉시 전환 가능.</td>
+      <td>매우 높음</td>
+      <td>수 시간 이내</td>
+    </tr>
+    <tr>
+      <td><strong>웜 사이트(Warm Site)</strong></td>
+      <td>하드웨어 준비됨. 데이터 주기적 백업. 설정·복원 필요.</td>
+      <td>중간</td>
+      <td>수 일</td>
+    </tr>
+    <tr>
+      <td><strong>콜드 사이트(Cold Site)</strong></td>
+      <td>공간·전력·통신만 준비. 하드웨어·소프트웨어·데이터 없음.</td>
+      <td>낮음</td>
+      <td>수 주</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>BCP 수립 절차</h3>
+<ol>
+  <li><strong>범위 설정</strong>: 보호 대상 업무·시스템 정의, 경영진 참여</li>
+  <li><strong>BIA (업무영향분석)</strong>: 핵심 업무 식별, RTO/RPO 결정</li>
+  <li><strong>전략 개발</strong>: 복구 사이트 선택, 대체 수단 마련</li>
+  <li><strong>계획 수립</strong>: 상세 복구 절차, 비상 연락망, 역할 배정</li>
+  <li><strong>테스트·유지보수</strong>: 정기 훈련(테이블탑/시뮬레이션/실제 절체), 연간 갱신</li>
+</ol>
+    `,
+  },
+  {
+    subject: 'general',
+    subjectLabel: '정보보안일반',
+    chapter: 'physical-security',
+    chapterLabel: '물리적 보안',
+    keywords: ['물리적 보안', '출입통제', '잠금장치', 'CCTV', '생체인식', '카드키', '맨트랩', '가드', '울타리', '조명', '데이터센터', '환경보안', '화재진압', '전력', 'UPS'],
+    content: `
+<h3>물리적 보안 계층 구조</h3>
+<p>물리적 보안은 외부에서 내부로 갈수록 통제가 강화되는 동심원 구조(Defense in Depth)로 설계한다.</p>
+<table>
+  <thead><tr><th>계층</th><th>위치</th><th>수단</th></tr></thead>
+  <tbody>
+    <tr><td><strong>외부 경계</strong></td><td>부지 경계</td><td>울타리, 조명, 경비원(가드), CCTV, 차량 차단기</td></tr>
+    <tr><td><strong>건물 진입</strong></td><td>건물 출입구</td><td>잠금장치, 카드키, 경비 데스크, 방문자 등록</td></tr>
+    <tr><td><strong>내부 구역</strong></td><td>민감 구역</td><td>맨트랩(Mantrap), 생체인식, PIN 패드, 이중 인증</td></tr>
+    <tr><td><strong>장비 보호</strong></td><td>서버·장비</td><td>케이블 잠금(Kensington Lock), 랙 보안, 장비 봉인</td></tr>
+  </tbody>
+</table>
+
+<h3>출입통제 수단 비교</h3>
+<table>
+  <thead><tr><th>수단</th><th>보안 수준</th><th>비용</th><th>주요 취약점</th></tr></thead>
+  <tbody>
+    <tr><td><strong>카드키(RF/IC)</strong></td><td>중간</td><td>중간</td><td>카드 분실·도용, 클로닝 공격</td></tr>
+    <tr><td><strong>PIN/패스워드</strong></td><td>중간</td><td>낮음</td><td>숄더 서핑(어깨너머 훔쳐보기), 공유</td></tr>
+    <tr><td><strong>생체인식</strong></td><td>높음</td><td>높음</td><td>FAR/FRR(오인식/오거부), 스푸핑</td></tr>
+    <tr><td><strong>맨트랩(Mantrap)</strong></td><td>매우 높음</td><td>높음</td><td>운영 불편, 테일게이팅 완전 차단</td></tr>
+    <tr><td><strong>경비원(가드)</strong></td><td>높음 (판단력)</td><td>높음 (인건비)</td><td>사회공학에 취약, 24/7 운영 비용</td></tr>
+  </tbody>
+</table>
+
+<h4>맨트랩(Mantrap)</h4>
+<p>이중 문 구조 — 첫 번째 문이 닫혀야 두 번째 문 열림. 동시 2인 이상 진입 차단. 테일게이팅(꼬리잡기) 방지에 가장 효과적.</p>
+
+<h3>데이터센터 환경보안</h3>
+
+<h4>전력 보호</h4>
+<ul>
+  <li><strong>UPS(Uninterruptible Power Supply)</strong>: 순간 정전 대응, 발전기 가동까지 브리지 역할</li>
+  <li><strong>비상발전기</strong>: 장시간 정전 대비, 연료 비축</li>
+  <li><strong>이중 전원(Dual Power Feed)</strong>: 서로 다른 변전소 전원 사용</li>
+  <li>전력 이상(서지·낙뢰) 대비 SPD(서지보호장치)</li>
+</ul>
+
+<h4>냉각·환경</h4>
+<ul>
+  <li>적정 온도: 18~27°C (ASHRAE 권장)</li>
+  <li>적정 습도: 40~60% RH (정전기 방지)</li>
+  <li>핫 아일·콜드 아일(Hot/Cold Aisle) 분리 배치</li>
+</ul>
+
+<h4>화재진압 시스템</h4>
+<table>
+  <thead><tr><th>시스템</th><th>전산실 적합성</th><th>특징</th></tr></thead>
+  <tbody>
+    <tr><td><strong>할론 대체제 (FM-200, Novec 1230)</strong></td><td>적합</td><td>청정소화약제. 잔류물 없음. 장비 손상 없음.</td></tr>
+    <tr><td><strong>이산화탄소(CO2)</strong></td><td>제한적</td><td>전기 화재 효과적. 밀폐 공간 인체 위험.</td></tr>
+    <tr><td><strong>스프링클러(물)</strong></td><td>부적합</td><td>전기장비 손상. 전산실에는 원칙적으로 미사용.</td></tr>
+    <tr><td><strong>조기연기감지(VESDA)</strong></td><td>적합</td><td>미세 연기 조기 탐지. 가스 소화 연동.</td></tr>
+  </tbody>
+</table>
+
+<h3>CCTV 및 기타 통제</h3>
+<ul>
+  <li><strong>CCTV</strong>: 억제(Deterrent) 및 탐지(Detective) 목적. 녹화 보관 기간 법규 준수. 사각지대 최소화.</li>
+  <li><strong>클린데스크 정책(Clean Desk Policy)</strong>: 퇴근 시 중요 문서·매체를 책상 위에 방치 금지. 잠금 보관.</li>
+  <li><strong>클린 스크린 정책</strong>: 자리 이탈 시 화면 잠금(Win+L 등).</li>
+  <li><strong>테이핑(Taping)</strong>: 노트북 카메라 차단용 물리적 커버 부착.</li>
+</ul>
+    `,
+  },
+  {
+    subject: 'general',
+    subjectLabel: '정보보안일반',
+    chapter: 'security-audit',
+    chapterLabel: '보안 감사·모니터링',
+    keywords: ['보안 감사', '로그', '감사 추적', 'SIEM', 'SOC', '취약점 스캔', '모의해킹', '침투테스트', 'CVE', 'CVSS', 'NVD', 'Nessus', '컴플라이언스', 'ISO 27001', 'CC 인증'],
+    content: `
+<h3>보안 감사 유형</h3>
+<table>
+  <thead><tr><th>유형</th><th>목적</th><th>주체</th><th>산출물</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>내부 감사</strong></td>
+      <td>내부 보안 통제 준수 여부 점검</td>
+      <td>내부 감사팀</td>
+      <td>내부 감사 보고서, 개선 권고</td>
+    </tr>
+    <tr>
+      <td><strong>외부 감사</strong></td>
+      <td>독립적·객관적 보안 평가</td>
+      <td>외부 보안 전문업체</td>
+      <td>취약점 보고서, 컴플라이언스 평가</td>
+    </tr>
+    <tr>
+      <td><strong>인증 감사</strong></td>
+      <td>특정 보안 표준 인증 획득</td>
+      <td>공인 인증기관</td>
+      <td>인증서 (ISO 27001, ISMS-P 등)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>감사 로그 필수 요소</h3>
+<p>감사 로그는 책임추적성(Accountability)의 핵심 수단이다. 최소 포함 요소:</p>
+<ul>
+  <li><strong>날짜·시간(Timestamp)</strong>: 정확한 시각 (타임존 포함)</li>
+  <li><strong>사용자 ID</strong>: 행위 주체 식별자</li>
+  <li><strong>이벤트 유형</strong>: 로그인, 파일 접근, 권한 변경 등</li>
+  <li><strong>결과</strong>: 성공/실패</li>
+  <li><strong>출처 IP/시스템</strong>: 행위 발생 위치</li>
+  <li><strong>대상 자원</strong>: 접근·변경된 객체</li>
+</ul>
+
+<h3>SIEM / SOC</h3>
+<table>
+  <thead><tr><th>구분</th><th>SIEM</th><th>SOC</th></tr></thead>
+  <tbody>
+    <tr><td>정의</td><td>Security Information and Event Management — 로그 수집·상관분석·알림 플랫폼</td><td>Security Operations Center — 24/7 보안 모니터링 조직</td></tr>
+    <tr><td>역할</td><td>다양한 소스의 로그 통합, 이상 패턴 탐지, 알림 생성</td><td>SIEM 알림 분석, 사고 대응, 위협 헌팅</td></tr>
+    <tr><td>사례</td><td>Splunk, IBM QRadar, Microsoft Sentinel</td><td>내부 SOC 또는 MSSP(외부 위탁)</td></tr>
+  </tbody>
+</table>
+
+<h3>취약점 관리</h3>
+<table>
+  <thead><tr><th>구분</th><th>설명</th></tr></thead>
+  <tbody>
+    <tr><td><strong>CVE (Common Vulnerabilities and Exposures)</strong></td><td>공개 취약점 식별자. 형식: CVE-연도-번호 (예: CVE-2021-44228 Log4Shell)</td></tr>
+    <tr><td><strong>CVSS (Common Vulnerability Scoring System)</strong></td><td>취약점 심각도 점수 0~10. NIST 기준: 0=없음, 0.1~3.9=낮음, 4.0~6.9=보통, 7.0~8.9=높음, 9.0~10=위험</td></tr>
+    <tr><td><strong>NVD (National Vulnerability Database)</strong></td><td>NIST 운영 취약점 데이터베이스. CVE 정보 + CVSS 점수 포함.</td></tr>
+    <tr><td><strong>취약점 스캐너</strong></td><td>Nessus, OpenVAS, Qualys 등 — 시스템 자동 취약점 스캔</td></tr>
+  </tbody>
+</table>
+
+<h3>모의해킹 (Penetration Testing)</h3>
+<table>
+  <thead><tr><th>유형</th><th>정보 제공</th><th>특징</th><th>적합 상황</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>블랙박스</strong></td>
+      <td>없음 (공개 정보만)</td>
+      <td>실제 외부 공격자 관점 모사. 가장 현실적.</td>
+      <td>외부 위협 평가</td>
+    </tr>
+    <tr>
+      <td><strong>화이트박스</strong></td>
+      <td>전체 (소스코드·아키텍처)</td>
+      <td>깊은 분석 가능. 시간·비용 효율적.</td>
+      <td>개발 단계 보안 검토</td>
+    </tr>
+    <tr>
+      <td><strong>그레이박스</strong></td>
+      <td>부분 (사용자 계정 수준)</td>
+      <td>내부자 위협 시뮬레이션. 현실적 균형.</td>
+      <td>내부자 위협 평가</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>보안 인증</h3>
+<ul>
+  <li><strong>ISO/IEC 27001</strong>: 국제 ISMS 인증. 14개 통제 영역, Annex A. 2~3년 주기 갱신.</li>
+  <li><strong>ISMS-P</strong>: 국내 정보보호 및 개인정보보호 관리체계 인증 (KISA). 의무 인증 대상 있음.</li>
+  <li><strong>CC (Common Criteria, ISO 15408)</strong>: IT 제품·시스템 보안 기능 국제 평가 기준. EAL1~EAL7 등급.</li>
+</ul>
+    `,
+  },
+  {
+    subject: 'general',
+    subjectLabel: '정보보안일반',
+    chapter: 'forensics',
+    chapterLabel: '디지털 포렌식',
+    keywords: ['디지털 포렌식', '증거 수집', '무결성', '연계보관성', 'Chain of Custody', '해시', '이미징', '휘발성 데이터', '비휘발성 데이터', '파일 시스템', '타임스탬프', '슬랙 공간', '메타데이터', 'dd', 'FTK', 'EnCase'],
+    content: `
+<h3>디지털 포렌식 원칙</h3>
+<ul>
+  <li><strong>무결성(Integrity)</strong>: 증거 수집·분석 과정에서 원본 데이터 변경 없음. 해시 값으로 검증.</li>
+  <li><strong>연계보관성(Chain of Custody)</strong>: 증거물의 수집~법정 제출까지 이동·취급 이력 완전 기록.</li>
+  <li><strong>재현성(Reproducibility)</strong>: 동일한 방법으로 동일한 결과 도출 가능해야 함.</li>
+  <li><strong>신속성(Timeliness)</strong>: 휘발성 데이터 손실 방지를 위한 신속한 수집.</li>
+</ul>
+
+<h4>RFC 3227</h4>
+<p>증거 수집 및 보관 가이드라인. 휘발성이 높은 데이터부터 수집하는 순서를 정의한다.</p>
+
+<h3>휘발성 데이터 수집 순서</h3>
+<p>휘발성이 높은 순서대로 수집해야 한다 (전원 차단 전 수집 필수):</p>
+<ol>
+  <li><strong>레지스터·캐시</strong>: CPU 레지스터, CPU 캐시 (가장 휘발성 높음)</li>
+  <li><strong>RAM (메모리)</strong>: 실행 중 프로세스, 암호화 키, 패스워드</li>
+  <li><strong>네트워크 상태</strong>: 현재 연결, 라우팅 테이블, ARP 캐시</li>
+  <li><strong>실행 중인 프로세스</strong>: 프로세스 목록, 열린 파일</li>
+  <li><strong>디스크</strong>: 비휘발성 (전원 꺼진 후에도 보존)</li>
+</ol>
+
+<h3>포렌식 절차</h3>
+<ol>
+  <li><strong>식별(Identification)</strong>: 증거가 될 수 있는 데이터·장치 식별</li>
+  <li><strong>보존(Preservation)</strong>: 원본 훼손 방지, 격리, 쓰기 방지 장치(Write Blocker) 사용</li>
+  <li><strong>수집(Collection)</strong>: 비트스트림 이미징, 해시값 계산 및 기록</li>
+  <li><strong>분석(Analysis)</strong>: 복사본에서 분석 수행, 타임라인 재구성</li>
+  <li><strong>보고(Reporting)</strong>: 발견 사항·방법론 문서화, 법적 요건 충족</li>
+</ol>
+
+<h3>이미징 및 해시 검증</h3>
+<ul>
+  <li><strong>비트스트림 복사(Bit-stream Image)</strong>: 원본 디스크의 모든 비트(삭제 영역 포함)를 복제</li>
+  <li><strong>해시 검증</strong>: 이미징 전·후 MD5/SHA-256 해시 비교 → 일치하면 무결성 입증</li>
+  <li><strong>쓰기 방지 장치(Write Blocker)</strong>: 분석 과정에서 원본 디스크에 쓰기 차단</li>
+</ul>
+
+<h3>파일 시스템 분석</h3>
+<h4>MACE 타임스탬프</h4>
+<table>
+  <thead><tr><th>항목</th><th>의미</th></tr></thead>
+  <tbody>
+    <tr><td><strong>M</strong>odified</td><td>파일 내용이 마지막으로 수정된 시각</td></tr>
+    <tr><td><strong>A</strong>ccessed</td><td>파일이 마지막으로 접근된 시각</td></tr>
+    <tr><td><strong>C</strong>reated</td><td>파일이 생성된 시각</td></tr>
+    <tr><td><strong>E</strong>ntry Modified</td><td>MFT(파일 시스템 항목) 메타데이터가 수정된 시각</td></tr>
+  </tbody>
+</table>
+
+<h4>기타 분석 대상</h4>
+<ul>
+  <li><strong>삭제 파일 복구</strong>: 삭제 시 파일 시스템 항목만 제거, 실제 데이터는 덮어쓰기 전까지 존재</li>
+  <li><strong>슬랙 공간(Slack Space)</strong>: 파일 끝~클러스터 끝 사이 공간. 이전 데이터 흔적 남을 수 있음.</li>
+  <li><strong>메타데이터</strong>: 파일 크기, 권한, 소유자, 타임스탬프 — 조작 여부도 분석</li>
+</ul>
+
+<h3>안티포렌식 기법</h3>
+<ul>
+  <li><strong>데이터 와이핑</strong>: 덮어쓰기로 복구 불가능하게 삭제 (DoD 7-pass 등)</li>
+  <li><strong>스테가노그래피</strong>: 이미지·오디오에 데이터 은닉</li>
+  <li><strong>타임스탬프 변조</strong>: 파일 접근·수정 시각 위조</li>
+  <li><strong>암호화</strong>: 분석 방해</li>
+</ul>
+
+<h3>주요 포렌식 도구</h3>
+<table>
+  <thead><tr><th>도구</th><th>용도</th></tr></thead>
+  <tbody>
+    <tr><td><strong>dd</strong></td><td>Unix/Linux 이미징 명령어. 비트스트림 복사.</td></tr>
+    <tr><td><strong>FTK (Forensic Toolkit)</strong></td><td>AccessData의 종합 포렌식 분석 도구</td></tr>
+    <tr><td><strong>EnCase</strong></td><td>Guidance Software의 상용 포렌식 플랫폼. 법원 인정.</td></tr>
+    <tr><td><strong>Autopsy</strong></td><td>오픈소스 디지털 포렌식 플랫폼</td></tr>
+    <tr><td><strong>Volatility</strong></td><td>메모리(RAM) 덤프 분석 프레임워크</td></tr>
+  </tbody>
+</table>
+    `,
+  },
+  {
+    subject: 'general',
+    subjectLabel: '정보보안일반',
+    chapter: 'social-engineering',
+    chapterLabel: '사회공학',
+    keywords: ['사회공학', '피싱', '스피어피싱', '보이스피싱', '비싱', '스미싱', '프리텍스팅', '베이팅', '테일게이팅', '큐 프로 쿼', '심리적 조작', '보안 인식 교육'],
+    content: `
+<h3>사회공학 공격 유형</h3>
+<table>
+  <thead><tr><th>유형</th><th>수단</th><th>타겟</th><th>특징</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>피싱(Phishing)</strong></td>
+      <td>이메일, 가짜 웹사이트</td>
+      <td>불특정 다수</td>
+      <td>신뢰 기관(은행, 포털) 위장. 대량 발송.</td>
+    </tr>
+    <tr>
+      <td><strong>스피어피싱(Spear Phishing)</strong></td>
+      <td>이메일</td>
+      <td>특정 개인·조직</td>
+      <td>맞춤형 내용. 성공률 높음. APT 초기 침투 수단.</td>
+    </tr>
+    <tr>
+      <td><strong>웨일링(Whaling)</strong></td>
+      <td>이메일</td>
+      <td>CEO·임원 등 고위직</td>
+      <td>스피어피싱의 일종. 고가치 타겟 전문.</td>
+    </tr>
+    <tr>
+      <td><strong>비싱(Vishing)</strong></td>
+      <td>전화(Voice)</td>
+      <td>개인</td>
+      <td>전화로 개인정보·계좌 정보 탈취. 콜센터 직원 사칭.</td>
+    </tr>
+    <tr>
+      <td><strong>스미싱(Smishing)</strong></td>
+      <td>SMS/문자</td>
+      <td>스마트폰 사용자</td>
+      <td>URL 포함 문자. 악성 앱 설치 유도.</td>
+    </tr>
+    <tr>
+      <td><strong>프리텍스팅(Pretexting)</strong></td>
+      <td>전화, 대면, 이메일</td>
+      <td>직원</td>
+      <td>가짜 신분·상황 설정. IT 직원·감사관 사칭.</td>
+    </tr>
+    <tr>
+      <td><strong>베이팅(Baiting)</strong></td>
+      <td>물리적 미디어</td>
+      <td>호기심 많은 직원</td>
+      <td>악성 USB를 주차장·엘리베이터에 방치.</td>
+    </tr>
+    <tr>
+      <td><strong>테일게이팅(Tailgating)</strong></td>
+      <td>물리적 접근</td>
+      <td>물리 보안 구역</td>
+      <td>인가자 뒤에 따라 들어감. 사회적 예의를 이용.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>공격에 이용되는 심리 기법</h3>
+<table>
+  <thead><tr><th>심리 기법</th><th>설명</th><th>공격 예시</th></tr></thead>
+  <tbody>
+    <tr><td><strong>권위(Authority)</strong></td><td>상위 직급·기관처럼 행세</td><td>"CEO입니다, 지금 당장 계좌 이체 해주세요"</td></tr>
+    <tr><td><strong>긴박감(Urgency)</strong></td><td>즉각 행동을 유도해 판단력 저하</td><td>"지금 처리 안 하면 계정이 삭제됩니다"</td></tr>
+    <tr><td><strong>친밀감(Familiarity)</strong></td><td>아는 사람인 척하여 경계 해제</td><td>"저 지난번에 미팅했던 김대리입니다"</td></tr>
+    <tr><td><strong>사회적 증거(Social Proof)</strong></td><td>다른 사람도 했다고 안심시킴</td><td>"다른 부서는 이미 다 클릭했어요"</td></tr>
+    <tr><td><strong>상호성(Reciprocity)</strong></td><td>뭔가를 줄 테니 정보를 달라는 교환</td><td>"무료 USB 드릴게요, 설문 하나만..."</td></tr>
+  </tbody>
+</table>
+
+<h3>피싱 유형 비교</h3>
+<table>
+  <thead><tr><th>구분</th><th>피싱</th><th>스피어피싱</th><th>웨일링</th></tr></thead>
+  <tbody>
+    <tr><td>타겟</td><td>불특정 다수</td><td>특정 개인·부서</td><td>고위 임원(CEO, CFO)</td></tr>
+    <tr><td>맞춤화</td><td>없음</td><td>높음</td><td>매우 높음</td></tr>
+    <tr><td>성공률</td><td>낮음</td><td>높음</td><td>매우 높음</td></tr>
+    <tr><td>준비 시간</td><td>짧음</td><td>중간</td><td>길음</td></tr>
+  </tbody>
+</table>
+
+<h3>APT와 사회공학</h3>
+<p><strong>APT(Advanced Persistent Threat)</strong> 공격에서 사회공학은 초기 침투(Initial Access) 수단으로 가장 많이 활용된다.</p>
+<ul>
+  <li>스피어피싱 → 악성 첨부파일 실행 → 내부망 침투</li>
+  <li>가장 기술적으로 완벽한 방어도 사람의 실수 하나로 무력화</li>
+</ul>
+
+<h3>대응책</h3>
+<ul>
+  <li><strong>보안 인식 교육</strong>: 전직원 정기 교육, 피싱 시뮬레이션 훈련</li>
+  <li><strong>이중 확인 절차</strong>: 이메일 요청 시 전화 콜백으로 본인 확인</li>
+  <li><strong>정보 공개 최소화</strong>: SNS에 조직 정보·직위 과다 공개 자제</li>
+  <li><strong>물리 보안 강화</strong>: 맨트랩, 방문자 등록·동반, 테일게이팅 방지 교육</li>
+  <li><strong>이메일 보안</strong>: SPF·DKIM·DMARC 적용으로 발신자 위조 방지</li>
+  <li><strong>USB 정책</strong>: 허가되지 않은 USB 사용 금지, AutoRun 비활성화</li>
+</ul>
+    `,
+  },
+  {
+    subject: 'general',
+    subjectLabel: '정보보안일반',
+    chapter: 'security-management',
+    chapterLabel: '정보보호 거버넌스·관리',
+    keywords: ['정보보호 거버넌스', 'ISMS', 'ISO 27001', 'PDCA', '보안 조직', 'CISO', '정보보호 정책', '변경관리', '형상관리', '인적보안', '보안 교육', '공급망 보안', '아웃소싱'],
+    content: `
+<h3>정보보호 거버넌스</h3>
+<p>정보보호 거버넌스는 조직의 보안 목표가 경영 목표와 일치하도록 방향을 제시하고 통제하는 체계다.</p>
+<ul>
+  <li><strong>책임 주체</strong>: CEO·이사회 — 보안은 IT 부서만의 문제가 아닌 경영 전략 사안</li>
+  <li>보안 투자 우선순위 결정, 위험 수용 기준 승인</li>
+  <li>규제 준수(Compliance) 책임 부담</li>
+</ul>
+
+<h3>CISO (Chief Information Security Officer)</h3>
+<ul>
+  <li><strong>역할</strong>: 정보보호 전략 수립, 보안 조직 총괄, 이사회 보고</li>
+  <li><strong>책임</strong>: 정보보호 정책 제정, 보안 사고 대응, 컴플라이언스 관리</li>
+  <li><strong>국내 의무 지정</strong>: 정보통신망법 — 매출 100억 이상 또는 이용자 100만명 이상 정보통신서비스 제공자는 CISO 지정 의무</li>
+</ul>
+
+<h3>ISMS PDCA 사이클</h3>
+<table>
+  <thead><tr><th>단계</th><th>활동</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Plan (계획)</strong></td>
+      <td>위험평가 수행, 보안 목표 설정, 정책·절차 수립, 통제 선택</td>
+    </tr>
+    <tr>
+      <td><strong>Do (실행)</strong></td>
+      <td>선택한 보안 통제 구현, 직원 교육, 운영 절차 실행</td>
+    </tr>
+    <tr>
+      <td><strong>Check (점검)</strong></td>
+      <td>성과 모니터링, 내부 감사, 사고 분석, 효과성 측정</td>
+    </tr>
+    <tr>
+      <td><strong>Act (개선)</strong></td>
+      <td>부적합 사항 시정, 예방 조치, 경영진 검토, ISMS 지속 개선</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>ISO/IEC 27001</h3>
+<ul>
+  <li>국제 ISMS 인증 표준. 14개 통제 영역(도메인), 114개 통제항목(Annex A)</li>
+  <li><strong>14개 통제 영역</strong>: 정보보안 정책 / 정보보안 조직 / 인적자원 보안 / 자산관리 / 접근통제 / 암호화 / 물리·환경 보안 / 운영보안 / 통신보안 / 시스템 취득·개발·유지보수 / 공급업체 관계 / 정보보안 사고 관리 / 업무연속성 관리 / 준거성</li>
+  <li>인증 절차: 갭 분석 → ISMS 구축 → 내부 감사 → 인증 심사 → 인증서 획득 → 사후 심사(연1회) → 갱신 심사(3년)</li>
+</ul>
+
+<h3>인적 보안</h3>
+<table>
+  <thead><tr><th>단계</th><th>보안 활동</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>채용 전</strong></td>
+      <td>신원조회(Background Check), NDA 서명, 직무별 보안 요구사항 정의</td>
+    </tr>
+    <tr>
+      <td><strong>재직 중</strong></td>
+      <td>정기 보안 교육, 보안 정책 준수 확인, 최소권한 원칙 적용</td>
+    </tr>
+    <tr>
+      <td><strong>퇴직 시</strong></td>
+      <td>접근권한 즉시 회수, 계정·인증서 폐기, 자산 반납, 퇴직 보안 교육</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>변경·형상 관리</h3>
+<ul>
+  <li><strong>변경관리(Change Management)</strong>: 모든 시스템 변경에 대한 공식 승인 절차. 무단 변경 방지.</li>
+  <li><strong>형상관리(Configuration Management)</strong>: 시스템·소프트웨어의 기준 설정(Baseline) 및 변경 이력 관리.</li>
+  <li>롤백 계획: 변경 실패 시 이전 상태로 복구 절차 사전 준비</li>
+  <li>변경관리위원회(CAB, Change Advisory Board): 중요 변경 사항 심의</li>
+</ul>
+
+<h3>공급망 보안</h3>
+<ul>
+  <li><strong>제3자 위험관리</strong>: 공급업체·파트너의 보안 수준이 자사 위험에 직결</li>
+  <li><strong>SLA 보안 요구사항</strong>: 계약서에 보안 통제 수준, 사고 통보 의무, 감사 권한 명시</li>
+  <li><strong>정기 감사</strong>: 공급업체 보안 현황 정기 점검, 인증서 확인</li>
+  <li><strong>소프트웨어 공급망 공격</strong> 예시: SolarWinds 사태 — 업데이트 서버 해킹 → 정상 업데이트에 악성코드 삽입</li>
+</ul>
+
+<h3>보안 인식 교육</h3>
+<ul>
+  <li><strong>의무화</strong>: ISMS-P, ISO 27001 모두 정기 교육 요구</li>
+  <li><strong>내용</strong>: 피싱 인식, 패스워드 정책, 클린데스크, 물리 보안, 사고 신고 절차</li>
+  <li><strong>피싱 시뮬레이션</strong>: 가짜 피싱 메일 발송 → 클릭자 식별 → 즉시 교육 연계</li>
+  <li><strong>역할별 교육</strong>: 일반 직원·개발자·관리자·경영진별 맞춤 교육 내용</li>
+  <li><strong>측정</strong>: 교육 전·후 인식 수준 비교, 피싱 클릭률 추이 모니터링</li>
+</ul>
     `,
   },
 
