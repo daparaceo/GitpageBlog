@@ -31,7 +31,8 @@ for (const file of files) {
 
 // 챕터 키워드와 관련된 문제만 필터링
 // - question 필드만 매칭 (explanation은 다른 주제 언급이 많아 제외)
-// - 키워드 매칭 수로 점수화 → 높은 순 정렬 → 최대 10문제
+// - 키워드 2개 이상 매칭 문제만 주요 후보로 선정 (연관성 기준)
+// - 주요 후보가 2개 미만인 경우 1개 매칭 문제로 최대 3개까지 보완
 const scored = allQuestions
   .map(q => {
     const questionText = (q.question ?? '').toLowerCase();
@@ -43,7 +44,10 @@ const scored = allQuestions
   .filter(q => q._score > 0)
   .sort((a, b) => b._score - a._score);
 
-const relatedQuestions = scored.slice(0, 10);
+const primary = scored.filter(q => q._score >= 2).slice(0, 5);
+const relatedQuestions = primary.length >= 2
+  ? primary
+  : scored.slice(0, 3);
 
 const optionSymbols = ['①', '②', '③', '④'];
 ---
