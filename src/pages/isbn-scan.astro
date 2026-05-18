@@ -23,7 +23,7 @@ for (const post of posts) {
     const clean = isbn.replace(/\D/g, '');
     if (clean.length >= 10 && !isbnPostMap[clean]) {
       isbnPostMap[clean] = {
-        slug: post.slug,
+        slug: post.slug.includes('/') ? post.slug.split('/').pop()! : post.slug,
         title: post.data.title,
         description: post.data.description ?? '',
         ogImage: post.data.ogImage ?? '',
