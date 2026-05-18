@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 
 const { chapterData } = Astro.props;
 
-// 관련 기출문제 로드 (모든 JSON에서 해당 과목 문제 필터링)
+// 관련 기출문제 로드 (모든 JSON에서 전체 문제 로드)
 const questionsDir = path.resolve(process.cwd(), 'src/data/security-questions');
 const allQuestions: any[] = [];
 
@@ -22,29 +22,48 @@ for (const file of files) {
   const slug = file.replace('.json', '');
   const raw = fs.readFileSync(path.join(questionsDir, file), 'utf-8');
   const questions = JSON.parse(raw);
-  questions
-    .filter((q: any) => q.subject === chapterData.subjectLabel)
-    .forEach((q: any) => {
-      allQuestions.push({ ...q, examSlug: slug });
-    });
+  questions.forEach((q: any) => {
+    allQuestions.push({ ...q, examSlug: slug });
+  });
 }
 
 // 챕터 키워드와 관련된 문제만 필터링
-// - question 필드만 매칭 (explanation은 다른 주제 언급이 많아 제외)
-// - 키워드 2개 이상 매칭 문제만 주요 후보로 선정 (연관성 기준)
+// - question 매칭을 가장 높게 보고, options/explanation/tags/topic 매칭은 보조 점수로 사용
+// - 관련성 점수 3점 이상 문제만 주요 후보로 선정
 // - 주요 후보가 2개 미만인 경우 1개 매칭 문제로 최대 3개까지 보완
 const scored = allQuestions
   .map(q => {
     const questionText = (q.question ?? '').toLowerCase();
-    const matchCount = chapterData.keywords.filter(kw =>
-      questionText.includes(kw.toLowerCase())
-    ).length;
-    return { ...q, _score: matchCount };
+    const optionText = (q.options ?? []).join(' ').toLowerCase();
+    const explanationText = (q.explanation ?? '').toLowerCase();
+    const metaText = `${q.topic ?? ''} ${(q.tags ?? []).join(' ')}`.toLowerCase();
+    const matchedKeywords: string[] = [];
+    let score = 0;
+
+    chapterData.keywords.forEach(kw => {
+      const keyword = kw.toLowerCase();
+      if (questionText.includes(keyword)) {
+        matchedKeywords.push(kw);
+        score += 2;
+      } else if (metaText.includes(keyword)) {
+        matchedKeywords.push(kw);
+        score += 2;
+      } else if (optionText.includes(keyword) || explanationText.includes(keyword)) {
+        matchedKeywords.push(kw);
+        score += 1;
+      }
+    });
+
+    if (score > 0 && q.subject === chapterData.subjectLabel) {
+      score += 1;
+    }
+
+    return { ...q, _score: score, _matchedKeywords: matchedKeywords };
   })
   .filter(q => q._score > 0)
   .sort((a, b) => b._score - a._score);
 
-const primary = scored.filter(q => q._score >= 2).slice(0, 5);
+const primary = scored.filter(q => q._score >= 3).slice(0, 5);
 const relatedQuestions = primary.length >= 2
   ? primary
   : scored.slice(0, 3);
@@ -104,6 +123,11 @@ const optionSymbols = ['①', '②', '③', '④'];
                 <span class="text-xs text-gray-400 shrink-0 mt-0.5">
                   {q.examSlug.replace('-', '년 ')}회 Q{q.number}
                 </span>
+                {q._matchedKeywords?.length > 0 && (
+                  <span class="text-xs text-gray-400">
+                    매칭: {q._matchedKeywords.slice(0, 3).join(', ')}
+                  </span>
+                )}
               </div>
               <p class="text-sm font-medium text-gray-800 mb-3 leading-relaxed">{q.question}</p>
 

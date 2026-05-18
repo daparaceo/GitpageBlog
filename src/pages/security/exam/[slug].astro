@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { CHAPTERS } from '../../../data/security-chapters';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -24,6 +25,33 @@ const { questions, year, session, slug } = Astro.props;
 const subjectOrder = ['시스템보안', '네트워크보안', '어플리케이션보안', '정보보안일반', '정보보안관리및법규'];
 
 const optionSymbols = ['①', '②', '③', '④'];
+
+function getRelatedChapters(q: any) {
+  const questionText = (q.question ?? '').toLowerCase();
+  const optionText = (q.options ?? []).join(' ').toLowerCase();
+  const explanationText = (q.explanation ?? '').toLowerCase();
+  const metaText = `${q.topic ?? ''} ${(q.tags ?? []).join(' ')}`.toLowerCase();
+
+  return CHAPTERS
+    .map(ch => {
+      let score = 0;
+      ch.keywords.forEach(kw => {
+        const keyword = kw.toLowerCase();
+        if (questionText.includes(keyword) || metaText.includes(keyword)) {
+          score += 2;
+        } else if (optionText.includes(keyword) || explanationText.includes(keyword)) {
+          score += 1;
+        }
+      });
+      if (score > 0 && ch.subjectLabel === q.subject) {
+        score += 1;
+      }
+      return { ...ch, _score: score };
+    })
+    .filter(ch => ch._score > 0)
+    .sort((a, b) => b._score - a._score)
+    .slice(0, 3);
+}
 ---
 
 <BaseLayout
@@ -116,6 +144,18 @@ const optionSymbols = ['①', '②', '③', '④'];
                   </p>
                   {q.explanation && (
                     <p class="text-xs text-gray-500 leading-relaxed">{q.explanation}</p>
+                  )}
+                  {getRelatedChapters(q).length > 0 && (
+                    <div class="mt-2 flex flex-wrap gap-1.5">
+                      {getRelatedChapters(q).map(ch => (
+                        <a
+                          href={`/security/${ch.subject}/${ch.chapter}/`}
+                          class="text-xs text-sky-600 hover:text-sky-700 bg-sky-50 px-2 py-1 rounded"
+                        >
+                          {ch.chapterLabel}
+                        </a>
+                      ))}
+                    </div>
                   )}
                 </div>
               </div>

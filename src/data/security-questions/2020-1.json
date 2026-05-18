@@ -1,0 +1,2502 @@
+[
+  {
+    "id": "2020-1-001",
+    "year": 2020,
+    "session": 1,
+    "number": 1,
+    "subject": "시스템보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "리눅스 서버에서 xinetd 데몬을 이용한 접근 제어 시 지정된 원격지 IP 주소 대역에 대해 접근을 허락할 때 xinetd.conf 파일에서 사용하는 옵션은?",
+    "options": [
+      "enable",
+      "allow",
+      "enable_access",
+      "only_from"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "시스템보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-002",
+    "year": 2020,
+    "session": 1,
+    "number": 2,
+    "subject": "시스템보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "i-node가 가지고 있지 않은 정보는?",
+    "options": [
+      "파일 이름",
+      "파일의 링크 수",
+      "파일 크기",
+      "마지막으로 수정된 시간"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "시스템보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-003",
+    "year": 2020,
+    "session": 1,
+    "number": 3,
+    "subject": "시스템보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "/etc/shadow 파일의 일부분이다. 이를 통해 알 수 있는 내용이 아닌 것은?",
+    "options": [
+      "sec_admin 사용자는 비밀번호 변경 후 최대 30일간 이를 사용할 수 있다.",
+      "sys_admin 사용자의 비밀번호는 아직 부여되지 않은 상태이며, 계정은 막혀 있다.",
+      "prog_user 사용자는 비밀번호 유효기간이 만료되기 7일 전부터 비밀번호 만료에 관한 경고메시지를 받는다.",
+      "prog_user 사용자는 비밀번호를 변경한 후 3일 이내에 자신의 비밀번호를 변경할 수 있다."
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "시스템보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-004",
+    "year": 2020,
+    "session": 1,
+    "number": 4,
+    "subject": "시스템보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "파일 시스템이란 운영체제가 파일을 시스템의 디스크 상에 구성하는 방식을 말한다. 운영체제는 시스템의 디스크 파티션 상에 파일들을 일정한 규칙을 가지고 저장하는데 파일 시스템은 이러한 규칙들의 방식을 제시하는 역할을 한다. 다음 중 윈도우 운영체제에서 사용하는 파일 시스템이 아닌 것은?",
+    "options": [
+      "FAT16",
+      "FAT32",
+      "EXT3",
+      "NTFS"
+    ],
+    "answer": 3,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "시스템보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-005",
+    "year": 2020,
+    "session": 1,
+    "number": 5,
+    "subject": "시스템보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "좀비 프로세스를 확인하고 중지시키기 위한 UNIX 명령어에 대한 설명으로 올바른 것은?",
+    "options": [
+      "ps 명령어 실행 후 STAT 값이 Z로 표시되는 프로세스가 좀비 프로세스이며, kill 명령어 사용",
+      "ss 명령어 실행 후 STAT 값이 B로 표시되는 프로세스가 좀비 프로세스이며, kill 명령어 사용",
+      "ps 명령어 실행 후 STAT 값이 B로 표시되는 프로세스가 좀비 프로세스이며, halt 명령어 사용",
+      "zs 명령어 실행 후 STAT 값이 Z로 표시되는 프로세스가 좀비 프로세스이며, halt 명령어 사용"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "시스템보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-006",
+    "year": 2020,
+    "session": 1,
+    "number": 6,
+    "subject": "시스템보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "매일 오전 8시 40분에 /usr/logreport.sh 스크립트가 실행되도록 하기 위해 contab에 넣을 설정 내용으로서 적절한 것은?",
+    "options": [
+      "* 40 08 * * -exec {/usr/logreport.sh}",
+      "40 08 * * * /usr/logreport.sh",
+      "* * * 08 40 /usr/logreport.sh",
+      "* * * 08 40 –exec {/usr/logreport.sh}"
+    ],
+    "answer": 2,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "시스템보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-007",
+    "year": 2020,
+    "session": 1,
+    "number": 7,
+    "subject": "시스템보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 지문에서 설명하는 유닉스 시스템 관리자용 명령어는?",
+    "options": [
+      "df",
+      "ps",
+      "file",
+      "find"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "시스템보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-008",
+    "year": 2020,
+    "session": 1,
+    "number": 8,
+    "subject": "시스템보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 중 버퍼 오버플로우(Buffer Overflow)에 대한 대책으로 옳지 않은 것은?",
+    "options": [
+      "경계 검사를 하는 컴파일러 및 링크를 사용한다.",
+      "경계를 검사하는 함수를 사용한다.",
+      "운영체제 커널 패치를 실시한다.",
+      "최대 권한으로 프로그램을 실행한다."
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "시스템보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-009",
+    "year": 2020,
+    "session": 1,
+    "number": 9,
+    "subject": "시스템보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "하이퍼바이저에 대한 내용으로 옳지 않은 것은?",
+    "options": [
+      "가상머신과 하드웨어 사이에 위치하여 다수의 가상머신들이 각각의 운영체제가 구동될 수 있도록 논리적으로 독립된 가상머신 환경을 제공한다.",
+      "주 기능은 CPU, 메모리 등 하드웨어 자원을 각 가상머신에 논리적으로 분할 할당ㆍ스케줄링하는 것이다.",
+      "하이퍼바이저는 bare-metal 타입, hosted 타입으로 나누어지며, bare-metal 타입은 하드웨어 상에서 동작하는 것이 아니라 호스트 운영체제 위에서 동작한다.",
+      "hosted 타입은 VMware Workstation, Parallels Desktop 등이 대표적이다."
+    ],
+    "answer": 3,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "시스템보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-010",
+    "year": 2020,
+    "session": 1,
+    "number": 10,
+    "subject": "시스템보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 중 리눅스에서 Process ID(PID) 1번을 가지고 있는 프로세스는 무엇인가?",
+    "options": [
+      "init",
+      "부트로더",
+      "OS 커널",
+      "BIOS"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "시스템보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-011",
+    "year": 2020,
+    "session": 1,
+    "number": 11,
+    "subject": "시스템보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 지문이 설명하는 것은?",
+    "options": [
+      "Kerberos",
+      "OAuth",
+      "EAP",
+      "RADIUS"
+    ],
+    "answer": 2,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "시스템보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-012",
+    "year": 2020,
+    "session": 1,
+    "number": 12,
+    "subject": "시스템보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "윈도우 NTFS에서 모든 파일들과 디렉터리에 대한 정보를 포함하고 있는 것은?",
+    "options": [
+      "MFT(Master File Table)",
+      "FAT(File Allocation Table)",
+      "$AttrDef",
+      "$LogFile"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "시스템보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-013",
+    "year": 2020,
+    "session": 1,
+    "number": 13,
+    "subject": "시스템보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "리눅스 시스템의 /etc/logrotate/conf 파일에서 로그순환 설정을 하려고 한다. 최소 6개월분의 로그를 저장하기 위해 빈칸 ㉠에 들어갈 용어로 적절한 것은?",
+    "options": [
+      "save",
+      "rotate",
+      "cycle",
+      "minimum"
+    ],
+    "answer": 2,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "시스템보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-014",
+    "year": 2020,
+    "session": 1,
+    "number": 14,
+    "subject": "시스템보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "FTP 접속기록을 확인할 수 있는 파일은?",
+    "options": [
+      "xferlog",
+      "ftplog",
+      "error log",
+      "pacct"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "시스템보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-015",
+    "year": 2020,
+    "session": 1,
+    "number": 15,
+    "subject": "시스템보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 지문에서 설명하고 있는 것은?",
+    "options": [
+      "S/Key 인증",
+      "RADIUS",
+      "Challenge Response",
+      "Kerberos"
+    ],
+    "answer": 2,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "시스템보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-016",
+    "year": 2020,
+    "session": 1,
+    "number": 16,
+    "subject": "시스템보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음은 윈도우 부팅 순서이다. 올바르게 나열된 것은?",
+    "options": [
+      "바-다-라-가-마-나",
+      "나-바-가-다-라-마",
+      "나-바-다-라-가-마",
+      "바-가-마-나-다-라"
+    ],
+    "answer": 2,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "시스템보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-017",
+    "year": 2020,
+    "session": 1,
+    "number": 17,
+    "subject": "시스템보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "Cyber Kill Chain의 단계 중 빈칸 ⓐ, ⓑ에 들어갈 절차로 알맞은 것은?",
+    "options": [
+      "ⓐ 악성코드 제작(Develop) ⓑ 명령 및 제어(Command &Control)",
+      "ⓐ 명령 및 제어(Command &Control) ⓑ 전달(Delivery)",
+      "ⓐ 전달(Delivery) ⓑ 명령 및 제어(Command &Control)",
+      "ⓐ 전달(Delivery) ⓑ 악성코드 제작(Develop)"
+    ],
+    "answer": 3,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "시스템보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-018",
+    "year": 2020,
+    "session": 1,
+    "number": 18,
+    "subject": "시스템보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 지문이 설명하는 것은?",
+    "options": [
+      "CryptoCurrency Hijacking",
+      "CryptoCurrency Jacking",
+      "Currency Hijacking",
+      "CryptoJacking"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "시스템보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-019",
+    "year": 2020,
+    "session": 1,
+    "number": 19,
+    "subject": "시스템보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "실행 레벨은 0부터 6까지 있는데 다음 지문의 빈칸 ㉠, ㉡, ㉢에 해당되는 실행 레벨로 알맞게 짝지어진 것은?",
+    "options": [
+      "㉠ 실행레벨 0 ㉡ 실행레벨 5 ㉢ 실행레벨 4",
+      "㉠ 실행레벨 1 ㉡ 실행레벨 6 ㉢ 실행레벨 3",
+      "㉠ 실행레벨 0 ㉡ 실행레벨 5 ㉢ 실행레벨 3",
+      "㉠ 실행레벨 1 ㉡ 실행레벨 6 ㉢ 실행레벨 2"
+    ],
+    "answer": 2,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "시스템보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-020",
+    "year": 2020,
+    "session": 1,
+    "number": 20,
+    "subject": "시스템보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "유닉스 또는 리눅스 시스템에서 SetUID와 SetGID가 설정된 모든 파일을 찾으려고 한다. 명령어가 바르게 기술된 것은?",
+    "options": [
+      "find / -type f ＼(-perm –1000 –o –perm -2000＼) -print",
+      "find / -type f ＼(-perm -2000 –o –perm -4000＼) -print",
+      "find / -type f ＼(-perm -100 –o –perm -200＼) -print",
+      "find / -type f ＼(-perm -200 –o –perm -400＼) -print"
+    ],
+    "answer": 2,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "시스템보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-021",
+    "year": 2020,
+    "session": 1,
+    "number": 21,
+    "subject": "네트워크보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "Smurf 공격을 방지하기 위하여 라우터에서 차단되어야 하는 기능은?",
+    "options": [
+      "Directed Broadcast",
+      "Ingress Filtering",
+      "HTTP GET Flooding",
+      "ICMP Ping Request"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "네트워크보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-022",
+    "year": 2020,
+    "session": 1,
+    "number": 22,
+    "subject": "네트워크보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "IPv4의 IP 주소 고갈 및 라우팅 테이블 대형화에 대한 해소 책으로 기존의 클래스 기반 IP 주소 체계를 벗어나 서브넷 마스크 정보를 IP 주소와 함께 라우팅 정보로 사용할 수 있게 만든 IP 주소 지정 방식은?",
+    "options": [
+      "FLSM",
+      "CIDR",
+      "VLSM",
+      "Static Routing"
+    ],
+    "answer": 2,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "네트워크보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-023",
+    "year": 2020,
+    "session": 1,
+    "number": 23,
+    "subject": "네트워크보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 지문에서 설명하는 네트워크 기술은?",
+    "options": [
+      "Bypass",
+      "LLCF",
+      "Failover",
+      "DPDK"
+    ],
+    "answer": 3,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "네트워크보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-024",
+    "year": 2020,
+    "session": 1,
+    "number": 24,
+    "subject": "네트워크보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "스니핑 할 수 있는 공격방법과 거리가 먼 것은?",
+    "options": [
+      "ARP Redirect",
+      "Switch Jamming",
+      "ARP Spoofing",
+      "IP Spoofing"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "네트워크보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-025",
+    "year": 2020,
+    "session": 1,
+    "number": 25,
+    "subject": "네트워크보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 지문에서 설명하고 있는 공격 특징 및 대응방안과 관련성이 가장 높은 것은?",
+    "options": [
+      "UDP Flooding",
+      "SYN Flooding",
+      "ICMP Flooding",
+      "GET Flooding"
+    ],
+    "answer": 2,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "네트워크보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-026",
+    "year": 2020,
+    "session": 1,
+    "number": 26,
+    "subject": "네트워크보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "컴퓨터 및 네트워크에서 서비스가 더 이상 진행되지 못하도록 하는 경우로써 ＜보기＞에서 설명하고 있는 공격 방법으로 가장 옳은 것은?(관리자 입니다. 문제 복원 오류로 3번 4번 보기가 같습니다. 정확한 내용을 아시는분 께서는 오류 신고를 통하여 내용 작성 부탁 드립니다.)",
+    "options": [
+      "스머프(smurf) 공격",
+      "중간자(man-in-the-middle) 공격",
+      "포맷 스트링(format string) 공격",
+      "포맷 스트링(format string) 공격"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "네트워크보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-027",
+    "year": 2020,
+    "session": 1,
+    "number": 27,
+    "subject": "네트워크보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 네트워크 공격은 무엇인가?",
+    "options": [
+      "Ping of death",
+      "LAND attack",
+      "Teardrop",
+      "Smurf attack"
+    ],
+    "answer": 3,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "네트워크보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-028",
+    "year": 2020,
+    "session": 1,
+    "number": 28,
+    "subject": "네트워크보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 보기의 내용은 어떤 공격에 대한 특징인가?",
+    "options": [
+      "Land Attack",
+      "Bonk",
+      "Boink",
+      "Teardrop"
+    ],
+    "answer": 3,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "네트워크보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-029",
+    "year": 2020,
+    "session": 1,
+    "number": 29,
+    "subject": "네트워크보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "침입차단시스템(Firewall)의 기능과 가장 거리가 먼 것은?",
+    "options": [
+      "로깅(logging)과 감사추적(auditing) 기능",
+      "네트워크 접근제어 기능",
+      "데이터 축약 기능",
+      "사용자 인증 기능"
+    ],
+    "answer": 3,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "네트워크보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-030",
+    "year": 2020,
+    "session": 1,
+    "number": 30,
+    "subject": "네트워크보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "hosts 파일을 통해 도메인 이름에 대한 IP 주소를 적어두면 이 스푸핑 공격에 대응할 수 있다. 이 공격은 무엇인가?",
+    "options": [
+      "DNS 스푸핑",
+      "IP 스푸핑",
+      "ARP 스푸핑",
+      "이메일 스푸핑"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "네트워크보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-031",
+    "year": 2020,
+    "session": 1,
+    "number": 31,
+    "subject": "네트워크보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "침입차단시스템(Firewall)의 동작 방식은?",
+    "options": [
+      "Circuit Gateway",
+      "Application Gateway",
+      "Packet Filtering",
+      "Stateful Inspection"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "네트워크보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-032",
+    "year": 2020,
+    "session": 1,
+    "number": 32,
+    "subject": "네트워크보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음에서 설명하고 있는 기술은?",
+    "options": [
+      "ATP",
+      "MPI",
+      "DPI",
+      "SPI"
+    ],
+    "answer": 3,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "네트워크보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-033",
+    "year": 2020,
+    "session": 1,
+    "number": 33,
+    "subject": "네트워크보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "점차 증대되고 고도화되는 보안 위협에 대처하기 위해 예방, 탐지, 대응 등을 위한 보안 도구들을 유기적으로 연결하고 통합함으로써 보안 운영 업무를 자동화하고 보안 운영 효율성 극대화를 도모하는 기술은?",
+    "options": [
+      "UTM(Unified Threat Management)",
+      "IDS(Intrusion Detection System)",
+      "SOAR(Security Orchestration, Automation and Response)",
+      "ESM(Enterprise Security Management)"
+    ],
+    "answer": 3,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "네트워크보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-034",
+    "year": 2020,
+    "session": 1,
+    "number": 34,
+    "subject": "네트워크보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "Snort의 threshold 옵션에서 다음 지문의 빈칸 ㉠에 들어갈 용어로 알맞은 것은?",
+    "options": [
+      "content",
+      "both",
+      "threshold",
+      "limit"
+    ],
+    "answer": 2,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "네트워크보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-035",
+    "year": 2020,
+    "session": 1,
+    "number": 35,
+    "subject": "네트워크보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "VPN 터널링 프로토콜과 관련이 없는 것은?",
+    "options": [
+      "L2TP",
+      "IPSec",
+      "SOCKS V5",
+      "IMAP"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "네트워크보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-036",
+    "year": 2020,
+    "session": 1,
+    "number": 36,
+    "subject": "네트워크보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "UTM(Unified Threat Management)에 대한 설명 중 옳지 않은 것은?",
+    "options": [
+      "UTM은 다양한 보안 솔루션을 하나의 장비에 탑재하여 운영하는 All-in-One 통합보안 솔루션이다.",
+      "보안정책 적용이 개별적으로 이루어지므로 전문가의 운영이 필요하다.",
+      "다양한 보안 기능을 하나의 솔루션에 통합하여 복합 해킹 위협에 효과적으로 대응하는데 목적을 두고 있다.",
+      "보안 정책, 필터링 시그니처를 통합 관리하여 일관성과 운영 효율성을 제공한다."
+    ],
+    "answer": 2,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "네트워크보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-037",
+    "year": 2020,
+    "session": 1,
+    "number": 37,
+    "subject": "네트워크보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "TLS Record 프로토콜의 가공 단계를 올바른 순서대로 나열한 것은?",
+    "options": [
+      "나 → 가 → 다 → 라 → 마",
+      "나 → 다 → 가 → 라 → 마",
+      "나 → 라 → 다 → 가 → 마",
+      "나 → 라 → 가 → 다 → 마"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "네트워크보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-038",
+    "year": 2020,
+    "session": 1,
+    "number": 38,
+    "subject": "네트워크보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "포트 스캔 시 포트가 열린 경우 대상으로부터의 응답이 다른 것은?",
+    "options": [
+      "TCP Open Scan",
+      "NULL Scan",
+      "FIN Scan",
+      "XMAS Scan"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "네트워크보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-039",
+    "year": 2020,
+    "session": 1,
+    "number": 39,
+    "subject": "네트워크보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "빈칸 ㉠, ㉡, ㉢, ㉣에 들어갈 용어들이 올바르게 짝지어진 것은?",
+    "options": [
+      "㉠ L2TP ㉡ IPSec ㉢ MAC ㉣ ESP",
+      "㉠ AH ㉡ IPSec ㉢ Encapsulation ㉣ SSL",
+      "㉠ AH ㉡ ESP ㉢ MAC ㉣ HASH",
+      "㉠ L2TP ㉡ IPSec ㉢ HASH ㉣ MAC"
+    ],
+    "answer": 3,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "네트워크보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-040",
+    "year": 2020,
+    "session": 1,
+    "number": 40,
+    "subject": "네트워크보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "보안 솔루션은?",
+    "options": [
+      "IPS",
+      "IDS",
+      "DLP",
+      "NAC"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "네트워크보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-041",
+    "year": 2020,
+    "session": 1,
+    "number": 41,
+    "subject": "어플리케이션보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "SSH의 기능과 가장 거리가 먼 것은?",
+    "options": [
+      "원격 접속 보호",
+      "파일 전송 보호",
+      "패킷 필터링",
+      "사용자 인증"
+    ],
+    "answer": 3,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "어플리케이션보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-042",
+    "year": 2020,
+    "session": 1,
+    "number": 42,
+    "subject": "어플리케이션보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "DB 보안 위협 요소인 추론으로부터 정보 유출을 막기 위한 기술은?",
+    "options": [
+      "집성",
+      "DAC",
+      "암호화",
+      "다중 인스턴스화"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "어플리케이션보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-043",
+    "year": 2020,
+    "session": 1,
+    "number": 43,
+    "subject": "어플리케이션보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 지문의 설명에 가장 알맞은 기술은?",
+    "options": [
+      "HSM",
+      "OTP",
+      "SSO",
+      "DRM"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "어플리케이션보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-044",
+    "year": 2020,
+    "session": 1,
+    "number": 44,
+    "subject": "어플리케이션보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "DNS 서버에 대한 질의 시 사용되는 type 옵션에 대한 설명으로 틀린 것은?",
+    "options": [
+      "MX : 도메인의 메일서버 질의",
+      "NS : 도메인의 네임서버 질의",
+      "A : 도메인에 대한 IP 주소 질의",
+      "SOA : IP에 대한 도메인 정보 질의"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "어플리케이션보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-045",
+    "year": 2020,
+    "session": 1,
+    "number": 45,
+    "subject": "어플리케이션보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 중 HTML 문서 내 입력받은 변수값을 서버측에서 처리할 때 부적절한 명령문이 포함되거나 실행되어 서버의 데이터가 유출되는 취약점은?",
+    "options": [
+      "SSI 인젝션",
+      "LDAP 인젝션",
+      "XPATH 인젝션",
+      "SQL 인젝션"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "어플리케이션보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-046",
+    "year": 2020,
+    "session": 1,
+    "number": 46,
+    "subject": "어플리케이션보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 보안 프로토콜 중 작동 레이어가 OSI 7 Layer 중 가장 낮은 것은?",
+    "options": [
+      "S/MIME",
+      "IPSec",
+      "SSH",
+      "SSL"
+    ],
+    "answer": 2,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "어플리케이션보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-047",
+    "year": 2020,
+    "session": 1,
+    "number": 47,
+    "subject": "어플리케이션보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "웹 서비스를 주요 대상으로 하는 공격 유형이 아닌 것은?",
+    "options": [
+      "CSRF",
+      "XSS",
+      "RFI",
+      "Format String"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "어플리케이션보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-048",
+    "year": 2020,
+    "session": 1,
+    "number": 48,
+    "subject": "어플리케이션보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "TLS handshake 과정을 순서에 맞게 나열한 것은?",
+    "options": [
+      "다 → 라 → 나 → 가 → 마",
+      "다 → 나 → 가 → 라 → 마",
+      "다 → 라 → 가 → 나 → 마",
+      "다 → 나 → 라 → 마 → 가"
+    ],
+    "answer": 2,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "어플리케이션보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-049",
+    "year": 2020,
+    "session": 1,
+    "number": 49,
+    "subject": "어플리케이션보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 중 SQL injection에서 사용되는 여러 종류의 특수문자 용도에 대한 설명으로 가장 적합하지 않은 것은?",
+    "options": [
+      "-- 및 # 은 앞의 출력값을 받아 두 번째 입력값으로 사용한다.",
+      "; 은 쿼리 구분 기호이다.",
+      "' 은 문자 데이터 구분기호이다.",
+      "/* */은 구문 주석 처리 기호이다."
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "어플리케이션보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-050",
+    "year": 2020,
+    "session": 1,
+    "number": 50,
+    "subject": "어플리케이션보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "디지털포렌식의 일반원칙으로 적합하지 않은 것은?",
+    "options": [
+      "증거분석은 원본을 사용하여 분석하여야 한다.",
+      "디지털 증거는 신뢰성이 검증된 분석 도구(HW, SW)를 사용해야 한다.",
+      "디지털 증거는 추출, 분석된 데이터가 무결성, 동일성이 보장되어야 증거능력을 인정받을 수 있다.",
+      "증거분석의 전 과정을 기록하여야 한다."
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "어플리케이션보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-051",
+    "year": 2020,
+    "session": 1,
+    "number": 51,
+    "subject": "어플리케이션보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "빈칸 ⓐ, ⓑ, ⓒ에 들어갈 상태코드 값으로 알맞은 것은?",
+    "options": [
+      "ⓐ 200 ⓑ 400 ⓒ 500",
+      "ⓐ 400 ⓑ 300 ⓒ 200",
+      "ⓐ 200 ⓑ 500 ⓒ 300",
+      "ⓐ 300 ⓑ 400 ⓒ 500"
+    ],
+    "answer": 3,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "어플리케이션보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-052",
+    "year": 2020,
+    "session": 1,
+    "number": 52,
+    "subject": "어플리케이션보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "전자상거래 보안에서 SSL/TLS의 특징이 아닌 것은?",
+    "options": [
+      "SSL은 Record Layer와 Handshake Layer로 구분한다.",
+      "응용계층의 프로토콜의 안정성을 보장한다.",
+      "https://* 로 표현된다.",
+      "전자서명을 통한 부인방지를 제공한다."
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "어플리케이션보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-053",
+    "year": 2020,
+    "session": 1,
+    "number": 53,
+    "subject": "어플리케이션보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "게시판에 올리는 글에 악성코드를 삽입하여 다른 게시판 이용자가 글을 읽을 경우 악성코드가 실행되도록 하여 클라이언트의 정보를 유출하는 공격 기법에 해당하는 것은?",
+    "options": [
+      "File Download",
+      "쿠키/세션 위조",
+      "XML 외부 개체",
+      "Cross Site Scripting"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "어플리케이션보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-054",
+    "year": 2020,
+    "session": 1,
+    "number": 54,
+    "subject": "어플리케이션보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "SSL/TLS의 취약점과 관계가 먼 것은?",
+    "options": [
+      "Freak",
+      "logjam",
+      "Poodle",
+      "Spectre"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "어플리케이션보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-055",
+    "year": 2020,
+    "session": 1,
+    "number": 55,
+    "subject": "어플리케이션보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 지문의 특징을 가진 공격 유형으로 적절한 것은?",
+    "options": [
+      "APT 공격",
+      "갠드크랩(GandCrab) 공격",
+      "클롭(CLOP) 공격",
+      "공급망 공격(Supply Chain)"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "어플리케이션보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-056",
+    "year": 2020,
+    "session": 1,
+    "number": 56,
+    "subject": "어플리케이션보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 지문에서 설명하는 웹 공격 기법은?",
+    "options": [
+      "SQL Injection 공격",
+      "역직렬화 공격",
+      "CSRF 공격",
+      "디렉터리 리스팅(Directory Listing) 공격"
+    ],
+    "answer": 3,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "어플리케이션보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-057",
+    "year": 2020,
+    "session": 1,
+    "number": 57,
+    "subject": "어플리케이션보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 지문에서 설명하는 것은?",
+    "options": [
+      "DRM",
+      "DOI",
+      "스테가노그래피",
+      "워터마킹"
+    ],
+    "answer": 2,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "어플리케이션보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-058",
+    "year": 2020,
+    "session": 1,
+    "number": 58,
+    "subject": "어플리케이션보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "윈도우 7을 사용하는 사용자가 한국인터넷진흥원 홈페이지(http://www.kisa.or.kr)에 접속하기 위해 IP 주소를 얻어오는 순서로 적절한 것은?",
+    "options": [
+      "로컬 DNS 서버 → 캐시 → Hosts 파일",
+      "Hosts 파일 → 캐시 → 로컬 DNS 서버",
+      "로컬 DNS 서버 → Hosts 파일 → 캐시",
+      "캐시 → Hosts 파일 → 로컬 DNS 서버"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "어플리케이션보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-059",
+    "year": 2020,
+    "session": 1,
+    "number": 59,
+    "subject": "어플리케이션보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "갑자기 대량의 DNS(Domain Name System) 관련 트래픽이 유입되어 확인해 보니, DNS 증폭공격이라는 것을 알게 되었다. 다음 중 이 공격에 대해 바르게 설명하고 있는 것은?",
+    "options": [
+      "DNS zone transfer의 취약점을 이용한 공격이다.",
+      "DNSSEC의 취약점을 이용한 공격이다.",
+      "DNS bug이므로 취약한 서버는 최신 버전으로 패치를 하여야 한다.",
+      "resolving이 허용된 DNS를 매개체로 악용하는 형태의 공격이다."
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "어플리케이션보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-060",
+    "year": 2020,
+    "session": 1,
+    "number": 60,
+    "subject": "어플리케이션보안",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "SQL injection 공격 취약점에 대응하기 위한 방법과 가장 거리가 먼 것은?",
+    "options": [
+      "웹 방화벽을 웹 서버 앞단에 두고 미리 필터링 한다.",
+      "인터프리터 방식을 회피한다.",
+      "사용자 입력 값을 모두 Encoding 하여 유효성을 검증한다.",
+      "현재 쓰고 있는 웹브라우저를 업그레이드 하거나, 다른 것으로 바꾼다."
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "어플리케이션보안",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-061",
+    "year": 2020,
+    "session": 1,
+    "number": 61,
+    "subject": "정보보안일반",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 지문에서 설명하는 정보보호 용어는?",
+    "options": [
+      "위협(threat)",
+      "취약점(vulnerability)",
+      "자산(asset)",
+      "위험(risk)"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안일반",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-062",
+    "year": 2020,
+    "session": 1,
+    "number": 62,
+    "subject": "정보보안일반",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 지문에서 설명하고 있는 원칙은?",
+    "options": [
+      "직무 순환",
+      "상호 배제",
+      "책임추적성 보장",
+      "직무 분리"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안일반",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-063",
+    "year": 2020,
+    "session": 1,
+    "number": 63,
+    "subject": "정보보안일반",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 지문은 블록 암호 알고리즘을 분석하는 방법에 대한 서술이다. 이 분석법에서 사용한 암호 해독의 원리는?",
+    "options": [
+      "암호문 단독 공격",
+      "선택 평문 공격",
+      "알려진 평문 공격",
+      "선택 암호문 공격"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안일반",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-064",
+    "year": 2020,
+    "session": 1,
+    "number": 64,
+    "subject": "정보보안일반",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "전체 사용자가 10명인 시스템(또는 조직)내에서 어떤 사용자가 다른 사람에게 암호화된 메시지를 대칭키 암호를 사용하여 교환하고자 한다. 이때, 서로 다른 2명씩 대칭키를 사전에 공유한다고 가정할 때, 전체 시스템에서 존재하는 서로 다른 대칭키의 개수는 몇 개인가?",
+    "options": [
+      "10",
+      "45",
+      "55",
+      "100"
+    ],
+    "answer": 2,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안일반",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-065",
+    "year": 2020,
+    "session": 1,
+    "number": 65,
+    "subject": "정보보안일반",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "기존의 사람과 사람, 사람과 디바이스 중심의 네트워크 환경이 디바이스와 디바이스 간의 네트워크로 확장됨에 따라 디바이스 인증이 중요한 쟁점으로 부각되고 있다. 디바이스 인증에 대한 설명 중 틀린 것은?",
+    "options": [
+      "디바이스의 진위성 및 네트워크 접속 권한을 제어하기 위한 것이다.",
+      "비 인가된 디바이스가 네트워크에 접속되어 IT 서비스를 위협하는 것을 방지하기 위한 것이다.",
+      "네트워크에 참여하는 다양한 디바이스들을 신뢰할 수 있도록 하기위한 것이다.",
+      "네트워크 및 시스템 사용권을 허가된 사용자로 제한하기 위한 것이다."
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안일반",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-066",
+    "year": 2020,
+    "session": 1,
+    "number": 66,
+    "subject": "정보보안일반",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "SSO(Single Sign On)는 사용자가 단 한 번의 인증절차만으로 다수의 애플리케이션에 접속할 수 있도록 해주는 인증 프로세스로 인증시간 단축, 사용자 계정의 효율적 관리, 접근권한의 효율적 통제가 가능하다. 다음 중 SSO 방식과 가장 거리가 먼 것은?",
+    "options": [
+      "RADIUS",
+      "SPNEGO",
+      "Kerberos",
+      "SESAME"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안일반",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-067",
+    "year": 2020,
+    "session": 1,
+    "number": 67,
+    "subject": "정보보안일반",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "대칭키 암호화와 MAC(Message Authentication Code)으로 해결할 수 없는 보안서비스는?",
+    "options": [
+      "메시지 무결성(Integrity)",
+      "메시지 인증(Authentication)",
+      "메시지 부인방지(Non Repudiation)",
+      "메시지 기밀성(Confidentiality)"
+    ],
+    "answer": 3,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안일반",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-068",
+    "year": 2020,
+    "session": 1,
+    "number": 68,
+    "subject": "정보보안일반",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 중 MD 계열 해시함수의 특징으로 옳지 않은 것은?",
+    "options": [
+      "160Bit의 출력 해시값을 생성한다.",
+      "데이터 무결성을 위해 메시지 압축ㆍ축약을 하는 해시 알고리즘이다.",
+      "해시 충돌 방지 확률은 약 이다.",
+      "MD4의 경우, 속도가 빠른 반면에 안정성에서 뒤떨어진다."
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안일반",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-069",
+    "year": 2020,
+    "session": 1,
+    "number": 69,
+    "subject": "정보보안일반",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 지문에서 설명하는 접근통제 모델은?",
+    "options": [
+      "강제적 접근통제 모델",
+      "규칙기반 접근통제 모델",
+      "역할기반 접근통제 모델",
+      "임의적 접근통제 모델"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안일반",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-070",
+    "year": 2020,
+    "session": 1,
+    "number": 70,
+    "subject": "정보보안일반",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음은 암호키 관리의 운영단계 중 키변경 기능(Key Change Function)에 대한 설명이다. 잘못된 것은?",
+    "options": [
+      "기존의 암호키를 이용하여 새로운 암호키를 생성하는 방법을 키 갱신이라고 한다.",
+      "기존의 암호키와는 독립적인 방법으로 새로운 암호키를 생성하는 방법을 키 교체라고 한다.",
+      "갱신된 암호키가 노출된 경우, 갱신되기 이전의 암호키에 대한 정보는 노출되지 않으므로, 기존의 암호키가 노출되면 노출된 암호키를 변경하기 위해 키 갱신을 사용한다.",
+      "암호키의 노출이 확인되거나, 노출의 위협이 있는 경우 혹은 암호키 유효 기간의 만료가 가까워지는 경우 암호키를 안전하게 변경해야 하며, 암호키를 변경한 이후에는 기존의 암호키를 정지단계로 전환해야 한다."
+    ],
+    "answer": 3,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안일반",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-071",
+    "year": 2020,
+    "session": 1,
+    "number": 71,
+    "subject": "정보보안일반",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 중 역할기반 접근통제(Role Based Access Control)의 설명으로 틀린 것은?",
+    "options": [
+      "대개 구현을 위하여 역할에 대한 추상화 작업이 요구된다.",
+      "Non-DAC 또는 비임의적 접근통제 모델로도 불린다.",
+      "사용자의 역할 및 직능에 따라 접근을 통제하는 방식이다.",
+      "사용자에게 지나친 권한이 부여될 우려가 있다."
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안일반",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-072",
+    "year": 2020,
+    "session": 1,
+    "number": 72,
+    "subject": "정보보안일반",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "Kerberos 프로토콜이 적용된 시스템에 대한 설명 중 틀린 것은?",
+    "options": [
+      "사용자, 클라이언트, 인증서버, 티켓발급 서버, 응용서버로 구성된다.",
+      "인증된 클라이언트만 서버에 접근하도록 고안된 보안시스템이다.",
+      "인증 혹은 티켓 발급 서버가 정지되면 전체 서비스가 중 단된다.",
+      "데이터의 무결성, 기밀성, 가용성, 부인방지 등의 보안 서비스를 제공한다."
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안일반",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-073",
+    "year": 2020,
+    "session": 1,
+    "number": 73,
+    "subject": "정보보안일반",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 지문에서와 같이 정의되었을 때, A가 B에게 메시지 M을 암호화 하여 보내고자 한다. 올바른 설명은?(문제 오류로 보기 내용이 정확하기 않습니다. 정확한 보기 내용을 아시는분 께서는 오류 신고를 통하여 내용 작성 부탁 드립니다. 정답은 3번 입니다.)",
+    "options": [
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    "answer": 3,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안일반",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-074",
+    "year": 2020,
+    "session": 1,
+    "number": 74,
+    "subject": "정보보안일반",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "X.509 확장 영역에 속하는 것은?",
+    "options": [
+      "공개키",
+      "서명 알고리즘",
+      "인증서의 버전",
+      "주체 키 식별자"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안일반",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-075",
+    "year": 2020,
+    "session": 1,
+    "number": 75,
+    "subject": "정보보안일반",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "ⓐ, ⓑ 각각이 설명하는 서명 방식은 무엇인가?",
+    "options": [
+      "ⓐ 이중서명 ⓑ 정규서명",
+      "ⓐ 이중서명 ⓑ 분할서명",
+      "ⓐ 은닉서명 ⓑ 분할서명",
+      "ⓐ 은닉서명 ⓑ 이중서명"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안일반",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-076",
+    "year": 2020,
+    "session": 1,
+    "number": 76,
+    "subject": "정보보안일반",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "이론적으로 전수공격(Brute Force Attack)에 가장 강한 암호기법은?",
+    "options": [
+      "RC4",
+      "3-DES",
+      "AES",
+      "OTP(One Time Pad)"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안일반",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-077",
+    "year": 2020,
+    "session": 1,
+    "number": 77,
+    "subject": "정보보안일반",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "메시지 인증을 위해 송신자가 메시지와 이에 대한 MAC 값을 동시에 수신자에게 보낼 때, 중간 공격자가 이를 가로채 가지고 있다가 송신자를 가장하여 언제든 수신자에게 보내는 재전송 공격이 가능하다. 다음 중 이를 방어하는 기술이 아닌 것은?",
+    "options": [
+      "메시지를 보낼 때 마다 순서번호(Sequence Number)를 포함시켜 MAC 값을 계산한다.",
+      "메시지를 보낼 때 마다 순서번호(Sequence Number)를 포함시켜 MAC 값을 계산한다.",
+      "비표(Nonce) 값을 포함시켜 MAC 값을 계산한다.",
+      "MAC 값을 암호화한다."
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안일반",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-078",
+    "year": 2020,
+    "session": 1,
+    "number": 78,
+    "subject": "정보보안일반",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "Kerberos 키 분배 프로토콜의 기반 기술에 해당하는 것은?",
+    "options": [
+      "Needham-Schroeder 프로토콜",
+      "Diffie-Hellman 프로토콜",
+      "Challenge-Response 프로토콜",
+      "RSA 이용 키 분배 프로토콜"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안일반",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-079",
+    "year": 2020,
+    "session": 1,
+    "number": 79,
+    "subject": "정보보안일반",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 지문에서 설명하고 있는 대칭키 암호 알고리즘은?",
+    "options": [
+      "SEED",
+      "DES",
+      "SHA-1",
+      "IDEA"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안일반",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-080",
+    "year": 2020,
+    "session": 1,
+    "number": 80,
+    "subject": "정보보안일반",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 지문은 공개키 암호방식에 대한 내용을 설명한 것이다. (가)~(마)에 들어가야 할 단어로 옳은 것은?",
+    "options": [
+      "(가) 정수 (나) p × q (다) 이산대수 문제 (라) RSA (마) ElGamal",
+      "(가) 소수 (나) p + q (다) 소인수분해 문제 (라) 타원곡선암호 (마) Diffie-Hellman 암호",
+      "(가) 실수 (나) p + q (다) 이산대수 문제 (라) Rabin 암호 (마) 타원곡선암호",
+      "(가) 소수 (나) p × q (다) 소인수분해 문제 (라) RSA (마) Rabin 암호"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안일반",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-081",
+    "year": 2020,
+    "session": 1,
+    "number": 81,
+    "subject": "정보보안관리및법규",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "과학기술정보통신부장관은 다음 중 어느 하나에 해당하는 사유를 발견한 경우 정보보호 관리체계 인증을 취소할 수 있다. 해당 사유 발생 시 반드시 인증을 취소해야 하는 것은?",
+    "options": [
+      "거짓이나 그 밖의 부정한 방법으로 정보보호 관리체계 인증을 받은 경우",
+      "사후관리를 거부한 경우",
+      "(과학기술정보통신부장관이 정한 인증기준에 미달하게 된 경우",
+      "사후관리를 방해한 경우"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안관리및법규",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-082",
+    "year": 2020,
+    "session": 1,
+    "number": 82,
+    "subject": "정보보안관리및법규",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "개인정보의 안정성 확보조치 기준(고시)의 제7조(개인정보의 암호화)에 따라 반드시 암호화하여 저장해야하는 개인정보가 아닌 것은?",
+    "options": [
+      "비밀번호",
+      "고유식별번호",
+      "바이오 정보",
+      "전화번호"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안관리및법규",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-083",
+    "year": 2020,
+    "session": 1,
+    "number": 83,
+    "subject": "정보보안관리및법규",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "아래 지문에서 설명하고 있는 것은 무엇인가?",
+    "options": [
+      "정성적 위험분석",
+      "정량적 위험분석",
+      "상세 위험분석",
+      "베이스라인 접근법"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안관리및법규",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-084",
+    "year": 2020,
+    "session": 1,
+    "number": 84,
+    "subject": "정보보안관리및법규",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "정보보호 내부 감사 시 고려해야할 사항으로 가장 부적합한 것은?",
+    "options": [
+      "내부감사를 수행하는 구성원은 정보보호 전문가들로 제한한다.",
+      "감사의 범위는 다양한 위험을 분석 및 검토할 수 있도록 가능한 포괄적이어야 한다.",
+      "감사활동은 기업 내외부로부터 독립성을 유지할 수 있도록 해야 한다.",
+      "내부감사는 조직의 위험을 파악하여 개선사항을 제시할 수 있다."
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안관리및법규",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-085",
+    "year": 2020,
+    "session": 1,
+    "number": 85,
+    "subject": "정보보안관리및법규",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "100만명 미만의 정보주체에 관한 개인정보를 보유한 중소기업의 내부관리계획의 내용에 포함하지 않아도 될 사항은 무엇인가?",
+    "options": [
+      "개인정보 보호책임자의 지정에 관한 사항",
+      "개인정보 유출사고 대응ㆍ계획 수립ㆍ시행에 관한 사항",
+      "개인정보의 암호화 조치에 관한 사항",
+      "개인정보 처리업무를 위탁하는 경우 수탁자에 대한 관리 및 감독에 관한 사항"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안관리및법규",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-086",
+    "year": 2020,
+    "session": 1,
+    "number": 86,
+    "subject": "정보보안관리및법규",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 중 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」제 47조의 정보보호 관리체계의 인증 제도에 대한 설명으로 옳지 않은 것은?",
+    "options": [
+      "정보보호 관리체계 인증의 유효기간은 3년이다.",
+      "정보보호 관리체계 인증은 의무 대상자는 반드시 인증을 받아야 하며 의무 대상자가 아닌 경우에도 인증을 취득할 수 있다.",
+      "정보보호 관리체계는 정보통신망의 안정성ㆍ신뢰성 확보를 위하여 관리적ㆍ기술적ㆍ물리적 보호조치를 포함한 종합적 관리체계를 의미한다.",
+      "정보보호 관리체계 의무대상자는 국제표준 정보보호 인증을 받거나 정보보호 조치를 취한 경우에는 인증 심사의 전부를 생략할 수 있다."
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안관리및법규",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-087",
+    "year": 2020,
+    "session": 1,
+    "number": 87,
+    "subject": "정보보안관리및법규",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "개인정보처리자가 정보주체의 동의를 받을 때 정보주체에게 알려야 하는 항목이 아닌 것은?",
+    "options": [
+      "개인정보의 수집ㆍ이용 목적",
+      "수집하려는 개인정보의 항목",
+      "개인정보의 보유 및 이용 기간",
+      "개인정보의 수집 출처"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안관리및법규",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-088",
+    "year": 2020,
+    "session": 1,
+    "number": 88,
+    "subject": "정보보안관리및법규",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "정성적 위험분석 방법론에 해당되지 않는 것은?",
+    "options": [
+      "델파이 기법",
+      "순위 결정법",
+      "시나리오법",
+      "과거 자료 분석법"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안관리및법규",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-089",
+    "year": 2020,
+    "session": 1,
+    "number": 89,
+    "subject": "정보보안관리및법규",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 중 아래 내용에 해당하는 위험분석 방법론으로 적절히 짝지은 것은?",
+    "options": [
+      "㉠ 시나리오법 ㉡ 델파이법",
+      "㉠ 확률 분포법 ㉡ 순위결정법",
+      "㉠ 델파이법 ㉡ 확률 분포법",
+      "㉠ 시나리오법 ㉡ 순위결정법"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안관리및법규",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-090",
+    "year": 2020,
+    "session": 1,
+    "number": 90,
+    "subject": "정보보안관리및법규",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음의 ISMS 인증 의무 대상자에 대한 설명으로 잘못 기술 된 것은?",
+    "options": [
+      "전기통신사업법의 전기통신사업자로 전국적으로 정보통신망 서비스를 제공하는 사업자",
+      "타인의 정보통신서비스 제공을 위하여 집적된 정보통신시설을 운영ㆍ관리하는 사업자",
+      "정보통신서비스 부문 전년도 매출액 100억 이상 사업자",
+      "전년도말 기준 직전 6월간 일일 평균 이용자 수 100만명 이상 사업자"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안관리및법규",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-091",
+    "year": 2020,
+    "session": 1,
+    "number": 91,
+    "subject": "정보보안관리및법규",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 경제협력개발기구(OECD) 개인정보 보안 8원칙에 대한 설명 중 옳지 않은 것은?",
+    "options": [
+      "수집 제한의 법칙: 개인정보는 적법하고 공정한 방법을 통해 수집해야 한다.",
+      "목적 명시의 원칙(Purpose Specification Principle): 개인정보는 수집 과정에서 수집 목적을 명시하고, 명시된 목적에 적합하게 이용해야 한다.",
+      "비공개의 원칙(Closedness Principle): 개인정보의 처리 및 보호를 위한 관리자에 대한 정보는 비공개해야 한다.",
+      "책임의 원칙(Accountability Principle): 개인정보 관리자에게 원칙 준수 의무 및 책임을 부과해야 한다."
+    ],
+    "answer": 3,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안관리및법규",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-092",
+    "year": 2020,
+    "session": 1,
+    "number": 92,
+    "subject": "정보보안관리및법규",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 중 위험분석을 위한 ALE 계산에 사용되지 않는 값은 무엇인가?",
+    "options": [
+      "자산가치",
+      "노출계수",
+      "연간발생률",
+      "우선순위"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안관리및법규",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-093",
+    "year": 2020,
+    "session": 1,
+    "number": 93,
+    "subject": "정보보안관리및법규",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "정보시스템의 개발 및 시험 과정을 검토한 결과, 정보보안측면에서 가장 적절하지 않은 것은?",
+    "options": [
+      "시험데이터로 임의의 데이터를 생성하거나 운영데이터를 가공 변환한 후 사용하고 있다.",
+      "실 운영데이터를 테스트 용도로 사용하고 테스트 완료 후 테스트 DB에서 삭제하였다.",
+      "이전 버전의 소스 코드를 운영 서버에 보관하고 있다.",
+      "실 운영데이터를 테스트 용도로 사용하고 테스트 DB에 대해 운영 DB와 동일한 수준의 접근통제를 적용하고 있다."
+    ],
+    "answer": 3,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안관리및법규",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-094",
+    "year": 2020,
+    "session": 1,
+    "number": 94,
+    "subject": "정보보안관리및법규",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 지문에서 설명하는 백업 설비는?",
+    "options": [
+      "콜드 사이트",
+      "미러 사이트",
+      "웜 사이트",
+      "핫 사이트"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안관리및법규",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-095",
+    "year": 2020,
+    "session": 1,
+    "number": 95,
+    "subject": "정보보안관리및법규",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 빈칸 ㉠에 들어갈 말로 적절한 것은?",
+    "options": [
+      "ISMS",
+      "PIMS",
+      "ISMS-P",
+      "GDPR"
+    ],
+    "answer": 3,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안관리및법규",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-096",
+    "year": 2020,
+    "session": 1,
+    "number": 96,
+    "subject": "정보보안관리및법규",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음 지문의 정보통신망 이용촉진 및 정보보호 등에 관한 법률에서 정의하는 용어에 대한 설명으로 옳지 않은 것은 무엇인가?",
+    "options": [
+      "a, b",
+      "b, c",
+      "c, d",
+      "b, d"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안관리및법규",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-097",
+    "year": 2020,
+    "session": 1,
+    "number": 97,
+    "subject": "정보보안관리및법규",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "정보통신망 이용촉진 및 정보보호 등에 관한 법률에 따라 침해사고의 유형별 통계, 해당 정보 통신망의 소통량 통계 및 접속경로별 이용 통계 등의 침해사고 관련 정보를 과학기술정보통신부 장관이나 한국인터넷진흥원에 제공해야 하는 기관이 아닌 것은?",
+    "options": [
+      "정보보호 전문서비스 기업",
+      "주요정보통신서비스 제공자",
+      "컴퓨터바이러스 백신소프트웨어 제조자",
+      "집적정보통신시설 사업자"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안관리및법규",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-098",
+    "year": 2020,
+    "session": 1,
+    "number": 98,
+    "subject": "정보보안관리및법규",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "다음에서 설명하는 것은?",
+    "options": [
+      "암호모듈검증 제도",
+      "정보보호시스템 공통평가 제도",
+      "보안 적합성 검증 제도",
+      "정보보호 사전점검 제도"
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안관리및법규",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-099",
+    "year": 2020,
+    "session": 1,
+    "number": 99,
+    "subject": "정보보안관리및법규",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "위험 분석 수행의 주목적은 기업이 피해를 입었을 때 손실 비용에 대한 값을 산정하거나 가치를 부여하기 위해 잠재적 위협의 충격 정도를 정하는 것이다. 위협이 가해질 때 특정 위협이나 위협 그룹에 관련된 위험을 제거하기 위해 적용된 통제나 대응방안을 의미하는 것은?",
+    "options": [
+      "세이프가드",
+      "규제 정책",
+      "가이드",
+      "복구 절차"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안관리및법규",
+      "기출문제",
+      "2020"
+    ]
+  },
+  {
+    "id": "2020-1-100",
+    "year": 2020,
+    "session": 1,
+    "number": 100,
+    "subject": "정보보안관리및법규",
+    "topic": "2020년 05월 30일 기출",
+    "type": "objective",
+    "question": "정보보호 관리의 목적, 이유, 범위 등에 대한 거시적이고 개괄적인 설명 중 가장 부적절한 것은?",
+    "options": [
+      "조직은 정보보호관리를 통해 정보 및 자산의 기밀성, 무결성, 가용성 서비스를 받을 수 있다.",
+      "조직이 정보보호관리를 구현하고 실행하는 것은 조직의 목적, 보안요구사항, 조직의 크기 및 구조에 영향을 받는다.",
+      "조직의 요구 및 수요에 따라 정보보호관리 규모가 변화될 수 있다.",
+      "정보보호관리의 적용 범위는 정보보호 실무자가 위험분석에 의해 결정한다."
+    ],
+    "answer": 4,
+    "explanation": "",
+    "hasImage": false,
+    "tags": [
+      "정보보안기사",
+      "정보보안관리및법규",
+      "기출문제",
+      "2020"
+    ]
+  }
+]

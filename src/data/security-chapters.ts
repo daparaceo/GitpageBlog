@@ -3010,6 +3010,24 @@ KDC = AS(Authentication Service) + TGS(Ticket Granting Service)</code></pre>
     <tr><td>대표 방법</td><td>ALE 계산, 보험 수리적 방법</td><td>델파이법, 시나리오법</td></tr>
   </tbody>
 </table>
+
+<h3>출제 포인트</h3>
+<ul>
+  <li><strong>위험분석</strong>은 위험의 크기를 산정하는 단계이고, <strong>위험평가</strong>는 산정된 위험을 허용 기준과 비교해 우선순위를 정하는 단계다.</li>
+  <li><strong>잔여위험</strong>은 대책 적용 후에도 남는 위험이며, 보통 경영진의 공식 수용이 필요하다.</li>
+  <li>정량적 분석 문제는 <strong>SLE = AV × EF</strong>, <strong>ALE = SLE × ARO</strong> 공식을 먼저 확인한다.</li>
+  <li>정성적 분석은 빠르고 비용이 낮지만 주관성이 높고, 정량적 분석은 객관적이지만 자료 수집 비용이 크다.</li>
+</ul>
+
+<h3>자주 나오는 오답 함정</h3>
+<table>
+  <thead><tr><th>함정</th><th>정리</th></tr></thead>
+  <tbody>
+    <tr><td>위험식별과 위험평가 혼동</td><td>식별은 자산·위협·취약점을 찾는 단계, 평가는 허용 기준과 비교하는 단계</td></tr>
+    <tr><td>SLE와 ALE 혼동</td><td>SLE는 단일 사고 손실액, ALE는 연간 기대 손실액</td></tr>
+    <tr><td>대책 비용 판단</td><td>대책 비용이 ALE 절감액보다 작을 때 도입 타당성이 높다</td></tr>
+  </tbody>
+</table>
     `,
   },
   {
@@ -3115,6 +3133,24 @@ KDC = AS(Authentication Service) + TGS(Ticket Granting Service)</code></pre>
     <tr><td>결과물</td><td>고장 모드 목록 + RPN (위험우선순위)</td><td>논리 게이트 기반 결함 트리</td></tr>
   </tbody>
 </table>
+
+<h3>출제 포인트</h3>
+<ul>
+  <li><strong>베이스라인 접근법</strong>은 빠르고 표준화되어 있지만 조직 특수성을 반영하기 어렵다.</li>
+  <li><strong>상세 위험분석</strong>은 정확하지만 시간과 비용이 많이 들어 중요 시스템에 적합하다.</li>
+  <li><strong>복합 접근법</strong>은 일반 시스템에는 기준선을 적용하고, 핵심 자산에는 상세 분석을 적용하는 방식이다.</li>
+  <li><strong>STRIDE</strong>는 위협 유형 분류, <strong>DREAD</strong>는 위험도 점수화에 가깝다.</li>
+</ul>
+
+<h3>자주 나오는 오답 함정</h3>
+<table>
+  <thead><tr><th>함정</th><th>정리</th></tr></thead>
+  <tbody>
+    <tr><td>FMEA와 FTA 방향 혼동</td><td>FMEA는 고장 원인에서 영향으로, FTA는 최상위 장애에서 원인으로 추적</td></tr>
+    <tr><td>OCTAVE 특징 혼동</td><td>기술보다 조직 관점과 자체 평가를 강조한다</td></tr>
+    <tr><td>STRIDE 항목 암기</td><td>위장·변조·부인·정보노출·서비스거부·권한상승 순서로 묶어 기억</td></tr>
+  </tbody>
+</table>
     `,
   },
   {
@@ -3187,6 +3223,24 @@ KDC = AS(Authentication Service) + TGS(Ticket Granting Service)</code></pre>
 <p>보안 통제 도입의 타당성 판단 공식:</p>
 <p><strong>대책 비용 &lt; ALE 절감액</strong> → 도입 타당</p>
 <p>비용-효과 분석(Cost-Benefit Analysis)을 통해 가장 경제적인 대책을 선택해야 한다.</p>
+
+<h3>출제 포인트</h3>
+<ul>
+  <li><strong>위험감소</strong>는 보안대책을 적용해 발생 가능성이나 영향을 낮추는 전략이다.</li>
+  <li><strong>위험회피</strong>는 위험을 만드는 업무나 서비스를 중단하는 것으로, 대책 적용과 다르다.</li>
+  <li><strong>위험전가</strong>는 보험이나 아웃소싱처럼 손실 부담을 외부로 넘기는 전략이다. 위험 자체가 사라지는 것은 아니다.</li>
+  <li><strong>위험수용</strong>은 대책 비용이 기대 손실보다 크거나 위험이 허용 수준 이하일 때 선택한다.</li>
+</ul>
+
+<h3>자주 나오는 오답 함정</h3>
+<table>
+  <thead><tr><th>함정</th><th>정리</th></tr></thead>
+  <tbody>
+    <tr><td>전가와 회피 혼동</td><td>전가는 책임·손실 이전, 회피는 위험 활동 중단</td></tr>
+    <tr><td>잔여위험 의미</td><td>통제 후 남는 위험이며, 0이 되는 것을 전제로 하지 않는다</td></tr>
+    <tr><td>통제 유형 혼동</td><td>방화벽은 예방, IDS는 탐지, 백업 복구는 교정·복구 통제</td></tr>
+  </tbody>
+</table>
     `,
   },
   {
@@ -3269,6 +3323,24 @@ KDC = AS(Authentication Service) + TGS(Ticket Granting Service)</code></pre>
   <li><strong>계획 수립</strong>: 상세 복구 절차, 비상 연락망, 역할 배정</li>
   <li><strong>테스트·유지보수</strong>: 정기 훈련(테이블탑/시뮬레이션/실제 절체), 연간 갱신</li>
 </ol>
+
+<h3>출제 포인트</h3>
+<ul>
+  <li><strong>BCP</strong>는 조직 전체의 업무연속성 계획이고, <strong>DRP</strong>는 IT 시스템 재해복구 계획으로 BCP의 하위 개념이다.</li>
+  <li><strong>BIA</strong>는 핵심 업무와 복구 우선순위를 정하는 단계이며, RTO와 RPO 산정의 근거가 된다.</li>
+  <li><strong>RTO</strong>는 복구까지 허용되는 시간, <strong>RPO</strong>는 허용 가능한 데이터 손실 시점이다.</li>
+  <li>복구 사이트는 일반적으로 <strong>미러 → 핫 → 웜 → 콜드</strong> 순서로 비용과 준비도가 높다.</li>
+</ul>
+
+<h3>자주 나오는 오답 함정</h3>
+<table>
+  <thead><tr><th>함정</th><th>정리</th></tr></thead>
+  <tbody>
+    <tr><td>RTO와 RPO 혼동</td><td>RTO는 시간, RPO는 데이터 손실 허용 범위</td></tr>
+    <tr><td>핫 사이트와 웜 사이트 혼동</td><td>핫은 장비와 데이터가 즉시 운영 가능, 웜은 복원·설정 시간이 필요</td></tr>
+    <tr><td>BCP와 DRP 범위 혼동</td><td>BCP는 업무 전체, DRP는 IT 복구 중심</td></tr>
+  </tbody>
+</table>
     `,
   },
   {
@@ -3721,6 +3793,24 @@ KDC = AS(Authentication Service) + TGS(Ticket Granting Service)</code></pre>
   <li><strong>역할별 교육</strong>: 일반 직원·개발자·관리자·경영진별 맞춤 교육 내용</li>
   <li><strong>측정</strong>: 교육 전·후 인식 수준 비교, 피싱 클릭률 추이 모니터링</li>
 </ul>
+
+<h3>출제 포인트</h3>
+<ul>
+  <li><strong>정보보호 거버넌스</strong>는 보안을 경영 목표와 정렬하고 책임·권한·성과를 관리하는 체계다.</li>
+  <li><strong>정보보호 정책</strong>은 최상위 문서이고, 표준·지침·절차는 이를 구체화하는 하위 문서다.</li>
+  <li><strong>변경관리</strong>는 변경 승인과 영향 검토, <strong>형상관리</strong>는 기준선과 변경 이력 관리에 초점이 있다.</li>
+  <li><strong>공급망 보안</strong>은 계약 단계의 보안 요구사항, 정기 감사, 사고 통보 의무를 함께 본다.</li>
+</ul>
+
+<h3>자주 나오는 오답 함정</h3>
+<table>
+  <thead><tr><th>함정</th><th>정리</th></tr></thead>
+  <tbody>
+    <tr><td>보안을 IT 부서 책임으로만 보는 선택지</td><td>거버넌스 관점에서는 경영진과 이사회 책임이 포함된다</td></tr>
+    <tr><td>변경관리와 형상관리 혼동</td><td>변경관리는 승인 절차, 형상관리는 기준선과 상태 추적</td></tr>
+    <tr><td>교육 대상 축소</td><td>보안 교육은 일반 사용자뿐 아니라 관리자·외주 인력까지 역할별로 수행한다</td></tr>
+  </tbody>
+</table>
     `,
   },
 
@@ -3769,6 +3859,24 @@ KDC = AS(Authentication Service) + TGS(Ticket Granting Service)</code></pre>
   <li><strong>개인정보보호위원회</strong>: 개인정보 보호법 집행, 과징금·과태료 부과, 법령 해석</li>
   <li><strong>CSIRT (Computer Security Incident Response Team)</strong>: 기관·기업 내 침해사고 대응팀, 탐지·분석·복구</li>
 </ul>
+
+<h3>출제 포인트</h3>
+<ul>
+  <li>개인정보 보호법은 모든 개인정보처리자에게 적용되는 일반법 성격이 강하다.</li>
+  <li>정보통신망법은 정보통신서비스 제공자의 망 이용, 침해사고, 스팸, ISMS 의무와 자주 연결된다.</li>
+  <li>정보통신기반 보호법은 주요정보통신기반시설의 지정, 보호계획, 취약점 분석·평가가 핵심이다.</li>
+  <li>과징금은 매출액 비례 제재, 과태료는 행정질서벌 성격의 정액 제재로 구분한다.</li>
+</ul>
+
+<h3>자주 나오는 오답 함정</h3>
+<table>
+  <thead><tr><th>함정</th><th>정리</th></tr></thead>
+  <tbody>
+    <tr><td>과태료와 과징금 혼동</td><td>과징금은 위반행위 관련 매출액 기준, 과태료는 신고·공개 등 의무 위반에 자주 출제</td></tr>
+    <tr><td>신고 대상 기관 혼동</td><td>개인정보 유출은 개인정보보호위원회, 침해사고 대응은 KISA·관계기관과 연결</td></tr>
+    <tr><td>법률 적용 대상 혼동</td><td>개인정보 보호법은 일반 개인정보 처리, 기반보호법은 주요정보통신기반시설 중심</td></tr>
+  </tbody>
+</table>
     `,
   },
   {
@@ -3985,6 +4093,24 @@ KDC = AS(Authentication Service) + TGS(Ticket Granting Service)</code></pre>
   <li>법적 효력: 서명 시점 증명, 위변조 탐지</li>
   <li>TSA (Time Stamping Authority): 공인 타임스탬프 발급 기관</li>
 </ul>
+
+<h3>출제 포인트</h3>
+<ul>
+  <li>광고성 정보는 수신 동의, 광고 표시, 수신거부 수단 제공 여부를 함께 본다.</li>
+  <li>해킹과 악성프로그램 유포는 정보통신망법상 금지행위로 형사처벌 대상이다.</li>
+  <li>전자서명법 개정 후 공인인증서의 독점적 지위가 사라졌고, 기존 명칭은 공동인증서로 바뀌었다.</li>
+  <li>타임스탬프는 전자문서나 전자서명이 특정 시점에 존재했다는 사실을 증명하는 수단이다.</li>
+</ul>
+
+<h3>자주 나오는 오답 함정</h3>
+<table>
+  <thead><tr><th>함정</th><th>정리</th></tr></thead>
+  <tbody>
+    <tr><td>전자서명과 암호화 혼동</td><td>전자서명은 무결성·인증·부인방지, 암호화는 기밀성 중심</td></tr>
+    <tr><td>공인인증서 법적 우대</td><td>2020년 개정으로 우대가 폐지되었고 다양한 전자서명 수단이 인정된다</td></tr>
+    <tr><td>스팸 규제 요건 누락</td><td>동의, 표시, 수신거부, 야간 전송 제한을 묶어서 확인한다</td></tr>
+  </tbody>
+</table>
     `,
   },
   {
@@ -4113,6 +4239,24 @@ KDC = AS(Authentication Service) + TGS(Ticket Granting Service)</code></pre>
     <tr><td><strong>주의</strong></td><td>2단계</td><td>일부 피해 발생, 대응 준비</td></tr>
     <tr><td><strong>경계</strong></td><td>3단계</td><td>피해 확산, 적극 대응</td></tr>
     <tr><td><strong>심각</strong></td><td>4단계</td><td>국가 기반 마비 수준, 범정부 대응</td></tr>
+  </tbody>
+</table>
+
+<h3>출제 포인트</h3>
+<ul>
+  <li>주요정보통신기반시설은 국가안보·경제·사회·국민 생활에 중대한 영향을 주는 시설이다.</li>
+  <li>지정 주체는 관계중앙행정기관의 장이며, 운영기관은 보호계획과 취약점 분석·평가 의무를 가진다.</li>
+  <li>취약점 분석·평가는 주기와 담당 기관이 자주 출제되며, 결과는 보호계획에 반영된다.</li>
+  <li>SCADA·ICS는 가용성과 안전성이 중요해 일반 IT 보안보다 패치·중단 적용이 어렵다.</li>
+</ul>
+
+<h3>자주 나오는 오답 함정</h3>
+<table>
+  <thead><tr><th>함정</th><th>정리</th></tr></thead>
+  <tbody>
+    <tr><td>지정 주체 혼동</td><td>주요정보통신기반시설은 관계중앙행정기관의 장이 지정한다</td></tr>
+    <tr><td>보호계획과 취약점 분석 혼동</td><td>보호계획은 매년 수립, 취약점 분석·평가는 주기적으로 수행해 결과를 반영한다</td></tr>
+    <tr><td>IT와 OT 보안 동일시</td><td>OT는 장기 운영과 가용성 우선 특성 때문에 패치와 중단이 어렵다</td></tr>
   </tbody>
 </table>
     `,
