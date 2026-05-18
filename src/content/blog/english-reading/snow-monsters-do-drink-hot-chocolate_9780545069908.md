@@ -11,7 +11,6 @@ series: "the bailey school kids"
 isbn: "9780545069908"
 ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/bca8effa1e86e32ffab2cdf8.jpg"
 ---
-
 <div class="book-container" translate="no">
 <img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/bca8effa1e86e32ffab2cdf8.jpg" alt="Snow Monsters Do Drink Hot Chocolate (cover)" />
 <table class="book-table">
@@ -25,6 +24,17 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/b
 </div>
 
 데드만 힐에서 썰매를 즐기던 에디, 멜로디, 리자, 하워드는 눈부신 스노보드 실력을 가진 낯선 어른을 발견합니다. 눈 속에 뒹굴다 꽁꽁 얼어버린 에디는 따뜻한 핫초코를 마시러 버거 두들에 들어서다 바로 그 남자와 정면충돌합니다. 자신을 해리 스노든이라고 소개한 그는 온통 흰 옷을 입고 머리카락에 고드름이 달린 채 차가운 밀크셰이크를 즐기고 있었죠. 하워드는 해리가 설인(예티)이며, 그가 베일리 시티에 영원한 겨울을 불러왔다고 확신합니다. 과연 해리 스노든의 정체는 무엇일까요? 아이들은 그를 시험해 볼 계획을 세우기 시작합니다.
+
+<div class="tip-box">
+  <h3>📌 이렇게 활용하세요</h3>
+  <ul>
+    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
+    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
+    <li><b>시리즈 읽기:</b> Bailey School Kids 시리즈는 각 권이 독립적인 이야기로 어느 권부터 읽어도 괜찮습니다. 다양한 몬스터 캐릭터가 등장해 호기심을 자극하는 시리즈예요.</li>
+    <li><b>의성어·의태어 찾기:</b> Zoom! Swish! Whoosh! Blam! Pow! 처럼 생생한 소리를 나타내는 단어들을 모아보고 직접 소리 내어 읽으면 읽기의 재미가 두 배가 됩니다.</li>
+  </ul>
+  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+</div>
 
 <div class="section">
 <h3>✏️ 핵심 어휘</h3>
@@ -124,13 +134,20 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/b
 
 </div>
 
-<div class="tip-box">
-  <h3>📌 이렇게 활용하세요</h3>
-  <ul>
-    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
-    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
-    <li><b>시리즈 읽기:</b> Bailey School Kids 시리즈는 각 권이 독립적인 이야기로 어느 권부터 읽어도 괜찮습니다. 다양한 몬스터 캐릭터가 등장해 호기심을 자극하는 시리즈예요.</li>
-    <li><b>의성어·의태어 찾기:</b> Zoom! Swish! Whoosh! Blam! Pow! 처럼 생생한 소리를 나타내는 단어들을 모아보고 직접 소리 내어 읽으면 읽기의 재미가 두 배가 됩니다.</li>
-  </ul>
-  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+<details class="review-toggle">
+<summary>💡 리뷰</summary>
+<div class="review-en">
+<p><b>Introduction</b></p>
+<p>&nbsp;&nbsp;This book is called <i>Snow Monsters Do Drink Hot Chocolate</i>, written by Marcia Thornton Jones. It is part of the Bailey School Kids series. In this story, four friends — Eddie, Melody, Liza, and Howie — meet a mysterious snowboarder named Harry Snowden on a snowy winter day.</p>
+<p><b>Body</b></p>
+<p>&nbsp;&nbsp;My favorite part of the story is when Howie watches Harry Snowden very carefully and starts to think he is a yeti. Howie notices many clues, like the ice that forms around Harry's boots and the cold air that surrounds him. Howie is very smart and observant, and I liked how he tried to convince his friends about his theory. Eddie, on the other hand, never listens and always rushes into things without thinking, which makes the story funny and exciting. The mystery of whether Harry is really a snow monster kept me curious until the end.</p>
+<p><b>Conclusion</b></p>
+<p>&nbsp;&nbsp;I really enjoyed this book because it mixed a funny adventure with a spooky mystery. The characters felt very real, especially the way Eddie always causes trouble without meaning to. I would recommend this book to anyone who likes mysteries and funny stories set in winter. I can't wait to read more books in the Bailey School Kids series!</p>
+<br>
 </div>
+<div class="review-ko">
+<p>&nbsp;&nbsp;이 책의 제목은 『Snow Monsters Do Drink Hot Chocolate』으로, 마르시아 손턴 존스가 썼습니다. Bailey School Kids 시리즈의 한 권이에요. 이야기에는 에디, 멜로디, 리자, 하워드 네 명의 친구들이 등장하는데, 어느 눈 오는 겨울날 해리 스노든이라는 수수께끼 같은 스노보더를 만나게 됩니다.</p>
+<p>&nbsp;&nbsp;제가 가장 좋아하는 부분은 하워드가 해리 스노든을 주의 깊게 관찰하면서 그가 예티일지도 모른다고 생각하기 시작하는 장면입니다. 하워드는 해리의 부츠 주변에 생기는 얼음과 그를 둘러싼 차가운 공기 같은 여러 단서를 발견해요. 하워드는 매우 영리하고 관찰력이 뛰어나서, 친구들을 설득하려는 모습이 인상적이었습니다. 반면 에디는 항상 생각 없이 먼저 행동해서 이야기가 재미있고 흥미진진하게 펼쳐집니다. 해리가 정말 설인인지 아닌지에 대한 수수께끼 덕분에 끝까지 궁금함을 놓칠 수 없었어요.</p>
+<p>&nbsp;&nbsp;이 책은 재미있는 모험과 으스스한 미스터리가 잘 어우러져 정말 즐겁게 읽었습니다. 에디가 뜻하지 않게 사고를 치는 모습이 특히 실감 나고 웃겼어요. 겨울을 배경으로 한 미스터리하고 유쾌한 이야기를 좋아한다면 꼭 추천하고 싶은 책입니다. Bailey School Kids 시리즈의 다른 책들도 빨리 읽고 싶어졌어요!</p>
+</div>
+</details>

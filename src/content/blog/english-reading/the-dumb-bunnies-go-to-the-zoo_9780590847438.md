@@ -11,7 +11,6 @@ ar_level: 2.7
 series: "Dumb Bunnies"
 isbn: "9780590847438"
 ---
-
 <div class="book-container" translate="no">
 <img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/ef499576109740a7d5126bf9.jpg" alt="The Dumb Bunnies Go To The Zoo 표지" />
 <table class="book-table">
@@ -24,9 +23,22 @@ isbn: "9780590847438"
 </table>
 </div>
 
-<div class="section">
-<h3>📖 줄거리</h3>
-<p>존재하지 않는 달인 "Octember(옥템버)"의 어느 아침, 엄마 토끼는 꽃을, 아빠 토끼는 채소를, 아기 토끼는 코를 "따고" 있습니다. 아기 토끼가 미술관에 가고 싶다고 하자, 아빠 토끼는 "딱 좋은 곳"이라며 동물원으로 향합니다. 동물원에서 코끼리 안내판 위의 새를 코끼리로, 사자 안내판 위의 나비를 사자로 굳게 믿은 가족은 "사자 탈출!" 대소동을 일으킵니다. 경찰까지 출동하지만 나비는 이미 날아간 뒤. 집으로 돌아가는 길에 "Free Kitties" 상자에서 커다란 동물 두 마리를 데려가지만 차 지붕에 묶다 결국 잃어버립니다. 해가 동쪽에 지는 저녁, 엉터리 토끼 가족은 불을 켜고 "굿모닝"이라 인사하며 잠들어요.</p>
+<details class="story-toggle">
+<summary>📖 줄거리</summary>
+
+<p><p>존재하지 않는 달인 "Octember(옥템버)"의 어느 아침, 엄마 토끼는 꽃을, 아빠 토끼는 채소를, 아기 토끼는 코를 "따고" 있습니다. 아기 토끼가 미술관에 가고 싶다고 하자, 아빠 토끼는 "딱 좋은 곳"이라며 동물원으로 향합니다. 동물원에서 코끼리 안내판 위의 새를 코끼리로, 사자 안내판 위의 나비를 사자로 굳게 믿은 가족은 "사자 탈출!" 대소동을 일으킵니다. 경찰까지 출동하지만 나비는 이미 날아간 뒤. 집으로 돌아가는 길에 "Free Kitties" 상자에서 커다란 동물 두 마리를 데려가지만 차 지붕에 묶다 결국 잃어버립니다. 해가 동쪽에 지는 저녁, 엉터리 토끼 가족은 불을 켜고 "굿모닝"이라 인사하며 잠들어요.</p></p>
+
+</details>
+
+<div class="tip-box">
+  <h3>📌 이렇게 활용하세요</h3>
+  <ul>
+    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li><!-- 내용 고정 -->
+    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li><!-- 내용 고정 -->
+    <li><b>말장난 찾기:</b> "Octember", "best week we've had all day", "picking his nose" 등 작가가 숨겨 놓은 넌센스를 찾아보세요.</li>
+    <li>반복 표현 "That's my boy!"가 몇 번 등장하는지 세어보세요.</li>
+  </ul>
+  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
 </div>
 
 <div class="section">
@@ -127,13 +139,12 @@ isbn: "9780590847438"
 
 </div>
 
-<div class="tip-box">
-  <h3>📌 이렇게 활용하세요</h3>
-  <ul>
-    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li><!-- 내용 고정 -->
-    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li><!-- 내용 고정 -->
-    <li><b>말장난 찾기:</b> "Octember", "best week we've had all day", "picking his nose" 등 작가가 숨겨 놓은 넌센스를 찾아보세요.</li>
-    <li>반복 표현 "That's my boy!"가 몇 번 등장하는지 세어보세요.</li>
-  </ul>
-  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+<details class="review-toggle">
+<summary>💡 리뷰</summary>
+<div class="review-en">
+<p>리뷰 준비 중입니다.</p>
 </div>
+<div class="review-ko">
+
+</div>
+</details>

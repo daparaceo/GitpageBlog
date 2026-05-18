@@ -10,7 +10,6 @@ author: "Stella Blackstone"
 ar_level: 1.5
 isbn: "9781646860388"
 ---
-
 <div class="book-container" translate="no">
 <img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/2e02e82d210a3c29d54b3452.jpg" alt="Bear In Sunshine (cover)" />
 <table class="book-table">
@@ -22,9 +21,22 @@ isbn: "9781646860388"
 </table>
 </div>
 
-<div class="section">
-<h3>📖 줄거리</h3>
-곰은 어떤 날씨에도 즐길 거리를 찾습니다. 해가 쨍쨍하면 신나게 놀고, 비가 오면 노래를 부르고, 바람이 불면 빨간 연을 날립니다. 얼음이 얼면 골목에서 스케이트를 타고, 안개가 끼면 그림을 그리고, 폭풍이 치면 침대 속에 숨습니다. 눈이 내리면 눈곰을 만들고, 달빛이 환하면 물구나무서기를 합니다. 봄, 여름, 가을, 겨울 — 어떤 날씨든 곰은 언제나 신나게 즐기는 법을 알고 있습니다.
+<details class="story-toggle">
+<summary>📖 줄거리</summary>
+
+<p>곰은 어떤 날씨에도 즐길 거리를 찾습니다. 해가 쨍쨍하면 신나게 놀고, 비가 오면 노래를 부르고, 바람이 불면 빨간 연을 날립니다. 얼음이 얼면 골목에서 스케이트를 타고, 안개가 끼면 그림을 그리고, 폭풍이 치면 침대 속에 숨습니다. 눈이 내리면 눈곰을 만들고, 달빛이 환하면 물구나무서기를 합니다. 봄, 여름, 가을, 겨울 — 어떤 날씨든 곰은 언제나 신나게 즐기는 법을 알고 있습니다.</p>
+
+</details>
+
+<div class="tip-box">
+  <h3>📌 이렇게 활용하세요</h3>
+  <ul>
+    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
+    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
+    <li>오늘의 날씨를 영어로 말해보는 습관을 들이세요. "It's sunny / rainy / windy / icy / misty today!"</li>
+    <li>"When it's ___, I like to ___." 패턴으로 아이가 자신만의 날씨 문장을 만들어 보도록 해보세요.</li>
+  </ul>
+  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
 </div>
 
 <div class="section">
@@ -125,13 +137,12 @@ isbn: "9781646860388"
 
 </div>
 
-<div class="tip-box">
-  <h3>📌 이렇게 활용하세요</h3>
-  <ul>
-    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
-    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
-    <li>오늘의 날씨를 영어로 말해보는 습관을 들이세요. "It's sunny / rainy / windy / icy / misty today!"</li>
-    <li>"When it's ___, I like to ___." 패턴으로 아이가 자신만의 날씨 문장을 만들어 보도록 해보세요.</li>
-  </ul>
-  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+<details class="review-toggle">
+<summary>💡 리뷰</summary>
+<div class="review-en">
+<p>리뷰 준비 중입니다.</p>
 </div>
+<div class="review-ko">
+
+</div>
+</details>

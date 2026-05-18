@@ -10,7 +10,6 @@ author: "Denise Fleming"
 ar_level: 2.3
 isbn: "9780805055818"
 ---
-
 <div class="book-container" translate="no">
 <img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/670cc06497e0d4796b080410.jpg" alt="Barnyard Banter (cover)" />
 <table class="book-table">
@@ -21,9 +20,22 @@ isbn: "9780805055818"
 </table>
 </div>
 
-<div class="section">
-<h3>📖 줄거리</h3>
-농장의 소는 목초지에서 음매, 수탉은 헛간 마당에서 꼬끼오, 암탉은 닭장에서 꼭꼭 소리를 냅니다. 소, 수탉, 암탉, 돼지, 새끼 고양이, 비둘기, 쥐, 공작새, 당나귀, 까마귀, 귀뚜라미, 개구리까지 12가지 동물이 각자의 자리에서 울음소리를 냅니다. 그런데 거위만 보이지 않아 "But where's Goose?"라는 질문이 계속 반복됩니다. 신나는 리듬을 따라 읽다 보면 마침내 숨어있던 거위가 나타나 "honk, honk, honk!" 소리를 냅니다.
+<details class="story-toggle">
+<summary>📖 줄거리</summary>
+
+<p>농장의 소는 목초지에서 음매, 수탉은 헛간 마당에서 꼬끼오, 암탉은 닭장에서 꼭꼭 소리를 냅니다. 소, 수탉, 암탉, 돼지, 새끼 고양이, 비둘기, 쥐, 공작새, 당나귀, 까마귀, 귀뚜라미, 개구리까지 12가지 동물이 각자의 자리에서 울음소리를 냅니다. 그런데 거위만 보이지 않아 "But where's Goose?"라는 질문이 계속 반복됩니다. 신나는 리듬을 따라 읽다 보면 마침내 숨어있던 거위가 나타나 "honk, honk, honk!" 소리를 냅니다.</p>
+
+</details>
+
+<div class="tip-box">
+  <h3>📌 이렇게 활용하세요</h3>
+  <ul>
+    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
+    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
+    <li>각 동물의 울음소리(moo, cluck, oink, coo 등)를 따라 말하며 읽으면 발음 연습과 리듬감을 동시에 익힐 수 있습니다.</li>
+    <li>"But where's Goose?"가 나올 때마다 잠시 멈추고 다음 페이지에서 거위를 직접 찾아보는 놀이처럼 읽어보세요.</li>
+  </ul>
+  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
 </div>
 
 <div class="section">
@@ -124,13 +136,12 @@ isbn: "9780805055818"
 
 </div>
 
-<div class="tip-box">
-  <h3>📌 이렇게 활용하세요</h3>
-  <ul>
-    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
-    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
-    <li>각 동물의 울음소리(moo, cluck, oink, coo 등)를 따라 말하며 읽으면 발음 연습과 리듬감을 동시에 익힐 수 있습니다.</li>
-    <li>"But where's Goose?"가 나올 때마다 잠시 멈추고 다음 페이지에서 거위를 직접 찾아보는 놀이처럼 읽어보세요.</li>
-  </ul>
-  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+<details class="review-toggle">
+<summary>💡 리뷰</summary>
+<div class="review-en">
+<p>리뷰 준비 중입니다.</p>
 </div>
+<div class="review-ko">
+
+</div>
+</details>

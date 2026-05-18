@@ -10,7 +10,6 @@ ar_level: 2.5
 isbn: "9780688147365"
 ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/a268a685e4cb8b4be50b89fd.jpg"
 ---
-
 <div class="book-container" translate="no">
 <img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/a268a685e4cb8b4be50b89fd.jpg" alt="More More More, Said the Baby (cover)" />
 <table class="book-table">
@@ -22,6 +21,17 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/a
 </div>
 
 세 명의 아기 — Little Guy, Little Pumpkin, Little Bird — 가 각자의 가족에게 듬뿍 사랑을 받는 이야기입니다. 아빠는 Little Guy의 배꼽에 뽀뽀를 해주고, 할머니는 Little Pumpkin의 발가락을 하나하나 입 맞춰주며, 엄마는 Little Bird의 눈꺼풀에 조용히 키스합니다. 사랑받는 아기들은 모두 같은 말로 답합니다. "More. More. More." 반복되는 리듬과 따뜻한 그림이 어우러진 Caldecott Honor 수상작입니다.
+
+<div class="tip-box">
+  <h3>📌 이렇게 활용하세요</h3>
+  <ul>
+    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
+    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
+    <li><b>소리 내어 읽기:</b> 'right in the middle right in the middle right in the middle'처럼 반복되는 구절을 노래하듯 읽어보세요. 영어의 리듬감을 자연스럽게 익힐 수 있습니다.</li>
+    <li><b>역할 놀이:</b> 책을 읽으며 아빠, 할머니, 엄마 역할을 번갈아 맡아보세요. 아이와 함께 아기 인형에게 책 속 노래를 불러주면 더욱 즐겁게 영어를 경험할 수 있습니다.</li>
+  </ul>
+  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+</div>
 
 <div class="section">
 <h3>✏️ 핵심 어휘</h3>
@@ -121,13 +131,20 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/a
 
 </div>
 
-<div class="tip-box">
-  <h3>📌 이렇게 활용하세요</h3>
-  <ul>
-    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
-    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
-    <li><b>소리 내어 읽기:</b> 'right in the middle right in the middle right in the middle'처럼 반복되는 구절을 노래하듯 읽어보세요. 영어의 리듬감을 자연스럽게 익힐 수 있습니다.</li>
-    <li><b>역할 놀이:</b> 책을 읽으며 아빠, 할머니, 엄마 역할을 번갈아 맡아보세요. 아이와 함께 아기 인형에게 책 속 노래를 불러주면 더욱 즐겁게 영어를 경험할 수 있습니다.</li>
-  </ul>
-  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+<details class="review-toggle">
+<summary>💡 리뷰</summary>
+<div class="review-en">
+<p><b>Introduction</b></p>
+<p>&nbsp;&nbsp;"More More More, Said the Baby" is a picture book written and illustrated by Vera B. Williams. It is a story about three babies — Little Guy, Little Pumpkin, and Little Bird — and the people who love them very much.</p>
+<p><b>Body</b></p>
+<p>&nbsp;&nbsp;Each baby is chased and caught by a family member who then sings a loving song. Little Guy's daddy kisses his belly button. Little Pumpkin's grandma counts her toes. Little Bird's mama rocks her to sleep. The same pattern repeats three times, making the book feel like a warm and gentle lullaby. I especially liked how each song focuses on a small, special part of the baby's body. It shows that love notices every little thing.</p>
+<p><b>Conclusion</b></p>
+<p>&nbsp;&nbsp;This book made me feel warm inside. The repeated phrases and the joyful "More. More. More." at the end of each story are very fun to read aloud. I think this book is a wonderful gift for any family with a baby. It reminds us that being loved is the best feeling in the world.</p>
+<br>
 </div>
+<div class="review-ko">
+<p>&nbsp;&nbsp;《More More More, Said the Baby》는 Vera B. Williams가 글을 쓰고 그림도 직접 그린 그림책입니다. 세 명의 아기 — 리틀 가이, 리틀 펌킨, 리틀 버드 — 와 그 아기들을 무척 사랑하는 가족들의 이야기입니다.</p>
+<p>&nbsp;&nbsp;각 아기는 가족에게 잡혀서 사랑스러운 노래를 들어요. 리틀 가이의 아빠는 배꼽에 뽀뽀를 해주고, 리틀 펌킨의 할머니는 발가락을 하나하나 세어주고, 리틀 버드의 엄마는 흔들어 재워줍니다. 같은 패턴이 세 번 반복되면서 책 전체가 따뜻하고 포근한 자장가처럼 느껴집니다. 저는 특히 각각의 노래가 아기의 몸에서 작고 특별한 부분에 집중한다는 점이 좋았어요. 사랑은 작은 것 하나도 놓치지 않는다는 걸 보여주는 것 같았습니다.</p>
+<p>&nbsp;&nbsp;이 책을 읽으면 마음이 따뜻해집니다. 반복되는 구절과 각 이야기 끝에 나오는 "더. 더. 더."는 소리 내어 읽으면 정말 재미있어요. 아기가 있는 가정이라면 누구에게나 선물하고 싶은 책입니다. 사랑받는다는 것이 세상에서 가장 좋은 느낌이라는 걸 다시 한번 깨닫게 해줍니다.</p>
+</div>
+</details>

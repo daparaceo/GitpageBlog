@@ -11,7 +11,6 @@ series: "I Can Read 3"
 isbn: "9780064441292"
 ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/d7a8657794d9e3ff36dfce87.jpg"
 ---
-
 <div class="book-container" translate="no">
 <img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/d7a8657794d9e3ff36dfce87.jpg" alt="The Josefina Story Quilt (cover)" />
 <table class="book-table">
@@ -25,6 +24,17 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/d
 </div>
 
 1850년 5월, 소녀 Faith는 가족과 함께 포장마차를 타고 캘리포니아를 향해 떠납니다. 그녀가 가장 걱정하는 건 단 하나, 사랑하는 암탉 조세피나(Josefina)입니다. 아빠는 처음엔 반대하지만, 결국 조세피나도 함께 긴 여정에 오르게 됩니다. 강을 건너고, 사막을 지나고, 도둑을 쫓아내는 모험 속에서 Faith와 조세피나는 진정한 우정을 쌓아 갑니다. 하지만 여정의 끝에서 Faith는 소중한 이별을 맞이하게 되고, 그 추억을 영원히 간직하기 위해 퀼트에 한 조각 한 조각 기억을 새겨 넣습니다.
+
+<div class="tip-box">
+  <h3>📌 이렇게 활용하세요</h3>
+  <ul>
+    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
+    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
+    <li><b>역사 배경 함께 알기:</b> 1850년대 미국 서부 개척(Oregon/California Trail) 이야기를 간단히 소개해 주시면 내용을 훨씬 풍부하게 이해할 수 있습니다.</li>
+    <li><b>퀼트 만들기 연계 활동:</b> 책을 읽은 뒤 종이에 퀼트 조각을 그리고 자신만의 추억을 담은 그림을 그려 보세요. Faith처럼 소중한 기억을 시각적으로 표현하는 창의 활동으로 연결할 수 있습니다.</li>
+  </ul>
+  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+</div>
 
 <div class="section">
 <h3>✏️ 핵심 어휘</h3>
@@ -124,13 +134,20 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/d
 
 </div>
 
-<div class="tip-box">
-  <h3>📌 이렇게 활용하세요</h3>
-  <ul>
-    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
-    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
-    <li><b>역사 배경 함께 알기:</b> 1850년대 미국 서부 개척(Oregon/California Trail) 이야기를 간단히 소개해 주시면 내용을 훨씬 풍부하게 이해할 수 있습니다.</li>
-    <li><b>퀼트 만들기 연계 활동:</b> 책을 읽은 뒤 종이에 퀼트 조각을 그리고 자신만의 추억을 담은 그림을 그려 보세요. Faith처럼 소중한 기억을 시각적으로 표현하는 창의 활동으로 연결할 수 있습니다.</li>
-  </ul>
-  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+<details class="review-toggle">
+<summary>💡 리뷰</summary>
+<div class="review-en">
+<p><b>Introduction</b></p>
+<p>&nbsp;&nbsp;This book is called <i>The Josefina Story Quilt</i>, written by Eleanor Coerr. It is a story about a girl named Faith and her pet hen, Josefina, who travel together with their family to California in a covered wagon in 1850.</p>
+<p><b>Body</b></p>
+<p>&nbsp;&nbsp;I liked this book because Faith never gave up on Josefina, even when her father wanted to leave the hen behind. Josefina was brave and smart — she saved the family from robbers by making a loud noise. The saddest part was when Josefina died after protecting the family. Faith showed her love by sewing a pine tree patch in memory of her dear friend.</p>
+<p><b>Conclusion</b></p>
+<p>&nbsp;&nbsp;This story taught me that true friendship means caring for someone no matter what. I think quilts are a beautiful way to remember our precious memories. I would love to read this book again and again.</p>
+<br>
 </div>
+<div class="review-ko">
+<p>&nbsp;&nbsp;이 책의 제목은 《조세피나 이야기 퀼트》이고, 엘리너 쿠어가 썼어요. 1850년에 페이스라는 소녀와 그녀의 애완 암탉 조세피나가 가족과 함께 포장마차를 타고 캘리포니아로 여행하는 이야기예요.</p>
+<p>&nbsp;&nbsp;페이스가 아빠가 조세피나를 두고 가려고 할 때도 포기하지 않았던 것이 참 좋았어요. 조세피나는 용감하고 영리했어요. 도둑들이 왔을 때 큰 소리를 질러 가족을 구했거든요. 가장 슬픈 부분은 가족을 지킨 후 조세피나가 세상을 떠나는 장면이었어요. 페이스는 소중한 친구를 기억하기 위해 소나무 조각을 퀼트에 꿰매 넣었어요.</p>
+<p>&nbsp;&nbsp;이 이야기는 진정한 우정이란 어떤 상황에서도 서로를 아끼는 것임을 가르쳐 주었어요. 퀼트가 소중한 기억을 간직하는 아름다운 방법이라는 생각도 들었어요. 이 책을 몇 번이고 다시 읽고 싶어요.</p>
+</div>
+</details>

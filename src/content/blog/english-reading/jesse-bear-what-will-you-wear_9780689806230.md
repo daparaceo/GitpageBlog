@@ -10,7 +10,6 @@ ar_level: 2.5
 isbn: "9780689806230"
 ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/6f78ac710c64ab3aa054b6d7.jpg"
 ---
-
 <div class="book-container" translate="no">
 <img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/6f78ac710c64ab3aa054b6d7.jpg" alt="Jesse Bear, What Will You Wear? (cover)" />
 <table class="book-table">
@@ -22,9 +21,23 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/6
 </table>
 </div>
 
-## 📖 줄거리
+<details class="story-toggle">
+<summary>📖 줄거리</summary>
 
-곰돌이 제시(Jesse Bear)는 아침, 점심, 저녁 세 번에 걸쳐 "오늘 무엇을 입을 거야?"라는 질문을 받습니다. 제시의 대답은 엉뚱하고 사랑스럽습니다. 아침에는 셔츠와 바지뿐 아니라 발가락 사이의 장미꽃과 다리에 내리쬐는 햇살을, 점심에는 의자에 '꼭 붙어서' 의자를, 저녁에는 목욕물과 파란 담요와 곰 포옹과 세 번의 키스를 '입겠다'고 노래합니다. 반복되는 라임과 경쾌한 리듬이 읽는 내내 흥겨운 책입니다.
+<p>곰돌이 제시(Jesse Bear)는 아침, 점심, 저녁 세 번에 걸쳐 "오늘 무엇을 입을 거야?"라는 질문을 받습니다. 제시의 대답은 엉뚱하고 사랑스럽습니다. 아침에는 셔츠와 바지뿐 아니라 발가락 사이의 장미꽃과 다리에 내리쬐는 햇살을, 점심에는 의자에 '꼭 붙어서' 의자를, 저녁에는 목욕물과 파란 담요와 곰 포옹과 세 번의 키스를 '입겠다'고 노래합니다. 반복되는 라임과 경쾌한 리듬이 읽는 내내 흥겨운 책입니다.</p>
+
+</details>
+
+<div class="tip-box">
+  <h3>📌 이렇게 활용하세요</h3>
+  <ul>
+    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
+    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
+    <li><b>소리 내어 읽기:</b> 각 페이지의 라임(dance/pants, toes/rose, head/bed 등)을 강조해서 읽으면 영어의 리듬감을 자연스럽게 익힐 수 있습니다.</li>
+    <li><b>역할 놀이:</b> 책을 읽은 후 "What will you wear?"라고 묻고, 아이가 엉뚱한 답을 영어로 말해 보는 놀이를 해 보세요. 창의적인 표현력이 늘어납니다.</li>
+  </ul>
+  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+</div>
 
 <div class="section">
 <h3>✏️ 핵심 어휘</h3>
@@ -124,13 +137,20 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/6
 
 </div>
 
-<div class="tip-box">
-  <h3>📌 이렇게 활용하세요</h3>
-  <ul>
-    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
-    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
-    <li><b>소리 내어 읽기:</b> 각 페이지의 라임(dance/pants, toes/rose, head/bed 등)을 강조해서 읽으면 영어의 리듬감을 자연스럽게 익힐 수 있습니다.</li>
-    <li><b>역할 놀이:</b> 책을 읽은 후 "What will you wear?"라고 묻고, 아이가 엉뚱한 답을 영어로 말해 보는 놀이를 해 보세요. 창의적인 표현력이 늘어납니다.</li>
-  </ul>
-  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+<details class="review-toggle">
+<summary>💡 리뷰</summary>
+<div class="review-en">
+<p><b>Introduction</b></p>
+<p>&nbsp;&nbsp;Jesse Bear, What Will You Wear? is a picture book written by Nancy White Carlstrom and illustrated by Bruce Degen. The story follows a little bear named Jesse through his morning, noon, and night, answering the question: "What will you wear?"</p>
+<p><b>Body</b></p>
+<p>&nbsp;&nbsp;What I love most about this book is that Jesse "wears" so many unexpected things — sunshine on his legs, sand on his hands, and even his chair at lunchtime because he is stuck in it! The rhymes and rhythms make every page fun to read aloud. My favorite part is the ending, where Jesse wears "moon on his head and dreams in his bed." It is a beautiful and cozy way to end the day. I also loved the warm line about bear hugs and three kisses, which shows how much love is in Jesse's home.</p>
+<p><b>Conclusion</b></p>
+<p>&nbsp;&nbsp;This book is perfect for young readers who enjoy rhymes and playful ideas. It made me smile from beginning to end, and I would love to read it again and again.</p>
+<br>
 </div>
+<div class="review-ko">
+<p>&nbsp;&nbsp;『Jesse Bear, What Will You Wear?』는 낸시 화이트 칼스트롬이 글을 쓰고 브루스 디건이 그림을 그린 그림책입니다. 제시라는 이름의 아기 곰이 아침, 점심, 저녁을 보내며 "무엇을 입을 거야?"라는 질문에 대답하는 이야기입니다.</p>
+<p>&nbsp;&nbsp;이 책에서 가장 좋았던 점은, 제시가 '입는' 것들이 너무나 엉뚱하다는 점이에요. 다리 위의 햇살, 손 위의 모래, 그리고 점심에는 끼어버린 의자까지 입겠다고 하니까요! 라임과 리듬 덕분에 매 페이지를 소리 내어 읽는 것이 즐거웠습니다. 제가 가장 좋아한 부분은 마지막 장면으로, "머리 위엔 달이, 침대엔 꿈이"라는 표현이 정말 아름답고 포근했어요. 곰 포옹과 세 번의 키스 이야기도 제시의 집에 얼마나 많은 사랑이 가득한지 느끼게 해 주었습니다.</p>
+<p>&nbsp;&nbsp;이 책은 라임과 유쾌한 상상을 좋아하는 어린 독자에게 딱 맞는 책입니다. 처음부터 끝까지 미소 짓게 만들었고, 몇 번이고 다시 읽고 싶어지는 책이었습니다.</p>
+</div>
+</details>

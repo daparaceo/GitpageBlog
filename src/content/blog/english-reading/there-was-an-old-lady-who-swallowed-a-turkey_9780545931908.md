@@ -11,7 +11,6 @@ ar_level: 2.6
 series: "There Was An Old Lady Who"
 isbn: "9780545931908"
 ---
-
 <div class="book-container" translate="no">
 <img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/6db65348dcfe1c4eb8d9f417.jpg" alt="There Was An Old Lady Who Swallowed A Turkey! (cover)" />
 <table class="book-table">
@@ -24,9 +23,23 @@ isbn: "9780545931908"
 </table>
 </div>
 
-## 📖 줄거리
+<details class="story-toggle">
+<summary>📖 줄거리</summary>
 
-엉뚱하기로 소문난 할머니가 추수감사절에 칠면조를 꿀꺽 삼키면서 이야기가 시작됩니다. 할머니는 칠면조와 함께 쓸 공을 삼키고, 공을 덮을 모자를 삼키고, 모자를 부딪힐 풍선을 삼키는 식으로 끝없이 삼켜 나갑니다. 보트, 바퀴, 풍요의 뿔(horn of plenty)까지 모두 삼킨 할머니는 퍼레이드 음악 소리를 듣고 그랜드스탠드 위로 당당히 행진합니다. 이야기는 "Happy Thanksgiving Day!"라는 외침으로 유쾌하게 마무리됩니다.
+<p>엉뚱하기로 소문난 할머니가 추수감사절에 칠면조를 꿀꺽 삼키면서 이야기가 시작됩니다. 할머니는 칠면조와 함께 쓸 공을 삼키고, 공을 덮을 모자를 삼키고, 모자를 부딪힐 풍선을 삼키는 식으로 끝없이 삼켜 나갑니다. 보트, 바퀴, 풍요의 뿔(horn of plenty)까지 모두 삼킨 할머니는 퍼레이드 음악 소리를 듣고 그랜드스탠드 위로 당당히 행진합니다. 이야기는 "Happy Thanksgiving Day!"라는 외침으로 유쾌하게 마무리됩니다.</p>
+
+</details>
+
+<div class="tip-box">
+  <h3>📌 이렇게 활용하세요</h3>
+  <ul>
+    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
+    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
+    <li><b>리듬 읽기:</b> turkey/quirky, moon/balloon, heels/wheels처럼 운율이 맞는 단어 쌍을 찾아 소리 내어 읽어 보세요. 영어의 리듬감과 음소 인식 능력이 자연스럽게 길러집니다.</li>
+    <li><b>누적 문장 따라 말하기:</b> 매 장마다 앞 내용을 이어붙이는 누적 구조를 활용해, 읽을수록 점점 길어지는 문장을 끝까지 말해 보는 연습을 해 보세요. 기억력과 영어 말하기 자신감 향상에 좋습니다.</li>
+  </ul>
+  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+</div>
 
 <div class="section">
 <h3>✏️ 핵심 어휘</h3>
@@ -126,13 +139,20 @@ isbn: "9780545931908"
 
 </div>
 
-<div class="tip-box">
-  <h3>📌 이렇게 활용하세요</h3>
-  <ul>
-    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
-    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
-    <li><b>리듬 읽기:</b> turkey/quirky, moon/balloon, heels/wheels처럼 운율이 맞는 단어 쌍을 찾아 소리 내어 읽어 보세요. 영어의 리듬감과 음소 인식 능력이 자연스럽게 길러집니다.</li>
-    <li><b>누적 문장 따라 말하기:</b> 매 장마다 앞 내용을 이어붙이는 누적 구조를 활용해, 읽을수록 점점 길어지는 문장을 끝까지 말해 보는 연습을 해 보세요. 기억력과 영어 말하기 자신감 향상에 좋습니다.</li>
-  </ul>
-  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+<details class="review-toggle">
+<summary>💡 리뷰</summary>
+<div class="review-en">
+<p><b>Introduction</b></p>
+<p>&nbsp;&nbsp;This book is "There Was An Old Lady Who Swallowed A Turkey!" written by Lucille Colandro and illustrated by Jared Lee. It is a funny and rhythmic picture book about an old lady who swallows one thing after another to prepare for a Thanksgiving Day parade.</p>
+<p><b>Body</b></p>
+<p>&nbsp;&nbsp;The old lady starts by swallowing a turkey, then keeps swallowing a ball, a hat, a balloon, a boat, wheels, and finally a horn of plenty. Each page adds a new item and repeats all the previous ones, which makes the story longer and more exciting. I liked that the words rhyme at the end of every page. It made me want to read the whole story out loud!</p>
+<p><b>Conclusion</b></p>
+<p>&nbsp;&nbsp;I think this book is very fun and easy to enjoy. The repeated sentences help me practice reading in English, and the rhyming words make it feel like a song. I would recommend this book to anyone who wants to laugh and learn English at the same time.</p>
+<br>
 </div>
+<div class="review-ko">
+<p>&nbsp;&nbsp;이 책은 Lucille Colandro가 글을 쓰고 Jared Lee가 그림을 그린 "There Was An Old Lady Who Swallowed A Turkey!"입니다. 추수감사절 퍼레이드를 준비하기 위해 한 가지씩 차례차례 삼켜 나가는 엉뚱한 할머니에 관한 유쾌하고 리듬감 넘치는 그림책이에요.</p>
+<p>&nbsp;&nbsp;할머니는 칠면조를 시작으로 공, 모자, 풍선, 보트, 바퀴, 그리고 마지막으로 풍요의 뿔까지 삼킵니다. 매 페이지마다 새로운 것이 추가되고 앞에서 삼킨 것들이 모두 반복되어, 읽을수록 이야기가 점점 길어지고 재미있어집니다. 저는 특히 매 페이지 끝에 운율이 맞는 단어들이 나오는 것이 좋았어요. 덕분에 큰 소리로 읽고 싶어졌답니다!</p>
+<p>&nbsp;&nbsp;이 책은 정말 재미있고 쉽게 즐길 수 있는 책이라고 생각해요. 반복되는 문장 덕분에 영어 읽기 연습이 자연스럽게 되고, 운율이 있는 단어들 덕분에 마치 노래를 부르는 것 같은 느낌이 들어요. 웃으면서 영어를 배우고 싶은 분들에게 이 책을 꼭 추천하고 싶습니다.</p>
+</div>
+</details>

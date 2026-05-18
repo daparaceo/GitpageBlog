@@ -10,7 +10,6 @@ ar_level: 2.3
 isbn: "9780689832130"
 ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/8fb37b134be94093fc96ea80.jpg"
 ---
-
 <div class="book-container" translate="no">
 <img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/8fb37b134be94093fc96ea80.jpg" alt="Click, Clack, Moo: Cows That Type (cover)" />
 <table class="book-table">
@@ -23,9 +22,23 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/8
 </table>
 </div>
 
-## 줄거리
+<details class="story-toggle">
+<summary>📖 줄거리</summary>
 
-브라운 농부의 소들이 외양간에서 오래된 타자기를 발견하고, 밤이 춥다며 전기담요를 요구하는 편지를 씁니다. 농부가 거절하자 소들은 파업을 선언하고 우유 공급을 끊어버리죠. 닭들까지 파업에 가담해 달걀도 사라지자 농부는 단단히 화가 납니다. 중립을 지키던 오리가 양쪽을 오가며 협상을 이어간 끝에, 소들은 타자기를 전기담요와 교환하는 거래를 제안합니다. 그런데 이번엔 타자기를 손에 넣은 오리들이 다이빙 보드를 요구하는 편지를 보내오면서 이야기는 유쾌한 반전으로 마무리됩니다.
+<p>브라운 농부의 소들이 외양간에서 오래된 타자기를 발견하고, 밤이 춥다며 전기담요를 요구하는 편지를 씁니다. 농부가 거절하자 소들은 파업을 선언하고 우유 공급을 끊어버리죠. 닭들까지 파업에 가담해 달걀도 사라지자 농부는 단단히 화가 납니다. 중립을 지키던 오리가 양쪽을 오가며 협상을 이어간 끝에, 소들은 타자기를 전기담요와 교환하는 거래를 제안합니다. 그런데 이번엔 타자기를 손에 넣은 오리들이 다이빙 보드를 요구하는 편지를 보내오면서 이야기는 유쾌한 반전으로 마무리됩니다.</p>
+
+</details>
+
+<div class="tip-box">
+  <h3>📌 이렇게 활용하세요</h3>
+  <ul>
+    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
+    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
+    <li><b>역할극 활용:</b> 농부, 소, 오리 역할을 나눠 편지를 주고받는 역할극을 해보세요. 협상 표현을 자연스럽게 익힐 수 있어요.</li>
+    <li><b>편지 쓰기 연습:</b> "Dear ___," 로 시작하고 "Sincerely, ___"로 끝내는 영어 편지 형식을 책에서 배워 실제로 짧은 편지를 써보세요.</li>
+  </ul>
+  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+</div>
 
 <div class="section">
 <h3>✏️ 핵심 어휘</h3>
@@ -125,13 +138,20 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/8
 
 </div>
 
-<div class="tip-box">
-  <h3>📌 이렇게 활용하세요</h3>
-  <ul>
-    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
-    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
-    <li><b>역할극 활용:</b> 농부, 소, 오리 역할을 나눠 편지를 주고받는 역할극을 해보세요. 협상 표현을 자연스럽게 익힐 수 있어요.</li>
-    <li><b>편지 쓰기 연습:</b> "Dear ___," 로 시작하고 "Sincerely, ___"로 끝내는 영어 편지 형식을 책에서 배워 실제로 짧은 편지를 써보세요.</li>
-  </ul>
-  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+<details class="review-toggle">
+<summary>💡 리뷰</summary>
+<div class="review-en">
+<p><b>Introduction</b></p>
+<p>&nbsp;&nbsp;The title of this book is Click, Clack, Moo: Cows That Type, written by Doreen Cronin and illustrated by Betsy Lewin. This book is a funny and creative story about farm animals who learn to type and use it to negotiate with Farmer Brown. I liked this story because it shows how animals can stand up for themselves in a clever way.</p>
+<p><b>Body</b></p>
+<p>&nbsp;&nbsp;This is a fiction picture book. The story begins when Farmer Brown's cows find an old typewriter in the barn and start typing letters. They ask for electric blankets because the barn is cold at night. When Farmer Brown refuses, the cows go on strike and stop giving milk. Soon, the hens join the strike and refuse to lay eggs. My favorite part is when the cows suggest trading the typewriter for electric blankets through Duck, who acts as a neutral mediator. The ending is especially funny because the ducks start typing and asking for a diving board!</p>
+<p><b>Conclusion</b></p>
+<p>&nbsp;&nbsp;I think this book is excellent because it teaches important lessons about communication and negotiation in a humorous way. The illustrations are wonderful and full of expression, especially Farmer Brown's reactions. This book shows that problems can be solved through conversation and compromise rather than fighting. I would recommend this book to anyone who enjoys funny stories with smart characters.</p>
+<br>
 </div>
+<div class="review-ko">
+<p>&nbsp;&nbsp;이 책의 제목은 Click, Clack, Moo: Cows That Type이고, 작가는 Doreen Cronin, 그림은 Betsy Lewin이 그렸어요. 이 책은 타자 치는 법을 배운 농장 동물들이 브라운 농부와 협상하는 재미있고 창의적인 이야기예요. 동물들이 똑똑한 방법으로 자기 의견을 주장하는 모습이 좋았어요.</p>
+<p>&nbsp;&nbsp;이 책은 픽션 그림책이에요. 이야기는 브라운 농부의 소들이 외양간에서 오래된 타자기를 발견하고 편지를 쓰기 시작하면서 시작돼요. 소들은 밤에 외양간이 춥다며 전기담요를 요구해요. 농부가 거절하자 소들은 파업을 하고 우유를 주지 않아요. 곧 닭들도 파업에 참여해서 달걀을 낳지 않죠. 제가 가장 좋아하는 부분은 소들이 중립적인 중재자 역할을 하는 오리를 통해 타자기를 전기담요와 교환하자고 제안하는 장면이에요. 결말은 특히 재미있어요. 오리들이 타자를 치기 시작하면서 다이빙 보드를 요구하거든요!</p>
+<p>&nbsp;&nbsp;이 책은 유머러스한 방법으로 의사소통과 협상에 대한 중요한 교훈을 가르쳐주기 때문에 정말 훌륭하다고 생각해요. 삽화도 멋지고 표현이 풍부해요. 특히 브라운 농부의 반응이 그래요. 이 책은 싸우는 대신 대화와 타협을 통해 문제를 해결할 수 있다는 걸 보여줘요. 똑똑한 캐릭터가 나오는 재미있는 이야기를 좋아하는 사람이라면 누구에게나 이 책을 추천하고 싶어요.</p>
+</div>
+</details>

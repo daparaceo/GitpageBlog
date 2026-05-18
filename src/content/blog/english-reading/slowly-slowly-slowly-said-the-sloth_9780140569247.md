@@ -10,7 +10,6 @@ author: "Eric Carle"
 ar_level: 2.8
 isbn: "9780140569247"
 ---
-
 <div class="book-container" translate="no">
 <img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/434e5a0234cffaed20658fbe.jpg" alt="Slowly, Slowly, Slowly, Said the Sloth (cover)" />
 <table class="book-table">
@@ -22,9 +21,23 @@ isbn: "9780140569247"
 </table>
 </div>
 
-## 📖 줄거리
+<details class="story-toggle">
+<summary>📖 줄거리</summary>
 
-아마존 정글 나뭇가지에 거꾸로 매달려 하루 종일 느릿느릿 지내는 나무늘보. 하울러 원숭이, 카이만 악어, 개미핥기, 재규어가 차례로 다가와 "왜 그렇게 느려?", "왜 그렇게 조용해?", "왜 그렇게 지루해?", "왜 그렇게 게을러?" 하고 묻지만 나무늘보는 오랫동안 아무 대답도 하지 않습니다. 그러다 마침내 나무늘보는 길고 긴 독백으로 자신을 표현하는 무려 열네 개의 형용사를 나열하며 이렇게 선언합니다. "나는 게으른 게 아니야. 그냥 나는 나야." Eric Carle 특유의 콜라주 그림과 Jane Goodall의 서문이 함께하는 이 책은, 나와 다른 존재를 있는 그대로 받아들이는 다양성과 자기 수용의 메시지를 전합니다.
+<p>아마존 정글 나뭇가지에 거꾸로 매달려 하루 종일 느릿느릿 지내는 나무늘보. 하울러 원숭이, 카이만 악어, 개미핥기, 재규어가 차례로 다가와 "왜 그렇게 느려?", "왜 그렇게 조용해?", "왜 그렇게 지루해?", "왜 그렇게 게을러?" 하고 묻지만 나무늘보는 오랫동안 아무 대답도 하지 않습니다. 그러다 마침내 나무늘보는 길고 긴 독백으로 자신을 표현하는 무려 열네 개의 형용사를 나열하며 이렇게 선언합니다. "나는 게으른 게 아니야. 그냥 나는 나야." Eric Carle 특유의 콜라주 그림과 Jane Goodall의 서문이 함께하는 이 책은, 나와 다른 존재를 있는 그대로 받아들이는 다양성과 자기 수용의 메시지를 전합니다.</p>
+
+</details>
+
+<div class="tip-box">
+  <h3>📌 이렇게 활용하세요</h3>
+  <ul>
+    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
+    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
+    <li><b>어휘 확장:</b> 나무늘보의 독백에 등장하는 형용사 14개(lackadaisical, languid, stoic, placid 등)를 하나씩 뜻을 찾아보고 "성격 형용사 단어장"을 만들어 보세요. 한 책에서 이렇게 많은 동의어를 한꺼번에 배울 수 있는 기회는 드뭅니다.</li>
+    <li><b>말하기 연습:</b> "That's just how I am. I like to _____ slowly, slowly, slowly." 문장을 활용해 자신만의 문장을 만들어 보세요. 자기를 소개하는 영어 말하기 연습에 딱 맞습니다.</li>
+  </ul>
+  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+</div>
 
 <div class="section">
 <h3>✏️ 핵심 어휘</h3>
@@ -124,13 +137,12 @@ isbn: "9780140569247"
 
 </div>
 
-<div class="tip-box">
-  <h3>📌 이렇게 활용하세요</h3>
-  <ul>
-    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
-    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
-    <li><b>어휘 확장:</b> 나무늘보의 독백에 등장하는 형용사 14개(lackadaisical, languid, stoic, placid 등)를 하나씩 뜻을 찾아보고 "성격 형용사 단어장"을 만들어 보세요. 한 책에서 이렇게 많은 동의어를 한꺼번에 배울 수 있는 기회는 드뭅니다.</li>
-    <li><b>말하기 연습:</b> "That's just how I am. I like to _____ slowly, slowly, slowly." 문장을 활용해 자신만의 문장을 만들어 보세요. 자기를 소개하는 영어 말하기 연습에 딱 맞습니다.</li>
-  </ul>
-  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+<details class="review-toggle">
+<summary>💡 리뷰</summary>
+<div class="review-en">
+<p>리뷰 준비 중입니다.</p>
 </div>
+<div class="review-ko">
+
+</div>
+</details>

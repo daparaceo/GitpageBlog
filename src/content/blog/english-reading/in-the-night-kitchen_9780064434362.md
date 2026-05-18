@@ -10,7 +10,6 @@ ar_level: 2.5
 isbn: "9780064434362"
 ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/c1fd96501b7d59be248aad0e.jpg"
 ---
-
 <div class="book-container" translate="no">
 <img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/c1fd96501b7d59be248aad0e.jpg" alt="In the Night Kitchen (cover)" />
 <table class="book-table">
@@ -22,9 +21,23 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/c
 </table>
 </div>
 
-## 줄거리
+<details class="story-toggle">
+<summary>📖 줄거리</summary>
 
-밤에 이상한 소리를 듣고 잠에서 깬 미키는 어느새 한밤의 부엌으로 떨어집니다. 세 명의 빵 굽는 아저씨들이 미키를 반죽 속에 넣으려 하지만, 미키는 빠져나와 빵 반죽으로 비행기를 만듭니다. 하늘로 날아오른 미키는 거대한 우유병에서 우유를 퍼내어 반죽에 부어 줍니다. 덕분에 아침마다 맛있는 케이크를 먹을 수 있게 되었고, 미키는 무사히 침대로 돌아옵니다.
+<p>밤에 이상한 소리를 듣고 잠에서 깬 미키는 어느새 한밤의 부엌으로 떨어집니다. 세 명의 빵 굽는 아저씨들이 미키를 반죽 속에 넣으려 하지만, 미키는 빠져나와 빵 반죽으로 비행기를 만듭니다. 하늘로 날아오른 미키는 거대한 우유병에서 우유를 퍼내어 반죽에 부어 줍니다. 덕분에 아침마다 맛있는 케이크를 먹을 수 있게 되었고, 미키는 무사히 침대로 돌아옵니다.</p>
+
+</details>
+
+<div class="tip-box">
+  <h3>📌 이렇게 활용하세요</h3>
+  <ul>
+    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
+    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
+    <li><b>소리 내어 읽기:</b> 빵 아저씨들의 chanting 부분("Milk in the batter! Stir it! Scrape it! Make it! Bake it!")을 리듬감 있게 반복해서 읽어 보세요. 운율이 살아 있어 영어의 리듬을 익히기 좋습니다.</li>
+    <li><b>상상력 놀이:</b> 읽고 나서 아이와 함께 "만약 네가 꿈속 부엌에 들어간다면 무엇을 만들고 싶어?"라고 이야기를 나눠 보세요. 영어로 재료 이름을 말해 보는 것도 재미있는 확장 활동이 됩니다.</li>
+  </ul>
+  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+</div>
 
 <div class="section">
 <h3>✏️ 핵심 어휘</h3>
@@ -124,13 +137,20 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/c
 
 </div>
 
-<div class="tip-box">
-  <h3>📌 이렇게 활용하세요</h3>
-  <ul>
-    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
-    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
-    <li><b>소리 내어 읽기:</b> 빵 아저씨들의 chanting 부분("Milk in the batter! Stir it! Scrape it! Make it! Bake it!")을 리듬감 있게 반복해서 읽어 보세요. 운율이 살아 있어 영어의 리듬을 익히기 좋습니다.</li>
-    <li><b>상상력 놀이:</b> 읽고 나서 아이와 함께 "만약 네가 꿈속 부엌에 들어간다면 무엇을 만들고 싶어?"라고 이야기를 나눠 보세요. 영어로 재료 이름을 말해 보는 것도 재미있는 확장 활동이 됩니다.</li>
-  </ul>
-  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+<details class="review-toggle">
+<summary>💡 리뷰</summary>
+<div class="review-en">
+<p><b>Introduction</b></p>
+<p>&nbsp;&nbsp;The book I am going to introduce is "In the Night Kitchen," written and illustrated by Maurice Sendak. It is a fantasy picture book about a boy named Mickey who falls into a magical night kitchen while he is sleeping.</p>
+<p><b>Body</b></p>
+<p>&nbsp;&nbsp;One night, Mickey hears a loud racket and suddenly falls out of his clothes into a bright, strange kitchen. Three bakers try to mix him into their cake batter, but Mickey escapes and makes an airplane out of bread dough. He flies all the way to the top of the Milky Way, dives into a giant bottle of milk, and pours the milk into the batter below. Thanks to Mickey, the bakers can finally bake their cake. What I liked most was how brave and creative Mickey is. He never gives up and always finds a fun way to solve the problem. The pictures are colorful and full of imagination, which makes the story even more exciting.</p>
+<p><b>Conclusion</b></p>
+<p>&nbsp;&nbsp;I really enjoyed this book because it feels like a wonderful dream. It teaches us that even in a strange or scary situation, we can be brave and use our imagination. I would love to read this book again and again!</p>
+<br>
 </div>
+<div class="review-ko">
+<p>&nbsp;&nbsp;제가 소개할 책은 모리스 샌닥이 글과 그림을 함께 그린 『한밤의 부엌(In the Night Kitchen)』입니다. 잠을 자다가 마법 같은 한밤의 부엌으로 떨어진 미키라는 소년의 환상적인 이야기예요.</p>
+<p>&nbsp;&nbsp;어느 날 밤, 미키는 시끄러운 소리를 듣고 갑자기 옷도 없이 밝고 이상한 부엌 속으로 떨어집니다. 세 명의 빵 아저씨들이 미키를 케이크 반죽에 넣으려 하지만, 미키는 빠져나와 빵 반죽으로 비행기를 만들어요. 은하수 꼭대기까지 날아올라 거대한 우유병에 뛰어들고, 우유를 아래 반죽에 부어 줍니다. 미키 덕분에 아저씨들은 케이크를 완성할 수 있었어요. 제가 가장 좋았던 점은 미키가 용감하고 창의적이라는 것이에요. 포기하지 않고 언제나 재미있는 방법으로 문제를 해결합니다. 색깔이 화려하고 상상력이 넘치는 그림 덕분에 이야기가 더욱 신납니다.</p>
+<p>&nbsp;&nbsp;꿈속을 여행하는 것 같아서 정말 즐겁게 읽었습니다. 이상하거나 무서운 상황에서도 용기와 상상력을 발휘할 수 있다는 것을 배웠어요. 이 책은 몇 번이고 다시 읽고 싶습니다!</p>
+</div>
+</details>

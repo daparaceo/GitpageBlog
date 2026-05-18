@@ -10,7 +10,6 @@ author: "Charlotte Zolotow"
 ar_level: 2.9
 isbn: "9780064432177"
 ---
-
 <div class="book-container" translate="no">
 <img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/0198aa21588a1633c20fb2bc.jpg" alt="Big Sister and Little Sister (cover)" />
 <table class="book-table">
@@ -23,6 +22,17 @@ isbn: "9780064432177"
 </div>
 
 언니는 항상 동생을 돌봐줍니다. 함께 줄넘기를 할 때도, 자전거를 탈 때도, 학교 가는 길에도 늘 동생 곁에 있었죠. 그런데 어느 날, 동생은 그 모든 "이렇게 해", "저기 가"라는 말이 지겨워져 몰래 들판으로 숨어버립니다. 언니는 동생을 찾아 소리치다가 지쳐 데이지 꽃밭에 주저앉아 혼자 엉엉 울기 시작합니다. 그 모습을 본 동생은 처음으로 언니를 안아주며 "여기, 코 풀어"라고 말합니다. 그날 이후, 두 자매는 서로를 돌보는 법을 알게 됩니다.
+
+<div class="tip-box">
+  <h3>📌 이렇게 활용하세요</h3>
+  <ul>
+    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
+    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
+    <li><b>역할 나눠 읽기:</b> 부모님과 아이가 언니·동생 역할을 나누어 소리 내어 읽어보세요. 감정 표현과 대화 연습에 효과적입니다.</li>
+    <li><b>이야기 나누기:</b> "네가 동생(또는 언니)이라면 어떻게 했을 것 같아?" 하고 물어보세요. 공감 능력과 영어 말하기를 함께 키울 수 있습니다.</li>
+  </ul>
+  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+</div>
 
 <div class="section">
 <h3>✏️ 핵심 어휘</h3>
@@ -122,13 +132,20 @@ isbn: "9780064432177"
 
 </div>
 
-<div class="tip-box">
-  <h3>📌 이렇게 활용하세요</h3>
-  <ul>
-    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
-    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
-    <li><b>역할 나눠 읽기:</b> 부모님과 아이가 언니·동생 역할을 나누어 소리 내어 읽어보세요. 감정 표현과 대화 연습에 효과적입니다.</li>
-    <li><b>이야기 나누기:</b> "네가 동생(또는 언니)이라면 어떻게 했을 것 같아?" 하고 물어보세요. 공감 능력과 영어 말하기를 함께 키울 수 있습니다.</li>
-  </ul>
-  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+<details class="review-toggle">
+<summary>💡 리뷰</summary>
+<div class="review-en">
+<p><b>Introduction</b></p>
+<p>&nbsp;&nbsp;Big Sister and Little Sister is a picture book written by Charlotte Zolotow. It is a gentle and touching story about two sisters who love each other. The big sister always takes care of the little sister, and the little sister always follows her.</p>
+<p><b>Body</b></p>
+<p>&nbsp;&nbsp;One day, the little sister gets tired of always being told what to do. She slips away and hides in a meadow full of daisies. When the big sister cannot find her, she sits down and cries all alone. For the first time, there is no one to comfort the big sister. Then the little sister comes out and does exactly what the big sister always did — she puts her arm around her and says, "Here, blow." I was very moved by this moment. The little sister learned kindness from the big sister without even realizing it.</p>
+<p><b>Conclusion</b></p>
+<p>&nbsp;&nbsp;After reading this book, I felt that love can be shared between anyone. Taking care of someone is not just the job of the older one. I would love to read this book with a younger sibling or friend.</p>
+<br>
 </div>
+<div class="review-ko">
+<p>&nbsp;&nbsp;《Big Sister and Little Sister》는 Charlotte Zolotow가 쓴 그림책이에요. 서로를 사랑하는 두 자매에 대한 따뜻하고 감동적인 이야기예요. 언니는 항상 동생을 돌보고, 동생은 언니를 따르지요.</p>
+<p>&nbsp;&nbsp;어느 날, 동생은 항상 이래라저래라 듣는 것에 지쳐 버려요. 동생은 살그머니 빠져나와 데이지꽃이 가득한 들판에 숨어요. 언니가 동생을 찾지 못하자, 언니는 혼자 주저앉아 엉엉 울어요. 처음으로 언니를 위로해 줄 사람이 아무도 없는 거예요. 그때 동생이 나타나, 언니가 늘 해 주던 것을 그대로 해 줘요. 팔로 언니를 안아 주고 "자, 풀어." 하고 말하는 거예요. 이 장면이 정말 감동적이었어요. 동생은 자신도 모르는 사이에 언니에게서 다정함을 배웠던 거예요.</p>
+<p>&nbsp;&nbsp;이 책을 읽고 나서, 사랑은 누구에게나 서로 나눌 수 있다는 것을 느꼈어요. 누군가를 돌보는 일은 나이가 많은 사람만의 몫이 아니에요. 동생이나 친한 친구와 함께 읽고 싶은 책이에요.</p>
+</div>
+</details>

@@ -11,7 +11,6 @@ series: "Gruffalo"
 isbn: "9780803730090"
 ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/f9170ebb607bda8ff7075f88.jpg"
 ---
-
 <div class="book-container" translate="no">
 <img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/f9170ebb607bda8ff7075f88.jpg" alt="The Gruffalo's Child (cover)" />
 <table class="book-table">
@@ -25,6 +24,17 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/f
 </div>
 
 눈 내리는 겨울밤, 그루팔로가 코를 골며 잠든 사이 그루팔로의 아이는 심심함을 견디지 못하고 동굴 밖으로 살금살금 나섭니다. 아빠가 무서워서 절대 가면 안 된다고 했던 어두운 숲 속에는 전설의 '빅 배드 마우스'가 살고 있다고 하는데요. 뱀, 올빼미, 여우를 차례로 만나지만 모두 "나는 빅 배드 마우스가 아니야"라고 말합니다. 과연 빅 배드 마우스는 진짜 존재하는 걸까요? Julia Donaldson의 운율감 넘치는 문장과 Axel Scheffler의 생생한 그림이 어우러진 《The Gruffalo's Child》는 전작 《The Gruffalo》의 매력을 그대로 이어받은 사랑스러운 속편입니다.
+
+<div class="tip-box">
+  <h3>📌 이렇게 활용하세요</h3>
+  <ul>
+    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
+    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
+    <li><b>소리 내어 읽기:</b> snored/bored, wild/child처럼 각운이 맞는 단어 쌍을 찾아보세요. 리듬을 살려 낭독하면 영어 음감을 키우는 데 큰 도움이 됩니다.</li>
+    <li><b>전작과 비교하기:</b> 《The Gruffalo》를 먼저 읽고 이 책을 읽으면, 같은 숲에서 역할이 뒤바뀐 이야기 구조를 발견하는 재미가 있습니다.</li>
+  </ul>
+  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+</div>
 
 <div class="section">
 <h3>✏️ 핵심 어휘</h3>
@@ -124,13 +134,20 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/f
 
 </div>
 
-<div class="tip-box">
-  <h3>📌 이렇게 활용하세요</h3>
-  <ul>
-    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
-    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
-    <li><b>소리 내어 읽기:</b> snored/bored, wild/child처럼 각운이 맞는 단어 쌍을 찾아보세요. 리듬을 살려 낭독하면 영어 음감을 키우는 데 큰 도움이 됩니다.</li>
-    <li><b>전작과 비교하기:</b> 《The Gruffalo》를 먼저 읽고 이 책을 읽으면, 같은 숲에서 역할이 뒤바뀐 이야기 구조를 발견하는 재미가 있습니다.</li>
-  </ul>
-  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+<details class="review-toggle">
+<summary>💡 리뷰</summary>
+<div class="review-en">
+<p><b>Introduction</b></p>
+<p>&nbsp;&nbsp;This book is called "The Gruffalo's Child," written by Julia Donaldson and illustrated by Axel Scheffler. It is a sequel to "The Gruffalo" and tells the story of the Gruffalo's daughter, who goes into the deep dark wood on a snowy night to find the legendary Big Bad Mouse.</p>
+<p><b>Body</b></p>
+<p>&nbsp;&nbsp;I really enjoyed this book because it reminded me of the first Gruffalo story, but with a fun twist. The Gruffalo's child meets a snake, an owl, and a fox — but none of them is the Big Bad Mouse. When she finally meets the real mouse, he is clever just like in the first book. He uses the shadow of the moonlight to trick her into thinking he is the terrible Big Bad Mouse. I liked how the story rhymes throughout and the pictures are very detailed and fun to look at.</p>
+<p><b>Conclusion</b></p>
+<p>&nbsp;&nbsp;I think this is a wonderful book for anyone who loved "The Gruffalo." The story teaches us that being clever can be more powerful than being big and strong. I would recommend it to anyone who enjoys funny, rhyming picture books.</p>
+<br>
 </div>
+<div class="review-ko">
+<p>&nbsp;&nbsp;이 책의 제목은 《그루팔로의 아이》로, Julia Donaldson이 글을 쓰고 Axel Scheffler가 그림을 그렸습니다. 《그루팔로》의 속편으로, 눈 내리는 밤 전설의 빅 배드 마우스를 찾아 깊고 어두운 숲으로 떠나는 그루팔로 딸의 이야기입니다.</p>
+<p>&nbsp;&nbsp;이 책이 정말 재미있었던 이유는 첫 번째 그루팔로 이야기를 떠올리게 하면서도 재미있는 반전이 있기 때문입니다. 그루팔로의 아이는 뱀, 올빼미, 여우를 차례로 만나지만 그 누구도 빅 배드 마우스가 아닙니다. 마침내 진짜 마우스를 만났을 때, 마우스는 첫 번째 책과 마찬가지로 영리하게 행동합니다. 달빛에 비친 그림자를 이용해 그루팔로의 아이를 속이는 장면이 인상적이었습니다. 이야기 전체가 운율로 이루어져 있고 그림도 매우 세밀하고 보는 재미가 있었습니다.</p>
+<p>&nbsp;&nbsp;《그루팔로》를 좋아한 분이라면 누구에게나 추천하고 싶은 훌륭한 책입니다. 이 이야기는 영리함이 때로는 크고 강한 것보다 더 강력할 수 있다는 것을 알려줍니다. 재미있는 운율의 그림책을 좋아하는 모든 분께 강력히 추천합니다.</p>
+</div>
+</details>

@@ -11,7 +11,6 @@ series: "There Was An Old Lady Who"
 isbn: "9780439873802"
 ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/659c5bc16b6c90aec26d88b5.jpg"
 ---
-
 <div class="book-container" translate="no">
 <img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/659c5bc16b6c90aec26d88b5.jpg" alt="There Was An Old Lady Who Swallowed A Shell! (cover)" />
 <table class="book-table">
@@ -24,9 +23,23 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/6
 </table>
 </div>
 
-## 📖 줄거리
+<details class="story-toggle">
+<summary>📖 줄거리</summary>
 
-이상한 할머니가 바닷가에서 조개껍데기를 꿀꺽 삼키면서 이야기가 시작됩니다. 조개 안에 살기 위해 게를 삼키고, 게를 잡기 위해 물고기를, 물고기를 건지기 위해 갈매기를 삼키는 등 황당한 연쇄가 이어집니다. 모래와 파도까지 삼킨 할머니는 마침내 커다란 트림을 하고… 멋진 모래성을 뚝딱 만들어 냅니다! 전통 민요 패턴을 바다 테마로 재해석한 유쾌하고 리드미컬한 그림책입니다.
+<p>이상한 할머니가 바닷가에서 조개껍데기를 꿀꺽 삼키면서 이야기가 시작됩니다. 조개 안에 살기 위해 게를 삼키고, 게를 잡기 위해 물고기를, 물고기를 건지기 위해 갈매기를 삼키는 등 황당한 연쇄가 이어집니다. 모래와 파도까지 삼킨 할머니는 마침내 커다란 트림을 하고… 멋진 모래성을 뚝딱 만들어 냅니다! 전통 민요 패턴을 바다 테마로 재해석한 유쾌하고 리드미컬한 그림책입니다.</p>
+
+</details>
+
+<div class="tip-box">
+  <h3>📌 이렇게 활용하세요</h3>
+  <ul>
+    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
+    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
+    <li><b>반복 읽기:</b> 후렴구 "I don't know why she swallowed the shell. She didn't tell."을 함께 따라 읽으면 리듬감과 발음 연습에 효과적입니다.</li>
+    <li><b>순서 맞히기:</b> 읽은 후 할머니가 삼킨 것들(shell → crab → fish → gull → pail → sand → wave)을 순서대로 말해 보는 기억력 게임을 해 보세요.</li>
+  </ul>
+  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+</div>
 
 <div class="section">
 <h3>✏️ 핵심 어휘</h3>
@@ -126,13 +139,20 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/6
 
 </div>
 
-<div class="tip-box">
-  <h3>📌 이렇게 활용하세요</h3>
-  <ul>
-    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li>
-    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li>
-    <li><b>반복 읽기:</b> 후렴구 "I don't know why she swallowed the shell. She didn't tell."을 함께 따라 읽으면 리듬감과 발음 연습에 효과적입니다.</li>
-    <li><b>순서 맞히기:</b> 읽은 후 할머니가 삼킨 것들(shell → crab → fish → gull → pail → sand → wave)을 순서대로 말해 보는 기억력 게임을 해 보세요.</li>
-  </ul>
-  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+<details class="review-toggle">
+<summary>💡 리뷰</summary>
+<div class="review-en">
+<p><b>Introduction</b></p>
+<p>&nbsp;&nbsp;The book I read is "There Was An Old Lady Who Swallowed A Shell!" by Lucille Colandro. It is a funny picture book about a strange old lady who swallows many things at the beach.</p>
+<p><b>Body</b></p>
+<p>&nbsp;&nbsp;The old lady swallows a shell, then a crab, a fish, a gull, a pail, some sand, and finally a wave. Each time, she swallows something new to help the thing she swallowed before. The story repeats in a fun pattern, so it is easy to follow. My favorite part is the ending, when she burps and builds a sand castle. It made me laugh a lot!</p>
+<p><b>Conclusion</b></p>
+<p>&nbsp;&nbsp;I really enjoyed this book because it is silly and fun. The rhymes make it very enjoyable to read aloud. I recommend this book to anyone who wants to have a good laugh!</p>
+<br>
 </div>
+<div class="review-ko">
+<p>&nbsp;&nbsp;제가 읽은 책은 Lucille Colandro가 쓴 "There Was An Old Lady Who Swallowed A Shell!"입니다. 바닷가에서 여러 가지를 삼키는 이상한 할머니에 관한 재미있는 그림책이에요.</p>
+<p>&nbsp;&nbsp;할머니는 조개껍데기를 삼키고, 그다음에 게, 물고기, 갈매기, 양동이, 모래, 그리고 마지막으로 파도를 삼킵니다. 매번 전에 삼킨 것을 돕기 위해 새로운 것을 삼켜요. 이야기가 재미있는 패턴으로 반복되어서 따라가기 쉽습니다. 제가 가장 좋아하는 부분은 할머니가 트림을 하고 모래성을 만드는 결말이에요. 정말 많이 웃었어요!</p>
+<p>&nbsp;&nbsp;이 책은 엉뚱하고 재미있어서 정말 즐거웠습니다. 라임 덕분에 소리 내어 읽는 것도 정말 즐거워요. 크게 웃고 싶은 분들께 이 책을 추천합니다!</p>
+</div>
+</details>

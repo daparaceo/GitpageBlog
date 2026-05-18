@@ -10,8 +10,6 @@ author: "Franklyn M. Branley"
 ar_level: 2.6
 isbn: "9780060594152"
 ---
-
-
 <div class="book-container" translate="no">
 <img class="book-cover" src="https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/d6c4105873728dfd627d3ff1.jpg" alt="Air Is All Around You 표지" />
 <table class="book-table">
@@ -22,9 +20,24 @@ isbn: "9780060594152"
   <tr><td class="label">Lexile</td><td>AD490L</td></tr>
 </table>
 
-<div class="section">
-<h3>📖 줄거리</h3>
-<p>공기는 눈에 보이지도, 냄새도 없고, 움직이지 않으면 느낄 수도 없어요. 그런데 컵에 냅킨을 넣고 뒤집어 물속에 넣는 간단한 실험으로 공기의 존재를 직접 확인할 수 있어요. 컵 안의 공기가 물이 들어오지 못하게 막기 때문이에요. 공기는 지구 전체를 오렌지 껍질처럼 감싸고 있으며 무게가 무려 5경 톤(5 quadrillion tons)이나 돼요. 우주비행사들은 공기가 없는 우주에서 등에 공기 탱크를 지고 활동하고, 물고기는 물속에 녹아 있는 공기를 아가미로 들이마시며 살아가요. 지구 어디에나 있는 공기, 그것이 모든 생명을 살아 있게 해줘요.</p>
+<details class="story-toggle">
+<summary>📖 줄거리</summary>
+
+<p><p>공기는 눈에 보이지도, 냄새도 없고, 움직이지 않으면 느낄 수도 없어요. 그런데 컵에 냅킨을 넣고 뒤집어 물속에 넣는 간단한 실험으로 공기의 존재를 직접 확인할 수 있어요. 컵 안의 공기가 물이 들어오지 못하게 막기 때문이에요. 공기는 지구 전체를 오렌지 껍질처럼 감싸고 있으며 무게가 무려 5경 톤(5 quadrillion tons)이나 돼요. 우주비행사들은 공기가 없는 우주에서 등에 공기 탱크를 지고 활동하고, 물고기는 물속에 녹아 있는 공기를 아가미로 들이마시며 살아가요. 지구 어디에나 있는 공기, 그것이 모든 생명을 살아 있게 해줘요.</p></p>
+
+</details>
+
+<div class="tip-box">
+  <h3>📌 이렇게 활용하세요</h3>
+  <ul>
+    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li><!-- 내용 고정 -->
+    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li><!-- 내용 고정 -->
+    <li>책 속 컵·냅킨 실험을 집에서 직접 해보며 영어 실험 순서(stuff → push → tip → lift)를 소리 내어 읽어보세요.</li>
+    <li>물(water), 공기(air), 무게(weight), 기포(bubble) 같은 과학 기초 영어 단어를 자연스럽게 익혀보세요.</li>
+  </ul>
+  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+</div>
+
 </div>
 
 <div class="section">
@@ -123,15 +136,12 @@ isbn: "9780060594152"
 </div>
 </div>
 
-<div class="tip-box">
-  <h3>📌 이렇게 활용하세요</h3>
-  <ul>
-    <li><b>읽기 전:</b> 핵심 어휘를 먼저 확인하시면, 영어 원서 읽기 중 흐름이 끊기는 상황을 줄이는 데 도움이 됩니다.</li><!-- 내용 고정 -->
-    <li><b>읽은 후:</b> 핵심 어휘와 인상 깊은 문장을 필사하면, 암기에 도움이 됩니다.</li><!-- 내용 고정 -->
-    <li>책 속 컵·냅킨 실험을 집에서 직접 해보며 영어 실험 순서(stuff → push → tip → lift)를 소리 내어 읽어보세요.</li>
-    <li>물(water), 공기(air), 무게(weight), 기포(bubble) 같은 과학 기초 영어 단어를 자연스럽게 익혀보세요.</li>
-  </ul>
-  <p>⚠️ 핵심 어휘 외에 어려운 부분이 많다면 한 단계 낮은 책을 권장합니다.</p>
+<details class="review-toggle">
+<summary>💡 리뷰</summary>
+<div class="review-en">
+<p>리뷰 준비 중입니다.</p>
 </div>
+<div class="review-ko">
 
 </div>
+</details>
