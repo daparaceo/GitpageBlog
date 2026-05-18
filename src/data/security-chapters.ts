@@ -3712,158 +3712,549 @@ KDC = AS(Authentication Service) + TGS(Ticket Granting Service)</code></pre>
   {
     subject: 'law',
     subjectLabel: '정보보안관리및법규',
-    chapter: 'security-law',
-    chapterLabel: '정보보호 관련 법규',
-    keywords: ['정보통신망법', '개인정보보호법', 'ISMS', 'ISMS-P', '전자서명법', '정보보호산업법', '개인정보', '동의', '파기', '과태료', '개인정보보호위원회', 'GDPR', '고유식별정보', '민감정보', '접속기록'],
+    chapter: 'law-overview',
+    chapterLabel: '정보보호 법체계 개요',
+    keywords: ['정보보호법', '개인정보보호법', '정보통신망법', '전자서명법', '사이버보안', '법체계', '행정법', '형사법', '과태료', '과징금', '벌칙', '신고의무', '침해사고'],
     content: `
-
-<h3>주요 법률 체계</h3>
+<h3>국내 정보보호 관련 법률 체계</h3>
 <table>
-  <thead><tr><th>법률</th><th>주요 내용</th><th>소관 기관</th></tr></thead>
+  <thead><tr><th>법률명</th><th>소관부처</th><th>주요 규율 대상</th><th>핵심 내용</th></tr></thead>
   <tbody>
-    <tr><td><strong>개인정보 보호법</strong></td><td>개인정보 처리 원칙·주체 권리·안전조치 의무. 모든 개인정보처리자 적용.</td><td>개인정보보호위원회</td></tr>
-    <tr><td><strong>정보통신망 이용촉진 및 정보보호 등에 관한 법률</strong><br>(정보통신망법)</td><td>정보통신서비스 제공자 의무, 해킹·스팸 규제, 청소년 보호.</td><td>과학기술정보통신부 / 방통위</td></tr>
-    <tr><td><strong>정보보호산업의 진흥에 관한 법률</strong></td><td>ISMS 인증 법적 근거. 정보보호 산업 지원.</td><td>과학기술정보통신부</td></tr>
-    <tr><td><strong>전자서명법</strong></td><td>전자서명·인증 제도. 2020년 개정으로 공인인증서 독점 폐지.</td><td>과학기술정보통신부</td></tr>
-    <tr><td><strong>전자금융거래법</strong></td><td>금융 분야 전자거래 보안 기준. 금융회사 정보보호.</td><td>금융위원회</td></tr>
-    <tr><td><strong>신용정보의 이용 및 보호에 관한 법률</strong><br>(신용정보법)</td><td>개인신용정보 보호. 마이데이터 사업 근거.</td><td>금융위원회</td></tr>
-    <tr><td><strong>통신비밀보호법</strong></td><td>통신 비밀 보호. 불법 감청 금지.</td><td>법무부 / 방통위</td></tr>
+    <tr><td><strong>개인정보 보호법</strong></td><td>개인정보보호위원회</td><td>개인정보 처리 전반</td><td>개인정보 수집·이용·제공·파기, 정보주체 권리, 안전조치 의무</td></tr>
+    <tr><td><strong>정보통신망 이용촉진 및 정보보호 등에 관한 법률</strong></td><td>과기부·방통위</td><td>정보통신서비스 제공자</td><td>스팸 규제, 해킹·악성프로그램 금지, ISMS 의무, 침해사고 신고</td></tr>
+    <tr><td><strong>정보통신기반 보호법</strong></td><td>과기부</td><td>주요정보통신기반시설</td><td>보호계획 수립, 취약점 분석·평가, 침해사고 신고</td></tr>
+    <tr><td><strong>전자서명법</strong></td><td>과기부</td><td>전자서명·공인인증</td><td>전자서명 법적 효력, 전자서명인증사업자 평가·인정</td></tr>
+    <tr><td><strong>전자금융거래법</strong></td><td>금융위</td><td>전자금융</td><td>금융 분야 전자거래 보안 기준, 금융사고 신고 의무</td></tr>
+    <tr><td><strong>클라우드컴퓨팅법</strong></td><td>과기부</td><td>클라우드 보안</td><td>클라우드서비스 보안인증, 공공기관 이용 기준</td></tr>
   </tbody>
 </table>
 
-<h3>개인정보 보호법 핵심</h3>
+<h3>제재 유형</h3>
+<table>
+  <thead><tr><th>제재 유형</th><th>종류</th><th>주요 위반 사례</th></tr></thead>
+  <tbody>
+    <tr><td><strong>형사처벌</strong></td><td>징역·벌금</td><td>해킹, 개인정보 대규모 유출·불법 제공, 악성프로그램 유포</td></tr>
+    <tr><td><strong>행정제재 — 과징금</strong></td><td>매출액 비례 부과</td><td>안전조치 미이행으로 개인정보 유출, 동의 없는 개인정보 제3자 제공</td></tr>
+    <tr><td><strong>행정제재 — 과태료</strong></td><td>정액 부과</td><td>처리방침 미공개, 접속기록 미보관, 신고 의무 위반</td></tr>
+    <tr><td><strong>시정명령</strong></td><td>행정명령</td><td>위반 행위 중지, 개선 조치 이행 명령</td></tr>
+  </tbody>
+</table>
 
-<h4>개인정보의 정의</h4>
-<p>살아 있는 개인에 관한 정보로서 성명·주민등록번호 등으로 개인을 알아볼 수 있는 정보. <strong>다른 정보와 결합해 알아볼 수 있는 것도 포함.</strong></p>
+<h3>침해사고 신고 의무</h3>
 <ul>
-  <li>가명정보: 일부 삭제·대체로 추가 정보 없이 개인 식별 불가하게 처리. 통계·연구 목적 동의 없이 활용 가능.</li>
-  <li>익명정보: 모든 개인 정보 제거. 개인정보 보호법 미적용.</li>
+  <li><strong>정보통신서비스 제공자</strong>: 침해사고 발생 인지 후 <strong>24시간 이내</strong> KISA에 신고</li>
+  <li><strong>주요정보통신기반시설 운영기관</strong>: 침해사고 즉시 관계중앙행정기관에 신고</li>
+  <li><strong>개인정보 유출</strong>: 정보주체에게 72시간 이내 통지, 1천 명 이상 시 개인정보보호위원회 신고</li>
 </ul>
 
-<h4>개인정보 처리 원칙 (8가지)</h4>
+<h3>주요 기관 역할</h3>
+<ul>
+  <li><strong>KISA (한국인터넷진흥원)</strong>: 인터넷침해대응센터 운영, 침해사고 분석·대응, ISMS 인증 심사</li>
+  <li><strong>개인정보보호위원회</strong>: 개인정보 보호법 집행, 과징금·과태료 부과, 법령 해석</li>
+  <li><strong>CSIRT (Computer Security Incident Response Team)</strong>: 기관·기업 내 침해사고 대응팀, 탐지·분석·복구</li>
+</ul>
+    `,
+  },
+  {
+    subject: 'law',
+    subjectLabel: '정보보안관리및법규',
+    chapter: 'privacy-law',
+    chapterLabel: '개인정보 보호법',
+    keywords: ['개인정보', '개인정보보호법', '정보주체', '개인정보처리자', '수집', '이용', '제공', '파기', '동의', '열람', '정정', '삭제', '처리정지', '개인정보보호위원회', '고유식별정보', '민감정보'],
+    content: `
+<h3>개인정보 정의</h3>
+<p>살아있는 개인에 관한 정보로서 성명·주민등록번호·영상 등을 통해 개인을 알아볼 수 있는 정보. <strong>다른 정보와 쉽게 결합하여 알아볼 수 있는 정보도 포함.</strong></p>
+
+<h3>개인정보 처리 8대 원칙</h3>
 <ol>
-  <li>목적 명확화</li>
-  <li>최소 수집 (목적에 필요한 최소한)</li>
-  <li>목적 범위 내 처리</li>
-  <li>처리 방법의 적법성·정당성</li>
+  <li>목적 명확화 — 처리 목적을 명확히 하여야 함</li>
+  <li>최소 수집 — 목적에 필요한 최소한의 정보만 수집</li>
+  <li>목적 외 이용 금지 — 명시한 목적 범위 내에서만 처리</li>
+  <li>처리의 적법성·정당성</li>
   <li>정확성·최신성 보장</li>
-  <li>안전한 관리</li>
+  <li>안전한 관리 — 안전성 확보 조치</li>
   <li>비밀 보장</li>
-  <li>개인정보 처리 투명성</li>
+  <li>투명성 — 처리 현황 공개</li>
 </ol>
 
-<h4>수집·이용 가능한 경우 (법적 근거)</h4>
-<ul>
-  <li>정보주체 <strong>동의</strong></li>
-  <li>법률 규정 또는 법령 의무 준수</li>
-  <li>계약 이행</li>
-  <li>명백한 이익·공공기관 업무 수행</li>
-  <li><strong>정당한 이익</strong> (개인정보처리자)</li>
-</ul>
-
-<h4>민감정보 (별도 동의 필요)</h4>
-<p>일반 개인정보보다 더 엄격한 보호. 처리 시 <strong>별도의 명시적 동의</strong> 필요.</p>
-<ul>
-  <li>사상·신념</li>
-  <li>노동조합·정당 가입·탈퇴</li>
-  <li>정치적 견해</li>
-  <li>건강, 성생활에 관한 정보</li>
-  <li>유전정보</li>
-  <li>범죄경력 정보</li>
-  <li>생체인식정보 (지문, 홍채, 얼굴 등)</li>
-</ul>
-
-<h4>고유식별정보 (법령 근거 또는 별도 동의 필요)</h4>
-<ul>
-  <li>주민등록번호, 여권번호, 운전면허번호, 외국인등록번호</li>
-  <li>주민등록번호는 <strong>법적 의무 있는 경우를 제외하고 처리 금지</strong></li>
-</ul>
-
-<h4>정보주체 권리</h4>
+<h3>정보주체 권리</h3>
 <table>
-  <thead><tr><th>권리</th><th>내용</th></tr></thead>
+  <thead><tr><th>권리</th><th>내용</th><th>행사 방법</th></tr></thead>
   <tbody>
-    <tr><td><strong>열람권</strong></td><td>자신의 개인정보 처리 여부·내용 확인</td></tr>
-    <tr><td><strong>정정·삭제권</strong></td><td>부정확하거나 불필요한 정보 정정·삭제 요청</td></tr>
-    <tr><td><strong>처리정지권</strong></td><td>개인정보 처리 일시 정지 요청</td></tr>
-    <tr><td><strong>동의 철회권</strong></td><td>제공한 동의 언제든지 철회</td></tr>
-    <tr><td><strong>손해배상 청구권</strong></td><td>피해 발생 시 손해배상 청구</td></tr>
+    <tr><td><strong>열람권</strong></td><td>자신의 개인정보 처리 여부·내용 확인</td><td>서면·전자문서 등으로 개인정보처리자에게 청구</td></tr>
+    <tr><td><strong>정정권</strong></td><td>부정확한 정보 정정 요청</td><td>정정 완료 전까지 이용·제공 정지 가능</td></tr>
+    <tr><td><strong>삭제권</strong></td><td>불필요한 정보 삭제 요청</td><td>법령 의무 보존 정보는 삭제 제한</td></tr>
+    <tr><td><strong>처리정지권</strong></td><td>개인정보 처리 일시 정지 요청</td><td>정당한 사유 없으면 10일 이내 조치</td></tr>
+    <tr><td><strong>이동권</strong></td><td>본인 개인정보를 다른 기관으로 이전 요청</td><td>정보이동권(개정 추진 중)</td></tr>
+    <tr><td><strong>자동화 의사결정 거부권</strong></td><td>프로파일링·자동화 처리 결과에 이의 제기</td><td>설명 요구 및 거부 가능</td></tr>
   </tbody>
 </table>
 
-<h4>개인정보 파기</h4>
-<p>보유 목적 달성 또는 보유 기간 경과 시 <strong>지체 없이(5일 이내)</strong> 파기.</p>
+<h3>수집·이용 법적 근거</h3>
 <ul>
-  <li>전자적 파일: 복구 불가능한 방법으로 삭제 (덮어쓰기, 파쇄, 디가우징)</li>
-  <li>출력물: 파쇄 또는 소각</li>
-  <li>법령에 의해 보존 필요한 경우: 다른 개인정보와 분리 보관</li>
+  <li>정보주체의 <strong>동의</strong></li>
+  <li><strong>계약 이행</strong>에 필요한 경우</li>
+  <li><strong>법령 의무</strong> 준수</li>
+  <li>공공기관의 <strong>법령 직무</strong> 수행</li>
+  <li>개인정보처리자의 <strong>정당한 이익</strong> (정보주체 권리보다 명백히 우선하는 경우)</li>
 </ul>
 
-<h3>개인정보 안전조치 기준</h3>
+<h3>민감정보·고유식별정보</h3>
+<p><strong>민감정보</strong> (별도 동의 필요): 사상·신념, 노동조합 가입·탈퇴, 정치적 견해, 건강·성생활, 유전정보, 범죄경력, 생체인식정보(지문·홍채·얼굴)</p>
+<p><strong>고유식별정보</strong> (법령 근거 또는 별도 동의 필요): 주민등록번호, 여권번호, 운전면허번호, 외국인등록번호. 주민등록번호는 법적 의무 없으면 처리 금지.</p>
+
+<h3>개인정보 처리방침 의무 공개 사항</h3>
+<ul>
+  <li>개인정보의 처리 목적</li>
+  <li>처리하는 개인정보의 항목</li>
+  <li>개인정보의 처리 및 보유 기간</li>
+  <li>개인정보의 제3자 제공 현황</li>
+  <li>개인정보 처리 위탁 현황</li>
+  <li>정보주체 권리·의무 및 행사 방법</li>
+  <li>개인정보 보호책임자 정보</li>
+</ul>
+
+<h3>파기 의무</h3>
+<p>보유 목적 달성 후 <strong>지체없이 파기</strong> (복구 불가능한 방법). 전자파일은 덮어쓰기·디가우징·파쇄, 출력물은 파쇄·소각.</p>
+
+<h3>주요 벌칙</h3>
 <table>
-  <thead><tr><th>안전조치 항목</th><th>주요 내용</th></tr></thead>
+  <thead><tr><th>위반 유형</th><th>형사처벌</th><th>과태료</th></tr></thead>
   <tbody>
-    <tr><td><strong>내부 관리계획</strong></td><td>수립·시행. 개인정보 보호책임자(CPO) 지정.</td></tr>
-    <tr><td><strong>접근통제</strong></td><td>권한 있는 자만 접근. 외부 접속 차단 또는 VPN.</td></tr>
-    <tr><td><strong>접근권한 관리</strong></td><td>최소 권한 부여. 퇴직자 즉시 권한 회수. 권한 부여 기록 보관.</td></tr>
-    <tr><td><strong>암호화</strong></td><td>고유식별정보·비밀번호·바이오정보 암호화 필수. 전송 시 SSL/TLS.</td></tr>
-    <tr><td><strong>접속기록 보관</strong></td><td>최소 <strong>6개월</strong> 보관. 5만 명 이상 처리 또는 민감정보 처리 시 <strong>2년</strong>.</td></tr>
-    <tr><td><strong>접속기록 위변조 방지</strong></td><td>접속기록의 무결성 보장.</td></tr>
-    <tr><td><strong>보안프로그램</strong></td><td>악성프로그램 방지 소프트웨어 설치·운영. 자동 업데이트.</td></tr>
-    <tr><td><strong>물리적 안전조치</strong></td><td>출입 통제, 잠금장치, 보안 구역 설정.</td></tr>
+    <tr><td>개인정보 불법 수집·제공·누설</td><td>5년 이하 징역 또는 5천만원 이하 벌금</td><td>—</td></tr>
+    <tr><td>안전조치 의무 위반으로 유출</td><td>—</td><td>3천만원 이하</td></tr>
+    <tr><td>주민등록번호 암호화 미적용</td><td>—</td><td>3천만원 이하</td></tr>
+    <tr><td>처리방침 미공개</td><td>—</td><td>1천만원 이하</td></tr>
+    <tr><td>과징금</td><td colspan="2">위반행위 관련 매출액의 3% 이하</td></tr>
+  </tbody>
+</table>
+    `,
+  },
+  {
+    subject: 'law',
+    subjectLabel: '정보보안관리및법규',
+    chapter: 'privacy-advanced',
+    chapterLabel: '개인정보 보호 심화',
+    keywords: ['개인정보 영향평가', 'PIA', '가명처리', '익명처리', '개인정보 보호책임자', 'CPO', 'DPO', '국외이전', '개인정보 유출통지', '72시간', '개인정보 안전성 확보조치', '암호화', '접근권한', '접속기록'],
+    content: `
+<h3>개인정보 안전성 확보조치 기준</h3>
+<table>
+  <thead><tr><th>조치 항목</th><th>의무 내용</th></tr></thead>
+  <tbody>
+    <tr><td><strong>내부 관리계획</strong></td><td>수립·시행, 개인정보 보호책임자(CPO) 지정, 연 1회 이상 교육</td></tr>
+    <tr><td><strong>접근통제</strong></td><td>권한 없는 자의 접근 차단, 외부 접속 시 VPN 등 안전한 인증</td></tr>
+    <tr><td><strong>접근권한 관리</strong></td><td>최소 권한 부여, 퇴직자 즉시 권한 회수, 권한 부여·변경 기록 보관</td></tr>
+    <tr><td><strong>암호화</strong></td><td>고유식별정보·비밀번호·바이오정보 암호화 필수, 전송 시 SSL/TLS</td></tr>
+    <tr><td><strong>접속기록 보관</strong></td><td>최소 6개월 보관, 5만 명 이상 또는 민감정보 처리 시 2년</td></tr>
+    <tr><td><strong>접속기록 위변조 방지</strong></td><td>접속기록의 무결성 보장, 별도 저장·관리</td></tr>
+    <tr><td><strong>보안프로그램</strong></td><td>악성프로그램 방지 소프트웨어 설치·운영, 자동 업데이트</td></tr>
+    <tr><td><strong>물리보안</strong></td><td>출입 통제, 잠금장치, 개인정보 처리 구역 접근 제한</td></tr>
   </tbody>
 </table>
 
-<h3>ISMS / ISMS-P 인증</h3>
+<h3>개인정보 영향평가(PIA)</h3>
+<ul>
+  <li><strong>대상</strong>: 공공기관이 대규모 개인정보 파일 구축·운용·변경 시 의무</li>
+  <li><strong>절차</strong>: 사전 계획 → 전문기관 평가 → 개인정보보호위원회 제출</li>
+  <li><strong>전문기관</strong>: KISA 등 개인정보보호위원회 지정 기관</li>
+  <li>민간기업은 의무 아니나 권고</li>
+</ul>
 
-<h4>비교</h4>
+<h3>가명처리 vs 익명처리 비교</h3>
 <table>
-  <thead><tr><th>구분</th><th>ISMS</th><th>ISMS-P</th></tr></thead>
+  <thead><tr><th>구분</th><th>가명처리</th><th>익명처리</th></tr></thead>
   <tbody>
-    <tr><td>인증 범위</td><td>정보보호 관리체계</td><td>정보보호 + 개인정보보호 통합</td></tr>
-    <tr><td>인증 기준</td><td>102개 통제항목</td><td>102개 + 개인정보보호 추가 항목</td></tr>
-    <tr><td>인증 기관</td><td>KISA (한국인터넷진흥원)</td><td>KISA</td></tr>
-    <tr><td>유효 기간</td><td>3년 (매년 사후심사)</td><td>3년 (매년 사후심사)</td></tr>
+    <tr><td><strong>정의</strong></td><td>추가 정보 없이 개인 식별 불가하게 처리 (추가 정보 결합 시 재식별 가능)</td><td>모든 식별 가능 정보 제거, 재식별 불가</td></tr>
+    <tr><td><strong>활용 범위</strong></td><td>통계 작성, 과학적 연구, 공익적 기록 보존 — 동의 없이 활용 가능</td><td>개인정보 보호법 미적용, 자유롭게 활용</td></tr>
+    <tr><td><strong>재식별 위험</strong></td><td>추가 정보 결합 시 재식별 가능 — 안전조치 및 결합제한기관 이용 의무</td><td>재식별 불가 (사실상 불가능한 수준)</td></tr>
+    <tr><td><strong>법적 지위</strong></td><td>개인정보 보호법 일부 적용 (가명정보 특례)</td><td>개인정보 아님 — 법 미적용</td></tr>
   </tbody>
 </table>
 
-<h4>ISMS 의무 인증 대상</h4>
+<h3>개인정보 보호책임자(CPO)</h3>
 <ul>
-  <li><strong>ISP</strong>: 기간통신사업자 (KT, SKT, LGU+ 등)</li>
-  <li><strong>IDC</strong>: 인터넷데이터센터</li>
-  <li><strong>정보통신서비스 제공자</strong>: 연간 매출액 100억 원 이상 또는 전년도 말 일일평균 이용자 수 100만 명 이상</li>
-  <li><strong>병원</strong>: 전년도 말 일일평균 이용자 수 100만 명 이상</li>
+  <li><strong>지정 의무</strong>: 개인정보를 처리하는 사업자는 CPO 지정 의무</li>
+  <li><strong>역할</strong>: 내부 관리계획 수립, 접근권한 관리, 직원 교육, 개인정보 파기 확인, 처리방침 점검</li>
 </ul>
 
-<h3>주요 처벌 기준</h3>
+<h3>국외이전</h3>
+<ul>
+  <li>정보주체 동의 또는 법적 근거 필요</li>
+  <li>이전 받는 국가·기관의 안전성 확보 조치 의무</li>
+  <li>계약서에 보호 조치 명시</li>
+</ul>
+
+<h3>개인정보 유출 통지·신고</h3>
+<ul>
+  <li><strong>정보주체 통지</strong>: 유출 인지 후 <strong>72시간 이내</strong> (통지 내용: 유출 항목, 시점, 경위, 조치사항, 담당자)</li>
+  <li><strong>개인정보보호위원회 신고</strong>: 1천 명 이상 유출 시 즉시 신고</li>
+</ul>
+
+<h3>개인정보 처리 위탁</h3>
+<ul>
+  <li>수탁자 선정 기준 마련, 정기적 관리·감독 의무</li>
+  <li>위탁 계약서 필수 항목: 위탁 업무 목적·범위, 재위탁 제한, 안전조치 의무, 비밀유지, 손해배상</li>
+  <li>수탁자의 개인정보 침해 시 위탁자도 책임</li>
+</ul>
+    `,
+  },
+  {
+    subject: 'law',
+    subjectLabel: '정보보안관리및법규',
+    chapter: 'network-act',
+    chapterLabel: '정보통신망법·전자서명법',
+    keywords: ['정보통신망법', '정보통신서비스', '청소년 보호', '스팸', '해킹', '악성프로그램', '개인정보', 'ISMS', '침해사고', '전자서명법', '공인전자서명', '공동인증서', '타임스탬프', '전자문서'],
+    content: `
+<h3>정보통신망법 주요 내용</h3>
+
+<h4>정보통신서비스 제공자 의무</h4>
+<ul>
+  <li>개인정보 보호 (수집·이용·제공·파기)</li>
+  <li>청소년 유해 정보 차단</li>
+  <li>광고성 정보 규제 준수</li>
+  <li>침해사고 신고 의무</li>
+</ul>
+
+<h4>스팸(영리목적 광고성 정보) 규제</h4>
+<ul>
+  <li>수신 <strong>동의 없는 전송 금지</strong></li>
+  <li>야간(21:00~08:00) 전송 금지 (별도 동의 필요)</li>
+  <li>수신거부 수단 제공 의무</li>
+  <li>광고임을 표시 의무</li>
+</ul>
+
+<h4>사이버 침해 행위 금지 및 벌칙</h4>
 <table>
-  <thead><tr><th>위반 내용</th><th>처벌</th></tr></thead>
+  <thead><tr><th>금지 행위</th><th>벌칙</th></tr></thead>
   <tbody>
-    <tr><td>개인정보 유출·침해 (개인정보보호법)</td><td>5년 이하 징역 또는 5천만원 이하 벌금</td></tr>
-    <tr><td>주민등록번호 암호화 미적용</td><td>과태료 3천만원 이하</td></tr>
-    <tr><td>안전조치 의무 위반</td><td>과태료 3천만원 이하</td></tr>
-    <tr><td>개인정보 처리방침 미공개</td><td>과태료 1천만원 이하</td></tr>
-    <tr><td>해킹 등 침해사고 (정보통신망법)</td><td>5년 이하 징역 또는 5천만원 이하 벌금</td></tr>
+    <tr><td>해킹 — 권한 없이 정보통신망 침입</td><td>5년 이하 징역 또는 5천만원 이하 벌금</td></tr>
+    <tr><td>악성프로그램 유포</td><td>7년 이하 징역 또는 7천만원 이하 벌금</td></tr>
+    <tr><td>DDoS 공격 — 장애 유발</td><td>5년 이하 징역 또는 5천만원 이하 벌금</td></tr>
     <tr><td>스팸 전송</td><td>3천만원 이하 과태료</td></tr>
   </tbody>
 </table>
 
-<h3>침해사고 대응</h3>
+<h4>ISMS 의무 인증 대상 (정보통신망법 기준)</h4>
 <ul>
-  <li><strong>침해사고 신고 의무</strong>: 정보통신서비스 제공자는 침해사고 발생 시 <strong>24시간 이내</strong> KISA에 신고.</li>
-  <li><strong>개인정보 유출 통지 의무</strong>: 정보주체에게 <strong>72시간 이내</strong> 통지. 1천 명 이상 유출 시 행정안전부·개인정보보호위원회 신고.</li>
-  <li><strong>CERT (Computer Emergency Response Team)</strong>: 침해사고 대응 전담 조직.</li>
-  <li><strong>KISA 인터넷침해대응센터</strong>: 국가 차원 침해사고 대응.</li>
+  <li>ISP: 기간통신사업자 (KT, SKT, LGU+ 등)</li>
+  <li>IDC: 인터넷데이터센터</li>
+  <li>정보통신서비스 제공자: 연간 매출액 <strong>100억 원 이상</strong> 또는 일일평균 이용자 수 <strong>100만 명 이상</strong></li>
+  <li>병원: 일일평균 이용자 수 100만 명 이상</li>
 </ul>
 
-<h3>국제 표준 및 규정</h3>
+<h3>전자서명법</h3>
+
+<h4>전자서명의 법적 효력</h4>
 <ul>
-  <li><strong>ISO/IEC 27001</strong>: 정보보호 관리체계 국제 표준. ISMS의 국제판.</li>
-  <li><strong>ISO/IEC 27002</strong>: 정보보호 통제 항목 실무 가이드.</li>
-  <li><strong>GDPR (EU 일반 데이터 보호 규정)</strong>: EU 시민 개인정보 보호. 위반 시 전 세계 매출의 4% 또는 2천만 유로 중 높은 금액.</li>
-  <li><strong>PCI-DSS</strong>: 카드사 공동 결제 보안 기준. 신용카드 정보 처리 시 준수.</li>
-  <li><strong>NIST CSF</strong>: 미국 사이버보안 프레임워크. 식별-보호-탐지-대응-복구.</li>
+  <li>법령에서 서명·기명날인을 요구하는 경우, 전자서명으로 대체 가능 (법적 효력 동일)</li>
+  <li>전자문서는 서면과 동일한 효력</li>
+</ul>
+
+<h4>공동인증서 (구 공인인증서)</h4>
+<ul>
+  <li>2020년 전자서명법 개정으로 <strong>공인인증서 법적 우대 폐지</strong></li>
+  <li>공인인증서 독점 지위 없어짐 → 다양한 전자서명 수단 (PASS, 카카오, 네이버 등) 법적 인정</li>
+  <li>기존 공인인증서는 '공동인증서'로 명칭 변경, 계속 사용 가능</li>
+</ul>
+
+<h4>전자서명인증사업자</h4>
+<ul>
+  <li>임의 인정제: KISA 평가·인정 → 신뢰 서비스 목록 공고</li>
+  <li>평가 기준: 기술적·운영적 보안 수준</li>
+</ul>
+
+<h4>타임스탬프</h4>
+<ul>
+  <li>전자문서·전자서명의 <strong>존재 증명</strong> (특정 시점에 존재했음을 증명)</li>
+  <li>법적 효력: 서명 시점 증명, 위변조 탐지</li>
+  <li>TSA (Time Stamping Authority): 공인 타임스탬프 발급 기관</li>
 </ul>
     `,
   },
+  {
+    subject: 'law',
+    subjectLabel: '정보보안관리및법규',
+    chapter: 'isms-p',
+    chapterLabel: 'ISMS·ISMS-P',
+    keywords: ['ISMS', 'ISMS-P', '정보보호 관리체계', '인증', 'ISMS 의무대상', '인증심사', '사후심사', '갱신심사', '관리체계', '보호대책', '개인정보처리단계', '결함', '시정조치'],
+    content: `
+<h3>ISMS vs ISMS-P 비교</h3>
+<table>
+  <thead><tr><th>구분</th><th>ISMS</th><th>ISMS-P</th></tr></thead>
+  <tbody>
+    <tr><td><strong>인증 범위</strong></td><td>정보보호 관리체계</td><td>정보보호 + 개인정보보호 통합 관리체계</td></tr>
+    <tr><td><strong>의무대상</strong></td><td>정보통신서비스 제공자, ISP, IDC 등</td><td>개인정보를 대규모로 처리하는 경우 (선택 가능)</td></tr>
+    <tr><td><strong>인증 영역 수</strong></td><td>2개 영역, 80개 통제항목</td><td>3개 영역, 102개 통제항목</td></tr>
+    <tr><td><strong>심사 기관</strong></td><td>KISA 또는 지정 심사기관</td><td>KISA 또는 지정 심사기관</td></tr>
+    <tr><td><strong>유효 기간</strong></td><td>3년 (매년 사후심사)</td><td>3년 (매년 사후심사)</td></tr>
+  </tbody>
+</table>
+
+<h3>ISMS-P 인증 기준 3개 영역</h3>
+<ul>
+  <li><strong>관리체계 수립·운영</strong> (16개): 정책, 조직, 위험관리, 교육, 내부감사 등</li>
+  <li><strong>보호대책 요구사항</strong> (64개): 인적보안, 접근통제, 암호화, 운영보안, 사고대응 등</li>
+  <li><strong>개인정보 처리단계별 요구사항</strong> (22개): 수집·이용, 제공, 위탁, 파기 등 생애주기 전반</li>
+</ul>
+
+<h3>ISMS 의무 인증 대상</h3>
+<ul>
+  <li><strong>ISP</strong>: 기간통신사업자 (매출액 100억 이상)</li>
+  <li><strong>정보통신서비스 제공자</strong>: 매출액 100억 이상 또는 일평균 이용자 100만 이상</li>
+  <li><strong>병원</strong>: 일평균 이용자 100만 이상</li>
+  <li><strong>학교</strong>: 재학생 1만 명 이상 대학</li>
+</ul>
+
+<h3>인증 절차</h3>
+<ol>
+  <li><strong>신청</strong>: 인증 신청서 제출, 심사 범위 확정</li>
+  <li><strong>서류심사</strong>: 관리체계 문서 검토, 준비 상태 확인</li>
+  <li><strong>현장심사</strong>: 인터뷰·증적 확인, 결함 발굴</li>
+  <li><strong>결함 시정</strong>: 결함 보완, 시정 계획·이행 확인</li>
+  <li><strong>인증위원회</strong>: 심사 결과 심의, 인증 여부 결정</li>
+  <li><strong>인증서 발급</strong>: 유효기간 3년의 인증서 발급</li>
+</ol>
+
+<h3>심사 유형</h3>
+<table>
+  <thead><tr><th>심사 유형</th><th>시기</th><th>내용</th></tr></thead>
+  <tbody>
+    <tr><td><strong>최초심사</strong></td><td>최초 인증 신청 시</td><td>전체 통제항목 심사</td></tr>
+    <tr><td><strong>사후심사</strong></td><td>인증 후 매년 1회</td><td>관리체계 유지 여부 확인, 일부 통제항목 심사</td></tr>
+    <tr><td><strong>갱신심사</strong></td><td>인증 유효기간 만료 전 (3년)</td><td>전체 통제항목 재심사, 최초심사 수준</td></tr>
+  </tbody>
+</table>
+
+<h3>결함 분류</h3>
+<ul>
+  <li><strong>결함</strong>: 인증 기준을 충족하지 못하는 사항 — 시정 후 인증 가능</li>
+  <li><strong>중결함</strong>: 보안에 심각한 위협이 되는 결함 — 즉시 시정 필요</li>
+  <li>결함 시정 기간: 통상 90일 이내</li>
+</ul>
+    `,
+  },
+  {
+    subject: 'law',
+    subjectLabel: '정보보안관리및법규',
+    chapter: 'critical-infrastructure',
+    chapterLabel: '주요정보통신기반시설 보호',
+    keywords: ['주요정보통신기반시설', '취약점 분석', '보호계획', '정보공유', 'ISAC', '제어시스템', 'SCADA', 'ICS', '사이버위기경보', '사이버위기관리', '관계중앙행정기관'],
+    content: `
+<h3>주요정보통신기반시설 정의·지정</h3>
+<p>전자적 침해가 발생할 경우 국가안보, 경제, 사회, 국민 생활에 심각한 피해를 줄 우려가 있는 정보통신기반시설. <strong>관계중앙행정기관의 장이 지정.</strong></p>
+
+<h4>지정 분야</h4>
+<ul>
+  <li>교통 (항공, 철도, 항만)</li>
+  <li>에너지 (전력, 가스, 석유)</li>
+  <li>금융 (은행, 증권, 보험)</li>
+  <li>통신 (전기통신사업자)</li>
+  <li>보건의료 (대형 병원)</li>
+  <li>수자원 (댐, 상수도)</li>
+  <li>행정·국방</li>
+</ul>
+
+<h3>의무사항</h3>
+<table>
+  <thead><tr><th>의무사항</th><th>주기</th><th>담당</th></tr></thead>
+  <tbody>
+    <tr><td><strong>보호계획 수립</strong></td><td>매년</td><td>운영기관 → 관계중앙행정기관 제출</td></tr>
+    <tr><td><strong>취약점 분석·평가</strong></td><td>2년마다 의무</td><td>국가정보원 또는 지정 전문기관</td></tr>
+    <tr><td><strong>보호대책 이행여부 확인</strong></td><td>매년</td><td>관계중앙행정기관</td></tr>
+    <tr><td><strong>침해사고 신고</strong></td><td>즉시</td><td>운영기관 → 관계중앙행정기관·국정원·KISA</td></tr>
+  </tbody>
+</table>
+
+<h3>취약점 분석·평가</h3>
+<ul>
+  <li>2년마다 의무 실시 (자체 또는 지정 전문기관)</li>
+  <li>평가 결과 보호계획에 반영</li>
+  <li>국가정보원: 취약점 분석 기술 지원, 지침 제공</li>
+</ul>
+
+<h3>ISAC (Information Sharing and Analysis Center)</h3>
+<ul>
+  <li>분야별 사이버위협 정보를 수집·분석·공유하는 기관</li>
+  <li><strong>금융ISAC</strong>: 금융보안원 운영, 금융 분야 사이버위협 정보공유</li>
+  <li><strong>통신ISAC</strong>: KISA 운영, 통신 분야 정보공유</li>
+  <li>운영기관 간 침해사고 정보 신속 공유로 집단 방어</li>
+</ul>
+
+<h3>SCADA·ICS 보안 (OT 보안)</h3>
+<ul>
+  <li><strong>SCADA</strong> (Supervisory Control And Data Acquisition): 원격 감시·제어 시스템</li>
+  <li><strong>ICS</strong> (Industrial Control System): 산업제어시스템 — 발전소·공장 등</li>
+  <li><strong>OT</strong> (Operational Technology): 물리적 공정 제어 기술 — IT와 구분</li>
+  <li>IT-OT 망분리: 사무망과 제어망 분리, 단방향 통신 장치(데이터 다이오드) 활용</li>
+  <li>장기 운영 레거시 시스템 — 패치 적용 어려움, 가용성 우선</li>
+</ul>
+
+<h3>사이버위기경보 4단계</h3>
+<table>
+  <thead><tr><th>단계</th><th>수준</th><th>의미</th></tr></thead>
+  <tbody>
+    <tr><td><strong>관심</strong></td><td>1단계</td><td>사이버위협 징후 감지, 모니터링 강화</td></tr>
+    <tr><td><strong>주의</strong></td><td>2단계</td><td>일부 피해 발생, 대응 준비</td></tr>
+    <tr><td><strong>경계</strong></td><td>3단계</td><td>피해 확산, 적극 대응</td></tr>
+    <tr><td><strong>심각</strong></td><td>4단계</td><td>국가 기반 마비 수준, 범정부 대응</td></tr>
+  </tbody>
+</table>
+    `,
+  },
+  {
+    subject: 'law',
+    subjectLabel: '정보보안관리및법규',
+    chapter: 'international-standard',
+    chapterLabel: '국제 표준·프레임워크',
+    keywords: ['ISO 27001', 'ISO 27002', 'NIST CSF', 'NIST SP 800', 'COBIT', 'ITIL', 'PCI-DSS', 'GDPR', 'SOC 2', 'CC', 'Common Criteria', 'EAL', 'FIPS', 'Zero Trust Architecture'],
+    content: `
+<h3>국제 보안 표준 비교</h3>
+<table>
+  <thead><tr><th>표준</th><th>목적</th><th>범위</th><th>인증여부</th><th>주요 적용 분야</th></tr></thead>
+  <tbody>
+    <tr><td><strong>ISO/IEC 27001</strong></td><td>ISMS 요구사항</td><td>조직 전체</td><td>인증 가능</td><td>전 산업</td></tr>
+    <tr><td><strong>ISO/IEC 27002</strong></td><td>보안 통제 가이드</td><td>통제 항목</td><td>인증 없음</td><td>전 산업 (실무 참조)</td></tr>
+    <tr><td><strong>NIST CSF</strong></td><td>사이버보안 프레임워크</td><td>위험 기반</td><td>인증 없음</td><td>미국 민간·공공</td></tr>
+    <tr><td><strong>COBIT</strong></td><td>IT 거버넌스</td><td>IT 전반</td><td>인증 가능</td><td>IT 감사·거버넌스</td></tr>
+    <tr><td><strong>PCI-DSS</strong></td><td>카드 결제 보안</td><td>결제 시스템</td><td>준수 확인</td><td>카드사·가맹점</td></tr>
+    <tr><td><strong>SOC 2</strong></td><td>서비스 보안 감사</td><td>클라우드·서비스</td><td>보고서 발행</td><td>SaaS·클라우드</td></tr>
+  </tbody>
+</table>
+
+<h3>ISO/IEC 27001:2022</h3>
+<ul>
+  <li>4개 필수 조항 (4~10조): 조직 상황, 리더십, 계획, 지원, 운영, 성과 평가, 개선</li>
+  <li>Annex A: 4개 테마 93개 통제 항목 (조직·인원·물리·기술)</li>
+  <li>PDCA (Plan-Do-Check-Act) 사이클 기반</li>
+  <li>위험 평가 → 위험 처리 계획 → 통제 구현 → 모니터링</li>
+</ul>
+
+<h3>ISO/IEC 27002:2022</h3>
+<ul>
+  <li>4개 테마: <strong>조직적 통제</strong>(37개), <strong>인원 통제</strong>(8개), <strong>물리적 통제</strong>(14개), <strong>기술적 통제</strong>(34개)</li>
+  <li>각 통제 항목: 통제명, 목적, 지침, 기타 정보</li>
+  <li>ISO 27001 Annex A의 실무 구현 가이드</li>
+</ul>
+
+<h3>NIST CSF 2.0</h3>
+<p>6개 핵심 기능 (Core Function):</p>
+<ul>
+  <li><strong>Govern (거버넌스)</strong>: 사이버보안 전략·정책·역할 수립 — 2.0 신규 추가</li>
+  <li><strong>Identify (식별)</strong>: 자산·위험 파악</li>
+  <li><strong>Protect (보호)</strong>: 보호대책 구현</li>
+  <li><strong>Detect (탐지)</strong>: 이상 징후 탐지</li>
+  <li><strong>Respond (대응)</strong>: 사고 대응</li>
+  <li><strong>Recover (복구)</strong>: 서비스 복구·개선</li>
+</ul>
+
+<h3>GDPR (EU 일반 데이터 보호 규정)</h3>
+<ul>
+  <li>EU·EEA 시민의 개인정보 보호</li>
+  <li><strong>역외 적용</strong>: EU 시민 대상 서비스 제공 시 국내 기업도 적용</li>
+  <li><strong>위반 제재</strong>: 전 세계 연간 매출액 4% 또는 2천만 유로 중 높은 금액</li>
+  <li>DPO (Data Protection Officer) 지정 의무 (일정 규모 이상)</li>
+  <li>72시간 이내 감독기관 유출 통지</li>
+</ul>
+
+<h3>PCI-DSS v4.0</h3>
+<ul>
+  <li>12개 요구사항: 네트워크 보안, 카드정보 보호, 취약점 관리, 접근통제, 모니터링, 보안정책 등</li>
+  <li>카드사·가맹점·서비스 제공자 적용</li>
+  <li>연 1회 이상 심사 또는 자가 평가</li>
+</ul>
+
+<h3>CC (Common Criteria, ISO/IEC 15408)</h3>
+<ul>
+  <li>보안 제품(IT 제품·시스템)의 보안 기능을 평가하는 국제 기준</li>
+  <li><strong>EAL (Evaluation Assurance Level)</strong>: 1~7 등급 (숫자 클수록 높은 보증)</li>
+  <li>EAL4: 일반 상업용 제품 수준, EAL7: 형식 검증 최고 수준</li>
+  <li>PP (Protection Profile): 제품 유형별 보안 요구사항 명세</li>
+  <li>ST (Security Target): 특정 제품의 보안 목표 명세</li>
+</ul>
+
+<h3>Zero Trust Architecture (NIST SP 800-207)</h3>
+<ul>
+  <li>원칙: <strong>Never Trust, Always Verify</strong> — 내부망도 신뢰 불가</li>
+  <li>모든 접근 요청을 사용자·기기·네트워크 위치 무관하게 검증</li>
+  <li>핵심 원칙: 최소 권한, 마이크로세그멘테이션, 지속적 인증·인가·모니터링</li>
+  <li>구성요소: ID 공급자, 정책 엔진, 정책 관리자, 정책 시행 포인트(PEP)</li>
+</ul>
+    `,
+  },
+  {
+    subject: 'law',
+    subjectLabel: '정보보안관리및법규',
+    chapter: 'compliance',
+    chapterLabel: '컴플라이언스·거버넌스 실무',
+    keywords: ['컴플라이언스', '개인정보 보호책임자', 'DPO', '내부감사', '외부감사', '보안감사', '보안사고 대응', 'IR', '사고 대응 절차', 'CERT', 'CSIRT', '법적 증거', '연계보관성', '정보보호 예산'],
+    content: `
+<h3>컴플라이언스 관리 체계</h3>
+<ol>
+  <li><strong>법령 요구사항 파악</strong>: 적용 법률·규정 목록화, 의무사항 식별</li>
+  <li><strong>갭 분석</strong>: 현재 상태 vs 요구사항 비교, 미충족 영역 도출</li>
+  <li><strong>통제 구현</strong>: 정책·절차 수립, 기술적·관리적 통제 적용</li>
+  <li><strong>감사</strong>: 내부감사 및 외부감사를 통한 준수 여부 확인</li>
+  <li><strong>개선</strong>: 결함 시정, 지속적 개선 (PDCA)</li>
+</ol>
+
+<h3>사고 대응(Incident Response) 절차</h3>
+<table>
+  <thead><tr><th>단계</th><th>활동</th></tr></thead>
+  <tbody>
+    <tr><td><strong>1. 준비 (Preparation)</strong></td><td>IR 계획 수립, CSIRT 구성, 도구 준비, 교육·훈련</td></tr>
+    <tr><td><strong>2. 식별 (Identification)</strong></td><td>사고 탐지, 범위·영향 분석, 사고 분류 및 우선순위 결정</td></tr>
+    <tr><td><strong>3. 봉쇄 (Containment)</strong></td><td>단기 봉쇄(격리), 장기 봉쇄(취약점 제거), 추가 피해 방지</td></tr>
+    <tr><td><strong>4. 근절 (Eradication)</strong></td><td>악성코드 제거, 침해 원인 제거, 시스템 강화</td></tr>
+    <tr><td><strong>5. 복구 (Recovery)</strong></td><td>서비스 복구, 정상 운영 확인, 모니터링 강화</td></tr>
+    <tr><td><strong>6. 사후분석 (Lessons Learned)</strong></td><td>원인 분석, 개선사항 도출, 보고서 작성</td></tr>
+  </tbody>
+</table>
+
+<h3>CERT·CSIRT 운영</h3>
+<ul>
+  <li><strong>CERT</strong> (Computer Emergency Response Team): 침해사고 긴급 대응 조직</li>
+  <li><strong>CSIRT</strong> (Computer Security Incident Response Team): 보안 사고 전반 대응</li>
+  <li><strong>내부 CSIRT</strong>: 기업·기관 내부 운영, 자사 시스템 보호</li>
+  <li><strong>외부 CSIRT</strong>: KISA 인터넷침해대응센터 등 국가·공공 대응 조직</li>
+</ul>
+
+<h3>법적 증거 요건 (디지털 포렌식)</h3>
+<ul>
+  <li><strong>진정성 (Authenticity)</strong>: 증거가 주장하는 그것임을 입증</li>
+  <li><strong>무결성 (Integrity)</strong>: 수집 이후 변조 없음 (해시값으로 증명)</li>
+  <li><strong>신뢰성 (Reliability)</strong>: 수집·분석 방법의 신뢰성</li>
+  <li><strong>원본성 (Best Evidence)</strong>: 가능한 원본 사용</li>
+  <li><strong>연계보관성 (Chain of Custody)</strong>: 증거 수집~제출까지 관리 이력 기록</li>
+</ul>
+
+<h3>정보보호 예산</h3>
+<ul>
+  <li>전체 IT 예산 대비 <strong>7% 이상</strong> 권고 (정보보호산업법 가이드라인)</li>
+  <li>ROI (Return on Investment) 산정: 예상 손실 감소액 대비 보안 투자 비용</li>
+  <li>ALE (Annual Loss Expectancy) = SLE × ARO (단일 손실 기댓값 × 연간 발생률)</li>
+</ul>
+
+<h3>DPO (Data Protection Officer)</h3>
+<ul>
+  <li><strong>GDPR 의무 지정 기준</strong>: 공공기관, 대규모 민감정보 처리, 대규모 개인 모니터링 수행 기업</li>
+  <li><strong>독립성 보장</strong>: 업무 지시 금지, 해임 불가 원칙</li>
+  <li><strong>역할</strong>: GDPR 준수 감독, 개인정보 영향평가 자문, 감독기관 협력</li>
+</ul>
+
+<h3>공급망 보안 컴플라이언스</h3>
+<ul>
+  <li><strong>SBOM</strong> (Software Bill of Materials): 소프트웨어 구성 요소 목록 — 취약 컴포넌트 식별</li>
+  <li><strong>제3자 위험평가</strong>: 공급업체·파트너의 보안 수준 정기 평가</li>
+  <li><strong>SLA 보안 조항</strong>: 계약서에 보안 요구사항·사고 통지 의무·감사 권한 명시</li>
+</ul>
+
+<h3>내부자 위협 프로그램</h3>
+<ul>
+  <li><strong>탐지</strong>: 사용자 행위 분석(UBA/UEBA), 이상 접근 모니터링, DLP</li>
+  <li><strong>예방</strong>: 최소 권한 원칙, 직무 분리, 보안 인식 교육</li>
+  <li><strong>대응</strong>: 사고 조사 절차, 법적 증거 확보, 인사·법적 조치</li>
+</ul>
+    `,
+  },
+
 ];
