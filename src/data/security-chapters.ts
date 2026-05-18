@@ -24,9 +24,14 @@ export const CHAPTERS: Chapter[] = [
 <p>리눅스 파일 권한은 소유자(User)/그룹(Group)/기타(Other) 3계층, 각각 읽기(r=4)/쓰기(w=2)/실행(x=1) 3비트로 표현합니다.</p>
 <pre><code>ls -l 출력 예시:
 -rwxr-xr-- 1 alice staff 1024 May 1 12:00 script.sh
- ↑↑↑↑ ↑↑↑ ↑↑↑
- │소유자 │그룹 │기타
- rwx=7  r-x=5  r--=4  →  옥탈: 754</code></pre>
+①  ②   ③  ④  ⑤    ⑥    ⑦      ⑧         ⑨</code></pre>
+<ul>
+  <li>① 파일 유형 &nbsp;&nbsp;&nbsp; <code>-</code> 일반파일 &nbsp; <code>d</code> 디렉토리 &nbsp; <code>l</code> 심볼릭 링크</li>
+  <li>② 소유자 권한 &nbsp; <code>rwx</code> = r(4)+w(2)+x(1) = <strong>7</strong></li>
+  <li>③ 그룹 권한 &nbsp;&nbsp;&nbsp; <code>r-x</code> = r(4)+w(0)+x(1) = <strong>5</strong></li>
+  <li>④ 기타 권한 &nbsp;&nbsp;&nbsp; <code>r--</code> = r(4)+w(0)+x(0) = <strong>4</strong> &nbsp;→ 8진수(octal): <strong>754</strong></li>
+  <li>⑤ 하드링크 수 &nbsp; ⑥ 소유자명 &nbsp; ⑦ 그룹명 &nbsp; ⑧ 파일 크기(bytes) &nbsp; ⑨ 파일명</li>
+</ul>
 
 <h3>umask</h3>
 <p>umask는 파일/디렉토리 생성 시 기본 권한에서 제거할 비트를 지정합니다.<br>
@@ -42,7 +47,7 @@ export const CHAPTERS: Chapter[] = [
 
 <h3>특수 권한</h3>
 <table>
-  <thead><tr><th>이름</th><th>옥탈</th><th>파일 효과</th><th>디렉토리 효과</th><th>ls -l 표시</th></tr></thead>
+  <thead><tr><th>이름</th><th>8진수</th><th>파일 효과</th><th>디렉토리 효과</th><th>ls -l 표시</th></tr></thead>
   <tbody>
     <tr><td>SetUID (SUID)</td><td>4000</td><td>실행 시 파일 소유자 권한으로 실행</td><td>효과 없음</td><td>소유자 x 자리 → <code>s</code> (없으면 <code>S</code>)</td></tr>
     <tr><td>SetGID (SGID)</td><td>2000</td><td>실행 시 파일 그룹 권한으로 실행</td><td>하위 파일이 디렉토리 그룹 상속</td><td>그룹 x 자리 → <code>s</code></td></tr>
@@ -57,16 +62,27 @@ find / -perm -4000 -type f 2&gt;/dev/null
 chmod u-s /경로/파일</code></pre>
 
 <h3>/etc/passwd 필드 (7개)</h3>
-<pre><code>root:x:0:0:root:/root:/bin/bash
- ①   ② ③ ④  ⑤   ⑥      ⑦
-① 사용자명  ② 패스워드(x=shadow로 이동)  ③ UID
-④ GID  ⑤ 코멘트(GECOS)  ⑥ 홈디렉토리  ⑦ 기본 셸</code></pre>
+<pre><code>root:x:0:0:root:/root:/bin/bash</code></pre>
+<ul>
+  <li>① 사용자명</li>
+  <li>② 패스워드 &nbsp;&nbsp; <code>x</code> = 실제 해시는 /etc/shadow에 저장</li>
+  <li>③ UID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; root는 항상 0</li>
+  <li>④ GID</li>
+  <li>⑤ 코멘트 &nbsp;&nbsp;&nbsp;&nbsp; GECOS 필드 (사용자 설명)</li>
+  <li>⑥ 홈 디렉토리</li>
+  <li>⑦ 기본 셸</li>
+</ul>
 
 <h3>/etc/shadow 필드 및 해시 prefix</h3>
-<pre><code>alice:$6$salt$hash:19000:0:99999:7:::
-  ①      ②           ③   ④   ⑤  ⑥
-① 사용자명  ② 해시(prefix+salt+해시값)  ③ 최근 변경일(epoch 기준 일수)
-④ 최소변경기간  ⑤ 최대변경기간  ⑥ 만료 경고일수</code></pre>
+<pre><code>alice:$6$salt$hash:19000:0:99999:7:::</code></pre>
+<ul>
+  <li>① 사용자명</li>
+  <li>② 해시 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code>$prefix$salt$해시값</code> 구조</li>
+  <li>③ 최근 변경일 &nbsp;&nbsp; 1970-01-01 기준 경과 일수</li>
+  <li>④ 최소변경기간 &nbsp; 이 일수 내 재변경 불가 (0 = 즉시 가능)</li>
+  <li>⑤ 최대변경기간 &nbsp; 이 일수 초과 시 만료</li>
+  <li>⑥ 만료 경고일수 &nbsp; 만료 N일 전부터 경고 메시지 표시</li>
+</ul>
 <table>
   <thead><tr><th>Prefix</th><th>알고리즘</th><th>권장</th></tr></thead>
   <tbody>
