@@ -44,6 +44,17 @@ for (const post of posts) {
 <BaseLayout title="ISBN 스캔" description="책 바코드를 스캔해서 리뷰를 찾아보세요">
   <div class="max-w-sm mx-auto">
 
+    <!-- 인앱 브라우저 경고 배너 (카카오톡·인스타·라인 등) -->
+    <div id="inapp-banner" class="hidden mb-4 bg-amber-50 border border-amber-300 rounded-2xl p-4">
+      <p class="text-sm font-semibold text-amber-800 mb-1">📵 카메라 사용이 제한됩니다</p>
+      <p class="text-xs text-amber-700 mb-3">카카오톡 등 앱 내 브라우저에서는 카메라 권한을 허용할 수 없습니다.<br>아래 방법으로 외부 브라우저에서 열어주세요.</p>
+      <div class="bg-white rounded-xl p-3 text-xs text-gray-600 space-y-1.5">
+        <p><b>카카오톡</b> — 우측 하단 <b>⋮</b> → <b>다른 브라우저로 열기</b></p>
+        <p><b>인스타그램</b> — 우측 하단 <b>⋯</b> → <b>브라우저에서 열기</b></p>
+        <p><b>라인</b> — 우측 상단 <b>⋮</b> → <b>브라우저로 열기</b></p>
+      </div>
+    </div>
+
     <!-- 페이지 헤더 -->
     <div class="mb-5">
       <a href="/search/" class="text-xs text-brand-600 hover:underline mb-3 inline-block">← 검색으로</a>
@@ -150,6 +161,15 @@ for (const post of posts) {
     const ISBN_MAP = isbnPostMap;
     let html5QrCode = null;
     let isScanning   = false;
+
+    // ── 인앱 브라우저 감지 ───────────────────────────────────
+    (function detectInApp() {
+      var ua = navigator.userAgent;
+      var isInApp = /KAKAOTALK|Instagram|NAVER|Line\/|FB_IAB|FBAN|FBAV/i.test(ua);
+      if (isInApp) {
+        document.getElementById('inapp-banner').classList.remove('hidden');
+      }
+    })();
 
     // ── ISBN 정규화 ──────────────────────────────────────────
     // EAN-13 + EAN-2/EAN-5 부가코드, ISBN-10 등 다양한 스캔 결과를
@@ -304,9 +324,12 @@ for (const post of posts) {
       } catch (err) {
         startOverlay.classList.remove('hidden');
         var errName = err && err.name ? err.name : '';
+        var isInApp = /KAKAOTALK|Instagram|NAVER|Line\/|FB_IAB|FBAN|FBAV/i.test(navigator.userAgent);
         var msg;
-        if (errName === 'NotAllowedError' || errName === 'PermissionDeniedError') {
-          msg = '카메라 권한이 거부되었습니다.\n주소창 옆 자물쇠(🔒) 또는 카메라 아이콘을 눌러 권한을 허용한 뒤 다시 시도해주세요.';
+        if (isInApp) {
+          msg = '앱 내 브라우저에서는 카메라를 사용할 수 없습니다.\n우측 하단 ⋮ 메뉴에서 <b>다른 브라우저로 열기</b>를 선택해주세요.';
+        } else if (errName === 'NotAllowedError' || errName === 'PermissionDeniedError') {
+          msg = '카메라 권한이 거부되었습니다.\n주소창 옆 자물쇠(🔒) 아이콘을 눌러 권한을 허용한 뒤 다시 시도해주세요.';
         } else if (errName === 'NotFoundError' || errName === 'DevicesNotFoundError') {
           msg = '카메라를 찾을 수 없습니다. 다른 앱이 카메라를 사용 중이거나 카메라가 없는 기기입니다.';
         } else if (errName === 'NotReadableError' || errName === 'TrackStartError') {
@@ -314,10 +337,11 @@ for (const post of posts) {
         } else {
           msg = '카메라를 시작할 수 없습니다. 브라우저 권한 설정을 확인해주세요.';
         }
-        statusEl.innerHTML = msg.replace(/\n/g, '<br>') +
+        var retryBtn = isInApp ? '' :
           '<br><button onclick="startScanner()" ' +
           'class="mt-3 inline-block px-4 py-2 bg-sky-600 text-white text-xs font-semibold rounded-lg hover:bg-sky-700">' +
           '다시 시도</button>';
+        statusEl.innerHTML = msg.replace(/\n/g, '<br>') + retryBtn;
         statusEl.className = 'text-center text-sm text-red-500 mb-3';
         statusEl.classList.remove('hidden');
         console.error('[isbn-scan] 카메라 오류:', err);
