@@ -1,0 +1,252 @@
+---
+// src/pages/tools.astro
+// QR코드 · 바코드 생성기 — 사이트맵 미노출, /tools 직접 접근
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="QR · 바코드 생성기" description="QR코드와 바코드를 무료로 생성하고 다운로드하세요.">
+  <div class="max-w-xl mx-auto px-4 py-8">
+
+    <h1 class="text-2xl font-bold text-gray-900 mb-1">QR · 바코드 생성기</h1>
+    <p class="text-sm text-gray-500 mb-6">텍스트나 URL을 입력하면 이미지로 저장할 수 있습니다.</p>
+
+    <!-- 탭 -->
+    <div class="flex gap-1 bg-gray-100 p-1 rounded-xl mb-6">
+      <button id="tab-qr"
+        class="tab-btn flex-1 py-2 text-sm font-semibold rounded-lg bg-white text-gray-900 shadow-sm transition-all"
+        onclick="switchTab('qr')">QR 코드</button>
+      <button id="tab-bar"
+        class="tab-btn flex-1 py-2 text-sm font-semibold rounded-lg text-gray-500 transition-all"
+        onclick="switchTab('bar')">바코드</button>
+    </div>
+
+    <!-- ── QR 코드 패널 ─────────────────────────────────── -->
+    <div id="panel-qr">
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">내용 (URL 또는 텍스트)</label>
+          <input id="qr-input" type="text" placeholder="https://daparapara.com"
+            class="w-full px-3 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:border-sky-400 transition-colors bg-white" />
+        </div>
+
+        <div class="flex gap-3">
+          <div class="flex-1">
+            <label class="block text-sm font-medium text-gray-700 mb-1">크기</label>
+            <select id="qr-size"
+              class="w-full px-3 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:border-sky-400 bg-white">
+              <option value="128">128 px</option>
+              <option value="256" selected>256 px</option>
+              <option value="512">512 px</option>
+            </select>
+          </div>
+          <div class="flex-1">
+            <label class="block text-sm font-medium text-gray-700 mb-1">오류 복원</label>
+            <select id="qr-ec"
+              class="w-full px-3 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:border-sky-400 bg-white">
+              <option value="L">낮음 (L)</option>
+              <option value="M" selected>보통 (M)</option>
+              <option value="Q">높음 (Q)</option>
+              <option value="H">최고 (H)</option>
+            </select>
+          </div>
+        </div>
+
+        <button onclick="generateQr()"
+          class="w-full py-2.5 bg-sky-600 text-white text-sm font-semibold rounded-xl hover:bg-sky-700 active:scale-95 transition-all">
+          생성하기
+        </button>
+      </div>
+
+      <div id="qr-result" class="hidden mt-6 text-center">
+        <div class="inline-block bg-white border border-gray-200 rounded-2xl p-4 shadow-sm">
+          <div id="qr-canvas-wrap"></div>
+        </div>
+        <div class="mt-4">
+          <button onclick="downloadQr()"
+            class="px-6 py-2 bg-emerald-600 text-white text-sm font-semibold rounded-xl hover:bg-emerald-700 active:scale-95 transition-all">
+            PNG 다운로드
+          </button>
+        </div>
+      </div>
+
+      <p id="qr-error" class="hidden mt-3 text-sm text-red-500 text-center"></p>
+    </div>
+
+    <!-- ── 바코드 패널 ──────────────────────────────────── -->
+    <div id="panel-bar" class="hidden">
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">내용</label>
+          <input id="bar-input" type="text" placeholder="978-89-12345-00-3"
+            class="w-full px-3 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:border-sky-400 transition-colors bg-white" />
+        </div>
+
+        <div class="flex gap-3">
+          <div class="flex-1">
+            <label class="block text-sm font-medium text-gray-700 mb-1">형식</label>
+            <select id="bar-format"
+              class="w-full px-3 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:border-sky-400 bg-white">
+              <option value="CODE128">CODE 128 (일반)</option>
+              <option value="EAN13">EAN-13 (ISBN)</option>
+              <option value="EAN8">EAN-8</option>
+              <option value="UPCA">UPC-A</option>
+              <option value="CODE39">CODE 39</option>
+            </select>
+          </div>
+          <div class="flex-1">
+            <label class="block text-sm font-medium text-gray-700 mb-1">텍스트 표시</label>
+            <select id="bar-label"
+              class="w-full px-3 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:border-sky-400 bg-white">
+              <option value="1" selected>표시</option>
+              <option value="0">숨김</option>
+            </select>
+          </div>
+        </div>
+
+        <button onclick="generateBar()"
+          class="w-full py-2.5 bg-sky-600 text-white text-sm font-semibold rounded-xl hover:bg-sky-700 active:scale-95 transition-all">
+          생성하기
+        </button>
+      </div>
+
+      <div id="bar-result" class="hidden mt-6 text-center">
+        <div class="inline-block bg-white border border-gray-200 rounded-2xl p-4 shadow-sm overflow-x-auto max-w-full">
+          <svg id="bar-svg"></svg>
+        </div>
+        <div class="mt-4">
+          <button onclick="downloadBar()"
+            class="px-6 py-2 bg-emerald-600 text-white text-sm font-semibold rounded-xl hover:bg-emerald-700 active:scale-95 transition-all">
+            PNG 다운로드
+          </button>
+        </div>
+      </div>
+
+      <p id="bar-error" class="hidden mt-3 text-sm text-red-500 text-center"></p>
+    </div>
+
+  </div>
+
+  <!-- CDN -->
+  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script is:inline src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+
+  <script is:inline>
+    // ── 탭 전환 ─────────────────────────────────────────────
+    function switchTab(tab) {
+      document.getElementById('panel-qr').classList.toggle('hidden', tab !== 'qr');
+      document.getElementById('panel-bar').classList.toggle('hidden', tab !== 'bar');
+
+      document.getElementById('tab-qr').className =
+        'tab-btn flex-1 py-2 text-sm font-semibold rounded-lg transition-all ' +
+        (tab === 'qr' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500');
+      document.getElementById('tab-bar').className =
+        'tab-btn flex-1 py-2 text-sm font-semibold rounded-lg transition-all ' +
+        (tab === 'bar' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500');
+    }
+
+    // ── QR 생성 ─────────────────────────────────────────────
+    var _qrObj = null;
+
+    function generateQr() {
+      var text    = document.getElementById('qr-input').value.trim();
+      var size    = parseInt(document.getElementById('qr-size').value);
+      var ec      = document.getElementById('qr-ec').value;
+      var errEl   = document.getElementById('qr-error');
+      var resultEl = document.getElementById('qr-result');
+
+      errEl.classList.add('hidden');
+      if (!text) {
+        errEl.textContent = '내용을 입력해주세요.';
+        errEl.classList.remove('hidden');
+        return;
+      }
+
+      var wrap = document.getElementById('qr-canvas-wrap');
+      wrap.innerHTML = '';
+
+      try {
+        _qrObj = new QRCode(wrap, {
+          text: text,
+          width: size,
+          height: size,
+          correctLevel: QRCode.CorrectLevel[ec],
+        });
+        resultEl.classList.remove('hidden');
+      } catch (e) {
+        errEl.textContent = '생성 실패: 내용이 너무 길거나 지원하지 않는 형식입니다.';
+        errEl.classList.remove('hidden');
+      }
+    }
+
+    function downloadQr() {
+      var canvas = document.querySelector('#qr-canvas-wrap canvas');
+      if (!canvas) return;
+      var a = document.createElement('a');
+      a.href = canvas.toDataURL('image/png');
+      a.download = 'qrcode.png';
+      a.click();
+    }
+
+    // ── 바코드 생성 ──────────────────────────────────────────
+    function generateBar() {
+      var text     = document.getElementById('bar-input').value.trim().replace(/[-\s]/g, '');
+      var format   = document.getElementById('bar-format').value;
+      var showText = document.getElementById('bar-label').value === '1';
+      var errEl    = document.getElementById('bar-error');
+      var resultEl = document.getElementById('bar-result');
+
+      errEl.classList.add('hidden');
+      resultEl.classList.add('hidden');
+
+      if (!text) {
+        errEl.textContent = '내용을 입력해주세요.';
+        errEl.classList.remove('hidden');
+        return;
+      }
+
+      try {
+        JsBarcode('#bar-svg', text, {
+          format: format,
+          displayValue: showText,
+          fontSize: 14,
+          margin: 10,
+          background: '#ffffff',
+          lineColor: '#000000',
+        });
+        resultEl.classList.remove('hidden');
+      } catch (e) {
+        errEl.textContent = '생성 실패: 입력값이 ' + format + ' 형식에 맞지 않습니다.';
+        errEl.classList.remove('hidden');
+      }
+    }
+
+    function downloadBar() {
+      var svg = document.getElementById('bar-svg');
+      if (!svg) return;
+
+      var svgData  = new XMLSerializer().serializeToString(svg);
+      var canvas   = document.createElement('canvas');
+      var bbox     = svg.getBoundingClientRect();
+      canvas.width  = svg.width ? svg.width.baseVal.value : bbox.width;
+      canvas.height = svg.height ? svg.height.baseVal.value : bbox.height;
+
+      var img = new Image();
+      img.onload = function() {
+        canvas.getContext('2d').drawImage(img, 0, 0);
+        var a = document.createElement('a');
+        a.href = canvas.toDataURL('image/png');
+        a.download = 'barcode.png';
+        a.click();
+      };
+      img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+    }
+
+    // 엔터키 지원
+    document.getElementById('qr-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') generateQr();
+    });
+    document.getElementById('bar-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') generateBar();
+    });
+  </script>
+</BaseLayout>
