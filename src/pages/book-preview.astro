@@ -222,12 +222,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     // 정확도 배지
     var label = ACCURACY_LABELS[data.accuracy] || data.accuracy;
     var color = ACCURACY_COLORS[data.accuracy] || 'text-gray-600 bg-gray-50';
+    var extraNote = data.accuracy === 'low'
+      ? '<span class="text-orange-600 text-xs">· 원문 미확보 — 어휘·문장은 실제와 다를 수 있음</span>'
+      : (data.accuracy !== 'high' ? '<span class="text-gray-400 text-xs">· 원문 직접 확인 권장</span>' : '');
     badgeEl.innerHTML =
       '<span class="px-2 py-0.5 rounded text-xs font-medium ' + color + '">' + label + '</span>' +
-      (data.accuracy !== 'high' ? '<span class="text-gray-400">· 원문 직접 확인 권장</span>' : '');
+      extraNote;
 
     // 콘텐츠 렌더
     contentEl.innerHTML = data.html;
+
+    // 커버 이미지 로드 실패 시 숨김 처리
+    var coverImg = contentEl.querySelector('.book-cover');
+    if (coverImg) {
+      coverImg.onerror = function () { this.style.display = 'none'; };
+    }
 
     // 중간 광고를 핵심어휘 섹션 뒤에 삽입
     var sections = contentEl.querySelectorAll('.section');
