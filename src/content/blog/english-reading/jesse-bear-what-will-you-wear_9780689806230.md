@@ -21,12 +21,8 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/6
 </table>
 </div>
 
-<div class="section">
-<h3>📖 줄거리</h3>
-
 <p>곰돌이 제시(Jesse Bear)는 아침, 점심, 저녁 세 번에 걸쳐 "오늘 무엇을 입을 거야?"라는 질문을 받습니다. 제시의 대답은 엉뚱하고 사랑스럽습니다. 아침에는 셔츠와 바지뿐 아니라 발가락 사이의 장미꽃과 다리에 내리쬐는 햇살을, 점심에는 의자에 '꼭 붙어서' 의자를, 저녁에는 목욕물과 파란 담요와 곰 포옹과 세 번의 키스를 '입겠다'고 노래합니다. 반복되는 라임과 경쾌한 리듬이 읽는 내내 흥겨운 책입니다.</p>
 
-</div>
 
 <div class="tip-box">
   <h3>📌 이렇게 활용하세요</h3>
