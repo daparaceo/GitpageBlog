@@ -262,7 +262,7 @@ const ogImage = post.data.ogImage;
   (function () {
     var PEEK_H = 92; // 닫힌 상태에서 보이는 높이(px)
 
-    document.querySelectorAll('details.story-toggle, details.review-toggle').forEach(function (el) {
+    document.querySelectorAll('details.review-toggle').forEach(function (el) {
       var summary = el.querySelector('summary');
       if (!summary) return;
 
@@ -341,12 +341,6 @@ const ogImage = post.data.ogImage;
   .book-table .label { background: #f8f9fa; width: 110px; font-weight: bold; }
   .affiliate-notice { font-size: 0.85em; color: #999; text-align: center; margin-top: 12px; }
   .book-cover { display: block; width: 80%; max-width: 576px; margin: 0 auto 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-  /* ── 줄거리 토글 ─────────────────────────────────────── */
-  details.story-toggle { margin: 20px 0; }
-  details.story-toggle > summary { font-size: 1.2em; font-weight: bold; color: #222; padding-bottom: 10px; border-bottom: 3px solid #4285f4; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-  details.story-toggle > summary::-webkit-details-marker { display: none; }
-  details.story-toggle > summary::after { content: '▼'; font-size: 0.65em; color: #94a3b8; transition: transform 0.2s; flex-shrink: 0; }
-  details.story-toggle p { margin: 15px 0 0; line-height: 1.9; color: #334155; }
   /* ── 리뷰 토글 ────────────────────────────────────────── */
   details.review-toggle { margin: 25px 0; }
   details.review-toggle > summary { font-size: 1.2em; font-weight: bold; color: #222; padding-bottom: 10px; border-bottom: 3px solid #34a853; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
@@ -363,6 +357,5 @@ const ogImage = post.data.ogImage;
     mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
   }
   /* 화살표 회전: JS가 .is-expanded 부여 */
-  details.story-toggle > summary.is-expanded::after,
   details.review-toggle > summary.is-expanded::after { transform: rotate(180deg); }
 </style>

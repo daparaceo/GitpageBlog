@@ -23,12 +23,12 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/6
 </table>
 </div>
 
-<details class="story-toggle">
-<summary>📖 줄거리</summary>
+<div class="section">
+<h3>📖 줄거리</h3>
 
 <p>이상한 할머니가 바닷가에서 조개껍데기를 꿀꺽 삼키면서 이야기가 시작됩니다. 조개 안에 살기 위해 게를 삼키고, 게를 잡기 위해 물고기를, 물고기를 건지기 위해 갈매기를 삼키는 등 황당한 연쇄가 이어집니다. 모래와 파도까지 삼킨 할머니는 마침내 커다란 트림을 하고… 멋진 모래성을 뚝딱 만들어 냅니다! 전통 민요 패턴을 바다 테마로 재해석한 유쾌하고 리드미컬한 그림책입니다.</p>
 
-</details>
+</div>
 
 <div class="tip-box">
   <h3>📌 이렇게 활용하세요</h3>

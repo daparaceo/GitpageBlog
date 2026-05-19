@@ -22,12 +22,12 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/8
 </table>
 </div>
 
-<details class="story-toggle">
-<summary>📖 줄거리</summary>
+<div class="section">
+<h3>📖 줄거리</h3>
 
 <p>브라운 농부의 소들이 외양간에서 오래된 타자기를 발견하고, 밤이 춥다며 전기담요를 요구하는 편지를 씁니다. 농부가 거절하자 소들은 파업을 선언하고 우유 공급을 끊어버리죠. 닭들까지 파업에 가담해 달걀도 사라지자 농부는 단단히 화가 납니다. 중립을 지키던 오리가 양쪽을 오가며 협상을 이어간 끝에, 소들은 타자기를 전기담요와 교환하는 거래를 제안합니다. 그런데 이번엔 타자기를 손에 넣은 오리들이 다이빙 보드를 요구하는 편지를 보내오면서 이야기는 유쾌한 반전으로 마무리됩니다.</p>
 
-</details>
+</div>
 
 <div class="tip-box">
   <h3>📌 이렇게 활용하세요</h3>

@@ -21,12 +21,12 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/c
 </table>
 </div>
 
-<details class="story-toggle">
-<summary>📖 줄거리</summary>
+<div class="section">
+<h3>📖 줄거리</h3>
 
 <p>밤에 이상한 소리를 듣고 잠에서 깬 미키는 어느새 한밤의 부엌으로 떨어집니다. 세 명의 빵 굽는 아저씨들이 미키를 반죽 속에 넣으려 하지만, 미키는 빠져나와 빵 반죽으로 비행기를 만듭니다. 하늘로 날아오른 미키는 거대한 우유병에서 우유를 퍼내어 반죽에 부어 줍니다. 덕분에 아침마다 맛있는 케이크를 먹을 수 있게 되었고, 미키는 무사히 침대로 돌아옵니다.</p>
 
-</details>
+</div>
 
 <div class="tip-box">
   <h3>📌 이렇게 활용하세요</h3>
