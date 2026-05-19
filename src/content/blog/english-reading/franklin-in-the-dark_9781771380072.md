@@ -18,6 +18,7 @@ isbn: "9781771380072"
   <tr><td class="label">Author</td><td>Paulette Bourgeois</td></tr>
   <tr><td class="label">Illustrator</td><td>Brenda Clark</td></tr>
   <tr><td class="label">ISBN</td><td>9781771380072</td></tr>
+  <tr><td class="label">Series</td><td>A Classic Franklin Story</td></tr>
   <tr><td class="label">AR Level</td><td>2.5</td></tr>
   <tr><td class="label">Lexile</td><td>460L</td></tr>
 </table>

@@ -17,6 +17,7 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/f
   <tr><td class="label">Title</td><td>The Gruffalo's Child</td></tr>
   <tr><td class="label">Author</td><td>Julia Donaldson</td></tr>
   <tr><td class="label">ISBN</td><td>9780803730090</td></tr>
+  <tr><td class="label">Series</td><td>Gruffalo</td></tr>
   <tr><td class="label">AR Level</td><td>2.5</td></tr>
   <tr><td class="label">Lexile</td><td>AD440L</td></tr>
   <tr><td class="label">Illustrator</td><td>Axel Scheffler</td></tr>

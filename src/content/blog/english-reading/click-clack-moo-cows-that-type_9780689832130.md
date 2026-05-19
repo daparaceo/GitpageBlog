@@ -7,6 +7,7 @@ tags: [영어원서, 영어학습, 초등영어, AR레벨, Click Clack Moo, Dore
 en_title: "Click, Clack, Moo: Cows That Type"
 author: "Doreen Cronin"
 ar_level: 2.3
+series: "Click Clack Moo"
 isbn: "9780689832130"
 ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/8fb37b134be94093fc96ea80.jpg"
 ---
@@ -16,6 +17,7 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/8
   <tr><td class="label">Title</td><td>Click, Clack, Moo: Cows That Type</td></tr>
   <tr><td class="label">Author</td><td>Doreen Cronin</td></tr>
   <tr><td class="label">ISBN</td><td>9780689832130</td></tr>
+  <tr><td class="label">Series</td><td>Click Clack Moo</td></tr>
   <tr><td class="label">AR Level</td><td>2.3</td></tr>
   <tr><td class="label">Lexile</td><td>AD470L</td></tr>
   <tr><td class="label">Illustrator</td><td>Betsy Lewin</td></tr>

@@ -17,6 +17,7 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/b
   <tr><td class="label">Title</td><td>Snow Monsters Do Drink Hot Chocolate</td></tr>
   <tr><td class="label">Author</td><td>Marcia Thornton Jones</td></tr>
   <tr><td class="label">ISBN</td><td>9780545069908</td></tr>
+  <tr><td class="label">Series</td><td>the bailey school kids</td></tr>
   <tr><td class="label">AR Level</td><td>2.5</td></tr>
   <tr><td class="label">Lexile</td><td>540L</td></tr>
   <tr><td class="label">Illustrator</td><td>Joelle Dreidemy</td></tr>

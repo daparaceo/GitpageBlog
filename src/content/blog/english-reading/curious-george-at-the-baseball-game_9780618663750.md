@@ -18,6 +18,7 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/3
   <tr><td class="label">Author</td><td>Margret Rey</td></tr>
   <tr><td class="label">Illustrator</td><td>H.A. Rey</td></tr>
   <tr><td class="label">ISBN</td><td>9780618663750</td></tr>
+  <tr><td class="label">Series</td><td>Curious George</td></tr>
   <tr><td class="label">AR Level</td><td>2.6</td></tr>
   <tr><td class="label">Lexile</td><td>440L</td></tr>
 </table>

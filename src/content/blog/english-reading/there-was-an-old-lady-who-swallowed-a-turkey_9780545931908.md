@@ -17,6 +17,7 @@ isbn: "9780545931908"
   <tr><td class="label">Title</td><td>There Was An Old Lady Who Swallowed A Turkey!</td></tr>
   <tr><td class="label">Author</td><td>Lucille Colandro</td></tr>
   <tr><td class="label">ISBN</td><td>9780545931908</td></tr>
+  <tr><td class="label">Series</td><td>There Was An Old Lady Who</td></tr>
   <tr><td class="label">AR Level</td><td>2.6</td></tr>
   <tr><td class="label">Lexile</td><td>AD400L</td></tr>
   <tr><td class="label">Illustrator</td><td>Jared Lee</td></tr>

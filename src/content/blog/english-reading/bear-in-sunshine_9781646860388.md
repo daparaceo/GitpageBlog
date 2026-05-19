@@ -8,6 +8,7 @@ tags: [영어원서, 영어학습, 초등영어, AR레벨, Bear In Sunshine, Ste
 en_title: "Bear In Sunshine"
 author: "Stella Blackstone"
 ar_level: 1.5
+series: "Bear"
 isbn: "9781646860388"
 ---
 <div class="book-container" translate="no">
@@ -16,6 +17,7 @@ isbn: "9781646860388"
   <tr><td class="label">Title</td><td>Bear In Sunshine</td></tr>
   <tr><td class="label">Author</td><td>Stella Blackstone</td></tr>
   <tr><td class="label">ISBN</td><td>9781646860388</td></tr>
+  <tr><td class="label">Series</td><td>Bear</td></tr>
   <tr><td class="label">AR Level</td><td>1.5</td></tr>
   <tr><td class="label">Lexile</td><td>230L</td></tr>
 </table>

@@ -8,6 +8,7 @@ tags: [영어원서, 영어학습, 초등영어, AR레벨, The Dumb Bunnies, Dav
 en_title: "The Dumb Bunnies"
 author: "Dav Pilkey"
 ar_level: 2.8
+series: "Dumb Bunnies"
 isbn: "9780439669443"
 ---
 <div class="book-container" translate="no">
@@ -16,6 +17,7 @@ isbn: "9780439669443"
   <tr><td class="label">Title</td><td>The Dumb Bunnies</td></tr>
   <tr><td class="label">Author</td><td>Dav Pilkey</td></tr>
   <tr><td class="label">ISBN</td><td>9780439669443</td></tr>
+  <tr><td class="label">Series</td><td>Dumb Bunnies</td></tr>
   <tr><td class="label">AR Level</td><td>2.8</td></tr>
   <tr><td class="label">Lexile</td><td>510L</td></tr>
 </table>

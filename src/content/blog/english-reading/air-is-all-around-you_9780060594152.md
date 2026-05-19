@@ -8,6 +8,7 @@ tags: [영어원서, 영어학습, 초등영어, AR레벨, Air Is All Around You
 en_title: "Air Is All Around You"
 author: "Franklyn M. Branley"
 ar_level: 2.6
+series: "Let's-Read-and-Find-Out Science"
 isbn: "9780060594152"
 ---
 <div class="book-container" translate="no">
@@ -16,6 +17,7 @@ isbn: "9780060594152"
   <tr><td class="label">Title</td><td>Air Is All Around You</td></tr>
   <tr><td class="label">Author</td><td>Franklyn M. Branley</td></tr>
   <tr><td class="label">ISBN</td><td>9780060594152</td></tr>
+  <tr><td class="label">Series</td><td>Let's-Read-and-Find-Out Science</td></tr>
   <tr><td class="label">AR Level</td><td>2.6</td></tr>
   <tr><td class="label">Lexile</td><td>AD490L</td></tr>
 </table>

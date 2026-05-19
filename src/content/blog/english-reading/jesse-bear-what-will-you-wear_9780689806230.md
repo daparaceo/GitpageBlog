@@ -7,6 +7,7 @@ tags: [영어원서, 영어학습, 초등영어, AR레벨, Jesse Bear What Will 
 en_title: "Jesse Bear, What Will You Wear?"
 author: "Nancy White Carlstrom"
 ar_level: 2.5
+series: "Jesse Bear"
 isbn: "9780689806230"
 ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/6f78ac710c64ab3aa054b6d7.jpg"
 ---
@@ -16,6 +17,7 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/6
   <tr><td class="label">Title</td><td>Jesse Bear, What Will You Wear?</td></tr>
   <tr><td class="label">Author</td><td>Nancy White Carlstrom</td></tr>
   <tr><td class="label">ISBN</td><td>9780689806230</td></tr>
+  <tr><td class="label">Series</td><td>Jesse Bear</td></tr>
   <tr><td class="label">AR Level</td><td>2.5</td></tr>
   <tr><td class="label">Illustrator</td><td>Bruce Degen</td></tr>
 </table>

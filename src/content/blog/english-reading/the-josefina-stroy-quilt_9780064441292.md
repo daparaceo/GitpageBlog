@@ -18,6 +18,7 @@ ogImage: "https://res.cloudinary.com/dtv8s65sa/image/upload/q_auto:best,f_auto/d
   <tr><td class="label">Author</td><td>Eleanor Coerr</td></tr>
   <tr><td class="label">Illustrator</td><td>Bruce Degen</td></tr>
   <tr><td class="label">ISBN</td><td>9780064441292</td></tr>
+  <tr><td class="label">Series</td><td>I Can Read 3</td></tr>
   <tr><td class="label">AR Level</td><td>2.7</td></tr>
   <tr><td class="label">Lexile</td><td>530L</td></tr>
 </table>

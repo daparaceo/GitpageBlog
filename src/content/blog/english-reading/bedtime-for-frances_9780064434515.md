@@ -8,6 +8,7 @@ tags: [영어원서, 영어학습, 초등영어, AR레벨, Bedtime for Frances, 
 en_title: "Bedtime for Frances"
 author: "Russell Hoban"
 ar_level: 2.7
+series: "Frances"
 isbn: "9780064434515"
 ---
 <div class="book-container" translate="no">
@@ -16,6 +17,7 @@ isbn: "9780064434515"
   <tr><td class="label">Title</td><td>Bedtime for Frances</td></tr>
   <tr><td class="label">Author</td><td>Russell Hoban</td></tr>
   <tr><td class="label">ISBN</td><td>9780064434515</td></tr>
+  <tr><td class="label">Series</td><td>Frances</td></tr>
   <tr><td class="label">AR Level</td><td>2.7</td></tr>
   <tr><td class="label">Lexile</td><td>360L</td></tr>
 </table>
