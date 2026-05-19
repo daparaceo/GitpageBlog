@@ -135,9 +135,16 @@ isbn: "9780060594152"
 <details class="review-toggle">
 <summary>💡 리뷰</summary>
 <div class="review-en">
-<p>리뷰 준비 중입니다.</p>
+<p><b>Introduction</b></p>
+<p>&nbsp;&nbsp;I read <i>Air Is All Around You</i> by Franklyn M. Branley. Air is invisible, but this book showed me that it is everywhere and it keeps us alive. That made me really curious!</p>
+<p><b>Body</b></p>
+<p>&nbsp;&nbsp;The book taught me that air fills up spaces we can't even see. My favorite part was the napkin experiment — you stuff a napkin into a glass, push it underwater, and the napkin stays dry because air is blocking the water! I also loved learning that fish breathe air dissolved in water through their gills, and that astronauts carry air tanks on their backs in space. It felt like discovering a secret about the world.</p>
+<p><b>Conclusion</b></p>
+<p>&nbsp;&nbsp;After reading this book, I looked at the empty glass on my desk and thought, "That's not empty — it's full of air!" I want to try the napkin experiment at home. I recommend this book to anyone who likes science, because it makes you see the invisible world all around you.</p>
 </div>
 <div class="review-ko">
-
+<p>&nbsp;&nbsp;프랭클린 M. 브랜리가 쓴 <i>Air Is All Around You</i>를 읽었어요. 공기는 눈에 보이지 않지만, 이 책은 공기가 어디에나 있고 우리를 살아 있게 해 준다는 걸 알려줬어요. 그 사실이 너무 신기했어요!</p>
+<p>&nbsp;&nbsp;책은 공기가 눈에 보이지 않는 공간을 가득 채운다고 알려줬어요. 제가 가장 좋아한 부분은 냅킨 실험이었어요 — 컵에 냅킨을 넣고 물속에 뒤집어 넣으면, 공기가 물을 막아줘서 냅킨이 젖지 않는 거예요! 또 물고기가 아가미로 물속에 녹아 있는 공기를 마신다는 것, 우주비행사들이 등에 공기 탱크를 달고 우주에서 활동한다는 것도 재미있었어요. 세상의 비밀을 발견하는 느낌이었어요.</p>
+<p>&nbsp;&nbsp;책을 읽고 나서 책상 위의 빈 컵을 보며 "저건 비어 있는 게 아니라 공기로 가득 찬 거야!"라고 생각했어요. 집에서 냅킨 실험을 직접 해보고 싶어요. 과학을 좋아하는 친구들에게 이 책을 추천해요. 우리 주변의 보이지 않는 세계를 새롭게 볼 수 있게 해주거든요.</p>
 </div>
 </details>

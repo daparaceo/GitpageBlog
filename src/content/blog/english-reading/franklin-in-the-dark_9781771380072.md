@@ -138,9 +138,16 @@ isbn: "9781771380072"
 <details class="review-toggle">
 <summary>💡 리뷰</summary>
 <div class="review-en">
-<p>리뷰 준비 중입니다.</p>
+<p><b>Introduction</b></p>
+<p>&nbsp;&nbsp;Franklin in the Dark is written by Paulette Bourgeois. Franklin is a turtle who can do lots of things — he can slide down a riverbank and zip his own zippers — but there is one thing he cannot do: go inside his own shell because he is scared of the dark.</p>
+<p><b>Body</b></p>
+<p>&nbsp;&nbsp;Franklin drags his shell behind him everywhere because he is too frightened to crawl inside. He goes looking for help and meets a duck, a lion, a bird, and a polar bear. Each one is afraid of something too! The duck is afraid of deep water, the lion is afraid of loud noises, the bird is afraid of getting dizzy up high, and the polar bear is afraid of being too cold. My favorite part is when Franklin realizes that even big, strong animals have something they are scared of. It made me feel better about my own fears.</p>
+<p><b>Conclusion</b></p>
+<p>&nbsp;&nbsp;At the end, Franklin is brave and crawls into his shell — but he also turns on a tiny night light when nobody is looking. I think that is the best part of the whole book. Being brave does not mean you are not scared. It means you try even when you are scared. I want to read more Franklin books!</p>
 </div>
 <div class="review-ko">
-
+<p>&nbsp;&nbsp;『Franklin in the Dark』은 Paulette Bourgeois가 쓴 책이에요. 프랭클린은 강둑에서 미끄럼도 타고 지퍼도 혼자 잠글 수 있는 거북이지만, 딱 한 가지 못 하는 게 있어요. 자기 등껍데기 속이 너무 무서워서 들어가지 못하는 거예요.</p>
+<p>&nbsp;&nbsp;프랭클린은 껍데기를 뒤에 끌고 다니며 도움을 구하러 떠나요. 그러다 오리, 사자, 새, 북극곰을 만나는데 — 이들도 각자 무서워하는 게 있었어요! 오리는 깊은 물이, 사자는 큰 소리가, 새는 높이 올라가면 어지러운 게, 북극곰은 너무 추운 게 무서웠어요. 크고 강한 동물들도 두려움이 있다는 걸 알게 된 장면이 제일 마음에 들었어요. 내 두려움도 괜찮다는 생각이 들었거든요.</p>
+<p>&nbsp;&nbsp;결말에서 프랭클린은 용감하게 껍데기 속으로 기어 들어가요. 하지만 아무도 안 볼 때 야간 조명을 살짝 켜놓죠. 이 부분이 책에서 가장 좋았어요. 용감하다는 건 무섭지 않다는 게 아니라, 무서워도 해본다는 거니까요. 프랭클린 시리즈를 더 읽고 싶어요!</p>
 </div>
 </details>

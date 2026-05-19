@@ -138,9 +138,16 @@ isbn: "9780590847438"
 <details class="review-toggle">
 <summary>💡 리뷰</summary>
 <div class="review-en">
-<p>리뷰 준비 중입니다.</p>
+<p><b>Introduction</b></p>
+<p>&nbsp;&nbsp;The Dumb Bunnies Go To The Zoo is written by Dav Pilkey. This book is about the Dumb Bunnies — a silly rabbit family who never gets anything right — and their very chaotic trip to the zoo.</p>
+<p><b>Body</b></p>
+<p>&nbsp;&nbsp;It all starts when Baby Bunny says he wants to see paintings and sculptures and great works of art. Poppa Bunny says he knows just the place — and takes the family to the zoo! At the zoo, they see a tiny white creature standing on an elephant sign and think it is an elephant. Then a butterfly lands on Momma Bunny's arm, and she starts screaming, "HELP! THE LION HAS ESCAPED!" because the sign behind her said "LION." The whole zoo goes into a panic over a butterfly! My favorite part was when the police come to capture the dangerous lion, but the butterfly is already gone. I laughed so hard!</p>
+<p><b>Conclusion</b></p>
+<p>&nbsp;&nbsp;The best part is all the nonsense language — like "Octember" for a month that does not exist, and Baby Bunny saying "This was the best week we've had all day." Every mistake gets worse and funnier. I think kids who like silly humor will love this book. I want to read all the Dumb Bunnies books!</p>
 </div>
 <div class="review-ko">
-
+<p>&nbsp;&nbsp;『The Dumb Bunnies Go To The Zoo』는 Dav Pilkey가 쓴 책이에요. 뭐든 엉망으로 하는 엉터리 토끼 가족이 동물원에 가면서 벌어지는 대소동 이야기예요.</p>
+<p>&nbsp;&nbsp;아기 토끼가 그림, 조각품, 예술 작품을 보러 가고 싶다고 하자 아빠 토끼가 딱 좋은 곳을 안다며 동물원으로 데려가요! 동물원에서 코끼리 안내판 위에 있는 작은 하얀 생물을 코끼리라고 믿고, 엄마 팔에 나비가 앉자 "살려줘! 사자가 탈출했어요!"라고 비명을 질러요. 나비 한 마리 때문에 온 동물원이 패닉에 빠지는 거예요! 경찰까지 출동했는데 나비는 이미 날아가 버렸다는 부분에서 너무 웃겼어요.</p>
+<p>&nbsp;&nbsp;가장 재미있는 건 말장난이에요. 존재하지 않는 달 "Octember"나 아기 토끼가 하는 "오늘 하루 중에 제일 좋은 한 주였어요" 같은 말들이요. 실수가 겹칠수록 점점 더 웃겨요. 엉뚱한 유머를 좋아하는 아이들한테 딱 맞는 책이에요. Dumb Bunnies 시리즈를 전부 읽고 싶어요!</p>
 </div>
 </details>

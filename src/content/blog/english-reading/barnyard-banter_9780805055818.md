@@ -135,9 +135,16 @@ isbn: "9780805055818"
 <details class="review-toggle">
 <summary>💡 리뷰</summary>
 <div class="review-en">
-<p>리뷰 준비 중입니다.</p>
+<p><b>Introduction</b></p>
+<p>&nbsp;&nbsp;I read <i>Barnyard Banter</i> by Denise Fleming. Every animal on the farm makes a different sound, and the book asks "But where's Goose?" over and over. It was so fun to read out loud!</p>
+<p><b>Body</b></p>
+<p>&nbsp;&nbsp;The book goes through the whole farm — cows in the pasture mooing, roosters in the barnyard crowing, pigs in the wallow going muck muck muck! Each page has a new animal and a new sound. I liked reading all the sound words because they feel funny in my mouth. My favorite part was looking for Goose on every page. The question "But where's Goose?" kept making me turn the page faster. When Goose finally showed up at the end, honking loudly, I laughed out loud!</p>
+<p><b>Conclusion</b></p>
+<p>&nbsp;&nbsp;This book is like a song you can't stop singing. After reading it, I kept saying "moo moo moo" and "oink oink oink" all day! I think little kids who love animals will enjoy this book the most. It's perfect for reading together and making all the animal sounds.</p>
 </div>
 <div class="review-ko">
-
+<p>&nbsp;&nbsp;데니스 플레밍이 쓴 <i>Barnyard Banter</i>를 읽었어요. 농장의 모든 동물이 각각 다른 소리를 내고, 책은 계속해서 "그런데 거위는 어디 있을까?"라고 물어봐요. 소리 내어 읽으면 정말 재미있었어요!</p>
+<p>&nbsp;&nbsp;책은 농장 전체를 돌아다녀요 — 목초지에서 음매 하는 소, 헛간 마당에서 꼬끼오 하는 수탉, 진흙탕에서 꿀꿀꿀 하는 돼지까지요! 페이지마다 새로운 동물과 새로운 소리가 나와요. 소리 단어들을 읽을 때 입에서 재미있는 느낌이 났어요. 제가 가장 좋아한 부분은 매 페이지마다 거위를 찾는 것이었어요. "그런데 거위는 어디 있을까?"라는 질문이 계속 페이지를 더 빨리 넘기게 만들었어요. 마지막에 거위가 빵빵 소리를 크게 내며 나타났을 때 저도 모르게 웃음이 나왔어요!</p>
+<p>&nbsp;&nbsp;이 책은 멈출 수 없는 노래 같아요. 읽고 나서 하루 종일 "음매 음매" "꿀꿀꿀"을 계속 따라 했어요! 동물을 좋아하는 어린 친구들이 가장 좋아할 것 같아요. 함께 읽으며 동물 소리를 따라 하기에 딱 좋은 책이에요.</p>
 </div>
 </details>

@@ -136,9 +136,16 @@ isbn: "9781646860388"
 <details class="review-toggle">
 <summary>💡 리뷰</summary>
 <div class="review-en">
-<p>리뷰 준비 중입니다.</p>
+<p><b>Introduction</b></p>
+<p>&nbsp;&nbsp;I read <i>Bear In Sunshine</i> by Stella Blackstone. No matter what the weather is, Bear always finds something fun to do. I want to be just like Bear!</p>
+<p><b>Body</b></p>
+<p>&nbsp;&nbsp;When the sun shines, Bear plays outside. When it rains, Bear sings. When the wind blows, Bear flies his red kite. When it's icy, Bear skates in the lane. When it's misty, Bear paints. When storms come, Bear hides in his bed. When snow falls, Bear makes snow-bears. And when the moon shines, Bear stands on his head! My favorite part was the snow-bear, because I never thought of making a snow-bear instead of a snowman. The very last part — Bear standing on his head under the moonlight — was so funny and surprising.</p>
+<p><b>Conclusion</b></p>
+<p>&nbsp;&nbsp;"Whatever the weather, Bear always knows how to have lots of fun!" That line is my favorite. It made me think that even rainy or stormy days can be fun if I have the right idea. I recommend this book to children who feel bored when the weather is bad. It will give you so many ideas!</p>
 </div>
 <div class="review-ko">
-
+<p>&nbsp;&nbsp;스텔라 블랙스톤이 쓴 <i>Bear In Sunshine</i>을 읽었어요. 날씨가 어떻든 곰은 언제나 재미있는 것을 찾아요. 저도 곰처럼 되고 싶어요!</p>
+<p>&nbsp;&nbsp;해가 나면 곰은 밖에서 놀아요. 비가 오면 노래를 불러요. 바람이 불면 빨간 연을 날려요. 얼음이 얼면 골목에서 스케이트를 타요. 안개가 끼면 그림을 그려요. 폭풍이 치면 침대에 숨어요. 눈이 내리면 눈곰을 만들어요. 그리고 달이 빛날 때는 물구나무서기를 해요! 제가 가장 좋아한 부분은 눈곰이에요. 눈사람 대신 눈곰을 만든다는 생각을 한 번도 해본 적이 없었거든요. 달빛 아래서 물구나무서기를 하는 마지막 장면은 정말 재미있고 놀라웠어요.</p>
+<p>&nbsp;&nbsp;"날씨가 어떻든, 곰은 언제나 신나게 즐기는 법을 알고 있어요!" 이 문장이 제일 마음에 들었어요. 비가 오거나 폭풍이 쳐도 좋은 아이디어만 있으면 재미있을 수 있다는 걸 알게 됐어요. 날씨가 나쁜 날 심심함을 느끼는 친구들에게 이 책을 추천해요. 아이디어가 가득 생길 거예요!</p>
 </div>
 </details>

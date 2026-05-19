@@ -136,9 +136,16 @@ isbn: "9780152380212"
 <details class="review-toggle">
 <summary>💡 리뷰</summary>
 <div class="review-en">
-<p>리뷰 준비 중입니다.</p>
+<p><b>Introduction</b></p>
+<p>&nbsp;&nbsp;If The Dinosaurs Came Back is written by Bernard Most. This book is about a kid who really, really loves dinosaurs and imagines all the amazing things dinosaurs could do if they came back to the world today.</p>
+<p><b>Body</b></p>
+<p>&nbsp;&nbsp;The kid thinks dinosaurs could mow lawns just by eating the grass, help farmers plow their fields, rescue kites stuck in tall trees, help lumberjacks chop down trees, and even push away rain clouds so the sun would always shine. My favorite idea was that dinosaurs could make great ski slopes out of their backs! Giraffes would finally have someone to look up to. Every page made me laugh because the ideas are so creative and silly at the same time.</p>
+<p><b>Conclusion</b></p>
+<p>&nbsp;&nbsp;The best part of the whole book is the ending — the kid says dinosaurs would make the greatest pets for people who love them. I thought that was so cute! After reading this book, I started imagining what dinosaurs could do at my school. I think they could reach every high shelf and help the librarian every day. I wish dinosaurs could really come back!</p>
 </div>
 <div class="review-ko">
-
+<p>&nbsp;&nbsp;『If The Dinosaurs Came Back』은 Bernard Most가 쓴 책이에요. 공룡을 정말 사랑하는 아이가 공룡이 오늘날 다시 돌아온다면 어떤 놀라운 일을 할 수 있을지 상상하는 이야기예요.</p>
+<p>&nbsp;&nbsp;그 아이는 공룡이 잔디를 먹어서 잔디를 깎아 주고, 농부들의 밭을 갈아 주고, 높은 나무에 걸린 연을 구해 주고, 벌목꾼들이 나무 베는 걸 도와주고, 비구름을 밀어내 항상 해가 빛나게 해 줄 수 있다고 생각해요. 제가 제일 좋아한 아이디어는 공룡 등이 스키 슬로프가 된다는 거예요! 기린도 드디어 자기보다 큰 존재를 올려다볼 수 있게 된다는 부분에서 웃음이 나왔어요. 매 페이지가 창의적이면서도 엉뚱해서 재미있었어요.</p>
+<p>&nbsp;&nbsp;책에서 제일 좋았던 건 결말이에요. 공룡을 사랑하는 사람들에게 공룡이 세상 최고의 반려동물이 될 거라는 부분이 너무 귀여웠어요! 이 책을 읽고 나서 우리 학교에 공룡이 있다면 어떨지 상상해봤어요. 도서관 꼭대기 선반도 거뜬히 닿을 것 같아요. 공룡이 정말로 돌아왔으면 좋겠어요!</p>
 </div>
 </details>

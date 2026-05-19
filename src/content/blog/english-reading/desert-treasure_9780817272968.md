@@ -137,9 +137,16 @@ isbn: "9780817272968"
 <details class="review-toggle">
 <summary>💡 리뷰</summary>
 <div class="review-en">
-<p>리뷰 준비 중입니다.</p>
+<p><b>Introduction</b></p>
+<p>&nbsp;&nbsp;I read <i>Desert Treasure</i> by Andrew Clements. Michael and his dad go camping in the desert every summer, and this year they find an old treasure map. I was so excited thinking about what the treasure could be!</p>
+<p><b>Body</b></p>
+<p>&nbsp;&nbsp;While exploring an old cabin, Michael's foot breaks through a rotten floorboard and he finds a rusty tin box hidden underneath. Inside is a pocket watch, some buttons, a lock of hair, old photos, and a folded cloth — which turns out to be a treasure map! Michael and his dad follow the clues carefully, walking hundreds of paces across the desert. I loved the part where Michael was so lost in his daydream about gold and diamonds that he almost lost count of his steps! When they finally arrive at the marked spot, there is no gold. Instead, they find an old well full of water. At first Michael is disappointed, but then he realizes: "Gold won't make a garden grow, and you can't drink diamonds." Water is the real treasure in the desert.</p>
+<p><b>Conclusion</b></p>
+<p>&nbsp;&nbsp;This book made me think about what is truly valuable. I used to think treasure meant gold and jewels. But now I know that the most important things are the ones we cannot live without. I recommend this book to kids who love adventure and thinking deeply about the world around them.</p>
 </div>
 <div class="review-ko">
-
+<p>&nbsp;&nbsp;앤드류 클레멘츠가 쓴 <i>Desert Treasure</i>를 읽었어요. 마이클과 아빠는 매년 여름 사막으로 캠핑을 가는데, 올해는 오래된 보물 지도를 발견해요. 보물이 무엇일지 생각하니 너무 두근거렸어요!</p>
+<p>&nbsp;&nbsp;낡은 오두막을 탐험하다가 마이클의 발이 썩은 바닥판을 뚫고 들어가고, 그 밑에 숨겨진 오래된 양철 상자를 발견해요. 상자 안에는 회중시계, 단추, 머리카락 묶음, 오래된 사진, 그리고 접힌 천 조각이 있었는데, 그 천이 바로 보물 지도였어요! 마이클과 아빠는 단서를 꼼꼼히 따라가며 사막을 수백 걸음씩 걸어가요. 마이클이 금과 다이아몬드 공상에 너무 빠져서 발걸음 수를 거의 잃어버릴 뻔한 장면이 제일 재미있었어요! 표시된 지점에 도착했을 때 금은 없었어요. 대신 물이 가득한 오래된 우물을 발견했어요. 처음엔 마이클도 실망했지만, 곧 깨달아요. "금으로는 정원을 가꿀 수 없고, 다이아몬드는 마실 수 없잖아." 물이야말로 사막에서 진짜 보물이에요.</p>
+<p>&nbsp;&nbsp;이 책은 진짜로 소중한 것이 무엇인지 생각하게 해줬어요. 저는 보물이라면 금과 보석이라고만 생각했어요. 하지만 이제는 가장 중요한 것이 우리가 없으면 살 수 없는 것들이라는 걸 알았어요. 모험을 좋아하고 세상에 대해 깊이 생각하는 것을 좋아하는 친구들에게 이 책을 추천해요.</p>
 </div>
 </details>

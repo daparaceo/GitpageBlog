@@ -134,9 +134,16 @@ isbn: "9780439669443"
 <details class="review-toggle">
 <summary>💡 리뷰</summary>
 <div class="review-en">
-<p>리뷰 준비 중입니다.</p>
+<p><b>Introduction</b></p>
+<p>&nbsp;&nbsp;The Dumb Bunnies is written by Dav Pilkey. This book is about a very silly rabbit family who does everything completely wrong — but thinks everything is perfectly fine.</p>
+<p><b>Body</b></p>
+<p>&nbsp;&nbsp;The story starts with the Dumb Bunnies making porridge. Momma Bunny's porridge is too cold, so she blows on it. Poppa Bunny's porridge is too hot, so he puts it in the oven. Baby Bunny's porridge is just right — so he pours it down his pants! They decide to go for a bike ride for exercise, but make Baby Bunny drive the car. In town, they go ice-skating in the lake, bowl a home run at the library, and have a picnic at the car wash. My favorite part was when they bowled a home run at the public library — that made no sense at all and I loved it.</p>
+<p><b>Conclusion</b></p>
+<p>&nbsp;&nbsp;When they come home, a little girl named Little Red Goldilocks has broken in. Instead of being upset, the Dumb Bunnies welcome her warmly — until Baby Bunny flushes her down the toilet. Then they pour porridge on their heads and live happily ever after. This book is a parody of fairy tales like Goldilocks and Snow White, so it is even funnier if you already know those stories. I think Dav Pilkey is a genius at making kids laugh!</p>
 </div>
 <div class="review-ko">
-
+<p>&nbsp;&nbsp;『The Dumb Bunnies』는 Dav Pilkey가 쓴 책이에요. 뭐든 완전히 엉뚱하게 하면서도 다 잘하고 있다고 생각하는 말도 안 되는 토끼 가족 이야기예요.</p>
+<p>&nbsp;&nbsp;이야기는 Dumb Bunnies가 죽을 만드는 장면으로 시작해요. 엄마 죽은 너무 차가워서 후후 불고, 아빠 죽은 너무 뜨거워서 오븐에 넣고, 아기 죽은 딱 알맞아서 — 바지 속에 부어버려요! 운동하러 자전거를 타러 간다면서 아기 토끼에게 차를 운전시키고, 마을에서는 호수에서 아이스스케이팅, 도서관에서 홈런, 세차장에서 소풍을 해요. 공공 도서관에서 홈런을 친다는 부분이 제일 말이 안 됐는데 그래서 더 좋았어요.</p>
+<p>&nbsp;&nbsp;집에 돌아와 보니 Little Red Goldilocks라는 소녀가 침입해 있었어요. Dumb Bunnies는 화내기는커녕 반갑게 환영하다가 아기 토끼가 변기에 내려보내 버려요. 그러고는 머리에 죽을 붓고 오래오래 행복하게 살았대요. 골디락스, 백설공주 같은 동화를 알면 패러디를 더 재미있게 찾을 수 있어요. Dav Pilkey는 아이들을 웃기는 천재 같아요!</p>
 </div>
 </details>

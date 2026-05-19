@@ -136,9 +136,16 @@ isbn: "9780140569247"
 <details class="review-toggle">
 <summary>💡 리뷰</summary>
 <div class="review-en">
-<p>리뷰 준비 중입니다.</p>
+<p><b>Introduction</b></p>
+<p>&nbsp;&nbsp;"Slowly, Slowly, Slowly," Said the Sloth is written by Eric Carle. This book is about a sloth who hangs upside down in a tree all day long and moves very, very slowly. All the other animals in the jungle keep asking why the sloth is so slow, so quiet, and so boring.</p>
+<p><b>Body</b></p>
+<p>&nbsp;&nbsp;The howler monkey, the caiman, the anteater, and the jaguar all come up to the sloth and ask why it is so slow, so quiet, so boring, and so lazy. The sloth does not answer for a long, long time — it just thinks and thinks and thinks. Then, finally, the sloth gives the longest answer! It says it is lackadaisical, languid, stoic, impassive, sluggish, lethargic, placid, calm, mellow, and laid-back — but it is NOT lazy. My favorite part is that long speech at the end. I had to ask about almost every word, but each one was so interesting!</p>
+<p><b>Conclusion</b></p>
+<p>&nbsp;&nbsp;I loved how the sloth said, "That's just how I am." It made me think that it is okay to be different from others and to do things at your own speed. You do not have to be fast or loud to be great. Eric Carle's collage pictures are also really beautiful — the jungle looks so colorful and alive. I want to read this book again slowly, slowly, slowly.</p>
 </div>
 <div class="review-ko">
-
+<p>&nbsp;&nbsp;『"Slowly, Slowly, Slowly," Said the Sloth』은 Eric Carle이 쓴 책이에요. 온종일 나무에 거꾸로 매달려 아주 느릿느릿 움직이는 나무늘보 이야기예요. 정글의 다른 동물들이 계속 왜 그렇게 느리고 조용하고 지루하냐고 물어요.</p>
+<p>&nbsp;&nbsp;하울러 원숭이, 카이만, 개미핥기, 재규어가 차례로 다가와 왜 그렇게 느리고 조용하고 지루하고 게으르냐고 물어요. 나무늘보는 아주 오랫동안 아무 대답도 하지 않아요 — 그저 오래오래 생각하다가, 마침내 엄청나게 긴 대답을 해요! 자신은 lackadaisical하고, languid하고, stoic하고, impassive하고, sluggish하고, lethargic하고, placid하고, calm하고, mellow하고, laid-back하지만 — 게으른 건 아니라고요. 마지막에 나오는 그 긴 독백이 제일 좋았어요. 모르는 단어가 거의 다였지만 하나하나 찾아보는 게 재미있었어요!</p>
+<p>&nbsp;&nbsp;"그게 바로 나야"라는 나무늘보의 말이 정말 마음에 들었어요. 남들과 달라도 괜찮고, 내 속도대로 해도 된다는 걸 느꼈거든요. 빠르거나 시끄럽지 않아도 훌륭할 수 있어요. Eric Carle의 콜라주 그림도 너무 아름다웠어요 — 정글이 색깔로 가득해서 살아있는 것 같았어요. 이 책은 천천히, 천천히, 천천히 다시 읽고 싶어요.</p>
 </div>
 </details>

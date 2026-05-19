@@ -132,9 +132,16 @@ isbn: "9780064434515"
 <details class="review-toggle">
 <summary>💡 리뷰</summary>
 <div class="review-en">
-<p>리뷰 준비 중입니다.</p>
+<p><b>Introduction</b></p>
+<p>&nbsp;&nbsp;I read <i>Bedtime for Frances</i> by Russell Hoban. Frances the badger sees tigers, giants, and creepy bugs when she tries to sleep. I understood her so well because I feel scared at bedtime too!</p>
+<p><b>Body</b></p>
+<p>&nbsp;&nbsp;Frances does everything to avoid sleep — she drinks milk, hugs her stuffed animals, and sings an alphabet song. But then she sees a tiger in the corner, a giant shape in the dark, and something with skinny legs in the crack on the ceiling. Each time she runs to her parents' room. Her father always calmly explains that the tiger is just her bathrobe on the chair, and that everything in the world has a job to do — even the wind blowing the curtains has its job. My favorite part was when Frances finally realized that the thumping at the window was just a moth doing its job, and that her job was to sleep. She figured it out all by herself!</p>
+<p><b>Conclusion</b></p>
+<p>&nbsp;&nbsp;This book helped me understand that scary things at night are usually just ordinary things in the dark. Frances's father's words — "Everybody has a job" — stayed with me. Now when I feel scared at night, I try to think like Frances. I recommend this book to kids who have trouble going to sleep!</p>
 </div>
 <div class="review-ko">
-
+<p>&nbsp;&nbsp;러셀 호반이 쓴 <i>Bedtime for Frances</i>를 읽었어요. 오소리 프랜시스는 자려고 할 때마다 호랑이, 거인, 징그러운 벌레를 봐요. 저도 잠자리가 무서울 때가 있어서 프랜시스가 너무 잘 이해됐어요!</p>
+<p>&nbsp;&nbsp;프랜시스는 잠을 피하려고 온갖 것을 다 해요 — 우유를 마시고, 인형을 끌어안고, 알파벳 노래도 불러요. 하지만 구석에는 호랑이가 보이고, 어둠 속 커다란 덩어리는 거인 같고, 천장 균열에는 긴 다리를 가진 무언가가 있는 것 같아요. 그때마다 부모님 방으로 달려가요. 아빠는 늘 차분하게 호랑이는 의자에 걸쳐진 목욕 가운일 뿐이라고 설명해 주고, 세상 모든 것에는 할 일이 있다고 말해요 — 커튼을 흔드는 바람도 제 할 일이 있다는 거예요. 제가 가장 좋아한 부분은 창문에 부딪히는 소리가 나방이 제 일을 하는 것뿐이고, 자신의 일은 자는 것이라고 프랜시스가 스스로 깨닫는 장면이었어요. 혼자서 알아낸 거잖아요!</p>
+<p>&nbsp;&nbsp;이 책은 밤에 무서운 것들이 대부분 그냥 어둠 속의 평범한 것들이라는 걸 이해하게 해줬어요. 프랜시스 아빠의 말 "모두에게는 해야 할 일이 있단다"라는 말이 계속 마음에 남았어요. 이제 밤에 무서운 생각이 들면 프랜시스처럼 생각해 보려고 해요. 잠자리가 어려운 친구들에게 꼭 추천하고 싶어요!</p>
 </div>
 </details>
