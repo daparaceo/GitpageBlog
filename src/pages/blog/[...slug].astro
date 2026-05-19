@@ -260,43 +260,51 @@ const ogImage = post.data.ogImage;
 <script is:inline>
   /* ── 줄거리·리뷰 토글 peek 효과 ──────────────────────── */
   (function () {
-    var PEEK_H = 92; // 닫힌 상태에서 보이는 높이(px) — 약 3줄
+    var PEEK_H = 92; // 닫힌 상태에서 보이는 높이(px)
 
     document.querySelectorAll('details.story-toggle, details.review-toggle').forEach(function (el) {
       var summary = el.querySelector('summary');
       if (!summary) return;
 
-      // summary를 제외한 나머지 자식을 .peek-wrap div로 감싸기
+      // details를 강제로 open → 내용이 DOM에 렌더링되어 scrollHeight 계산 가능
+      el.setAttribute('open', '');
+
+      // summary 제외 자식 노드를 .peek-wrap 으로 감싸기
       var wrap = document.createElement('div');
-      wrap.className = 'peek-wrap';
+      wrap.className = 'peek-wrap is-peeking';
       Array.from(el.childNodes).forEach(function (c) {
         if (c !== summary) wrap.appendChild(c);
       });
       el.appendChild(wrap);
 
-      // 초기: 닫힌 상태(peek)
+      // 초기: peek 높이
       wrap.style.maxHeight = PEEK_H + 'px';
+      var expanded = false;
 
       summary.addEventListener('click', function (e) {
         e.preventDefault();
-        if (el.open) {
-          // 닫기 애니메이션: 현재 높이 → PEEK_H
+        if (expanded) {
+          // 닫기: full → peek
           wrap.style.maxHeight = wrap.scrollHeight + 'px';
           requestAnimationFrame(function () {
             requestAnimationFrame(function () {
               wrap.style.maxHeight = PEEK_H + 'px';
+              wrap.classList.add('is-peeking');
+              summary.classList.remove('is-expanded');
             });
           });
-          el.removeAttribute('open');
+          expanded = false;
         } else {
-          // 열기 애니메이션: PEEK_H → scrollHeight
-          el.setAttribute('open', '');
+          // 열기: peek → full
+          wrap.classList.remove('is-peeking');
+          summary.classList.add('is-expanded');
           var fullH = wrap.scrollHeight;
           wrap.style.maxHeight = fullH + 'px';
           wrap.addEventListener('transitionend', function done() {
             wrap.removeEventListener('transitionend', done);
-            if (el.open) wrap.style.maxHeight = 'none'; // 반응형 레이아웃 대응
+            if (expanded) wrap.style.maxHeight = 'none';
           });
+          expanded = true;
         }
       });
     });
@@ -338,25 +346,23 @@ const ogImage = post.data.ogImage;
   details.story-toggle > summary { font-size: 1.2em; font-weight: bold; color: #222; padding-bottom: 10px; border-bottom: 3px solid #4285f4; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
   details.story-toggle > summary::-webkit-details-marker { display: none; }
   details.story-toggle > summary::after { content: '▼'; font-size: 0.65em; color: #94a3b8; transition: transform 0.2s; flex-shrink: 0; }
-  details.story-toggle[open] > summary::after { transform: rotate(180deg); }
   details.story-toggle p { margin: 15px 0 0; line-height: 1.9; color: #334155; }
   /* ── 리뷰 토글 ────────────────────────────────────────── */
   details.review-toggle { margin: 25px 0; }
   details.review-toggle > summary { font-size: 1.2em; font-weight: bold; color: #222; padding-bottom: 10px; border-bottom: 3px solid #34a853; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
   details.review-toggle > summary::-webkit-details-marker { display: none; }
   details.review-toggle > summary::after { content: '▼'; font-size: 0.65em; color: #94a3b8; transition: transform 0.2s; flex-shrink: 0; }
-  details.review-toggle[open] > summary::after { transform: rotate(180deg); }
   .review-en { background: #f8f9fa; padding: 15px; margin: 15px 0 10px; border-radius: 6px; border-left: 4px solid #34a853; }
   .review-en p { margin: 6px 0; color: #1e3a5f; line-height: 1.8; }
   .review-ko { background: #f0fdf4; padding: 15px; margin: 10px 0; border-radius: 6px; border-left: 4px solid #86efac; }
   .review-ko p { margin: 6px 0; color: #334155; line-height: 1.8; }
   /* ── peek-wrap (JS가 생성) ─────────────────────────────── */
   .peek-wrap { overflow: hidden; transition: max-height 0.35s ease; }
-  details.story-toggle:not([open]) .peek-wrap,
-  details.review-toggle:not([open]) .peek-wrap {
+  .peek-wrap.is-peeking {
     -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
   }
-  details.story-toggle[open] .peek-wrap,
-  details.review-toggle[open] .peek-wrap { -webkit-mask-image: none; mask-image: none; }
+  /* 화살표 회전: JS가 .is-expanded 부여 */
+  details.story-toggle > summary.is-expanded::after,
+  details.review-toggle > summary.is-expanded::after { transform: rotate(180deg); }
 </style>
