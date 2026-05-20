@@ -215,6 +215,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     errorEl.classList.remove('hidden');
   }
 
+  function showInsufficient(data) {
+    loadingEl.classList.add('hidden');
+    resultEl.classList.add('hidden');
+    errorEl.classList.remove('hidden');
+    errorEl.querySelector('p').textContent =
+      (data.title ? '「' + data.title + '」 ' : '') +
+      '원문·학습 자료를 충분히 찾지 못했습니다. 나중에 다시 시도해 주세요.';
+  }
+
   function showResult(data) {
     loadingEl.classList.add('hidden');
     errorEl.classList.add('hidden');
@@ -289,6 +298,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         return res.json();
       })
       .then(function (data) {
+        if (data.error === 'insufficient_data') {
+          showInsufficient(data);
+          return;
+        }
         if (!data.html) throw new Error('빈 응답');
         showResult(data);
       })
