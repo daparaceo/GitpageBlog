@@ -40,7 +40,7 @@ for (const post of posts) {
   if (m) addEntry(m[1]);
 }
 
-const AR_LOOKUP_URL = 'https://api.daparapara.com/ar-lookup';
+const BOOK_INFO_URL = 'https://api.daparapara.com/book-info';
 ---
 
 <BaseLayout title="ISBN 스캔" description="책 바코드를 스캔해서 리뷰를 찾아보세요">
@@ -180,7 +180,7 @@ const AR_LOOKUP_URL = 'https://api.daparapara.com/ar-lookup';
   <!-- html5-qrcode CDN (Android: BarcodeDetector 네이티브 API 자동 사용, iOS: ZXing 폴백) -->
   <script is:inline src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 
-  <script is:inline define:vars={{ isbnPostMap, AR_LOOKUP_URL }}>
+  <script is:inline define:vars={{ isbnPostMap, BOOK_INFO_URL }}>
     const ISBN_MAP = isbnPostMap;
     let html5QrCode = null;
     let isScanning   = false;
@@ -256,14 +256,37 @@ const AR_LOOKUP_URL = 'https://api.daparapara.com/ar-lookup';
         : '';
     }
 
+    // ── 도서관 목록 HTML ─────────────────────────────────────
+    function librariesHtml(libraries) {
+      if (!libraries || !libraries.length) return '';
+      var items = libraries.slice(0, 5).map(function(lib) {
+        return '<li class="flex items-center justify-between gap-2 py-1">' +
+          '<span class="text-xs text-gray-700 truncate">' + lib.name + '</span>' +
+          (lib.distance
+            ? '<span class="text-xs text-gray-400 flex-shrink-0">' + lib.distance + '</span>'
+            : '') +
+        '</li>';
+      }).join('');
+      return (
+        '<div class="mt-2 border-t border-gray-100 pt-2">' +
+          '<p class="text-xs font-medium text-gray-500 mb-1">소장 도서관</p>' +
+          '<ul class="divide-y divide-gray-50">' + items + '</ul>' +
+        '</div>'
+      );
+    }
+
     // ── 결과 카드: 리뷰 있음 ─────────────────────────────────
-    function buildReviewCard(post, arData) {
-      var coverUrl = post.ogImage || '';
-      var arHtml = arBadgesHtml(arData);
-      var titleDisplay = (arData && arData.title) ? arData.title : post.title;
-      var authorDisplay = (arData && arData.author)
-        ? '<p class="text-xs text-gray-500 mt-0.5">' + arData.author + '</p>'
+    function buildReviewCard(post, info) {
+      var coverUrl     = (info && info.cover) ? info.cover : (post.ogImage || '');
+      var arHtml       = arBadgesHtml(info);
+      var titleDisplay = (info && info.title) ? info.title : post.title;
+      var authorDisplay = (info && info.author)
+        ? '<p class="text-xs text-gray-500 mt-0.5">' + info.author + '</p>'
         : '';
+      var descHtml = (info && info.description)
+        ? '<p class="text-xs text-gray-500 mt-1.5 line-clamp-2">' + info.description + '</p>'
+        : '';
+      var libHtml = librariesHtml(info && info.libraries);
       return (
         '<div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4">' +
           '<div class="flex gap-3">' +
@@ -279,37 +302,54 @@ const AR_LOOKUP_URL = 'https://api.daparapara.com/ar-lookup';
               '</p>' +
               authorDisplay +
               arHtml +
-              '<div class="mt-2.5">' +
-                '<a href="/blog/' + post.slug + '/" ' +
-                  'class="inline-block px-4 py-1.5 bg-emerald-600 text-white text-xs font-semibold rounded-lg ' +
-                  'hover:bg-emerald-700 active:scale-95 transition-all">' +
-                  '리뷰 보기' +
-                '</a>' +
-              '</div>' +
             '</div>' +
+          '</div>' +
+          descHtml +
+          libHtml +
+          '<div class="mt-3">' +
+            '<a href="/blog/' + post.slug + '/" ' +
+              'class="inline-block px-4 py-1.5 bg-emerald-600 text-white text-xs font-semibold rounded-lg ' +
+              'hover:bg-emerald-700 active:scale-95 transition-all">' +
+              '리뷰 보기' +
+            '</a>' +
           '</div>' +
         '</div>'
       );
     }
 
-    // ── 결과 카드: 리뷰 없음, AR 데이터 있음 ─────────────────
-    function buildArCard(isbn, arData) {
-      var arHtml = arBadgesHtml(arData);
-      var seriesHtml = arData.series
-        ? '<p class="text-xs text-gray-400 mt-1">시리즈: ' + arData.series + '</p>'
+    // ── 결과 카드: 리뷰 없음, 정보 있음 ─────────────────────
+    function buildInfoCard(isbn, info) {
+      var coverUrl  = info.cover || '';
+      var arHtml    = arBadgesHtml(info);
+      var seriesHtml = info.series
+        ? '<p class="text-xs text-gray-400 mt-1">시리즈: ' + info.series + '</p>'
         : '';
+      var descHtml = info.description
+        ? '<p class="text-xs text-gray-500 mt-1.5 line-clamp-3">' + info.description + '</p>'
+        : '';
+      var libHtml = librariesHtml(info.libraries);
       return (
         '<div class="bg-gray-50 border border-gray-200 rounded-2xl p-4">' +
-          '<p class="text-xs font-semibold text-gray-500 mb-1">아직 리뷰가 없어요</p>' +
-          (arData.title
-            ? '<p class="font-semibold text-gray-900 text-sm leading-snug line-clamp-2">' +
-              arData.title + '</p>'
-            : '<p class="text-sm text-gray-500">ISBN ' + isbn + '</p>') +
-          (arData.author
-            ? '<p class="text-xs text-gray-500 mt-0.5">' + arData.author + '</p>'
-            : '') +
-          arHtml +
-          seriesHtml +
+          '<div class="flex gap-3">' +
+            (coverUrl
+              ? '<img src="' + coverUrl + '" alt="표지" ' +
+                'class="w-14 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" ' +
+                'onerror="this.style.display=\'none\'">'
+              : '') +
+            '<div class="flex-1 min-w-0">' +
+              '<p class="text-xs font-semibold text-gray-500 mb-0.5">아직 리뷰가 없어요</p>' +
+              (info.title
+                ? '<p class="font-semibold text-gray-900 text-sm leading-snug line-clamp-2">' + info.title + '</p>'
+                : '<p class="text-sm text-gray-500">ISBN ' + isbn + '</p>') +
+              (info.author
+                ? '<p class="text-xs text-gray-500 mt-0.5">' + info.author + '</p>'
+                : '') +
+              arHtml +
+              seriesHtml +
+            '</div>' +
+          '</div>' +
+          descHtml +
+          libHtml +
         '</div>'
       );
     }
@@ -320,12 +360,12 @@ const AR_LOOKUP_URL = 'https://api.daparapara.com/ar-lookup';
         '<div class="bg-gray-50 border border-gray-200 rounded-2xl p-4">' +
           '<p class="text-xs font-semibold text-gray-500 mb-1">정보를 찾을 수 없어요</p>' +
           '<p class="text-sm text-gray-500">ISBN ' + isbn + '</p>' +
-          '<p class="text-xs text-gray-400 mt-1">AR BookFinder에 등록되지 않은 책이거나 바코드를 다시 확인해주세요.</p>' +
+          '<p class="text-xs text-gray-400 mt-1">등록되지 않은 책이거나 바코드를 다시 확인해주세요.</p>' +
         '</div>'
       );
     }
 
-    // ── ISBN → AR 조회 후 결과 표시 ─────────────────────────
+    // ── ISBN → 4소스 조회 후 결과 표시 ──────────────────────
     async function showResult(rawIsbn) {
       var digits = rawIsbn.replace(/\D/g, '');
       if (!digits) return;
@@ -346,22 +386,31 @@ const AR_LOOKUP_URL = 'https://api.daparapara.com/ar-lookup';
       // 로딩 상태
       resultEl.innerHTML =
         '<div class="bg-gray-50 border border-gray-100 rounded-2xl p-4 text-center text-sm text-gray-400">' +
-        'AR 정보 조회 중...</div>';
+        '도서 정보 조회 중...</div>';
       resultEl.classList.remove('hidden');
       rescanBtn.classList.remove('hidden');
 
-      // AR API 호출
-      var arData = null;
+      // 위치 정보 (도서관 거리 계산용) — 실패해도 계속
+      var geoParams = '';
       try {
-        var arRes = await fetch(AR_LOOKUP_URL + '?isbn=' + isbn);
-        if (arRes.ok) arData = await arRes.json();
+        var pos = await new Promise(function(resolve, reject) {
+          navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 3000 });
+        });
+        geoParams = '&lat=' + pos.coords.latitude + '&lng=' + pos.coords.longitude;
+      } catch (_) {}
+
+      // book-info API 호출
+      var info = null;
+      try {
+        var apiRes = await fetch(BOOK_INFO_URL + '?isbn=' + isbn + geoParams);
+        if (apiRes.ok) info = await apiRes.json();
       } catch (_) {}
 
       // 결과 카드 렌더
       if (post) {
-        resultEl.innerHTML = buildReviewCard(post, arData);
-      } else if (arData && (arData.ar_level || arData.lexile || arData.title)) {
-        resultEl.innerHTML = buildArCard(isbn, arData);
+        resultEl.innerHTML = buildReviewCard(post, info);
+      } else if (info && (info.title || info.ar_level || info.lexile)) {
+        resultEl.innerHTML = buildInfoCard(isbn, info);
       } else {
         resultEl.innerHTML = buildNotFoundCard(isbn);
       }
@@ -401,7 +450,7 @@ const AR_LOOKUP_URL = 'https://api.daparapara.com/ar-lookup';
       listEl.classList.remove('hidden');
 
       try {
-        var res = await fetch(AR_LOOKUP_URL + '?q=' + encodeURIComponent(q));
+        var res = await fetch('https://api.daparapara.com/ar-lookup?q=' + encodeURIComponent(q));
         if (!res.ok) throw new Error('검색 실패 (' + res.status + ')');
         var results = await res.json();
 
