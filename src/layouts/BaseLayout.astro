@@ -17,6 +17,7 @@ interface Props {
   ogImage?: string;
   isArticle?: boolean;
   publishedDate?: string;
+  noindex?: boolean;
 }
 
 const {
@@ -25,6 +26,7 @@ const {
   ogImage = '/og-default.png',
   isArticle = false,
   publishedDate,
+  noindex = false,
 } = Astro.props;
 
 const SITE_NAME = 'daparapara';           // ← 블로그 이름 (변경 가능)
@@ -43,6 +45,7 @@ const fullTitle = title === SITE_NAME ? SITE_NAME : `${title} | ${SITE_NAME}`;
   <!-- SEO -->
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
   <link rel="canonical" href={canonicalUrl} />
 
   <!-- Open Graph -->

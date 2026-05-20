@@ -18,6 +18,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <button id="tab-bar"
         class="tab-btn flex-1 py-2 text-sm font-semibold rounded-lg text-gray-500 transition-all"
         onclick="switchTab('bar')">바코드</button>
+      <button id="tab-book"
+        class="tab-btn flex-1 py-2 text-sm font-semibold rounded-lg text-gray-500 transition-all"
+        onclick="switchTab('book')">AI 참고 페이지</button>
     </div>
 
     <!-- ── QR 코드 패널 ─────────────────────────────────── -->
@@ -124,6 +127,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p id="bar-error" class="hidden mt-3 text-sm text-red-500 text-center"></p>
     </div>
 
+    <!-- ── AI 참고 페이지 패널 ──────────────────────────── -->
+    <div id="panel-book" class="hidden">
+      <p class="text-sm text-gray-500 mb-4">ISBN을 입력하면 AI가 영어 원서 학습 참고 페이지를 생성합니다.</p>
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">ISBN (10~13자리 숫자)</label>
+          <input id="book-isbn" type="text" placeholder="9781234567890"
+            inputmode="numeric"
+            class="w-full px-3 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:border-sky-400 transition-colors bg-white" />
+        </div>
+        <button onclick="goBookPreview()"
+          class="w-full py-2.5 bg-sky-600 text-white text-sm font-semibold rounded-xl hover:bg-sky-700 active:scale-95 transition-all">
+          참고 페이지 생성
+        </button>
+      </div>
+      <p id="book-error" class="hidden mt-3 text-sm text-red-500 text-center"></p>
+      <p class="mt-4 text-xs text-gray-400">생성에 30~60초 소요됩니다. 동일한 ISBN은 캐시되어 즉시 표시됩니다.</p>
+    </div>
+
   </div>
 
   <!-- CDN -->
@@ -132,16 +154,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <script is:inline>
     // ── 탭 전환 ─────────────────────────────────────────────
-    function switchTab(tab) {
-      document.getElementById('panel-qr').classList.toggle('hidden', tab !== 'qr');
-      document.getElementById('panel-bar').classList.toggle('hidden', tab !== 'bar');
+    var TABS = ['qr', 'bar', 'book'];
 
-      document.getElementById('tab-qr').className =
-        'tab-btn flex-1 py-2 text-sm font-semibold rounded-lg transition-all ' +
-        (tab === 'qr' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500');
-      document.getElementById('tab-bar').className =
-        'tab-btn flex-1 py-2 text-sm font-semibold rounded-lg transition-all ' +
-        (tab === 'bar' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500');
+    function switchTab(tab) {
+      TABS.forEach(function(t) {
+        document.getElementById('panel-' + t).classList.toggle('hidden', t !== tab);
+        document.getElementById('tab-' + t).className =
+          'tab-btn flex-1 py-2 text-sm font-semibold rounded-lg transition-all ' +
+          (t === tab ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500');
+      });
+    }
+
+    // ── AI 참고 페이지 ───────────────────────────────────────
+    function goBookPreview() {
+      var isbn    = document.getElementById('book-isbn').value.trim().replace(/[-\s]/g, '');
+      var errEl   = document.getElementById('book-error');
+      errEl.classList.add('hidden');
+
+      if (!isbn || !/^\d{10,13}$/.test(isbn)) {
+        errEl.textContent = 'ISBN은 10~13자리 숫자여야 합니다.';
+        errEl.classList.remove('hidden');
+        return;
+      }
+      window.location.href = '/book-preview/?isbn=' + isbn;
     }
 
     // ── QR 생성 ─────────────────────────────────────────────
@@ -241,12 +276,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
     }
 
+    // URL 파라미터로 초기 탭 선택 (?tab=book 등)
+    (function() {
+      var tab = new URLSearchParams(window.location.search).get('tab');
+      if (tab && TABS.includes(tab)) switchTab(tab);
+    })();
+
     // 엔터키 지원
     document.getElementById('qr-input').addEventListener('keydown', function(e) {
       if (e.key === 'Enter') generateQr();
     });
     document.getElementById('bar-input').addEventListener('keydown', function(e) {
       if (e.key === 'Enter') generateBar();
+    });
+    document.getElementById('book-isbn').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') goBookPreview();
     });
   </script>
 </BaseLayout>
