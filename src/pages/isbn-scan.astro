@@ -406,6 +406,11 @@ const BOOK_INFO_URL = 'https://api.daparapara.com/book-info';
         if (apiRes.ok) info = await apiRes.json();
       } catch (_) {}
 
+      // canonical_isbn 경유 재조회 (다른 에디션 ISBN 스캔 시)
+      if (!post && info && info.canonical_isbn) {
+        post = ISBN_MAP[info.canonical_isbn] || ISBN_MAP[info.canonical_isbn.replace(/\D/g, '')];
+      }
+
       // 결과 카드 렌더
       if (post) {
         resultEl.innerHTML = buildReviewCard(post, info);
